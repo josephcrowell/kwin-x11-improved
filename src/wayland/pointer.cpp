@@ -103,7 +103,8 @@ void PointerInterfacePrivate::pointer_bind_resource(Resource *resource)
 
     if (focusedClient && focusedClient->client() == resource->client()) {
         const quint32 serial = seat->display()->nextSerial();
-        send_enter(resource->handle, serial, focusedSurface->resource(), wl_fixed_from_double(lastPosition.x()), wl_fixed_from_double(lastPosition.y()));
+        const QPointF localPosition = focusedSurface->toSurfaceLocal(lastPosition);
+        send_enter(resource->handle, serial, focusedSurface->resource(), wl_fixed_from_double(localPosition.x()), wl_fixed_from_double(localPosition.y()));
         if (resource->version() >= WL_POINTER_FRAME_SINCE_VERSION) {
             send_frame(resource->handle);
         }
