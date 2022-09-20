@@ -13,6 +13,7 @@
 #include <QPointer>
 
 #include "qwayland-server-pointer-constraints-unstable-v1.h"
+#include <QPointer>
 
 namespace KWin
 {
@@ -39,7 +40,7 @@ protected:
 
 struct LockedPointerV1Commit
 {
-    std::optional<QRegion> region;
+    std::optional<RegionF> region;
     std::optional<QPointF> hint;
 };
 
@@ -48,15 +49,15 @@ class LockedPointerV1InterfacePrivate final : public QtWaylandServer::zwp_locked
 public:
     static LockedPointerV1InterfacePrivate *get(LockedPointerV1Interface *pointer);
 
-    LockedPointerV1InterfacePrivate(LockedPointerV1Interface *q, SurfaceInterface *surface, LockedPointerV1Interface::LifeTime lifeTime, const QRegion &region, ::wl_resource *resource);
+    LockedPointerV1InterfacePrivate(LockedPointerV1Interface *q, SurfaceInterface *surface, LockedPointerV1Interface::LifeTime lifeTime, const RegionF &region, ::wl_resource *resource);
 
     void apply(LockedPointerV1Commit *commit) override;
 
     LockedPointerV1Interface *q;
     QPointer<SurfaceInterface> surface;
     LockedPointerV1Interface::LifeTime lifeTime;
-    QRegion effectiveRegion;
-    QRegion region;
+    RegionF effectiveRegion;
+    RegionF region;
     QPointF hint = QPointF(-1, -1);
     bool isLocked = false;
 
@@ -69,7 +70,7 @@ protected:
 
 struct ConfinedPointerV1Commit
 {
-    std::optional<QRegion> region;
+    std::optional<RegionF> region;
 };
 
 class ConfinedPointerV1InterfacePrivate final : public QtWaylandServer::zwp_confined_pointer_v1, public SurfaceExtension<ConfinedPointerV1Commit>
@@ -80,7 +81,7 @@ public:
     ConfinedPointerV1InterfacePrivate(ConfinedPointerV1Interface *q,
                                       SurfaceInterface *surface,
                                       ConfinedPointerV1Interface::LifeTime lifeTime,
-                                      const QRegion &region,
+                                      const RegionF &region,
                                       ::wl_resource *resource);
 
     void apply(ConfinedPointerV1Commit *commit) override;
@@ -88,8 +89,8 @@ public:
     ConfinedPointerV1Interface *q;
     QPointer<SurfaceInterface> surface;
     ConfinedPointerV1Interface::LifeTime lifeTime;
-    QRegion effectiveRegion;
-    QRegion region;
+    RegionF effectiveRegion;
+    RegionF region;
     bool isConfined = false;
 
 protected:
