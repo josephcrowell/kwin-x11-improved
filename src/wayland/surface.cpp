@@ -1100,11 +1100,6 @@ qreal SurfaceInterface::scaleOverride() const
     return d->scaleOverride;
 }
 
-QPoint SurfaceInterface::toSurfaceLocal(const QPoint &point) const
-{
-    return QPoint(point.x() * d->scaleOverride, point.y() * d->scaleOverride);
-}
-
 QPointF SurfaceInterface::toSurfaceLocal(const QPointF &point) const
 {
     return QPointF(point.x() * d->scaleOverride, point.y() * d->scaleOverride);
