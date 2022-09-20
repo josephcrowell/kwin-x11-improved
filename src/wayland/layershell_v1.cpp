@@ -42,8 +42,8 @@ struct LayerSurfaceV1Commit
 {
     std::optional<LayerSurfaceV1Interface::Layer> layer;
     std::optional<Qt::Edges> anchor;
-    std::optional<QMargins> margins;
-    std::optional<QSize> desiredSize;
+    std::optional<QMarginsF> margins;
+    std::optional<QSizeF> desiredSize;
     std::optional<int> exclusiveZone;
     std::optional<Qt::Edge> exclusiveEdge;
     std::optional<quint32> acknowledgedConfigure;
@@ -55,8 +55,8 @@ struct LayerSurfaceV1State
     QQueue<quint32> serials;
     LayerSurfaceV1Interface::Layer layer = LayerSurfaceV1Interface::BottomLayer;
     Qt::Edges anchor;
-    QMargins margins;
-    QSize desiredSize = QSize(0, 0);
+    QMarginsF margins;
+    QSizeF desiredSize = QSizeF(0, 0);
     int exclusiveZone = 0;
     Qt::Edge exclusiveEdge = Qt::Edge();
     bool acceptsFocus = false;
@@ -176,7 +176,7 @@ void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_destroy_resource(Reso
 
 void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_set_size(Resource *resource, uint32_t width, uint32_t height)
 {
-    pending.desiredSize = QSize(width, height);
+    pending.desiredSize = QSizeF(width / surface->clientToCompositorScale(), height / surface->clientToCompositorScale());
 }
 
 void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_set_anchor(Resource *resource, uint32_t anchor)
@@ -230,7 +230,8 @@ void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_set_exclusive_zone(Re
 
 void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_set_margin(Resource *, int32_t top, int32_t right, int32_t bottom, int32_t left)
 {
-    pending.margins = QMargins(left, top, right, bottom);
+    pending.margins = QMarginsF(left / surface->clientToCompositorScale(), top / surface->clientToCompositorScale(),
+                                right / surface->clientToCompositorScale(), bottom / surface->clientToCompositorScale());
 }
 
 void LayerSurfaceV1InterfacePrivate::zwlr_layer_surface_v1_set_keyboard_interactivity(Resource *resource, uint32_t keyboard_interactivity)
@@ -432,7 +433,7 @@ Qt::Edges LayerSurfaceV1Interface::anchor() const
     return d->state.anchor;
 }
 
-QSize LayerSurfaceV1Interface::desiredSize() const
+QSizeF LayerSurfaceV1Interface::desiredSize() const
 {
     return d->state.desiredSize;
 }
@@ -447,7 +448,7 @@ LayerSurfaceV1Interface::Layer LayerSurfaceV1Interface::layer() const
     return d->state.layer;
 }
 
-QMargins LayerSurfaceV1Interface::margins() const
+QMarginsF LayerSurfaceV1Interface::margins() const
 {
     return d->state.margins;
 }
@@ -512,7 +513,7 @@ QString LayerSurfaceV1Interface::scope() const
     return d->scope;
 }
 
-quint32 LayerSurfaceV1Interface::sendConfigure(const QSize &size)
+quint32 LayerSurfaceV1Interface::sendConfigure(const QSizeF &size)
 {
     if (d->state.closed) {
         qCWarning(KWIN_CORE) << "Cannot configure a closed layer shell surface";
@@ -522,7 +523,7 @@ quint32 LayerSurfaceV1Interface::sendConfigure(const QSize &size)
     const uint32_t serial = d->shell->display()->nextSerial();
     d->state.serials << serial;
 
-    d->send_configure(serial, size.width(), size.height());
+    d->send_configure(serial, std::round(size.width() / d->surface->compositorToClientScale()), std::round(size.height() / d->surface->compositorToClientScale()));
     d->state.configured = true;
 
     return serial;
