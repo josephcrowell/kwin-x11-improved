@@ -11,6 +11,7 @@
 #include "opengl/glplatform.h"
 #include "opengl/glutils.h"
 #include "scene/item.h"
+#include "utils/regionf.h"
 
 #include <QList>
 #include <QVector2D>
@@ -56,12 +57,12 @@ public Q_SLOTS:
     void slotScreenGeometryChanged();
 
 private:
-    QRegion contrastRegion(const EffectWindow *w) const;
+    RegionF contrastRegion(const EffectWindow *w) const;
     bool shouldContrast(const EffectWindow *w, int mask, const WindowPaintData &data) const;
     void updateContrastRegion(EffectWindow *w);
-    void doContrast(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, const QRegion &shape, const float opacity, const QMatrix4x4 &screenProjection);
-    void uploadRegion(std::span<QVector2D> map, const QRegion &region, qreal scale);
-    Q_REQUIRED_RESULT bool uploadGeometry(GLVertexBuffer *vbo, const QRegion &region, qreal scale);
+    void doContrast(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, const RegionF &shape, const float opacity, const QMatrix4x4 &screenProjection);
+    void uploadRegion(std::span<QVector2D> map, const RegionF &region, qreal scale);
+    Q_REQUIRED_RESULT bool uploadGeometry(GLVertexBuffer *vbo, const RegionF &region, qreal scale);
 
 private:
     std::unique_ptr<ContrastShader> m_shader;
@@ -73,7 +74,7 @@ private:
     struct Data
     {
         QMatrix4x4 colorMatrix;
-        QRegion contrastRegion;
+        RegionF contrastRegion;
         std::unique_ptr<GLTexture> texture;
         std::unique_ptr<GLFramebuffer> fbo;
         ItemEffect windowEffect;
