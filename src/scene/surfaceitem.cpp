@@ -73,35 +73,30 @@ void SurfaceItem::setBufferSize(const QSize &size)
     }
 }
 
-QRegion SurfaceItem::mapFromBuffer(const QRegion &region) const
+RegionF SurfaceItem::mapFromBuffer(const RegionF &region) const
 {
     const QRectF sourceBox = m_bufferToSurfaceTransform.map(m_bufferSourceBox, m_bufferSize);
     const qreal xScale = m_destinationSize.width() / sourceBox.width();
     const qreal yScale = m_destinationSize.height() / sourceBox.height();
 
-    QRegion result;
+    RegionF result;
     for (QRectF rect : region) {
         const QRectF r = m_bufferToSurfaceTransform.map(rect, m_bufferSize).translated(-sourceBox.topLeft());
-        result += QRectF(r.x() * xScale, r.y() * yScale, r.width() * xScale, r.height() * yScale).toAlignedRect();
+        result += QRectF(r.x() * xScale, r.y() * yScale, r.width() * xScale, r.height() * yScale);
     }
     return result;
 }
 
-static QRegion expandRegion(const QRegion &region, const QMargins &padding)
+static RegionF expandRegion(const RegionF &region, const QMargins &padding)
 {
-    if (region.isEmpty()) {
-        return QRegion();
-    }
-
-    QRegion ret;
-    for (const QRect &rect : region) {
+    RegionF ret;
+    for (const QRectF &rect : region) {
         ret += rect.marginsAdded(padding);
     }
-
     return ret;
 }
 
-void SurfaceItem::addDamage(const QRegion &region)
+void SurfaceItem::addBufferDamage(const QRegion &region)
 {
     if (m_lastDamage) {
         const auto diff = std::chrono::steady_clock::now() - *m_lastDamage;
@@ -112,16 +107,16 @@ void SurfaceItem::addDamage(const QRegion &region)
         m_frameTimeEstimation = std::accumulate(m_lastDamageTimeDiffs.begin(), m_lastDamageTimeDiffs.end(), 0ns) / m_lastDamageTimeDiffs.size();
     }
     m_lastDamage = std::chrono::steady_clock::now();
-    m_damage += region;
+    m_damage |= region;
 
     const QRectF sourceBox = m_bufferToSurfaceTransform.map(m_bufferSourceBox, m_bufferSize);
     const qreal xScale = sourceBox.width() / m_destinationSize.width();
     const qreal yScale = sourceBox.height() / m_destinationSize.height();
-    const QRegion logicalDamage = mapFromBuffer(region);
+    const RegionF logicalDamage = mapFromBuffer(region);
 
     const auto delegates = scene()->delegates();
     for (SceneDelegate *delegate : delegates) {
-        QRegion delegateDamage = logicalDamage;
+        RegionF delegateDamage = logicalDamage;
         const qreal delegateScale = delegate->scale();
         if (xScale != delegateScale || yScale != delegateScale) {
             // Simplified version of ceil(ceil(0.5 * output_scale / surface_scale) / output_scale)
@@ -129,7 +124,8 @@ void SurfaceItem::addDamage(const QRegion &region)
             const int yPadding = std::ceil(0.5 / yScale);
             delegateDamage = expandRegion(delegateDamage, QMargins(xPadding, yPadding, xPadding, yPadding));
         }
-        scheduleRepaint(delegate, delegateDamage);
+        // TODO align to device pixels, not logical units
+        scheduleRepaint(delegate, delegateDamage.toAlignedRegion());
     }
 
     Q_EMIT damaged();
@@ -140,7 +136,7 @@ void SurfaceItem::resetDamage()
     m_damage = QRegion();
 }
 
-QRegion SurfaceItem::damage() const
+QRegion SurfaceItem::bufferDamage() const
 {
     return m_damage;
 }
@@ -220,7 +216,7 @@ void SurfaceItem::preprocess()
     if (SurfacePixmap *surfacePixmap = pixmap(); surfacePixmap && !surfacePixmap->isDiscarded()) {
         SurfaceTexture *surfaceTexture = surfacePixmap->texture();
         if (surfaceTexture->isValid()) {
-            const QRegion region = damage();
+            const QRegion region = bufferDamage();
             if (!region.isEmpty()) {
                 surfaceTexture->update(region);
                 resetDamage();

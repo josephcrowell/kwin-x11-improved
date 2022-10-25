@@ -51,7 +51,7 @@ X11Window *SurfaceItemX11::window() const
 
 void SurfaceItemX11::preprocess()
 {
-    if (!damage().isEmpty()) {
+    if (!bufferDamage().isEmpty()) {
         X11Compositor *compositor = X11Compositor::self();
         if (X11SyncManager *syncManager = compositor->syncManager()) {
             syncManager->insertWait();
@@ -120,7 +120,7 @@ void SurfaceItemX11::waitForDamage()
     }
     free(reply);
 
-    addDamage(region);
+    addBufferDamage(region);
     m_isDamaged = false;
 }
 

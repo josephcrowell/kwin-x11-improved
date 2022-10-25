@@ -205,7 +205,7 @@ LockedPointerV1Interface::LifeTime LockedPointerV1Interface::lifeTime() const
     return d->lifeTime;
 }
 
-KWin::RegionF LockedPointerV1Interface::region() const
+RegionF LockedPointerV1Interface::region() const
 {
     return d->effectiveRegion;
 }
@@ -311,7 +311,7 @@ ConfinedPointerV1Interface::LifeTime ConfinedPointerV1Interface::lifeTime() cons
     return d->lifeTime;
 }
 
-KWin::RegionF ConfinedPointerV1Interface::region() const
+RegionF ConfinedPointerV1Interface::region() const
 {
     return d->effectiveRegion;
 }

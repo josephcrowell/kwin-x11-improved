@@ -8,6 +8,7 @@
 
 #include "core/graphicsbuffer.h"
 #include "surface.h"
+#include "utils/regionf.h"
 // Qt
 #include <QHash>
 #include <QList>
@@ -43,10 +44,10 @@ struct SurfaceState
 
     quint32 serial = 0;
 
-    QRegion damage = QRegion();
+    RegionF damage = RegionF();
     QRegion bufferDamage = QRegion();
-    QRegion opaque = QRegion();
-    QRegion input = infiniteRegion();
+    RegionF opaque = RegionF();
+    RegionF input = infiniteRegion();
     bool inputIsSet = false;
     bool opaqueIsSet = false;
     bool bufferIsSet = false;
@@ -62,10 +63,11 @@ struct SurfaceState
     bool presentationModeHintIsSet = false;
     bool colorDescriptionIsSet = false;
     bool alphaMultiplierIsSet = false;
-    qint32 bufferScale = 1;
+    qint32 integerBufferScale = 1;
+    qreal fractionalBufferScale = 1;
     OutputTransform bufferTransform = OutputTransform::Normal;
     wl_list frameCallbacks;
-    QPoint offset = QPoint();
+    QPointF offset = QPointF();
     QPointer<GraphicsBuffer> buffer;
     QPointer<ShadowInterface> shadow;
     QPointer<BlurInterface> blur;
@@ -99,7 +101,7 @@ struct SurfaceState
     struct
     {
         QRectF sourceGeometry = QRectF();
-        QSize destinationSize = QSize();
+        QSizeF destinationSize = QSizeF();
         bool sourceGeometryIsSet = false;
         bool destinationSizeIsSet = false;
     } viewport;
@@ -140,7 +142,7 @@ public:
      */
     bool contains(const QPointF &position) const;
     bool inputContains(const QPointF &position) const;
-    QRegion mapToBuffer(const QRegion &region) const;
+    RegionF mapToBuffer(const RegionF &region) const;
 
     CompositorInterface *compositor;
     SurfaceInterface *q;
@@ -151,8 +153,8 @@ public:
     QRectF bufferSourceBox;
     QSizeF surfaceSize = QSizeF(0, 0);
 
-    QRegion inputRegion;
-    QRegion opaqueRegion;
+    RegionF inputRegion;
+    RegionF opaqueRegion;
     GraphicsBufferRef bufferRef;
     QRegion bufferDamage;
     bool mapped = false;

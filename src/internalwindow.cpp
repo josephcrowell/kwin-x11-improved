@@ -386,7 +386,7 @@ void InternalWindow::present(const InternalWindowFrame &frame)
     m_graphicsBufferRef = frame.buffer;
     m_graphicsBufferOrigin = frame.bufferOrigin;
 
-    surfaceItem()->addDamage(frame.bufferDamage);
+    surfaceItem()->addBufferDamage(frame.bufferDamage);
 }
 
 QWindow *InternalWindow::handle() const
