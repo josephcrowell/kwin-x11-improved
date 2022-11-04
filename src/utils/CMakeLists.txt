@@ -7,6 +7,7 @@ target_sources(kwin PRIVATE
     orientationsensor.cpp
     ramfile.cpp
     realtime.cpp
+    regionf.cpp
     softwarevsyncmonitor.cpp
     subsurfacemonitor.cpp
     udev.cpp
