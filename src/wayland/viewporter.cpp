@@ -72,7 +72,7 @@ void ViewportInterface::wp_viewport_destroy(Resource *resource)
         SurfaceInterfacePrivate *surfacePrivate = SurfaceInterfacePrivate::get(surface);
         surfacePrivate->pending->viewport.sourceGeometry = QRectF();
         surfacePrivate->pending->viewport.sourceGeometryIsSet = true;
-        surfacePrivate->pending->viewport.destinationSize = QSize();
+        surfacePrivate->pending->viewport.destinationSize = QSizeF();
         surfacePrivate->pending->viewport.destinationSizeIsSet = true;
     }
 
@@ -117,7 +117,7 @@ void ViewportInterface::wp_viewport_set_destination(Resource *resource, int32_t 
 
     if (width == -1 && height == -1) {
         SurfaceInterfacePrivate *surfacePrivate = SurfaceInterfacePrivate::get(surface);
-        surfacePrivate->pending->viewport.destinationSize = QSize();
+        surfacePrivate->pending->viewport.destinationSize = QSizeF();
         surfacePrivate->pending->viewport.destinationSizeIsSet = true;
         return;
     }
@@ -128,7 +128,7 @@ void ViewportInterface::wp_viewport_set_destination(Resource *resource, int32_t 
     }
 
     SurfaceInterfacePrivate *surfacePrivate = SurfaceInterfacePrivate::get(surface);
-    surfacePrivate->pending->viewport.destinationSize = QSize(width, height);
+    surfacePrivate->pending->viewport.destinationSize = QSizeF(width, height) / surface->clientToCompositorScale();
     surfacePrivate->pending->viewport.destinationSizeIsSet = true;
 }
 
