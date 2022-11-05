@@ -122,7 +122,7 @@ void InputPanelV1Window::resetPosition()
     case Mode::Overlay: {
         auto textInputSurface = waylandServer()->seat()->focusedTextInputSurface();
         auto textWindow = waylandServer()->findWindow(textInputSurface);
-        QRect cursorRectangle;
+        QRectF cursorRectangle;
         auto textInputV1 = waylandServer()->seat()->textInputV1();
         if (textInputV1 && textInputV1->isEnabled() && textInputV1->surface() == textInputSurface) {
             cursorRectangle = textInputV1->cursorRectangle();
@@ -136,7 +136,7 @@ void InputPanelV1Window::resetPosition()
             cursorRectangle = textInputV3->cursorRectangle();
         }
         if (textWindow) {
-            cursorRectangle.translate(textWindow->bufferGeometry().topLeft().toPoint());
+            cursorRectangle.translate(textWindow->bufferGeometry().topLeft());
             const QRectF screen = Workspace::self()->clientArea(PlacementArea, this, cursorRectangle.bottomLeft());
 
             m_windowGeometry = QRectF(QPointF(0, 0), surface()->size());
