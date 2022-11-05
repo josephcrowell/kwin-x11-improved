@@ -14,6 +14,8 @@
 #include "frog_colormanagement_v1.h"
 #include "idleinhibit_v1_p.h"
 #include "linux_drm_syncobj_v1.h"
+#include "fractionalscale_v1_p.h"
+#include "fractionalscale_v2.h"
 #include "linuxdmabufv1clientbuffer.h"
 #include "output.h"
 #include "pointerconstraints_v1_p.h"

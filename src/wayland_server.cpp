@@ -39,6 +39,7 @@
 #include "wayland/externalbrightness_v1.h"
 #include "wayland/filtered_display.h"
 #include "wayland/fixes.h"
+#include "wayland/fractionalscale_v2.h"
 #include "wayland/fractionalscale_v1.h"
 #include "wayland/frog_colormanagement_v1.h"
 #include "wayland/idle.h"
@@ -510,6 +511,7 @@ bool WaylandServer::init()
 #if HAVE_WL_FIXES
     new FixesInterface(m_display, m_display);
 #endif
+    m_fractionalScaleV2 = new FractionalScaleManagerV2(m_display, m_display);
     return true;
 }
 

@@ -53,6 +53,7 @@ class XwaylandShellV1Interface;
 class OutputOrderV1Interface;
 class XdgDialogWmV1Interface;
 class ExternalBrightnessV1;
+class FractionalScaleManagerV2;
 
 class Window;
 class Output;
@@ -294,6 +295,7 @@ private:
     XdgDialogWmV1Interface *m_xdgDialogWm = nullptr;
     ExternalBrightnessV1 *m_externalBrightness = nullptr;
     AlphaModifierManagerV1 *m_alphaModifierManager = nullptr;
+    FractionalScaleManagerV2 *m_fractionalScaleV2 = nullptr;
     KWIN_SINGLETON(WaylandServer)
 };
 

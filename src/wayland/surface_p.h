@@ -32,6 +32,7 @@ class XXColorSurfaceV4;
 class XXColorFeedbackSurfaceV4;
 class LinuxDrmSyncObjSurfaceV1;
 class AlphaModifierSurfaceV1;
+class FractionalScaleV2;
 
 struct SurfaceState
 {
@@ -190,6 +191,7 @@ public:
     QList<XXColorFeedbackSurfaceV4 *> xxColorFeedbacks;
     LinuxDrmSyncObjSurfaceV1 *syncObjV1 = nullptr;
     AlphaModifierSurfaceV1 *alphaModifier = nullptr;
+    FractionalScaleV2 *fractionalScaleV2 = nullptr;
 
     struct
     {
