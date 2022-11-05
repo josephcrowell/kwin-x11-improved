@@ -170,7 +170,7 @@ void XdgSurfaceInterfacePrivate::reset()
     firstBufferAttached = false;
     isConfigured = false;
     isInitialized = false;
-    windowGeometry = QRect();
+    windowGeometry = QRectF();
     Q_EMIT q->resetOccurred();
 }
 
@@ -260,7 +260,8 @@ void XdgSurfaceInterfacePrivate::xdg_surface_set_window_geometry(Resource *resou
         return;
     }
 
-    pending->windowGeometry = QRect(x, y, width, height);
+    pending->windowGeometry = QRectF(x / surface->clientToCompositorScale(), y / surface->clientToCompositorScale(),
+                                     width / surface->clientToCompositorScale(), height / surface->clientToCompositorScale());
 }
 
 void XdgSurfaceInterfacePrivate::xdg_surface_ack_configure(Resource *resource, uint32_t serial)
@@ -315,7 +316,7 @@ bool XdgSurfaceInterface::isConfigured() const
     return d->isConfigured;
 }
 
-QRect XdgSurfaceInterface::windowGeometry() const
+QRectF XdgSurfaceInterface::windowGeometry() const
 {
     return d->windowGeometry;
 }
@@ -470,7 +471,7 @@ void XdgToplevelInterfacePrivate::xdg_toplevel_set_max_size(Resource *resource, 
         wl_resource_post_error(resource->handle, error_invalid_size, "width and height must be positive or zero");
         return;
     }
-    pending.maximumSize = QSize(width, height);
+    pending.maximumSize = QSizeF(width, height) / xdgSurface->surface()->clientToCompositorScale();
 }
 
 void XdgToplevelInterfacePrivate::xdg_toplevel_set_min_size(Resource *resource, int32_t width, int32_t height)
@@ -479,7 +480,7 @@ void XdgToplevelInterfacePrivate::xdg_toplevel_set_min_size(Resource *resource, 
         wl_resource_post_error(resource->handle, error_invalid_size, "width and height must be positive or zero");
         return;
     }
-    pending.minimumSize = QSize(width, height);
+    pending.minimumSize = QSizeF(width, height) / xdgSurface->surface()->clientToCompositorScale();
 }
 
 void XdgToplevelInterfacePrivate::xdg_toplevel_set_maximized(Resource *resource)
@@ -578,12 +579,12 @@ QString XdgToplevelInterface::windowClass() const
     return d->windowClass;
 }
 
-QSize XdgToplevelInterface::minimumSize() const
+QSizeF XdgToplevelInterface::minimumSize() const
 {
     return d->minimumSize;
 }
 
-QSize XdgToplevelInterface::maximumSize() const
+QSizeF XdgToplevelInterface::maximumSize() const
 {
     return d->maximumSize;
 }
@@ -593,7 +594,7 @@ QIcon XdgToplevelInterface::customIcon() const
     return d->customIcon;
 }
 
-quint32 XdgToplevelInterface::sendConfigure(const QSize &size, const States &states)
+quint32 XdgToplevelInterface::sendConfigure(const QSizeF &size, const States &states)
 {
     // Note that the states listed in the configure event must be an array of uint32_t.
 
@@ -637,7 +638,7 @@ quint32 XdgToplevelInterface::sendConfigure(const QSize &size, const States &sta
     const QByteArray xdgStates = QByteArray::fromRawData(reinterpret_cast<char *>(statesData), sizeof(uint32_t) * i);
     const quint32 serial = xdgSurface()->shell()->display()->nextSerial();
 
-    d->send_configure(size.width(), size.height(), xdgStates);
+    d->send_configure(size.width() * surface()->compositorToClientScale(), size.height() * surface()->compositorToClientScale(), xdgStates);
 
     auto xdgSurfacePrivate = XdgSurfaceInterfacePrivate::get(xdgSurface());
     xdgSurfacePrivate->send_configure(serial);
@@ -817,11 +818,12 @@ XdgPositioner XdgPopupInterface::positioner() const
     return d->positioner;
 }
 
-quint32 XdgPopupInterface::sendConfigure(const QRect &rect)
+quint32 XdgPopupInterface::sendConfigure(const QRectF &rect)
 {
     const quint32 serial = xdgSurface()->shell()->display()->nextSerial();
 
-    d->send_configure(rect.x(), rect.y(), rect.width(), rect.height());
+    const double scale = surface()->compositorToClientScale();
+    d->send_configure(rect.x() * scale, rect.y() * scale, rect.width() * scale, rect.height() * scale);
 
     auto xdgSurfacePrivate = XdgSurfaceInterfacePrivate::get(xdgSurface());
     xdgSurfacePrivate->send_configure(serial);
@@ -1048,9 +1050,9 @@ bool XdgPositioner::isComplete() const
     return d->size.isValid() && d->anchorRect.isValid();
 }
 
-QSize XdgPositioner::size() const
+QSizeF XdgPositioner::size(SurfaceInterface *surface) const
 {
-    return d->size;
+    return QSizeF(d->size) / surface->clientToCompositorScale();
 }
 
 bool XdgPositioner::isReactive() const
