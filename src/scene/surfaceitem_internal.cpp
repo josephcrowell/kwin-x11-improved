@@ -29,9 +29,9 @@ InternalWindow *SurfaceItemInternal::window() const
     return m_window;
 }
 
-QList<QRectF> SurfaceItemInternal::shape() const
+RegionF SurfaceItemInternal::shape() const
 {
-    return {rect()};
+    return RegionF{rect()};
 }
 
 std::unique_ptr<SurfacePixmap> SurfaceItemInternal::createPixmap()

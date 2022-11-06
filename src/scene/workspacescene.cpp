@@ -174,7 +174,8 @@ static bool addCandidates(SurfaceItem *item, QList<SurfaceItem *> &candidates, s
         return true;
     }
     candidates.push_back(item);
-    occluded += item->mapToScene(item->opaque());
+    // TODO snap to the pixel grid instead of this under-estimation!
+    occluded += item->mapToScene(item->opaque().containedAlignedRegion());
     for (; it != children.rend(); it++) {
         Item *const child = *it;
         if (child->isVisible() && !occluded.contains(child->mapToScene(child->boundingRect()).toAlignedRect())) {
@@ -385,12 +386,12 @@ void WorkspaceScene::preparePaintSimpleScreen()
         if (window->opacity() == 1.0) {
             const SurfaceItem *surfaceItem = windowItem->surfaceItem();
             if (Q_LIKELY(surfaceItem)) {
-                data.opaque = surfaceItem->mapToScene(surfaceItem->opaque());
+                data.opaque = surfaceItem->mapToScene(surfaceItem->opaque().containedAlignedRegion());
             }
 
             const DecorationItem *decorationItem = windowItem->decorationItem();
             if (decorationItem) {
-                data.opaque += decorationItem->mapToScene(decorationItem->opaque());
+                data.opaque |= decorationItem->mapToScene(decorationItem->opaque().containedAlignedRegion());
             }
         }
 

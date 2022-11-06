@@ -235,9 +235,9 @@ WindowQuadList SurfaceItem::buildQuads() const
         return {};
     }
 
-    const QList<QRectF> region = shape();
+    const RegionF region = shape();
     WindowQuadList quads;
-    quads.reserve(region.count());
+    quads.reserve(region.rects().size());
 
     const QRectF sourceBox = m_bufferToSurfaceTransform.map(m_bufferSourceBox, m_bufferSize);
     const qreal xScale = sourceBox.width() / m_destinationSize.width();

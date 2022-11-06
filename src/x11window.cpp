@@ -5070,14 +5070,14 @@ void X11Window::checkOutput()
 void X11Window::getWmOpaqueRegion()
 {
     const auto rects = info->opaqueRegion();
-    QRegion new_opaque_region;
+    RegionF new_opaque_region;
     for (const auto &r : rects) {
-        new_opaque_region += Xcb::fromXNative(QRect(r.pos.x, r.pos.y, r.size.width, r.size.height)).toRect();
+        new_opaque_region |= Xcb::fromXNative(QRect(r.pos.x, r.pos.y, r.size.width, r.size.height));
     }
     opaque_region = new_opaque_region;
 }
 
-QList<QRectF> X11Window::shapeRegion() const
+RegionF X11Window::shapeRegion() const
 {
     if (m_shapeRegionIsValid) {
         return m_shapeRegion;
@@ -5089,7 +5089,7 @@ QList<QRectF> X11Window::shapeRegion() const
         auto cookie = xcb_shape_get_rectangles_unchecked(kwinApp()->x11Connection(), frameId(), XCB_SHAPE_SK_BOUNDING);
         UniqueCPtr<xcb_shape_get_rectangles_reply_t> reply(xcb_shape_get_rectangles_reply(kwinApp()->x11Connection(), cookie, nullptr));
         if (reply) {
-            m_shapeRegion.clear();
+            m_shapeRegion = RegionF{};
             const xcb_rectangle_t *rects = xcb_shape_get_rectangles_rectangles(reply.get());
             const int rectCount = xcb_shape_get_rectangles_rectangles_length(reply.get());
             for (int i = 0; i < rectCount; ++i) {
@@ -5100,7 +5100,7 @@ QList<QRectF> X11Window::shapeRegion() const
                 m_shapeRegion += region;
             }
         } else {
-            m_shapeRegion.clear();
+            m_shapeRegion = RegionF{};
         }
     } else {
         m_shapeRegion = {QRectF(0, 0, bufferGeometry.width(), bufferGeometry.height())};
@@ -5113,7 +5113,7 @@ QList<QRectF> X11Window::shapeRegion() const
 void X11Window::discardShapeRegion()
 {
     m_shapeRegionIsValid = false;
-    m_shapeRegion.clear();
+    m_shapeRegion = RegionF{};
 }
 
 Xcb::Property X11Window::fetchWmClientLeader() const

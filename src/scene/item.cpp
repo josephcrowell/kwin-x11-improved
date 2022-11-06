@@ -226,14 +226,14 @@ void Item::updateBoundingRect()
     }
 }
 
-QList<QRectF> Item::shape() const
+RegionF Item::shape() const
 {
-    return QList<QRectF>();
+    return RegionF();
 }
 
-QRegion Item::opaque() const
+RegionF Item::opaque() const
 {
-    return QRegion();
+    return RegionF();
 }
 
 QTransform Item::transform() const

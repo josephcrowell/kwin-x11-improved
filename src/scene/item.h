@@ -9,6 +9,7 @@
 #include "core/colorspace.h"
 #include "effect/globals.h"
 #include "scene/itemgeometry.h"
+#include "utils/regionf.h"
 
 #include <QList>
 #include <QObject>
@@ -76,8 +77,8 @@ public:
      */
     QRectF boundingRect() const;
 
-    virtual QList<QRectF> shape() const;
-    virtual QRegion opaque() const;
+    virtual RegionF shape() const;
+    virtual RegionF opaque() const;
 
     /**
      * Returns the visual parent of the item. Note that the visual parent differs from
