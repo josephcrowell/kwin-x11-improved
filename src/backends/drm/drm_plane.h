@@ -43,6 +43,7 @@ public:
         CrtcId,
         Rotation,
         In_Formats,
+        FbDamageClips,
         Count
     };
     Q_ENUM(PropertyIndex)

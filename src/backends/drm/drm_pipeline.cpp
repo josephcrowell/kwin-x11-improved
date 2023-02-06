@@ -242,6 +242,14 @@ void DrmPipeline::prepareAtomicPresentation()
     const auto fb = m_pending.layer->currentBuffer().get();
     m_pending.crtc->primaryPlane()->set(QPoint(0, 0), fb->buffer()->size(), centerBuffer(orientateSize(fb->buffer()->size(), m_pending.bufferOrientation), m_pending.mode->size()));
     m_pending.crtc->primaryPlane()->setBuffer(fb);
+    if (const auto fbDamage = m_pending.crtc->primaryPlane()->getProp(DrmPlane::PropertyIndex::FbDamageClips)) {
+        if (m_pending.layer->currentDamage().isEmpty()) {
+            m_pending.primaryPlaneDamage.reset();
+        } else {
+            m_pending.primaryPlaneDamage = std::make_shared<DrmFbDamageClips>(gpu(), m_pending.layer->currentDamage());
+        }
+        fbDamage->setPending(m_pending.primaryPlaneDamage->blobId());
+    }
 
     if (m_pending.crtc->cursorPlane()) {
         const auto layer = cursorLayer();
@@ -768,5 +776,34 @@ void DrmPipeline::setColorTransformation(const std::shared_ptr<ColorTransformati
 void DrmPipeline::setContentType(DrmConnector::DrmContentType type)
 {
     m_pending.contentType = type;
+}
+
+DrmFbDamageClips::DrmFbDamageClips(DrmGpu *gpu, const QRegion &damage)
+    : m_gpu(gpu)
+    , m_blobId(0)
+{
+    QVector<drm_mode_rect> data;
+    data.reserve(damage.rectCount());
+    for (const auto &rect : damage) {
+        data.push_back(drm_mode_rect{
+            .x1 = rect.left(),
+            .y1 = rect.top(),
+            .x2 = rect.right(),
+            .y2 = rect.bottom(),
+        });
+    }
+    drmModeCreatePropertyBlob(m_gpu->fd(), data.constData(), sizeof(drm_mode_rect) * data.size(), &m_blobId);
+}
+
+DrmFbDamageClips::~DrmFbDamageClips()
+{
+    if (m_blobId) {
+        drmModeDestroyPropertyBlob(m_gpu->fd(), m_blobId);
+    }
+}
+
+uint32_t DrmFbDamageClips::blobId() const
+{
+    return m_blobId;
 }
 }

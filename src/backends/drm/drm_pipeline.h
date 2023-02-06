@@ -48,6 +48,19 @@ private:
     uint32_t m_blobId = 0;
 };
 
+class DrmFbDamageClips
+{
+public:
+    DrmFbDamageClips(DrmGpu *gpu, const QRegion &damage);
+    ~DrmFbDamageClips();
+
+    uint32_t blobId() const;
+
+private:
+    DrmGpu *const m_gpu;
+    uint32_t m_blobId = 0;
+};
+
 class DrmPipeline
 {
 public:
@@ -189,6 +202,7 @@ private:
         std::shared_ptr<ColorTransformation> colorTransformation;
         std::shared_ptr<DrmGammaRamp> gamma;
         DrmConnector::DrmContentType contentType = DrmConnector::DrmContentType::Graphics;
+        std::shared_ptr<DrmFbDamageClips> primaryPlaneDamage;
 
         std::shared_ptr<DrmPipelineLayer> layer;
         std::shared_ptr<DrmOverlayLayer> cursorLayer;
