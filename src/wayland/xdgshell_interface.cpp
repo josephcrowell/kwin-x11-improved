@@ -174,7 +174,7 @@ void XdgSurfaceInterfacePrivate::xdg_surface_destroy_resource(Resource *resource
 
 void XdgSurfaceInterfacePrivate::xdg_surface_destroy(Resource *resource)
 {
-    if (toplevel || popup) {
+    if (!toplevel.isNull() || !popup.isNull() || !pip.isNull()) {
         qWarning() << "Tried to destroy xdg_surface before its role object";
     }
     wl_resource_destroy(resource->handle);
@@ -225,7 +225,7 @@ void XdgSurfaceInterfacePrivate::xdg_surface_get_popup(Resource *resource, uint3
 
 void XdgSurfaceInterfacePrivate::xdg_surface_set_window_geometry(Resource *resource, int32_t x, int32_t y, int32_t width, int32_t height)
 {
-    if (!toplevel && !popup) {
+    if (toplevel.isNull() && popup.isNull() && pip.isNull()) {
         wl_resource_post_error(resource->handle, error_not_constructed, "xdg_surface must have a role");
         return;
     }

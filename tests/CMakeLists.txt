@@ -39,6 +39,23 @@ target_link_libraries(pointergestures Qt::Gui Qt::Quick KF5::WaylandClient)
 add_executable(cursorhotspottest cursorhotspottest.cpp)
 target_link_libraries(cursorhotspottest Qt::Widgets)
 
+add_executable(xdgpipv1test xdgpipv1.cpp)
+target_link_libraries(xdgpipv1test Qt::Gui KF5::WaylandClient Wayland::Client)
+if (QT_MAJOR_VERSION EQUAL "5")
+    ecm_add_qtwayland_client_protocol(xdgpipv1test
+        PROTOCOL ${PROJECT_SOURCE_DIR}/src/wayland/protocols/xdg-pip-v1.xml
+        BASENAME xdg-pip-v1
+    )
+    ecm_add_qtwayland_client_protocol(xdgpipv1test
+        PROTOCOL ${WaylandProtocols_DATADIR}/stable/xdg-shell/xdg-shell.xml
+        BASENAME xdg-shell
+    )
+    ecm_add_qtwayland_client_protocol(xdgpipv1test
+        PROTOCOL ${Wayland_DATADIR}/wayland.xml
+        BASENAME wayland
+    )
+endif()
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 if (QT_MAJOR_VERSION EQUAL "5")

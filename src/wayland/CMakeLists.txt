@@ -200,10 +200,13 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-output-order-v1.xml
     BASENAME kde-output-order-v1
 )
-
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL ${WaylandProtocols_DATADIR}/staging/fractional-scale/fractional-scale-v1.xml
     BASENAME fractional-scale-v1
+)
+ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
+    PROTOCOL ${PROJECT_SOURCE_DIR}/src/wayland/protocols/xdg-pip-v1.xml
+    BASENAME xdg-pip-v1
 )
 
 target_sources(kwin PRIVATE
@@ -280,6 +283,7 @@ target_sources(kwin PRIVATE
     xdgdecoration_v1_interface.cpp
     xdgforeign_v2_interface.cpp
     xdgoutput_v1_interface.cpp
+    xdgpip_v1_interface.cpp
     xdgshell_interface.cpp
     xwaylandkeyboardgrab_v1_interface.cpp
     xwaylandshell_v1_interface.cpp

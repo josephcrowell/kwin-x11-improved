@@ -175,6 +175,8 @@ target_sources(kwin PRIVATE
     x11syncmanager.cpp
     x11window.cpp
     xdgactivationv1.cpp
+    xdgpipv1integration.cpp
+    xdgpipv1window.cpp
     xdgshellintegration.cpp
     xdgshellwindow.cpp
     xkb.cpp

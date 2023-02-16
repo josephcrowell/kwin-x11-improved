@@ -72,6 +72,7 @@
 #include "workspace.h"
 #include "x11window.h"
 #include "xdgactivationv1.h"
+#include "xdgpipv1integration.h"
 #include "xdgshellintegration.h"
 #include "xdgshellwindow.h"
 
@@ -397,6 +398,10 @@ bool WaylandServer::init(InitializationFlags flags)
     auto xdgShellIntegration = new XdgShellIntegration(this);
     connect(xdgShellIntegration, &XdgShellIntegration::windowCreated,
             this, &WaylandServer::registerXdgGenericWindow);
+
+    auto xdgPipV1Integration = new XdgPipV1Integration(this);
+    connect(xdgPipV1Integration, &XdgPipV1Integration::windowCreated,
+            this, &WaylandServer::registerWindow);
 
     auto layerShellV1Integration = new LayerShellV1Integration(this);
     connect(layerShellV1Integration, &LayerShellV1Integration::windowCreated,

@@ -15,6 +15,7 @@
 namespace KWaylandServer
 {
 class XdgToplevelDecorationV1Interface;
+class XdgPipV1Interface;
 
 class XdgShellInterfacePrivate : public QtWaylandServer::xdg_wm_base
 {
@@ -102,6 +103,7 @@ public:
     XdgShellInterface *shell;
     QPointer<XdgToplevelInterface> toplevel;
     QPointer<XdgPopupInterface> popup;
+    QPointer<XdgPipV1Interface> pip;
     QPointer<SurfaceInterface> surface;
     bool firstBufferAttached = false;
     bool isConfigured = false;

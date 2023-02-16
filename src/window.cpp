@@ -888,6 +888,9 @@ Layer Window::belongsToLayer() const
     if (isUnmanaged() || isInternal()) {
         return UnmanagedLayer;
     }
+    if (isPictureInPicture()) {
+        return PopupLayer;
+    }
     if (isLockScreen() && !waylandServer()) {
         return UnmanagedLayer;
     }

@@ -675,6 +675,7 @@ public:
     virtual bool isInputMethod() const;
     virtual bool isOutline() const;
     virtual bool isInternal() const;
+    virtual bool isPictureInPicture() const;
 
     /**
      * Returns the virtual desktop within the workspace() the client window
@@ -2216,6 +2217,11 @@ inline bool Window::isOutline() const
 }
 
 inline bool Window::isInternal() const
+{
+    return false;
+}
+
+inline bool Window::isPictureInPicture() const
 {
     return false;
 }
