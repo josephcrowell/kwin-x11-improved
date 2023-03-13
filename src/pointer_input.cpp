@@ -745,8 +745,14 @@ void PointerInputRedirection::updatePosition(const QPointF &pos)
         return;
     }
     // verify that at least one screen contains the pointer position
-    const Output *currentOutput = workspace()->outputAt(pos);
-    QPointF p = confineToBoundingBox(pos, currentOutput->geometry());
+    const Output *currentOutput = workspace()->outputAt(m_pos);
+    const Output *nextOutput = workspace()->outputAt(pos);
+    QPointF p = pos;
+    if (currentOutput == nextOutput || !nextOutput->geometry().contains(flooredPoint(p))) {
+        p = confineToBoundingBox(p, currentOutput->geometry());
+    } else {
+        p = confineToBoundingBox(p, nextOutput->geometry());
+    }
     p = applyPointerConfinement(p);
     if (p == m_pos) {
         // didn't change due to confinement
