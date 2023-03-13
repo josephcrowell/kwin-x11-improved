@@ -236,7 +236,7 @@ void PointerInputRedirection::processMotionInternal(const QPointF &pos, const QP
     }
 
     PositionUpdateBlocker blocker(this);
-    updatePosition(pos);
+    updatePosition(pos, delta);
     MouseEvent event(QEvent::MouseMove, m_pos, Qt::NoButton, m_qtButtons,
                      input()->keyboardModifiers(), time,
                      delta, deltaNonAccelerated, device);
@@ -738,20 +738,91 @@ QPointF PointerInputRedirection::applyPointerConfinement(const QPointF &pos) con
     return m_pos;
 }
 
-void PointerInputRedirection::updatePosition(const QPointF &pos)
+static std::optional<double> closestIntersection(const QRect &geometry, const QPointF &start, const QPointF &delta)
+{
+    const auto checkVertical = [&geometry, &start, &delta](double x) -> std::optional<double> {
+        const double d = (start.x() - x) / delta.x();
+        const double y = start.y() + d * delta.y();
+        if (d >= 0 && d <= 1 && y >= geometry.y() && y <= geometry.y() + geometry.height()) {
+            return d;
+        } else {
+            return std::nullopt;
+        }
+    };
+    const auto checkHorizontal = [&geometry, &start, &delta](double y) -> std::optional<double> {
+        const double d = (start.y() - y) / delta.y();
+        const double x = start.x() + d * delta.x();
+        if (d >= 0 && d <= 1 && x >= geometry.x() && x <= geometry.x() + geometry.width()) {
+            return d;
+        } else {
+            return std::nullopt;
+        }
+    };
+
+    std::optional<double> dx = checkVertical(geometry.x());
+    if (!dx) {
+        dx = checkVertical(geometry.x() + geometry.width() - 1);
+    }
+    std::optional<double> dy = checkHorizontal(geometry.y());
+    if (!dy) {
+        dy = checkHorizontal(geometry.y() + geometry.height() - 1);
+    }
+    if (dx && dy) {
+        return *dx > *dy ? dx : dy;
+    } else if (dx) {
+        return dx;
+    } else {
+        return dy;
+    }
+}
+
+void PointerInputRedirection::updatePosition(const QPointF &pos, const QPointF &delta)
 {
     if (m_locked) {
         // locked pointer should not move
         return;
     }
-    // verify that at least one screen contains the pointer position
-    const Output *currentOutput = workspace()->outputAt(m_pos);
-    const Output *nextOutput = workspace()->outputAt(pos);
+    Output *nextOutput = workspace()->outputAt(pos);
     QPointF p = pos;
-    if (currentOutput == nextOutput || !nextOutput->geometry().contains(flooredPoint(p))) {
-        p = confineToBoundingBox(p, currentOutput->geometry());
-    } else {
+    if (delta.isNull()) {
+        // absolute movement, only need to check the position
         p = confineToBoundingBox(p, nextOutput->geometry());
+    } else {
+        // relative movement, need to check collisions too
+        Output *currentOutput = workspace()->outputAt(m_pos);
+        const auto closest = closestIntersection(currentOutput->geometry(), m_pos, pos - m_pos);
+        if (!closest) {
+            // still on the same output
+            p = confineToBoundingBox(p, currentOutput->geometry());
+        } else {
+            // check if the cursor is leaving all screens, or if it's moving to another output
+            const auto outputs = workspace()->outputs();
+            const QPointF start = pos + (pos - m_pos) * closest.value();
+            const QPointF remainingDelta = (pos - m_pos) * (1 - closest.value());
+            const double remainingDeltaLength = std::hypot(remainingDelta.x(), remainingDelta.y());
+            auto it = std::find_if(outputs.begin(), outputs.end(), [&start, &remainingDelta, remainingDeltaLength, currentOutput](Output *output) {
+                if (output == currentOutput) {
+                    return false;
+                }
+                const auto closest2 = closestIntersection(output->geometry(), start, remainingDelta);
+                if (closest2 && closest2.value() <= 1.0 / remainingDeltaLength) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            if (it == outputs.end()) {
+                // when two outputs overlap, the collision check won't work
+                it = std::find_if(outputs.begin(), outputs.end(), [&start, currentOutput](Output *output) {
+                    return output != currentOutput && QRectF(output->geometry()).contains(start);
+                });
+            }
+            if (it != outputs.end()) {
+                p = confineToBoundingBox(p, (*it)->geometry());
+            } else {
+                p = confineToBoundingBox(p, currentOutput->geometry());
+            }
+        }
     }
     p = applyPointerConfinement(p);
     if (p == m_pos) {

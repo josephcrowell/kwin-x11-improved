@@ -154,7 +154,7 @@ private:
 
     void updateOnStartMoveResize();
     void updateToReset();
-    void updatePosition(const QPointF &pos);
+    void updatePosition(const QPointF &pos, const QPointF &delta);
     void updateButton(uint32_t button, InputRedirection::PointerButtonState state);
     QPointF applyPointerConfinement(const QPointF &pos) const;
     void disconnectConfinedPointerRegionConnection();
