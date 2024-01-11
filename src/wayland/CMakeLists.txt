@@ -211,7 +211,6 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL ${WaylandProtocols_DATADIR}/staging/cursor-shape/cursor-shape-v1.xml
     BASENAME cursor-shape-v1
 )
-
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL protocols/qt-toplevel-drag-v1.xml
     BASENAME qt-toplevel-drag-v1
@@ -224,17 +223,19 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL ${WaylandProtocols_DATADIR}/stable/presentation-time/presentation-time.xml
     BASENAME presentation-time
 )
-
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PROTOCOL ${WaylandProtocols_DATADIR}/staging/security-context/security-context-v1.xml
     BASENAME security-context-v1
+)
+ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
+    PROTOCOL ${PROJECT_SOURCE_DIR}/src/wayland/protocols/ext-blur-v1.xml
+    BASENAME ext-blur-v1
 )
 
 target_sources(kwin PRIVATE
     abstract_data_source.cpp
     abstract_drop_handler.cpp
     appmenu.cpp
-    blur.cpp
     clientconnection.cpp
     compositor.cpp
     contenttype_v1.cpp
@@ -252,6 +253,7 @@ target_sources(kwin PRIVATE
     dpms.cpp
     drmclientbuffer.cpp
     drmlease_v1.cpp
+    extblur_v1.cpp
     filtered_display.cpp
     fractionalscale_v1.cpp
     frog_colormanagement_v1.cpp
@@ -259,6 +261,7 @@ target_sources(kwin PRIVATE
     idleinhibit_v1.cpp
     idlenotify_v1.cpp
     inputmethod_v1.cpp
+    kde_blur.cpp
     keyboard.cpp
     keyboard_shortcuts_inhibit_v1.cpp
     keystate.cpp
@@ -314,7 +317,6 @@ target_sources(kwin PRIVATE
 
 install(FILES
     appmenu.h
-    blur.h
     compositor.h
     contenttype_v1.h
     contrast.h
@@ -330,12 +332,14 @@ install(FILES
     display.h
     dpms.h
     drmlease_v1.h
+    extblur_v1.h
     fractionalscale_v1.h
     frog_colormanagement_v1.h
     idle.h
     idleinhibit_v1.h
     idlenotify_v1.h
     inputmethod_v1.h
+    kde_blur.h
     keyboard.h
     keyboard_shortcuts_inhibit_v1.h
     keystate.h

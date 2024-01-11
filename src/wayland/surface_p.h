@@ -27,6 +27,7 @@ class TearingControlV1Interface;
 class FractionalScaleV1Interface;
 class FrogColorManagementSurfaceV1;
 class PresentationTimeFeedback;
+class ExtBlurSurfaceV1;
 
 struct SurfaceState
 {
@@ -57,6 +58,7 @@ struct SurfaceState
     bool contentTypeIsSet = false;
     bool presentationModeHintIsSet = false;
     bool colorDescriptionIsSet = false;
+    bool blurRegionIsSet = false;
     qint32 bufferScale = 1;
     OutputTransform bufferTransform = OutputTransform::Normal;
     wl_list frameCallbacks;
@@ -70,6 +72,7 @@ struct SurfaceState
     PresentationModeHint presentationHint = PresentationModeHint::VSync;
     ColorDescription colorDescription = ColorDescription::sRGB;
     std::unique_ptr<PresentationTimeFeedback> presentationFeedback;
+    QRegion blurRegion;
 
     struct
     {
@@ -167,6 +170,7 @@ public:
     ClientConnection *client = nullptr;
     TearingControlV1Interface *tearing = nullptr;
     FrogColorManagementSurfaceV1 *frogColorManagement = nullptr;
+    ExtBlurSurfaceV1 *extBlur = nullptr;
 
     struct
     {

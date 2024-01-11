@@ -15,8 +15,9 @@
 #include "effect/effecthandler.h"
 #include "opengl/glplatform.h"
 #include "utils/xcbutils.h"
-#include "wayland/blur.h"
 #include "wayland/display.h"
+#include "wayland/extblur_v1.h"
+#include "wayland/kde_blur.h"
 #include "wayland/surface.h"
 
 #include <QGuiApplication>
@@ -47,6 +48,7 @@ namespace KWin
 static const QByteArray s_blurAtomName = QByteArrayLiteral("_KDE_NET_WM_BLUR_BEHIND_REGION");
 
 BlurManagerInterface *BlurEffect::s_blurManager = nullptr;
+ExtBlurManagerV1 *BlurEffect::s_extBlurManager = nullptr;
 QTimer *BlurEffect::s_blurManagerRemoveTimer = nullptr;
 
 BlurEffect::BlurEffect()
@@ -104,11 +106,16 @@ BlurEffect::BlurEffect()
             s_blurManagerRemoveTimer->callOnTimeout([]() {
                 s_blurManager->remove();
                 s_blurManager = nullptr;
+                s_extBlurManager->remove();
+                s_extBlurManager = nullptr;
             });
         }
         s_blurManagerRemoveTimer->stop();
         if (!s_blurManager) {
             s_blurManager = new BlurManagerInterface(effects->waylandDisplay(), s_blurManagerRemoveTimer);
+        }
+        if (!s_extBlurManager) {
+            s_extBlurManager = new ExtBlurManagerV1(effects->waylandDisplay(), s_blurManagerRemoveTimer);
         }
     }
 
@@ -229,14 +236,10 @@ void BlurEffect::updateBlurRegion(EffectWindow *w)
         valid = !value.isNull();
     }
 
-    SurfaceInterface *surf = w->surface();
-
-    if (surf && surf->blur()) {
-        region = surf->blur()->region();
-        valid = true;
-    }
-
-    if (auto internal = w->internalWindow()) {
+    if (SurfaceInterface *surf = w->surface()) {
+        region = surf->blurRegion();
+        valid = !region.isNull();
+    } else if (auto internal = w->internalWindow()) {
         const auto property = internal->property("kwin_blur");
         if (property.isValid()) {
             region = property.value<QRegion>();

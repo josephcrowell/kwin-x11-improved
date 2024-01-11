@@ -5,7 +5,7 @@
 
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
-#include "blur.h"
+#include "kde_blur.h"
 #include "display.h"
 #include "region_p.h"
 #include "surface_p.h"
@@ -106,10 +106,12 @@ void BlurInterfacePrivate::org_kde_kwin_blur_commit(Resource *resource)
 void BlurInterfacePrivate::org_kde_kwin_blur_set_region(Resource *resource, wl_resource *region)
 {
     RegionInterface *r = RegionInterface::get(region);
-    if (r) {
+    // the protocol has the (undocumented) assumption that an empty
+    // region means the whole surface should be blurred
+    if (r && !r->region().isEmpty()) {
         pendingRegion = r->region();
     } else {
-        pendingRegion = QRegion();
+        pendingRegion = infiniteRegion();
     }
 }
 
@@ -144,4 +146,4 @@ QRegion BlurInterface::region()
 
 }
 
-#include "moc_blur.cpp"
+#include "moc_kde_blur.cpp"

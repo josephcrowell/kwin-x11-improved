@@ -18,6 +18,7 @@ namespace KWin
 {
 
 class BlurManagerInterface;
+class ExtBlurManagerV1;
 
 struct BlurRenderData
 {
@@ -142,6 +143,7 @@ private:
     std::unordered_map<EffectWindow *, BlurEffectData> m_windows;
 
     static BlurManagerInterface *s_blurManager;
+    static ExtBlurManagerV1 *s_extBlurManager;
     static QTimer *s_blurManagerRemoveTimer;
 };
 
