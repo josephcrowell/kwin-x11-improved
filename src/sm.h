@@ -38,14 +38,22 @@ public:
     };
 
     SessionManager(QObject *parent);
-    ~SessionManager() override;
 
     SessionState state() const;
 
     void loadSubSessionInfo(const QString &name);
     void storeSubSession(const QString &name, QSet<QByteArray> sessionIds);
 
-    SessionInfo *takeSessionInfo(X11Window *);
+    /**
+     * Returns a SessionInfo for client \a c. The returned session
+     * info is removed from the storage. It's up to the caller to delete it.
+     *
+     * This function is called when a new window is mapped and must be managed.
+     * We try to find a matching entry in the session.
+     *
+     * May return nullptr if there's no session info for the client.
+     */
+    std::unique_ptr<SessionInfo> takeSessionInfo(X11Window *);
 
 Q_SIGNALS:
     void stateChanged();
@@ -75,7 +83,7 @@ private:
     int m_sessionActiveClient;
     int m_sessionDesktop;
 
-    QList<SessionInfo *> session;
+    std::vector<std::unique_ptr<SessionInfo>> m_session;
     QList<XdgToplevelWindow *> m_pendingWindows;
     QTimer m_closeTimer;
     std::unique_ptr<QObject> m_closingWindowsGuard;

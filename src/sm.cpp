@@ -225,7 +225,7 @@ void SessionManager::storeSubSession(const QString &name, QSet<QByteArray> sessi
  */
 void SessionManager::loadSession(const QString &sessionName)
 {
-    session.clear();
+    m_session.clear();
     KConfigGroup cg(sessionConfig(sessionName, QString()), QStringLiteral("Session"));
     Q_EMIT loadSessionRequested(sessionName);
     addSessionInfo(cg);
@@ -238,8 +238,7 @@ void SessionManager::addSessionInfo(KConfigGroup &cg)
     int active_client = cg.readEntry("active", 0);
     for (int i = 1; i <= count; i++) {
         QString n = QString::number(i);
-        SessionInfo *info = new SessionInfo;
-        session.append(info);
+        auto info = std::make_unique<SessionInfo>();
         info->sessionId = cg.readEntry(QLatin1String("sessionId") + n, QString()).toLatin1();
         info->windowRole = cg.readEntry(QLatin1String("windowRole") + n, QString());
         info->wmCommand = cg.readEntry(QLatin1String("wmCommand") + n, QString()).toLatin1();
@@ -266,6 +265,7 @@ void SessionManager::addSessionInfo(KConfigGroup &cg)
         info->active = (active_client == i);
         info->stackingOrder = cg.readEntry(QLatin1String("stackingOrder") + n, -1);
         info->activities = cg.readEntry(QLatin1String("activities") + n, QStringList());
+        m_session.push_back(std::move(info));
     }
 }
 
@@ -284,64 +284,38 @@ static bool sessionInfoWindowTypeMatch(X11Window *c, SessionInfo *info)
     return info->windowType == c->windowType();
 }
 
-/**
- * Returns a SessionInfo for client \a c. The returned session
- * info is removed from the storage. It's up to the caller to delete it.
- *
- * This function is called when a new window is mapped and must be managed.
- * We try to find a matching entry in the session.
- *
- * May return 0 if there's no session info for the client.
- */
-SessionInfo *SessionManager::takeSessionInfo(X11Window *c)
+std::unique_ptr<SessionInfo> SessionManager::takeSessionInfo(X11Window *c)
 {
-    SessionInfo *realInfo = nullptr;
     QByteArray sessionId = c->sessionId();
     QString windowRole = c->windowRole();
     QString wmCommand = c->wmCommand();
     QString resourceName = c->resourceName();
     QString resourceClass = c->resourceClass();
 
-    // First search ``session''
+    auto it = m_session.end();
     if (!sessionId.isEmpty()) {
         // look for a real session managed client (algorithm suggested by ICCCM)
-        for (SessionInfo *info : std::as_const(session)) {
-            if (realInfo) {
-                break;
-            }
-            if (info->sessionId == sessionId && sessionInfoWindowTypeMatch(c, info)) {
-                if (!windowRole.isEmpty()) {
-                    if (info->windowRole == windowRole) {
-                        realInfo = info;
-                        session.removeAll(info);
-                    }
-                } else {
-                    if (info->windowRole.isEmpty()
-                        && info->resourceName == resourceName
-                        && info->resourceClass == resourceClass) {
-                        realInfo = info;
-                        session.removeAll(info);
-                    }
-                }
-            }
-        }
+        it = std::find_if(m_session.begin(), m_session.end(), [&](const auto &info) {
+            return (info->sessionId == sessionId && sessionInfoWindowTypeMatch(c, info.get()))
+                || (info->windowRole.isEmpty()
+                    && info->resourceName == resourceName
+                    && info->resourceClass == resourceClass);
+        });
     } else {
         // look for a sessioninfo with matching features.
-        for (SessionInfo *info : std::as_const(session)) {
-            if (realInfo) {
-                break;
-            }
-            if (info->resourceName == resourceName
+        it = std::find_if(m_session.begin(), m_session.end(), [&](const auto &info) {
+            return info->resourceName == resourceName
                 && info->resourceClass == resourceClass
-                && sessionInfoWindowTypeMatch(c, info)) {
-                if (wmCommand.isEmpty() || info->wmCommand == wmCommand) {
-                    realInfo = info;
-                    session.removeAll(info);
-                }
-            }
-        }
+                && sessionInfoWindowTypeMatch(c, info.get())
+                && (wmCommand.isEmpty() || info->wmCommand == wmCommand);
+        });
     }
-    return realInfo;
+    if (it == m_session.end()) {
+        return nullptr;
+    }
+    auto ret = std::move(*it);
+    m_session.erase(it);
+    return ret;
 }
 
 SessionManager::SessionManager(QObject *parent)
@@ -349,11 +323,6 @@ SessionManager::SessionManager(QObject *parent)
 {
     new SessionAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/Session"), this);
-}
-
-SessionManager::~SessionManager()
-{
-    qDeleteAll(session);
 }
 
 SessionState SessionManager::state() const
