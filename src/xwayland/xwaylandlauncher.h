@@ -93,10 +93,9 @@ private Q_SLOTS:
 private:
     void maybeDestroyReadyNotifier();
 
-
-    QProcess *m_xwaylandProcess = nullptr;
-    QSocketNotifier *m_readyNotifier = nullptr;
-    QTimer *m_resetCrashCountTimer = nullptr;
+    std::unique_ptr<QProcess> m_xwaylandProcess;
+    std::unique_ptr<QSocketNotifier> m_readyNotifier;
+    std::unique_ptr<QTimer> m_resetCrashCountTimer;
     // this is only used when kwin is run without kwin_wayland_wrapper
     std::unique_ptr<XwaylandSocket> m_socket;
     QList<int> m_listenFds;

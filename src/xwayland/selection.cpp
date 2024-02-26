@@ -295,7 +295,7 @@ void Selection::startTransferToWayland(xcb_atom_t target, qint32 fd)
 void Selection::startTransferToX(xcb_selection_request_event_t *event, qint32 fd)
 {
     // create new wl to x data transfer object
-    auto *transfer = new TransferWltoX(m_atom, event, fd, this);
+    auto *transfer = new TransferWltoX(m_atom, std::unique_ptr<xcb_selection_request_event_t>(event), fd, this);
 
     connect(transfer, &TransferWltoX::selectionNotify, this, &Selection::sendSelectionNotify);
     connect(transfer, &TransferWltoX::finished, this, [this, transfer]() {
@@ -328,16 +328,15 @@ void Selection::startTimeoutTransfersTimer()
     if (m_timeoutTransfers) {
         return;
     }
-    m_timeoutTransfers = new QTimer(this);
-    connect(m_timeoutTransfers, &QTimer::timeout, this, &Selection::timeoutTransfers);
+    m_timeoutTransfers = std::make_unique<QTimer>();
+    connect(m_timeoutTransfers.get(), &QTimer::timeout, this, &Selection::timeoutTransfers);
     m_timeoutTransfers->start(5000);
 }
 
 void Selection::endTimeoutTransfersTimer()
 {
     if (m_xToWlTransfers.isEmpty() && m_wlToXTransfers.isEmpty()) {
-        delete m_timeoutTransfers;
-        m_timeoutTransfers = nullptr;
+        m_timeoutTransfers.reset();
     }
 }
 
