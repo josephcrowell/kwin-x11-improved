@@ -66,8 +66,8 @@ DrmLeaseDeviceV1Interface::DrmLeaseDeviceV1Interface(Display *display, DrmGpu *g
     for (const auto output : outputs) {
         addOutput(output);
     }
-    connect(gpu, &DrmGpu::outputAdded, this, &DrmLeaseDeviceV1Interface::addOutput);
-    connect(gpu, &DrmGpu::outputRemoved, this, &DrmLeaseDeviceV1Interface::removeOutput);
+    connect(gpu, &DrmGpu::outputAdded, this, &DrmLeaseDeviceV1Interface::addOutput, Qt::DirectConnection);
+    connect(gpu, &DrmGpu::outputRemoved, this, &DrmLeaseDeviceV1Interface::removeOutput, Qt::DirectConnection);
     connect(gpu, &DrmGpu::activeChanged, this, &DrmLeaseDeviceV1Interface::setDrmMaster);
 }
 
