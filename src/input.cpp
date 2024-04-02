@@ -242,12 +242,14 @@ bool InputEventFilter::tabletPadRingEvent(int number, int position, bool isFinge
 void InputEventFilter::passToWaylandServer(QKeyEvent *event)
 {
     Q_ASSERT(waylandServer());
+    SeatInterface *seat = waylandServer()->seat();
+    const int keyCode = event->nativeScanCode();
+
     if (event->isAutoRepeat()) {
+        seat->notifyKeyboardKey(keyCode, KeyboardKeyState::Repeated);
         return;
     }
 
-    SeatInterface *seat = waylandServer()->seat();
-    const int keyCode = event->nativeScanCode();
     switch (event->type()) {
     case QEvent::KeyPress:
         seat->notifyKeyboardKey(keyCode, KeyboardKeyState::Pressed);
@@ -266,11 +268,15 @@ bool InputEventFilter::passToInputMethod(QKeyEvent *event)
         return false;
     }
     if (auto keyboardGrab = kwinApp()->inputMethod()->keyboardGrab()) {
+        KeyboardKeyState state;
         if (event->isAutoRepeat()) {
-            return true;
+            state = KeyboardKeyState::Repeated;
+        } else if (event->type() == QEvent::KeyPress) {
+            state = KeyboardKeyState::Pressed;
+        } else {
+            state = KeyboardKeyState::Released;
         }
-        auto newState = event->type() == QEvent::KeyPress ? KeyboardKeyState::Pressed : KeyboardKeyState::Released;
-        keyboardGrab->sendKey(waylandServer()->display()->nextSerial(), event->timestamp(), event->nativeScanCode(), newState);
+        keyboardGrab->sendKey(waylandServer()->display()->nextSerial(), event->timestamp(), event->nativeScanCode(), state);
         return true;
     } else {
         return false;
@@ -358,10 +364,6 @@ public:
     {
         if (!waylandServer()->isScreenLocked()) {
             return false;
-        }
-        if (event->isAutoRepeat()) {
-            // wayland client takes care of it
-            return true;
         }
         // send event to KSldApp for global accel
         // if event is set to accepted it means a whitelisted shortcut was triggered
@@ -1826,10 +1828,6 @@ public:
     }
     bool keyEvent(KeyEvent *event) override
     {
-        if (event->isAutoRepeat()) {
-            // handled by Wayland client
-            return false;
-        }
         auto seat = waylandServer()->seat();
         input()->keyboard()->update();
         seat->setTimestamp(event->timestamp());

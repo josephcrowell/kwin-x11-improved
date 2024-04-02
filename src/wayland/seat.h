@@ -82,6 +82,7 @@ enum class PointerButtonState : quint32 {
 enum class KeyboardKeyState : quint32 {
     Released = 0,
     Pressed = 1,
+    Repeated = 2,
 };
 
 /**
