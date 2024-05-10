@@ -61,6 +61,11 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Sensors
 )
 
+find_package(QCoro${Qt6_VERSION_MAJOR} REQUIRED COMPONENTS Core DBus)
+
+# Set necessary compiler flags to enable coroutine support
+qcoro_enable_coroutines()
+
 find_package(Qt6Test ${QT_MIN_VERSION} CONFIG QUIET)
 set_package_properties(Qt6Test PROPERTIES
     PURPOSE "Required for tests"
