@@ -38,11 +38,13 @@ public:
     QHash<uint32_t, QList<uint64_t>> supportedDrmFormats() const override;
     std::optional<QSize> fixedSize() const override;
     void notifyScanoutSuccessful() override;
+    ColorPipeline colorPipeline() const override;
 
 private:
     bool doImportScanoutBuffer(GraphicsBuffer *buffer, const ColorDescription &color) override;
 
     std::shared_ptr<DrmFramebuffer> m_scanoutBuffer;
+    ColorPipeline m_scanoutPipeline;
 
     EglGbmLayerSurface m_surface;
 };
