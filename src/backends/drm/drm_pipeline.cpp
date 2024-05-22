@@ -242,7 +242,7 @@ DrmPipeline::Error DrmPipeline::prepareAtomicPresentation(DrmAtomicCommit *commi
             commit->addEnum(primary->colorPipeline, DrmPlane::PipelineEnum::Bypass);
         } else {
             if (!primary->colorPipelines.front()->matchPipeline(commit, primaryPipeline)) {
-                qWarning() << "pipeline failed";
+                qWarning() << "primary pipeline failed";
                 return Error::InvalidArguments;
             }
             commit->addProperty(primary->colorPipeline, primary->colorPipelines.front()->id());
@@ -285,6 +285,21 @@ DrmPipeline::Error DrmPipeline::prepareAtomicPresentation(DrmAtomicCommit *commi
             }
             commit->addEnum(plane->colorEncoding, DrmPlane::ColorEncoding::BT709_YCbCr);
             commit->addEnum(plane->colorRange, DrmPlane::ColorRange::Limited_YCbCr);
+        }
+        const auto colorPipeline = m_overlayLayer->colorPipeline();
+        if (!plane->colorPipelines.empty()) {
+            // TODO try the other pipelines?
+            if (colorPipeline.ops.empty()) {
+                commit->addEnum(plane->colorPipeline, DrmPlane::PipelineEnum::Bypass);
+            } else {
+                if (!plane->colorPipelines.front()->matchPipeline(commit, colorPipeline)) {
+                    qWarning() << "overlay pipeline failed";
+                    return Error::InvalidArguments;
+                }
+                commit->addProperty(plane->colorPipeline, plane->colorPipelines.front()->id());
+            }
+        } else if (!colorPipeline.ops.empty()) {
+            return Error::InvalidArguments;
         }
     } else if (m_pending.crtc->overlayPlane()) {
         m_pending.crtc->overlayPlane()->disable(commit);
