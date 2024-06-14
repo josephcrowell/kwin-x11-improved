@@ -90,6 +90,7 @@ public:
     void resetModesetPresentPending();
 
     QHash<uint32_t, QList<uint64_t>> formats(DrmPlane::TypeIndex planeType) const;
+    QHash<uint32_t, QList<uint64_t>> tearingFormats(DrmPlane::TypeIndex planeType) const;
     bool hasCTM() const;
     bool hasGammaRamp() const;
     bool pruneModifier();

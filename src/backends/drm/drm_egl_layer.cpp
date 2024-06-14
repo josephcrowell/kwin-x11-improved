@@ -143,6 +143,11 @@ QHash<uint32_t, QList<uint64_t>> EglGbmLayer::supportedDrmFormats() const
     return m_pipeline->formats(m_type);
 }
 
+QHash<uint32_t, QList<uint64_t>> EglGbmLayer::supportedTearingFormats() const
+{
+    return m_pipeline->formats(m_type);
+}
+
 std::optional<QSize> EglGbmLayer::fixedSize() const
 {
     return m_type == DrmPlane::TypeIndex::Cursor ? std::make_optional(m_pipeline->gpu()->cursorSize()) : std::nullopt;

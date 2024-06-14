@@ -35,6 +35,7 @@ public:
 
     bool isCrtcSupported(int pipeIndex) const;
     QHash<uint32_t, QList<uint64_t>> formats() const;
+    QHash<uint32_t, QList<uint64_t>> tearingFormats() const;
     bool supportsTransformation(OutputTransform transform) const;
 
     std::shared_ptr<DrmFramebuffer> currentBuffer() const;
@@ -94,11 +95,13 @@ public:
     DrmProperty vmHotspotX;
     DrmProperty vmHotspotY;
     DrmProperty inFenceFd;
+    DrmProperty inFormatsForTearing;
 
 private:
     std::shared_ptr<DrmFramebuffer> m_current;
 
     QHash<uint32_t, QList<uint64_t>> m_supportedFormats;
+    QHash<uint32_t, QList<uint64_t>> m_supportedTearingFormats;
     uint32_t m_possibleCrtcs;
 };
 
