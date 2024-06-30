@@ -268,6 +268,9 @@ Output::Capabilities DrmOutput::computeCapabilities() const
         // TODO only set this if an orientation sensor is available?
         capabilities |= Capability::AutoRotation;
     }
+    if (m_connector->powerSavingPolicy.isValid()) {
+        capabilities |= Capability::ColorPowerSaving;
+    }
     return capabilities;
 }
 
@@ -345,6 +348,11 @@ bool DrmOutput::queueChanges(const std::shared_ptr<OutputChangeSet> &props)
     m_pipeline->setRgbRange(props->rgbRange.value_or(m_pipeline->rgbRange()));
     m_pipeline->setEnable(props->enabled.value_or(m_pipeline->enabled()));
     m_pipeline->setColorDescription(createColorDescription(props));
+    DrmConnector::PowerSavingPolicies policy;
+    if (!props->allowColorPowerSaving.value_or(m_state.allowColorPowerSavings)) {
+        policy |= DrmConnector::PowerSavingPolicy::RequireColorAccuracy;
+    }
+    m_pipeline->setPowerSavingPolicy(policy);
     if (bt2020 || hdr) {
         // ICC profiles don't support HDR (yet)
         m_pipeline->setIccProfile(nullptr);
@@ -420,6 +428,7 @@ void DrmOutput::applyQueuedChanges(const std::shared_ptr<OutputChangeSet> &props
     next.brightness = props->brightness.value_or(m_state.brightness);
     next.desiredModeSize = props->desiredModeSize.value_or(m_state.desiredModeSize);
     next.desiredModeRefreshRate = props->desiredModeRefreshRate.value_or(m_state.desiredModeRefreshRate);
+    next.allowColorPowerSavings = props->allowColorPowerSaving.value_or(m_state.allowColorPowerSavings);
     setState(next);
 
     if (!isEnabled() && m_pipeline->needsModeset()) {

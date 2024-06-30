@@ -79,6 +79,7 @@ private:
     void updateSdrGamutWideness();
     void updateColorProfileSource();
     void updateBrightness();
+    void updateColorPowerSaving();
 
     std::unique_ptr<OutputDeviceV2InterfacePrivate> d;
 };

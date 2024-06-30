@@ -234,6 +234,7 @@ void OutputConfigurationStore::storeConfig(const QList<Output *> &allOutputs, bo
                 .minBrightnessOverride = changeSet->minBrightnessOverride.value_or(output->minBrightnessOverride()),
                 .sdrGamutWideness = changeSet->sdrGamutWideness.value_or(output->sdrGamutWideness()),
                 .brightness = changeSet->brightness.value_or(output->brightness()),
+                .allowColorPowerSaving = changeSet->allowColorPowerSaving.value_or(output->allowColorPowerSaving()),
             };
             *outputIt = SetupState{
                 .outputIndex = *outputIndex,
@@ -276,6 +277,7 @@ void OutputConfigurationStore::storeConfig(const QList<Output *> &allOutputs, bo
                 .minBrightnessOverride = output->minBrightnessOverride(),
                 .sdrGamutWideness = output->sdrGamutWideness(),
                 .brightness = output->brightness(),
+                .allowColorPowerSaving = output->allowColorPowerSaving(),
             };
             *outputIt = SetupState{
                 .outputIndex = *outputIndex,
@@ -331,6 +333,7 @@ std::pair<OutputConfiguration, QList<Output *>> OutputConfigurationStore::setupT
             .sdrGamutWideness = state.sdrGamutWideness,
             .colorProfileSource = state.colorProfileSource,
             .brightness = state.brightness,
+            .allowColorPowerSaving = state.allowColorPowerSaving,
         };
         if (setupState.enabled) {
             priorities.push_back(std::make_pair(output, setupState.priority));
@@ -455,6 +458,7 @@ std::pair<OutputConfiguration, QList<Output *>> OutputConfigurationStore::genera
             .autoRotationPolicy = existingData.autoRotation.value_or(Output::AutoRotationPolicy::InTabletMode),
             .colorProfileSource = existingData.colorProfileSource.value_or(Output::ColorProfileSource::sRGB),
             .brightness = existingData.brightness.value_or(1.0),
+            .allowColorPowerSaving = existingData.allowColorPowerSaving.value_or(true),
         };
         if (enable) {
             const auto modeSize = changeset->transform->map(mode->size());
@@ -763,6 +767,9 @@ void OutputConfigurationStore::load()
         if (const auto it = data.find("brightness"); it != data.end() && it->isDouble()) {
             state.brightness = std::clamp(it->toDouble(), 0.0, 1.0);
         }
+        if (const auto it = data.find("allowColorPowerSaving"); it != data.end() && it->isBool()) {
+            state.allowColorPowerSaving = it->toBool();
+        }
         outputDatas.push_back(state);
     }
 
@@ -994,6 +1001,9 @@ void OutputConfigurationStore::save()
         }
         if (output.brightness) {
             o["brightness"] = *output.brightness;
+        }
+        if (output.allowColorPowerSaving) {
+            o["allowColorPowerSaving"] = *output.allowColorPowerSaving;
         }
         outputsData.append(o);
     }

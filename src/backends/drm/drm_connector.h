@@ -116,6 +116,12 @@ public:
         BT2020_RGB,
         BT2020_YCC,
     };
+    enum class PowerSavingPolicy {
+        RequireColorAccuracy = 1 << 0,
+        RequireLowLatency = 1 << 1,
+    };
+    Q_ENUM(PowerSavingPolicy)
+    Q_DECLARE_FLAGS(PowerSavingPolicies, PowerSavingPolicy)
 
     DrmProperty crtcId;
     DrmProperty nonDesktop;
@@ -135,6 +141,7 @@ public:
     DrmEnumProperty<ScalingMode> scalingMode;
     DrmEnumProperty<Colorspace> colorspace;
     DrmProperty path;
+    DrmEnumProperty<PowerSavingPolicies> powerSavingPolicy;
 
     static DrmContentType kwinToDrmContentType(ContentType type);
     static OutputTransform toKWinTransform(PanelOrientation orientation);

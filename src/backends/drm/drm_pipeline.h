@@ -126,6 +126,7 @@ public:
     void setContentType(DrmConnector::DrmContentType type);
     void setColorDescription(const ColorDescription &description);
     void setIccProfile(const std::shared_ptr<IccProfile> &profile);
+    void setPowerSavingPolicy(DrmConnector::PowerSavingPolicies policy);
 
     /**
      * amdgpu drops cursor updates with adaptive sync: https://gitlab.freedesktop.org/drm/amd/-/issues/2186
@@ -188,6 +189,8 @@ private:
 
         std::shared_ptr<IccProfile> iccProfile;
         ColorDescription colorDescription = ColorDescription::sRGB;
+
+        DrmConnector::PowerSavingPolicies powerSavingPolicy;
     };
     // the state that is to be tested next
     State m_pending;

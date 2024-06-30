@@ -629,6 +629,9 @@ void Output::setState(const State &state)
     if (oldState.brightness != state.brightness) {
         Q_EMIT brightnessChanged();
     }
+    if (oldState.allowColorPowerSavings != state.allowColorPowerSavings) {
+        Q_EMIT allowColorPowerSavingChanged();
+    }
     if (oldState.enabled != state.enabled) {
         Q_EMIT enabledChanged();
     }
@@ -785,6 +788,12 @@ double Output::brightness() const
 {
     return m_state.brightness;
 }
+
+bool Output::allowColorPowerSaving() const
+{
+    return m_state.allowColorPowerSavings;
+}
+
 } // namespace KWin
 
 #include "moc_output.cpp"

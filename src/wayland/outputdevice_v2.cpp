@@ -22,7 +22,7 @@
 namespace KWin
 {
 
-static const quint32 s_version = 8;
+static const quint32 s_version = 9;
 
 static QtWaylandServer::kde_output_device_v2::transform kwinTransformToOutputDeviceTransform(OutputTransform transform)
 {
@@ -57,6 +57,9 @@ static uint32_t kwinCapabilitiesToOutputDeviceCapabilities(Output::Capabilities 
     }
     if (caps & Output::Capability::IccProfile) {
         ret |= QtWaylandServer::kde_output_device_v2::capability_icc_profile;
+    }
+    if (caps & Output::Capability::ColorPowerSaving) {
+        ret |= QtWaylandServer::kde_output_device_v2::capability_color_power_saving;
     }
     return ret;
 }
@@ -107,6 +110,7 @@ public:
     void sendSdrGamutWideness(Resource *resource);
     void sendColorProfileSource(Resource *resource);
     void sendBrightness(Resource *resource);
+    void sendColorPowerSaving(Resource *resource);
 
     OutputDeviceV2Interface *q;
     QPointer<Display> m_display;
@@ -144,6 +148,7 @@ public:
     std::optional<double> m_minBrightnessOverride;
     color_profile_source m_colorProfile = color_profile_source::color_profile_source_sRGB;
     double m_brightness = 1.0;
+    bool m_allowColorPowerSaving = true;
 
 protected:
     void kde_output_device_v2_bind_resource(Resource *resource) override;
@@ -231,6 +236,7 @@ OutputDeviceV2Interface::OutputDeviceV2Interface(Display *display, Output *handl
     updateSdrGamutWideness();
     updateColorProfileSource();
     updateBrightness();
+    updateColorPowerSaving();
 
     connect(handle, &Output::geometryChanged,
             this, &OutputDeviceV2Interface::updateGlobalPosition);
@@ -262,6 +268,7 @@ OutputDeviceV2Interface::OutputDeviceV2Interface(Display *display, Output *handl
     connect(handle, &Output::sdrGamutWidenessChanged, this, &OutputDeviceV2Interface::updateSdrGamutWideness);
     connect(handle, &Output::colorProfileSourceChanged, this, &OutputDeviceV2Interface::updateColorProfileSource);
     connect(handle, &Output::brightnessChanged, this, &OutputDeviceV2Interface::updateBrightness);
+    connect(handle, &Output::allowColorPowerSavingChanged, this, &OutputDeviceV2Interface::updateColorPowerSaving);
 }
 
 OutputDeviceV2Interface::~OutputDeviceV2Interface()
@@ -322,6 +329,7 @@ void OutputDeviceV2InterfacePrivate::kde_output_device_v2_bind_resource(Resource
     sendSdrGamutWideness(resource);
     sendColorProfileSource(resource);
     sendBrightness(resource);
+    sendColorPowerSaving(resource);
     sendDone(resource);
 }
 
@@ -486,6 +494,13 @@ void OutputDeviceV2InterfacePrivate::sendBrightness(Resource *resource)
 {
     if (resource->version() >= KDE_OUTPUT_DEVICE_V2_BRIGHTNESS_SINCE_VERSION) {
         send_brightness(resource->handle, m_brightness);
+    }
+}
+
+void OutputDeviceV2InterfacePrivate::sendColorPowerSaving(Resource *resource)
+{
+    if (resource->version() >= KDE_OUTPUT_DEVICE_V2_ALLOW_COLOR_POWER_SAVING_SINCE_VERSION) {
+        send_allow_color_power_saving(resource->handle, m_allowColorPowerSaving ? 1 : 0);
     }
 }
 
@@ -841,6 +856,18 @@ void OutputDeviceV2Interface::updateBrightness()
         const auto clientResources = d->resourceMap();
         for (const auto &resource : clientResources) {
             d->sendBrightness(resource);
+            d->sendDone(resource);
+        }
+    }
+}
+
+void OutputDeviceV2Interface::updateColorPowerSaving()
+{
+    if (d->m_allowColorPowerSaving != d->m_handle->allowColorPowerSaving()) {
+        d->m_allowColorPowerSaving = d->m_handle->allowColorPowerSaving();
+        const auto clientResources = d->resourceMap();
+        for (const auto &resource : clientResources) {
+            d->sendColorPowerSaving(resource);
             d->sendDone(resource);
         }
     }

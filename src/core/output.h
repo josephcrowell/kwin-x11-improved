@@ -157,6 +157,7 @@ public:
         AutoRotation = 1 << 6,
         IccProfile = 1 << 7,
         Tearing = 1 << 8,
+        ColorPowerSaving = 1 << 9,
     };
     Q_DECLARE_FLAGS(Capabilities, Capability)
 
@@ -364,6 +365,12 @@ public:
 
     const ColorDescription &colorDescription() const;
 
+    /**
+     * whether or not the driver is allowed to mess with the colors on this display
+     * in order to save power
+     */
+    bool allowColorPowerSaving() const;
+
 Q_SIGNALS:
     /**
      * This signal is emitted when the geometry of this output has changed.
@@ -428,6 +435,7 @@ Q_SIGNALS:
     void colorDescriptionChanged();
     void colorProfileSourceChanged();
     void brightnessChanged();
+    void allowColorPowerSavingChanged();
 
 protected:
     struct Information
@@ -480,6 +488,7 @@ protected:
         double sdrGamutWideness = 0;
         VrrPolicy vrrPolicy = VrrPolicy::Automatic;
         double brightness = 1.0;
+        bool allowColorPowerSavings = true;
     };
 
     void setInformation(const Information &information);
