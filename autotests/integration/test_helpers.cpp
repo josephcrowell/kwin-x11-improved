@@ -379,22 +379,26 @@ void MockInputMethod::zwp_input_method_v1_deactivate(struct ::zwp_input_method_c
 
 bool setupWaylandConnection(AdditionalWaylandInterfaces flags)
 {
-    if (s_waylandConnection.connection) {
-        return false;
-    }
-
     int sx[2];
     if (socketpair(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0, sx) < 0) {
         return false;
     }
-    KWin::waylandServer()->display()->createClient(sx[0]);
+    waylandServer()->display()->createClient(sx[0]);
+
+    return setupWaylandConnection(sx[1], flags);
+}
+
+bool setupWaylandConnection(int socket, AdditionalWaylandInterfaces flags)
+{
+    if (s_waylandConnection.connection) {
+        return false;
+    }
+
     // setup connection
     s_waylandConnection.connection = new KWayland::Client::ConnectionThread;
     QSignalSpy connectedSpy(s_waylandConnection.connection, &KWayland::Client::ConnectionThread::connected);
-    if (!connectedSpy.isValid()) {
-        return false;
-    }
-    s_waylandConnection.connection->setSocketFd(sx[1]);
+
+    s_waylandConnection.connection->setSocketFd(socket);
 
     s_waylandConnection.thread = new QThread(kwinApp());
     s_waylandConnection.connection->moveToThread(s_waylandConnection.thread);
