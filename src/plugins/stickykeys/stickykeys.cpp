@@ -8,6 +8,8 @@
 #include "keyboard_input.h"
 #include "xkb.h"
 
+#include <QTimer>
+
 #include <KLazyLocalizedString>
 #if KWIN_BUILD_NOTIFICATIONS
 #include <KNotification>
@@ -172,6 +174,28 @@ void StickyKeysFilter::disableStickyKeys()
     }
 
     KWin::input()->uninstallInputEventFilter(this);
+}
+
+bool StickyKeysFilter::pointerEvent(KWin::MouseEvent *event, quint32 nativeButton)
+{
+    if (event->type() == QEvent::MouseButtonRelease) {
+        // unlatch all unlocked modifiers
+        for (auto it = m_keyStates.keyValueBegin(); it != m_keyStates.keyValueEnd(); ++it) {
+
+            if (it->second == Locked) {
+                continue;
+            }
+
+            it->second = KeyState::None;
+
+            KWin::input()->keyboard()->xkb()->setModifierLatched(keyToModifier(static_cast<Qt::Key>(it->first)), false);
+            QTimer::singleShot(0, this, [] {
+                KWin::input()->keyboard()->xkb()->forwardModifiers();
+            });
+        }
+    }
+
+    return false;
 }
 
 #include "moc_stickykeys.cpp"

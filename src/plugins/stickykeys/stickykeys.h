@@ -18,6 +18,7 @@ public:
     explicit StickyKeysFilter();
 
     bool keyEvent(KWin::KeyEvent *event) override;
+    bool pointerEvent(KWin::MouseEvent *event, quint32 nativeButton) override;
 
     enum KeyState {
         None,
