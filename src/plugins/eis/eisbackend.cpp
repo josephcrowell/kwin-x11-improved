@@ -9,6 +9,7 @@
 #include "eiscontext.h"
 #include "eisdevice.h"
 #include "libeis_logging.h"
+#include "xwaylandeiscontext.h"
 
 #include "core/output.h"
 #include "input.h"
@@ -27,6 +28,7 @@
 #include <libeis.h>
 
 #include <fcntl.h>
+#include <unistd.h>
 
 #include <ranges>
 
@@ -43,7 +45,6 @@ namespace KWin
 EisBackend::EisBackend(QObject *parent)
     : KWin::InputBackend(parent)
     , m_serviceWatcher(new QDBusServiceWatcher(this))
-
 {
 #if HAVE_XWAYLAND_ENABLE_EI_PORTAL
     if (kwinApp()->operationMode() == Application::OperationModeXwayland) {
