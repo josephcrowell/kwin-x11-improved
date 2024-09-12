@@ -412,6 +412,11 @@ ColorDescription::ColorDescription(NamedColorimetry containerColorimetry, Transf
 {
 }
 
+ColorDescription::ColorDescription(NamedColorimetry containerColorimetry, TransferFunction tf)
+    : ColorDescription(Colorimetry::fromName(containerColorimetry), tf, TransferFunction::defaultReferenceLuminanceFor(tf.type), TransferFunction::defaultMinLuminanceFor(tf.type), TransferFunction::defaultMaxLuminanceFor(tf.type), std::nullopt, std::nullopt, Colorimetry::fromName(NamedColorimetry::BT709))
+{
+}
+
 const Colorimetry &ColorDescription::containerColorimetry() const
 {
     return m_containerColorimetry;
