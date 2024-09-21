@@ -417,6 +417,7 @@ XdgToplevelWindow::XdgToplevelWindow(XdgToplevelInterface *shellSurface)
     : XdgSurfaceWindow(shellSurface->xdgSurface())
     , m_shellSurface(shellSurface)
 {
+    m_tag = shellSurface->tag();
     setOutput(workspace()->activeOutput());
     setMoveResizeOutput(workspace()->activeOutput());
     setDesktops({VirtualDesktopManager::self()->currentDesktop()});

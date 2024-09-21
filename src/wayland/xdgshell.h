@@ -295,6 +295,11 @@ public:
     QString windowClass() const;
 
     /**
+     * @returns a tag on the window, set by the client
+     */
+    QString tag() const;
+
+    /**
      * Returns the minimum window geometry size of the toplevel surface.
      */
     QSize minimumSize() const;

@@ -69,6 +69,7 @@
 #include "wayland/subcompositor.h"
 #include "wayland/tablet_v2.h"
 #include "wayland/tearingcontrol_v1.h"
+#include "wayland/toplevel_tag_v1.h"
 #include "wayland/viewporter.h"
 #include "wayland/xdgactivation_v1.h"
 #include "wayland/xdgdecoration_v1.h"
@@ -525,6 +526,7 @@ bool WaylandServer::init()
 
     m_externalBrightness = new ExternalBrightnessV1(m_display, m_display);
     m_alphaModifierManager = new AlphaModifierManagerV1(m_display, m_display);
+    m_toplevelTag = new ToplevelTagManagerV1(m_display, m_display);
     return true;
 }
 

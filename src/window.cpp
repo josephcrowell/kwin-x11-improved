@@ -4461,6 +4461,11 @@ void Window::updatePreferredColorDescription()
     setPreferredColorDescription(m_moveResizeOutput->colorDescription());
 }
 
+QString Window::tag() const
+{
+    return m_tag;
+}
+
 } // namespace KWin
 
 #include "moc_window.cpp"

@@ -148,6 +148,7 @@ public:
     XdgSurfaceInterface *xdgSurface;
     QString windowTitle;
     QString windowClass;
+    QString tag;
     QSize minimumSize = QSize(0, 0);
     QSize maximumSize = QSize(0, 0);
 

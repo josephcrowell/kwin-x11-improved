@@ -52,6 +52,7 @@ class XwaylandShellV1Interface;
 class OutputOrderV1Interface;
 class XdgDialogWmV1Interface;
 class ExternalBrightnessV1;
+class ToplevelTagManagerV1;
 
 class Window;
 class Output;
@@ -293,6 +294,7 @@ private:
     XdgDialogWmV1Interface *m_xdgDialogWm = nullptr;
     ExternalBrightnessV1 *m_externalBrightness = nullptr;
     AlphaModifierManagerV1 *m_alphaModifierManager = nullptr;
+    ToplevelTagManagerV1 *m_toplevelTag = nullptr;
     KWIN_SINGLETON(WaylandServer)
 };
 

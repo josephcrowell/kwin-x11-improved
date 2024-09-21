@@ -550,6 +550,8 @@ class KWIN_EXPORT Window : public QObject
      */
     Q_PROPERTY(bool inputMethod READ isInputMethod)
 
+    Q_PROPERTY(QString tag READ tag)
+
 public:
     ~Window() override;
 
@@ -1349,6 +1351,8 @@ public:
     const ColorDescription &preferredColorDescription() const;
     void setPreferredColorDescription(const ColorDescription &description);
 
+    QString tag() const;
+
 public Q_SLOTS:
     virtual void closeWindow() = 0;
 
@@ -1872,6 +1876,8 @@ protected:
     bool m_lockScreenOverlay = false;
     uint32_t m_offscreenRenderCount = 0;
     QTimer m_offscreenFramecallbackTimer;
+
+    QString m_tag;
 };
 
 inline QRectF Window::bufferGeometry() const
