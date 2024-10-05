@@ -255,3 +255,25 @@ target_link_libraries(testColorspaces
 )
 add_test(NAME kwin-testColorspaces COMMAND testColorspaces)
 ecm_mark_as_test(testColorspaces)
+
+########################################################
+# Test Box
+########################################################
+add_executable(testBox test_box.cpp)
+target_link_libraries(testBox
+    Qt::Test
+    kwin
+)
+add_test(NAME kwin-testBox COMMAND testBox)
+ecm_mark_as_test(testBox)
+
+########################################################
+# Test BoxF
+########################################################
+add_executable(testBoxF test_boxf.cpp)
+target_link_libraries(testBoxF
+    Qt::Test
+    kwin
+)
+add_test(NAME kwin-testBoxF COMMAND testBoxF)
+ecm_mark_as_test(testBoxF)
