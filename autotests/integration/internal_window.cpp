@@ -235,7 +235,7 @@ void InternalWindowTest::testEnterLeave()
     QVERIFY(window->isInternal());
     QVERIFY(!window->isDecorated());
     QCOMPARE(workspace()->findInternal(&win), window);
-    QCOMPARE(window->frameGeometry(), QRect(0, 0, 100, 100));
+    QCOMPARE(window->frameGeometry(), BoxF(0, 0, 100, 100));
     QVERIFY(window->isShown());
     QVERIFY(workspace()->stackingOrder().contains(window));
 
@@ -484,15 +484,15 @@ void InternalWindowTest::testMove()
     QTRY_COMPARE(windowAddedSpy.count(), 1);
     auto internalWindow = windowAddedSpy.first().first().value<InternalWindow *>();
     QVERIFY(internalWindow);
-    QCOMPARE(internalWindow->frameGeometry(), QRect(0, 0, 100, 100));
+    QCOMPARE(internalWindow->frameGeometry(), BoxF(0, 0, 100, 100));
 
     // normal move should be synced
     internalWindow->move(QPoint(5, 10));
-    QCOMPARE(internalWindow->frameGeometry(), QRect(5, 10, 100, 100));
+    QCOMPARE(internalWindow->frameGeometry(), BoxF(5, 10, 100, 100));
     QTRY_COMPARE(win.geometry(), QRect(5, 10, 100, 100));
     // another move should also be synced
     internalWindow->move(QPoint(10, 20));
-    QCOMPARE(internalWindow->frameGeometry(), QRect(10, 20, 100, 100));
+    QCOMPARE(internalWindow->frameGeometry(), BoxF(10, 20, 100, 100));
     QTRY_COMPARE(win.geometry(), QRect(10, 20, 100, 100));
 }
 
@@ -670,7 +670,7 @@ void InternalWindowTest::testReentrantMoveResize()
 
     // Let's pretend that there is a script that really wants the window to be at (100, 100).
     connect(window, &Window::frameGeometryChanged, this, [window]() {
-        window->moveResize(QRectF(QPointF(100, 100), window->size()));
+        window->moveResize(BoxF(QPointF(100, 100), window->size()));
     });
 
     // Trigger the lambda above.

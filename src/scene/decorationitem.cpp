@@ -43,7 +43,7 @@ Decoration::DecoratedClientImpl *DecorationRenderer::client() const
 void DecorationRenderer::invalidate()
 {
     if (m_client) {
-        addDamage(m_client->window()->rect().toAlignedRect());
+        addDamage(QRegion(m_client->window()->rect().roundedOut()));
     }
     m_imageSizesDirty = true;
 }

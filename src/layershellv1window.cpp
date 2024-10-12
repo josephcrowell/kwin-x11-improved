@@ -237,7 +237,7 @@ bool LayerShellV1Window::acceptsFocus() const
     return !isDeleted() && m_shellSurface->acceptsFocus();
 }
 
-void LayerShellV1Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
+void LayerShellV1Window::moveResizeInternal(const BoxF &rect, MoveResizeMode mode)
 {
     const QSizeF requestedClientSize = frameSizeToClientSize(rect.size());
     if (requestedClientSize != clientSize()) {
@@ -248,7 +248,7 @@ void LayerShellV1Window::moveResizeInternal(const QRectF &rect, MoveResizeMode m
     }
 
     // The surface position is updated synchronously.
-    QRectF updateRect = m_frameGeometry;
+    BoxF updateRect = m_frameGeometry;
     updateRect.moveTopLeft(rect.topLeft());
     updateGeometry(updateRect);
 }
@@ -279,7 +279,7 @@ void LayerShellV1Window::doSetPreferredColorDescription()
 
 void LayerShellV1Window::handleSizeChanged()
 {
-    updateGeometry(QRectF(pos(), clientSizeToFrameSize(surface()->size())));
+    updateGeometry(BoxF(pos(), clientSizeToFrameSize(surface()->size())));
 }
 
 void LayerShellV1Window::handleUnmapped()
@@ -317,7 +317,7 @@ void LayerShellV1Window::handleOutputEnabledChanged()
     }
 }
 
-void LayerShellV1Window::setVirtualKeyboardGeometry(const QRectF &geo)
+void LayerShellV1Window::setVirtualKeyboardGeometry(const BoxF &geo)
 {
     if (m_virtualKeyboardGeometry == geo) {
         return;

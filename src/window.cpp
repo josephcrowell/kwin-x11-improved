@@ -76,17 +76,17 @@ Window::Window()
 
     // If the user manually moved the window, don't restore it after the keyboard closes
     connect(this, &Window::interactiveMoveResizeFinished, this, [this]() {
-        m_keyboardGeometryRestore = QRectF();
+        m_keyboardGeometryRestore = BoxF();
     });
     connect(this, &Window::maximizedChanged, this, [this]() {
-        m_keyboardGeometryRestore = QRectF();
+        m_keyboardGeometryRestore = BoxF();
     });
     connect(this, &Window::fullScreenChanged, this, [this]() {
-        m_keyboardGeometryRestore = QRectF();
+        m_keyboardGeometryRestore = BoxF();
     });
 
     // replace on-screen-display on size changes
-    connect(this, &Window::frameGeometryChanged, this, [this](const QRectF &old) {
+    connect(this, &Window::frameGeometryChanged, this, [this](const BoxF &old) {
         if (isOnScreenDisplay() && !frameGeometry().isEmpty() && old.size() != frameGeometry().size() && isPlaceable()) {
             workspace()->placement()->place(this, workspace()->clientArea(PlacementArea, this, workspace()->activeOutput()));
         }
@@ -150,12 +150,12 @@ QDebug operator<<(QDebug debug, const Window *window)
     return debug;
 }
 
-QRectF Window::visibleGeometry() const
+BoxF Window::visibleGeometry() const
 {
     if (const WindowItem *item = windowItem()) {
         return item->mapToScene(item->boundingRect());
     }
-    return QRectF();
+    return BoxF();
 }
 
 /**
@@ -246,7 +246,7 @@ bool Window::isOnActiveOutput() const
 
 bool Window::isOnOutput(Output *output) const
 {
-    return output->geometry().intersects(frameGeometry().toRect());
+    return output->geometry().intersects(frameGeometry().rounded());
 }
 
 Shadow *Window::shadow() const
@@ -1081,11 +1081,11 @@ void Window::handlePaletteChange()
     Q_EMIT paletteChanged(palette());
 }
 
-QRectF Window::keepInArea(QRectF geometry, QRectF area, bool partial)
+BoxF Window::keepInArea(BoxF geometry, BoxF area, bool partial)
 {
     if (partial) {
         // increase the area so that can have only 100 pixels in the area
-        const QRectF geometry = moveResizeGeometry();
+        const BoxF geometry = moveResizeGeometry();
         area.setLeft(std::min(area.left() - geometry.width() + 100, area.left()));
         area.setTop(std::min(area.top() - geometry.height() + 100, area.top()));
         area.setRight(std::max(area.right() + geometry.width() - 100, area.right()));
@@ -1130,12 +1130,12 @@ QSizeF Window::minSize() const
     return rules()->checkMinSize(QSize(0, 0));
 }
 
-void Window::maximize(MaximizeMode mode, const QRectF &restore)
+void Window::maximize(MaximizeMode mode, const BoxF &restore)
 {
     qCWarning(KWIN_CORE, "%s doesn't support setting maximized state", metaObject()->className());
 }
 
-void Window::setMaximize(bool vertically, bool horizontally, const QRectF &restore)
+void Window::setMaximize(bool vertically, bool horizontally, const BoxF &restore)
 {
     MaximizeMode mode = MaximizeRestore;
     if (vertically) {
@@ -1205,8 +1205,8 @@ void Window::finishInteractiveMoveResize(bool cancel)
         }
     } else if (moveResizeOutput() != interactiveMoveResizeStartOutput()) {
         sendToOutput(moveResizeOutput()); // checks rule validity
-        const QRectF oldScreenArea = workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeStartOutput());
-        const QRectF screenArea = workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
+        const BoxF oldScreenArea = workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeStartOutput());
+        const BoxF screenArea = workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
         m_electricGeometryRestore = moveToArea(m_electricGeometryRestore, oldScreenArea, screenArea);
         if (isRequestedFullScreen() || requestedMaximizeMode() != MaximizeRestore) {
             checkWorkspacePosition();
@@ -1239,8 +1239,8 @@ void Window::checkUnrestrictedInteractiveMoveResize()
     if (isUnrestrictedInteractiveMoveResize()) {
         return;
     }
-    const QRectF &moveResizeGeom = moveResizeGeometry();
-    QRectF desktopArea = workspace()->clientArea(WorkArea, this, moveResizeGeom.center());
+    const BoxF &moveResizeGeom = moveResizeGeometry();
+    BoxF desktopArea = workspace()->clientArea(WorkArea, this, moveResizeGeom.center());
     int left_marge, right_marge, top_marge, bottom_marge, titlebar_marge;
     // restricted move/resize - keep at least part of the titlebar always visible
     // how much must remain visible when moved away in that direction
@@ -1323,8 +1323,8 @@ void Window::updateInteractiveMoveResize(const QPointF &global, Qt::KeyboardModi
         setShade(ShadeNone);
     }
 
-    const QRectF currentMoveResizeGeom = moveResizeGeometry();
-    QRectF nextMoveResizeGeom = currentMoveResizeGeom;
+    const BoxF currentMoveResizeGeom = moveResizeGeometry();
+    BoxF nextMoveResizeGeom = currentMoveResizeGeom;
 
     if (isInteractiveResize()) {
         if (isWaitingForInteractiveResizeSync()) {
@@ -1350,7 +1350,7 @@ void Window::updateInteractiveMoveResize(const QPointF &global, Qt::KeyboardModi
                 case Gravity::Right:
                     // Quit maximized horizontally state if the window is resized horizontally.
                     if (requestedMaximizeMode() & MaximizeHorizontal) {
-                        QRectF originalGeometry = geometryRestore();
+                        BoxF originalGeometry = geometryRestore();
                         originalGeometry.setX(nextMoveResizeGeom.x());
                         originalGeometry.setWidth(nextMoveResizeGeom.width());
                         maximize(requestedMaximizeMode() ^ MaximizeHorizontal, originalGeometry);
@@ -1361,7 +1361,7 @@ void Window::updateInteractiveMoveResize(const QPointF &global, Qt::KeyboardModi
                 case Gravity::Bottom:
                     // Quit maximized vertically state if the window is resized vertically.
                     if (requestedMaximizeMode() & MaximizeVertical) {
-                        QRectF originalGeometry = geometryRestore();
+                        BoxF originalGeometry = geometryRestore();
                         originalGeometry.setY(nextMoveResizeGeom.y());
                         originalGeometry.setHeight(nextMoveResizeGeom.height());
                         maximize(requestedMaximizeMode() ^ MaximizeVertical, originalGeometry);
@@ -1422,8 +1422,8 @@ void Window::updateInteractiveMoveResize(const QPointF &global, Qt::KeyboardModi
                 if (r.isEmpty()) {
                     workspace()->outline()->hide();
                 } else {
-                    if (!workspace()->outline()->isActive() || workspace()->outline()->geometry() != r.toRect()) {
-                        workspace()->outline()->show(r.toRect(), moveResizeGeometry().toRect());
+                    if (!workspace()->outline()->isActive() || workspace()->outline()->geometry() != r.rounded()) {
+                        workspace()->outline()->show(r.rounded(), moveResizeGeometry().rounded());
                     }
                 }
             } else {
@@ -1440,9 +1440,9 @@ void Window::updateInteractiveMoveResize(const QPointF &global, Qt::KeyboardModi
     }
 }
 
-QRectF Window::titleBarRect(const QRectF &rect, bool &transposed) const
+BoxF Window::titleBarRect(const BoxF &rect, bool &transposed) const
 {
-    QRectF titleRect = rect;
+    BoxF titleRect = rect;
     titleRect.moveTopLeft(QPointF(0, 0));
     switch (titlebarPosition()) {
     default:
@@ -1464,10 +1464,10 @@ QRectF Window::titleBarRect(const QRectF &rect, bool &transposed) const
     return titleRect;
 }
 
-QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
+BoxF Window::nextInteractiveResizeGeometry(const QPointF &global) const
 {
-    const QRectF currentMoveResizeGeom = moveResizeGeometry();
-    QRectF nextMoveResizeGeom = moveResizeGeometry();
+    const BoxF currentMoveResizeGeom = moveResizeGeometry();
+    BoxF nextMoveResizeGeom = moveResizeGeometry();
 
     const Gravity gravity = interactiveMoveResizeGravity();
     if (gravity == Gravity::None || isShade() || !isResizable()) {
@@ -1476,7 +1476,7 @@ QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
 
     // these two points limit the geometry rectangle, i.e. if bottomleft resizing is done,
     // the bottomleft corner should be at is at (topleft.x(), bottomright().y())
-    QRectF orig = initialInteractiveMoveResizeGeometry();
+    BoxF orig = initialInteractiveMoveResizeGeometry();
     QPointF topleft = global - QPointF(interactiveMoveOffset().x() * orig.width(), interactiveMoveOffset().y() * orig.height());
     QPointF bottomright = global + QPointF((1.0 - interactiveMoveOffset().x()) * orig.width(), (1.0 - interactiveMoveOffset().y()) * orig.height());
 
@@ -1486,31 +1486,31 @@ QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
     auto calculateMoveResizeGeom = [&topleft, &bottomright, &orig, &nextMoveResizeGeom, &sizeMode, &gravity]() {
         switch (gravity) {
         case Gravity::TopLeft:
-            nextMoveResizeGeom = QRectF(topleft, orig.bottomRight());
+            nextMoveResizeGeom = BoxF(topleft, orig.bottomRight());
             break;
         case Gravity::BottomRight:
-            nextMoveResizeGeom = QRectF(orig.topLeft(), bottomright);
+            nextMoveResizeGeom = BoxF(orig.topLeft(), bottomright);
             break;
         case Gravity::BottomLeft:
-            nextMoveResizeGeom = QRectF(QPointF(topleft.x(), orig.y()), QPointF(orig.right(), bottomright.y()));
+            nextMoveResizeGeom = BoxF(QPointF(topleft.x(), orig.y()), QPointF(orig.right(), bottomright.y()));
             break;
         case Gravity::TopRight:
-            nextMoveResizeGeom = QRectF(QPointF(orig.x(), topleft.y()), QPointF(bottomright.x(), orig.bottom()));
+            nextMoveResizeGeom = BoxF(QPointF(orig.x(), topleft.y()), QPointF(bottomright.x(), orig.bottom()));
             break;
         case Gravity::Top:
-            nextMoveResizeGeom = QRectF(QPointF(orig.left(), topleft.y()), orig.bottomRight());
+            nextMoveResizeGeom = BoxF(QPointF(orig.left(), topleft.y()), orig.bottomRight());
             sizeMode = SizeModeFixedH; // try not to affect height
             break;
         case Gravity::Bottom:
-            nextMoveResizeGeom = QRectF(orig.topLeft(), QPointF(orig.right(), bottomright.y()));
+            nextMoveResizeGeom = BoxF(orig.topLeft(), QPointF(orig.right(), bottomright.y()));
             sizeMode = SizeModeFixedH;
             break;
         case Gravity::Left:
-            nextMoveResizeGeom = QRectF(QPointF(topleft.x(), orig.top()), orig.bottomRight());
+            nextMoveResizeGeom = BoxF(QPointF(topleft.x(), orig.top()), orig.bottomRight());
             sizeMode = SizeModeFixedW;
             break;
         case Gravity::Right:
-            nextMoveResizeGeom = QRectF(orig.topLeft(), QPointF(bottomright.x(), orig.bottom()));
+            nextMoveResizeGeom = BoxF(orig.topLeft(), QPointF(bottomright.x(), orig.bottom()));
             sizeMode = SizeModeFixedW;
             break;
         case Gravity::None:
@@ -1529,17 +1529,17 @@ QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
         // the other directions. If not visible enough, move the window to the closest valid
         // point. We bruteforce this by slowly moving the window back to its previous position
         const StrutRects strut = workspace()->restrictedMoveArea(VirtualDesktopManager::self()->currentDesktop());
-        QRegion availableArea(workspace()->clientArea(FullArea, this, workspace()->activeOutput()).toRect());
+        QRegion availableArea(workspace()->clientArea(FullArea, this, workspace()->activeOutput()).rounded());
         for (const QRect &rect : strut) {
             availableArea -= rect;
         }
         bool transposed = false;
-        QRectF bTitleRect = titleBarRect(nextMoveResizeGeom, transposed);
+        BoxF bTitleRect = titleBarRect(nextMoveResizeGeom, transposed);
         int lastVisiblePixels = -1;
-        QRectF lastTry = nextMoveResizeGeom;
+        BoxF lastTry = nextMoveResizeGeom;
         bool titleFailed = false;
         for (;;) {
-            const QRect titleRect = bTitleRect.translated(nextMoveResizeGeom.topLeft()).toRect();
+            const QRect titleRect = bTitleRect.translated(nextMoveResizeGeom.topLeft()).rounded();
             const int requiredPixels = std::min(100 * (transposed ? titleRect.width() : titleRect.height()), titleRect.width() * titleRect.height());
 
             int visiblePixels = 0;
@@ -1568,7 +1568,7 @@ QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
                 }
             }
             lastVisiblePixels = realVisiblePixels;
-            QRectF currentTry = nextMoveResizeGeom;
+            BoxF currentTry = nextMoveResizeGeom;
             lastTry = currentTry;
 
             // Not visible enough, move the window to the closest valid point. We bruteforce
@@ -1641,29 +1641,29 @@ QRectF Window::nextInteractiveResizeGeometry(const QPointF &global) const
     return nextMoveResizeGeom;
 }
 
-QRectF Window::nextInteractiveMoveGeometry(const QPointF &global) const
+BoxF Window::nextInteractiveMoveGeometry(const QPointF &global) const
 {
-    const QRectF currentMoveResizeGeom = frameGeometry();
+    const BoxF currentMoveResizeGeom = frameGeometry();
     if (!isMovable()) {
         return currentMoveResizeGeom;
     }
 
-    QRectF nextMoveResizeGeom = currentMoveResizeGeom;
+    BoxF nextMoveResizeGeom = currentMoveResizeGeom;
     nextMoveResizeGeom.moveTopLeft(QPointF(global.x() - interactiveMoveOffset().x() * currentMoveResizeGeom.width(),
                                            global.y() - interactiveMoveOffset().y() * currentMoveResizeGeom.height()));
     nextMoveResizeGeom.moveTopLeft(workspace()->adjustWindowPosition(this, nextMoveResizeGeom.topLeft(), isUnrestrictedInteractiveMoveResize()));
 
     if (!isUnrestrictedInteractiveMoveResize()) {
         const StrutRects strut = workspace()->restrictedMoveArea(VirtualDesktopManager::self()->currentDesktop());
-        QRegion availableArea(workspace()->clientArea(FullArea, this, workspace()->activeOutput()).toRect());
+        QRegion availableArea(workspace()->clientArea(FullArea, this, workspace()->activeOutput()).rounded());
         for (const QRect &rect : strut) {
             availableArea -= rect; // Strut areas
         }
         bool transposed = false;
-        QRectF bTitleRect = titleBarRect(nextMoveResizeGeom, transposed);
+        BoxF bTitleRect = titleBarRect(nextMoveResizeGeom, transposed);
         for (;;) {
-            QRectF currentTry = nextMoveResizeGeom;
-            const QRect titleRect = bTitleRect.translated(currentTry.topLeft()).toRect();
+            BoxF currentTry = nextMoveResizeGeom;
+            const QRect titleRect = bTitleRect.translated(currentTry.topLeft()).rounded();
             const int requiredPixels = std::min(100 * (transposed ? titleRect.width() : titleRect.height()), titleRect.width() * titleRect.height());
 
             int visiblePixels = 0;
@@ -1691,7 +1691,7 @@ QRectF Window::nextInteractiveMoveGeometry(const QPointF &global) const
                 // TODO: could be useful on partial screen struts (half-width panels etc.)
                 int newTitleTop = -1;
                 for (const QRect &region : strut) {
-                    QRectF r = region;
+                    BoxF r = region;
                     if (r.top() == 0 && r.width() > r.height() && // "top panel"
                         r.intersects(currentTry) && currentTry.top() < r.bottom()) {
                         newTitleTop = r.bottom();
@@ -1796,8 +1796,8 @@ void Window::setupWindowManagementInterface()
     w->setMovable(isMovable());
     w->setVirtualDesktopChangeable(true); // FIXME Matches X11Window::actionSupported(), but both should be implemented.
     w->setParentWindow(transientFor() ? transientFor()->windowManagementInterface() : nullptr);
-    w->setGeometry(frameGeometry().toRect());
-    w->setClientGeometry(clientGeometry().toRect());
+    w->setGeometry(frameGeometry().rounded());
+    w->setClientGeometry(clientGeometry().rounded());
     connect(this, &Window::skipTaskbarChanged, w, [w, this]() {
         w->setSkipTaskbar(skipTaskbar());
     });
@@ -1837,10 +1837,10 @@ void Window::setupWindowManagementInterface()
         w->setParentWindow(transientFor() ? transientFor()->windowManagementInterface() : nullptr);
     });
     connect(this, &Window::frameGeometryChanged, w, [w, this]() {
-        w->setGeometry(frameGeometry().toRect());
+        w->setGeometry(frameGeometry().rounded());
     });
     connect(this, &Window::clientGeometryChanged, w, [w, this]() {
-        w->setClientGeometry(clientGeometry().toRect());
+        w->setClientGeometry(clientGeometry().rounded());
     });
     connect(this, &Window::applicationMenuChanged, w, [w, this]() {
         w->setApplicationMenuPaths(applicationMenuServiceName(), applicationMenuObjectPath());
@@ -2218,10 +2218,10 @@ bool Window::hasTransientPlacementHint() const
     return false;
 }
 
-QRectF Window::transientPlacement() const
+BoxF Window::transientPlacement() const
 {
     Q_UNREACHABLE();
-    return QRectF();
+    return BoxF();
 }
 
 bool Window::hasTransient(const Window *c, bool indirect) const
@@ -2442,7 +2442,7 @@ bool Window::isWaitingForInteractiveResizeSync() const
     return false;
 }
 
-void Window::doInteractiveResizeSync(const QRectF &)
+void Window::doInteractiveResizeSync(const BoxF &)
 {
 }
 
@@ -2469,7 +2469,7 @@ void Window::checkQuickTilingMaximizationZones(int xroot, int yroot)
             return false;
         };
 
-        QRectF area = workspace()->clientArea(MaximizeArea, this, QPointF(xroot, yroot));
+        BoxF area = workspace()->clientArea(MaximizeArea, this, QPointF(xroot, yroot));
         QuickTileMode tile = QuickTileFlag::None;
         if (options->electricBorderTiling()) {
             if (xroot <= area.x() + 20) {
@@ -2662,10 +2662,10 @@ void Window::updateDecorationInputShape()
     const QMargins borders = decoration()->borders();
     const QMargins resizeBorders = decoration()->resizeOnlyBorders();
 
-    const QRectF innerRect = QRectF(QPointF(borderLeft(), borderTop()), decoratedClient()->size());
-    const QRectF outerRect = innerRect + borders + resizeBorders;
+    const BoxF innerRect = BoxF(QPointF(borderLeft(), borderTop()), decoratedClient()->size());
+    const BoxF outerRect = innerRect + borders + resizeBorders;
 
-    m_decoration.inputRegion = QRegion(outerRect.toAlignedRect()) - innerRect.toAlignedRect();
+    m_decoration.inputRegion = QRegion(outerRect.roundedOut()) - QRect(innerRect.roundedOut());
 }
 
 bool Window::decorationHasAlpha() const
@@ -2881,16 +2881,16 @@ void Window::pointerLeaveEvent()
     // TODO: handle Options::FocusStrictlyUnderMouse
 }
 
-QRectF Window::iconGeometry() const
+BoxF Window::iconGeometry() const
 {
     if (!windowManagementInterface() || !waylandServer()) {
         // window management interface is only available if the surface is mapped
-        return QRectF();
+        return BoxF();
     }
 
     int minDistance = INT_MAX;
     Window *candidatePanel = nullptr;
-    QRectF candidateGeom;
+    BoxF candidateGeom;
 
     const auto minGeometries = windowManagementInterface()->minimizedGeometries();
     for (auto i = minGeometries.constBegin(), end = minGeometries.constEnd(); i != end; ++i) {
@@ -2909,29 +2909,29 @@ QRectF Window::iconGeometry() const
         // Check all mainwindows of this window.
         const auto windows = mainWindows();
         for (Window *mainWindow : windows) {
-            const auto geom = mainWindow->iconGeometry();
-            if (geom.isValid()) {
+            const BoxF geom = mainWindow->iconGeometry();
+            if (!geom.isEmpty()) {
                 return geom;
             }
         }
-        return QRectF();
+        return BoxF();
     }
     return candidateGeom.translated(candidatePanel->pos());
 }
 
-QRectF Window::virtualKeyboardGeometry() const
+BoxF Window::virtualKeyboardGeometry() const
 {
     return m_virtualKeyboardGeometry;
 }
 
-void Window::setVirtualKeyboardGeometry(const QRectF &geo)
+void Window::setVirtualKeyboardGeometry(const BoxF &geo)
 {
     // No keyboard anymore
     if (geo.isEmpty() && !m_keyboardGeometryRestore.isEmpty()) {
-        const QRectF availableArea = workspace()->clientArea(MaximizeArea, this);
-        QRectF newWindowGeometry = (requestedMaximizeMode() & MaximizeHorizontal) ? availableArea : m_keyboardGeometryRestore;
+        const BoxF availableArea = workspace()->clientArea(MaximizeArea, this);
+        BoxF newWindowGeometry = (requestedMaximizeMode() & MaximizeHorizontal) ? availableArea : m_keyboardGeometryRestore;
         moveResize(newWindowGeometry);
-        m_keyboardGeometryRestore = QRectF();
+        m_keyboardGeometryRestore = BoxF();
     } else if (geo.isEmpty()) {
         return;
         // The keyboard has just been opened (rather than resized) save window geometry for a restore
@@ -2950,20 +2950,20 @@ void Window::setVirtualKeyboardGeometry(const QRectF &geo)
         return;
     }
 
-    const QRectF availableArea = workspace()->clientArea(MaximizeArea, this);
-    QRectF newWindowGeometry = (requestedMaximizeMode() & MaximizeHorizontal) ? availableArea : m_keyboardGeometryRestore;
+    const BoxF availableArea = workspace()->clientArea(MaximizeArea, this);
+    BoxF newWindowGeometry = (requestedMaximizeMode() & MaximizeHorizontal) ? availableArea : m_keyboardGeometryRestore;
     newWindowGeometry.setHeight(std::min(newWindowGeometry.height(), geo.top() - availableArea.top()));
     newWindowGeometry.moveTop(std::max(geo.top() - newWindowGeometry.height(), availableArea.top()));
     newWindowGeometry = newWindowGeometry.intersected(availableArea);
     moveResize(newWindowGeometry);
 }
 
-QRectF Window::keyboardGeometryRestore() const
+BoxF Window::keyboardGeometryRestore() const
 {
     return m_keyboardGeometryRestore;
 }
 
-void Window::setKeyboardGeometryRestore(const QRectF &geom)
+void Window::setKeyboardGeometryRestore(const BoxF &geom)
 {
     m_keyboardGeometryRestore = geom;
 }
@@ -3303,26 +3303,26 @@ QSizeF Window::clientSizeToFrameSize(const QSizeF &size) const
     return QSizeF(width, height);
 }
 
-QRectF Window::frameRectToClientRect(const QRectF &rect) const
+BoxF Window::frameRectToClientRect(const BoxF &rect) const
 {
     const QPointF position = framePosToClientPos(rect.topLeft());
     const QSizeF size = frameSizeToClientSize(rect.size());
-    return QRectF(position, size);
+    return BoxF(position, size);
 }
 
-QRectF Window::clientRectToFrameRect(const QRectF &rect) const
+BoxF Window::clientRectToFrameRect(const BoxF &rect) const
 {
     const QPointF position = clientPosToFramePos(rect.topLeft());
     const QSizeF size = clientSizeToFrameSize(rect.size());
-    return QRectF(position, size);
+    return BoxF(position, size);
 }
 
-QRectF Window::moveResizeGeometry() const
+BoxF Window::moveResizeGeometry() const
 {
     return m_moveResizeGeometry;
 }
 
-void Window::setMoveResizeGeometry(const QRectF &geo)
+void Window::setMoveResizeGeometry(const BoxF &geo)
 {
     m_moveResizeGeometry = geo;
     setMoveResizeOutput(workspace()->outputAt(geo.center()));
@@ -3363,7 +3363,7 @@ void Window::move(const QPointF &point)
         return;
     }
 
-    const QRectF rect = QRectF(point, m_moveResizeGeometry.size());
+    const BoxF rect = BoxF(point, m_moveResizeGeometry.size());
 
     setMoveResizeGeometry(rect);
     moveResizeInternal(rect, MoveResizeMode::Move);
@@ -3375,13 +3375,13 @@ void Window::resize(const QSizeF &size)
         return;
     }
 
-    const QRectF rect = QRectF(m_moveResizeGeometry.topLeft(), size);
+    const BoxF rect = BoxF(m_moveResizeGeometry.topLeft(), size);
 
     setMoveResizeGeometry(rect);
     moveResizeInternal(rect, MoveResizeMode::Resize);
 }
 
-void Window::moveResize(const QRectF &rect)
+void Window::moveResize(const BoxF &rect)
 {
     if (isDeleted()) {
         return;
@@ -3401,16 +3401,16 @@ void Window::setElectricBorderMaximizing(bool maximizing)
     m_electricMaximizing = maximizing;
     if (maximizing) {
         if (auto quickTileMode = std::get_if<QuickTileMode>(&m_electricMode.value())) {
-            workspace()->outline()->show(quickTileGeometry(*quickTileMode, interactiveMoveResizeAnchor()).toRect(), moveResizeGeometry().toRect());
+            workspace()->outline()->show(quickTileGeometry(*quickTileMode, interactiveMoveResizeAnchor()).rounded(), moveResizeGeometry().rounded());
         } else if (auto maximizeMode = std::get_if<MaximizeMode>(&m_electricMode.value())) {
-            workspace()->outline()->show(workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeAnchor()).toRect(), moveResizeGeometry().toRect());
+            workspace()->outline()->show(workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeAnchor()).rounded(), moveResizeGeometry().rounded());
         }
     } else {
         workspace()->outline()->hide();
     }
 }
 
-QRectF Window::quickTileGeometry(QuickTileMode mode, const QPointF &pos) const
+BoxF Window::quickTileGeometry(QuickTileMode mode, const QPointF &pos) const
 {
     Output *output = workspace()->outputAt(pos);
 
@@ -3452,7 +3452,7 @@ void Window::updateElectricGeometryRestore()
     }
 }
 
-QRectF Window::quickTileGeometryRestore() const
+BoxF Window::quickTileGeometryRestore() const
 {
     if (quickTileMode() != QuickTileMode(QuickTileFlag::None)) {
         // If the window is tiled, geometryRestore() already has a good value.
@@ -3597,8 +3597,8 @@ void Window::setQuickTileMode(QuickTileMode mode, const QPointF &tileAtPoint)
         setGeometryRestore(quickTileGeometryRestore());
     }
     if (mode == QuickTileMode(QuickTileFlag::None)) {
-        QRectF geometry = moveResizeGeometry();
-        if (geometryRestore().isValid()) {
+        BoxF geometry = moveResizeGeometry();
+        if (!geometryRestore().isEmpty()) {
             geometry = geometryRestore();
         }
         if (isInteractiveMove()) {
@@ -3687,9 +3687,9 @@ void Window::doSetHiddenByShowDesktop()
 {
 }
 
-QRectF Window::moveToArea(const QRectF &geometry, const QRectF &oldArea, const QRectF &newArea)
+BoxF Window::moveToArea(const BoxF &geometry, const BoxF &oldArea, const BoxF &newArea)
 {
-    QRectF ret = geometry;
+    BoxF ret = geometry;
     // move the window to have the same relative position to the center of the screen
     // (i.e. one near the middle of the right edge will also end up near the middle of the right edge)
     QPointF center = geometry.center() - oldArea.center();
@@ -3705,13 +3705,13 @@ QRectF Window::moveToArea(const QRectF &geometry, const QRectF &oldArea, const Q
     return ret;
 }
 
-QRectF Window::ensureSpecialStateGeometry(const QRectF &geometry)
+BoxF Window::ensureSpecialStateGeometry(const BoxF &geometry)
 {
     if (isRequestedFullScreen()) {
         return workspace()->clientArea(FullScreenArea, this, geometry.center());
     } else if (requestedMaximizeMode() != MaximizeRestore) {
-        const QRectF maximizeArea = workspace()->clientArea(MaximizeArea, this, geometry.center());
-        QRectF ret = geometry;
+        const BoxF maximizeArea = workspace()->clientArea(MaximizeArea, this, geometry.center());
+        BoxF ret = geometry;
         if (requestedMaximizeMode() & MaximizeHorizontal) {
             ret.setX(maximizeArea.x());
             ret.setWidth(maximizeArea.width());
@@ -3745,9 +3745,9 @@ void Window::sendToOutput(Output *newOutput)
         return;
     }
 
-    const QRectF oldGeom = moveResizeGeometry();
-    const QRectF oldScreenArea = workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
-    const QRectF screenArea = workspace()->clientArea(MaximizeArea, this, newOutput);
+    const BoxF oldGeom = moveResizeGeometry();
+    const BoxF oldScreenArea = workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
+    const BoxF screenArea = workspace()->clientArea(MaximizeArea, this, newOutput);
 
     if (requestedQuickTileMode() == QuickTileMode(QuickTileFlag::Custom)) {
         setTile(nullptr);
@@ -3756,7 +3756,7 @@ void Window::sendToOutput(Output *newOutput)
         setTile(newTile);
     }
 
-    QRectF newGeom = moveToArea(oldGeom, oldScreenArea, screenArea);
+    BoxF newGeom = moveToArea(oldGeom, oldScreenArea, screenArea);
     newGeom = ensureSpecialStateGeometry(newGeom);
     moveResize(newGeom);
 
@@ -3770,7 +3770,7 @@ void Window::sendToOutput(Output *newOutput)
     }
 }
 
-void Window::checkWorkspacePosition(QRectF oldGeometry, const VirtualDesktop *oldDesktop)
+void Window::checkWorkspacePosition(BoxF oldGeometry, const VirtualDesktop *oldDesktop)
 {
     if (isDeleted()) {
         qCWarning(KWIN_CORE) << "Window::checkWorkspacePosition: called for a closed window. Consider this a bug";
@@ -3780,9 +3780,9 @@ void Window::checkWorkspacePosition(QRectF oldGeometry, const VirtualDesktop *ol
         return;
     }
 
-    QRectF newGeom = moveResizeGeometry();
+    BoxF newGeom = moveResizeGeometry();
 
-    if (!oldGeometry.isValid()) {
+    if (oldGeometry.isEmpty()) {
         oldGeometry = newGeom;
     }
 
@@ -3810,8 +3810,8 @@ void Window::checkWorkspacePosition(QRectF oldGeometry, const VirtualDesktop *ol
         screenArea = newOutput->geometry();
         newGeom.translate(screenArea.topLeft() - oldScreenArea.topLeft());
     } else {
-        oldScreenArea = workspace()->clientArea(ScreenArea, workspace()->outputAt(oldGeometry.center()), oldDesktop).toRect();
-        screenArea = workspace()->clientArea(ScreenArea, this, newGeom.center()).toRect();
+        oldScreenArea = workspace()->clientArea(ScreenArea, workspace()->outputAt(oldGeometry.center()), oldDesktop).rounded();
+        screenArea = workspace()->clientArea(ScreenArea, this, newGeom.center()).rounded();
     }
 
     if (isRequestedFullScreen() || requestedMaximizeMode() != MaximizeRestore || quickTileMode() != QuickTileMode(QuickTileFlag::None)) {
@@ -3965,7 +3965,7 @@ void Window::checkWorkspacePosition(QRectF oldGeometry, const VirtualDesktop *ol
     moveResize(m_rules.checkGeometry(newGeom));
 }
 
-void Window::checkOffscreenPosition(QRectF *geom, const QRectF &screenArea)
+void Window::checkOffscreenPosition(BoxF *geom, const BoxF &screenArea)
 {
     if (geom->left() > screenArea.right()) {
         geom->moveLeft(screenArea.right() - screenArea.width() / 4);
@@ -4017,12 +4017,12 @@ QSizeF Window::constrainFrameSize(const QSizeF &size, SizeMode mode) const
     return clientSizeToFrameSize(constrainedClientSize);
 }
 
-QRectF Window::fullscreenGeometryRestore() const
+BoxF Window::fullscreenGeometryRestore() const
 {
     return m_fullscreenGeometryRestore;
 }
 
-void Window::setFullscreenGeometryRestore(const QRectF &geom)
+void Window::setFullscreenGeometryRestore(const BoxF &geom)
 {
     if (m_fullscreenGeometryRestore != geom) {
         m_fullscreenGeometryRestore = geom;
@@ -4124,7 +4124,7 @@ MaximizeMode Window::requestedMaximizeMode() const
 /**
  * Returns the geometry of the Window before it was maximized or quick tiled.
  */
-QRectF Window::geometryRestore() const
+BoxF Window::geometryRestore() const
 {
     return m_maximizeGeometryRestore;
 }
@@ -4132,7 +4132,7 @@ QRectF Window::geometryRestore() const
 /**
  * Sets the geometry of the Window before it was maximized or quick tiled to @p rect.
  */
-void Window::setGeometryRestore(const QRectF &rect)
+void Window::setGeometryRestore(const BoxF &rect)
 {
     if (m_maximizeGeometryRestore != rect) {
         m_maximizeGeometryRestore = rect;
@@ -4231,8 +4231,8 @@ void Window::applyWindowRules()
     // Placement - does need explicit update, just like some others below
     // Geometry : setGeometry() doesn't check rules
     auto client_rules = rules();
-    const QRectF oldGeometry = moveResizeGeometry();
-    const QRectF geometry = client_rules->checkGeometrySafe(oldGeometry);
+    const BoxF oldGeometry = moveResizeGeometry();
+    const BoxF geometry = client_rules->checkGeometrySafe(oldGeometry);
     if (geometry != oldGeometry) {
         moveResize(geometry);
     }

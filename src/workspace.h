@@ -14,6 +14,7 @@
 #pragma once
 
 // kwin
+#include "core/box.h"
 #include "options.h"
 #include "sm.h"
 #include "utils/common.h"
@@ -164,10 +165,10 @@ public:
      */
     Window *findInternal(QWindow *w) const;
 
-    QRectF clientArea(clientAreaOption, const Output *output, const VirtualDesktop *desktop) const;
-    QRectF clientArea(clientAreaOption, const Window *window) const;
-    QRectF clientArea(clientAreaOption, const Window *window, const Output *output) const;
-    QRectF clientArea(clientAreaOption, const Window *window, const QPointF &pos) const;
+    BoxF clientArea(clientAreaOption, const Output *output, const VirtualDesktop *desktop) const;
+    BoxF clientArea(clientAreaOption, const Window *window) const;
+    BoxF clientArea(clientAreaOption, const Window *window, const Output *output) const;
+    BoxF clientArea(clientAreaOption, const Window *window, const QPointF &pos) const;
 
     /**
      * Returns the geometry of this Workspace, i.e. the bounding rectangle of all outputs.
@@ -721,9 +722,9 @@ private:
 #if KWIN_BUILD_X11
     std::unique_ptr<KStartupInfo> m_startup;
 #endif
-    QHash<const VirtualDesktop *, QRectF> m_workAreas;
+    QHash<const VirtualDesktop *, BoxF> m_workAreas;
     QHash<const VirtualDesktop *, StrutRects> m_restrictedAreas;
-    QHash<const VirtualDesktop *, QHash<const Output *, QRectF>> m_screenAreas;
+    QHash<const VirtualDesktop *, QHash<const Output *, BoxF>> m_screenAreas;
     QRect m_geometry;
 
     QHash<const Output *, QRect> m_oldScreenGeometries;

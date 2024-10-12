@@ -94,8 +94,7 @@ void ShadeTest::testShadeGeometry()
     QVERIFY(window->isActive());
 
     // now shade the window
-    const QRectF geoBeforeShade = window->frameGeometry();
-    QVERIFY(geoBeforeShade.isValid());
+    const BoxF geoBeforeShade = window->frameGeometry();
     QVERIFY(!geoBeforeShade.isEmpty());
     workspace()->slotWindowShade();
     QVERIFY(window->isShade());

@@ -1361,7 +1361,7 @@ bool ScreenEdges::createEdgeForClient(Window *client, ElectricBorder border)
     int height = 0;
 
     Output *output = client->output();
-    const QRect geo = client->frameGeometry().toRect();
+    const QRect geo = client->frameGeometry().rounded();
     const QRect fullArea = workspace()->geometry();
 
     const QRect screen = output->geometry();

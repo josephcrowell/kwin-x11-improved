@@ -95,7 +95,7 @@ void PlasmaWindowTest::testCreateDestroyX11PlasmaWindow()
     // create an xcb window
     Test::XcbConnectionPtr c = Test::createX11Connection();
     QVERIFY(!xcb_connection_has_error(c.get()));
-    const QRect windowGeometry(0, 0, 100, 200);
+    const Box windowGeometry(0, 0, 100, 200);
     xcb_window_t windowId = xcb_generate_id(c.get());
     xcb_create_window(c.get(), XCB_COPY_FROM_PARENT, windowId, rootWindow(),
                       windowGeometry.x(),
@@ -132,27 +132,26 @@ void PlasmaWindowTest::testCreateDestroyX11PlasmaWindow()
     QCOMPARE(plasmaWindowCreatedSpy.count(), 1);
     QCOMPARE(m_windowManagement->windows().count(), 1);
     auto pw = m_windowManagement->windows().first();
-    QCOMPARE(pw->geometry(), window->frameGeometry());
+    QCOMPARE(BoxF(pw->geometry()), window->frameGeometry());
     QSignalSpy geometryChangedSpy(pw, &KWayland::Client::PlasmaWindow::geometryChanged);
 
     QSignalSpy unmappedSpy(m_windowManagement->windows().first(), &KWayland::Client::PlasmaWindow::unmapped);
     QSignalSpy destroyedSpy(m_windowManagement->windows().first(), &QObject::destroyed);
 
     // now shade the window
-    const QRectF geoBeforeShade = window->frameGeometry();
-    QVERIFY(geoBeforeShade.isValid());
+    const BoxF geoBeforeShade = window->frameGeometry();
     QVERIFY(!geoBeforeShade.isEmpty());
     workspace()->slotWindowShade();
     QVERIFY(window->isShade());
     QVERIFY(window->frameGeometry() != geoBeforeShade);
     QVERIFY(geometryChangedSpy.wait());
-    QCOMPARE(pw->geometry(), window->frameGeometry());
+    QCOMPARE(BoxF(pw->geometry()), window->frameGeometry());
     // and unshade again
     workspace()->slotWindowShade();
     QVERIFY(!window->isShade());
     QCOMPARE(window->frameGeometry(), geoBeforeShade);
     QVERIFY(geometryChangedSpy.wait());
-    QCOMPARE(pw->geometry(), geoBeforeShade);
+    QCOMPARE(BoxF(pw->geometry()), geoBeforeShade);
 
     // and destroy the window again
     xcb_unmap_window(c.get(), windowId);

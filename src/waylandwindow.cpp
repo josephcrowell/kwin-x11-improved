@@ -84,9 +84,9 @@ bool WaylandWindow::isLocalhost() const
     return true;
 }
 
-QRectF WaylandWindow::resizeWithChecks(const QRectF &geometry, const QSizeF &size)
+BoxF WaylandWindow::resizeWithChecks(const BoxF &geometry, const QSizeF &size)
 {
-    const QRectF area = workspace()->clientArea(WorkArea, this, geometry.center());
+    const BoxF area = workspace()->clientArea(WorkArea, this, geometry.center());
 
     qreal width = size.width();
     qreal height = size.height();
@@ -98,7 +98,7 @@ QRectF WaylandWindow::resizeWithChecks(const QRectF &geometry, const QSizeF &siz
     if (height > area.height()) {
         height = area.height();
     }
-    return QRectF(geometry.topLeft(), QSizeF(width, height));
+    return BoxF(geometry.topLeft(), QSizeF(width, height));
 }
 
 void WaylandWindow::killWindow()
@@ -152,7 +152,7 @@ void WaylandWindow::updateClientOutputs()
     if (isDeleted()) {
         return;
     }
-    const auto rect = frameGeometry().toAlignedRect();
+    const auto rect = frameGeometry().roundedOut();
     if (rect.isEmpty()) {
         return;
     }
@@ -225,16 +225,16 @@ void WaylandWindow::cleanGrouping()
     }
 }
 
-QRectF WaylandWindow::frameRectToBufferRect(const QRectF &rect) const
+BoxF WaylandWindow::frameRectToBufferRect(const BoxF &rect) const
 {
-    return QRectF(rect.topLeft(), surface()->size());
+    return BoxF(rect.topLeft(), surface()->size());
 }
 
-void WaylandWindow::updateGeometry(const QRectF &rect)
+void WaylandWindow::updateGeometry(const BoxF &rect)
 {
-    const QRectF oldClientGeometry = m_clientGeometry;
-    const QRectF oldFrameGeometry = m_frameGeometry;
-    const QRectF oldBufferGeometry = m_bufferGeometry;
+    const BoxF oldClientGeometry = m_clientGeometry;
+    const BoxF oldFrameGeometry = m_frameGeometry;
+    const BoxF oldBufferGeometry = m_bufferGeometry;
     const Output *oldOutput = m_output;
 
     m_clientGeometry = frameRectToClientRect(rect);

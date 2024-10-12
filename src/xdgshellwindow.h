@@ -43,7 +43,7 @@ public:
     };
     Q_DECLARE_FLAGS(ConfigureFlags, ConfigureFlag)
 
-    QRectF bounds;
+    BoxF bounds;
     Gravity gravity;
     qreal serial;
     ConfigureFlags flags;
@@ -58,13 +58,13 @@ public:
     ~XdgSurfaceWindow() override;
 
     WindowType windowType() const override;
-    QRectF frameRectToBufferRect(const QRectF &rect) const override;
+    BoxF frameRectToBufferRect(const BoxF &rect) const override;
     void destroyWindow() override;
 
     void installPlasmaShellSurface(PlasmaShellSurfaceInterface *shellSurface);
 
 protected:
-    void moveResizeInternal(const QRectF &rect, MoveResizeMode mode) override;
+    void moveResizeInternal(const BoxF &rect, MoveResizeMode mode) override;
 
     virtual XdgSurfaceConfigure *sendRoleConfigure() const = 0;
     virtual void handleRoleCommit();
@@ -87,7 +87,7 @@ private:
     bool haveNextWindowGeometry() const;
     void setHaveNextWindowGeometry();
     void resetHaveNextWindowGeometry();
-    void maybeUpdateMoveResizeGeometry(const QRectF &rect);
+    void maybeUpdateMoveResizeGeometry(const BoxF &rect);
 
     XdgSurfaceInterface *m_shellSurface;
     QTimer *m_configureTimer;
@@ -95,7 +95,7 @@ private:
     QQueue<XdgSurfaceConfigure *> m_configureEvents;
     std::unique_ptr<XdgSurfaceConfigure> m_lastAcknowledgedConfigure;
     std::optional<quint32> m_lastAcknowledgedConfigureSerial;
-    QRectF m_windowGeometry;
+    BoxF m_windowGeometry;
     bool m_haveNextWindowGeometry = false;
 };
 
@@ -154,7 +154,7 @@ public:
     bool dockWantsInput() const override;
     void setFullScreen(bool set) override;
     void closeWindow() override;
-    void maximize(MaximizeMode mode, const QRectF &restore = QRectF()) override;
+    void maximize(MaximizeMode mode, const BoxF &restore = BoxF()) override;
 
     void installAppMenu(AppMenuInterface *appMenu);
     void installServerDecoration(ServerSideDecorationInterface *decoration);
@@ -168,7 +168,7 @@ protected:
     void handleRolePrecommit() override;
     void handleRoleDestroyed() override;
     void doMinimize() override;
-    void doInteractiveResizeSync(const QRectF &rect) override;
+    void doInteractiveResizeSync(const BoxF &rect) override;
     void doSetActive() override;
     void doSetFullScreen();
     void doSetMaximized();
@@ -255,7 +255,7 @@ public:
     bool isMovable() const override;
     bool isMovableAcrossScreens() const override;
     bool hasTransientPlacementHint() const override;
-    QRectF transientPlacement() const override;
+    BoxF transientPlacement() const override;
     bool isCloseable() const override;
     void closeWindow() override;
     bool wantsInput() const override;
@@ -278,7 +278,7 @@ private:
 
     XdgPopupInterface *m_shellSurface;
     bool m_haveExplicitGrab = false;
-    QRectF m_relativePlacement;
+    BoxF m_relativePlacement;
 };
 
 } // namespace KWin

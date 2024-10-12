@@ -99,7 +99,7 @@ public:
     QPointF clientPosToFramePos(const QPointF &point) const override;
     QSizeF frameSizeToClientSize(const QSizeF &size) const override;
     QSizeF clientSizeToFrameSize(const QSizeF &size) const override;
-    QRectF frameRectToBufferRect(const QRectF &rect) const;
+    BoxF frameRectToBufferRect(const BoxF &rect) const;
     QSizeF implicitSize() const;
 
     void blockGeometryUpdates(bool block);
@@ -154,10 +154,10 @@ public:
     bool isShadeable() const override;
     bool isMaximizable() const override;
     MaximizeMode maximizeMode() const override;
-    void maximize(MaximizeMode mode, const QRectF &restore = QRectF()) override;
+    void maximize(MaximizeMode mode, const BoxF &restore = BoxF()) override;
 
     bool isMinimizable() const override;
-    QRectF iconGeometry() const override;
+    BoxF iconGeometry() const override;
 
     bool isFullScreenable() const override;
     void setFullScreen(bool set) override;
@@ -192,9 +192,9 @@ public:
     void updateShape();
 
     /// resizeWithChecks() resizes according to gravity, and checks workarea position
-    QRectF resizeWithChecks(const QRectF &geometry, const QSizeF &size) override;
-    QRectF resizeWithChecks(const QRectF &geometry, qreal w, qreal h, xcb_gravity_t gravity);
-    QRectF resizeWithChecks(const QRectF &geometry, const QSizeF &s, xcb_gravity_t gravity);
+    BoxF resizeWithChecks(const BoxF &geometry, const QSizeF &size) override;
+    BoxF resizeWithChecks(const BoxF &geometry, qreal w, qreal h, xcb_gravity_t gravity);
+    BoxF resizeWithChecks(const BoxF &geometry, const QSizeF &s, xcb_gravity_t gravity);
     QSizeF constrainClientSize(const QSizeF &size, SizeMode mode = SizeModeAny) const override;
 
     bool providesContextHelp() const override;
@@ -342,11 +342,11 @@ protected:
     bool belongsToDesktop() const override;
     bool doStartInteractiveMoveResize() override;
     bool isWaitingForInteractiveResizeSync() const override;
-    void doInteractiveResizeSync(const QRectF &rect) override;
+    void doInteractiveResizeSync(const BoxF &rect) override;
     QSizeF resizeIncrements() const override;
     bool acceptsFocus() const override;
     void doSetQuickTileMode() override;
-    void moveResizeInternal(const QRectF &rect, MoveResizeMode mode) override;
+    void moveResizeInternal(const BoxF &rect, MoveResizeMode mode) override;
     std::unique_ptr<WindowItem> createItem(Item *parentItem) override;
 
 Q_SIGNALS:
@@ -356,7 +356,7 @@ private:
     void exportMappingState(int s); // ICCCM 4.1.3.1, 4.1.4, NETWM 2.5.1
     bool isManaged() const; ///< Returns false if this client is not yet managed
     void updateAllowedActions(bool force = false);
-    QRect fullscreenMonitorsArea(NETFullscreenMonitors topology) const;
+    Box fullscreenMonitorsArea(NETFullscreenMonitors topology) const;
     void getResourceClass();
     void getWmNormalHints();
     void getWmClientMachine();
@@ -393,7 +393,7 @@ private:
     static void sendClientMessage(xcb_window_t w, xcb_atom_t a, xcb_atom_t protocol,
                                   uint32_t data1 = 0, uint32_t data2 = 0, uint32_t data3 = 0);
 
-    void embedClient(xcb_window_t w, xcb_visualid_t visualid, xcb_colormap_t colormap, const QRect &nativeGeometry, uint8_t depth);
+    void embedClient(xcb_window_t w, xcb_visualid_t visualid, xcb_colormap_t colormap, const Box &nativeGeometry, uint8_t depth);
     void detectNoBorder();
     void updateFrameExtents();
     void setClientFrameExtents(const NETStrut &strut);
@@ -406,7 +406,7 @@ private:
     void updateHiddenPreview();
 
     void updateInputShape();
-    void configure(const QRect &nativeFrame, const QRect &nativeWrapper, const QRect &nativeClient);
+    void configure(const Box &nativeFrame, const Box &nativeWrapper, const Box &nativeClient);
     void discardWindowPixmap();
     void updateWindowPixmap();
 
@@ -620,12 +620,12 @@ inline bool X11Window::isManaged() const
     return m_managed;
 }
 
-inline QRectF X11Window::resizeWithChecks(const QRectF &geometry, const QSizeF &s)
+inline BoxF X11Window::resizeWithChecks(const BoxF &geometry, const QSizeF &s)
 {
     return resizeWithChecks(geometry, s.width(), s.height(), XCB_GRAVITY_BIT_FORGET);
 }
 
-inline QRectF X11Window::resizeWithChecks(const QRectF &geometry, const QSizeF &s, xcb_gravity_t gravity)
+inline BoxF X11Window::resizeWithChecks(const BoxF &geometry, const QSizeF &s, xcb_gravity_t gravity)
 {
     return resizeWithChecks(geometry, s.width(), s.height(), gravity);
 }

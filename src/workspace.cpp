@@ -2326,9 +2326,9 @@ void Workspace::rearrange()
 
     const QList<VirtualDesktop *> desktops = VirtualDesktopManager::self()->desktops();
 
-    QHash<const VirtualDesktop *, QRectF> workAreas;
+    QHash<const VirtualDesktop *, BoxF> workAreas;
     QHash<const VirtualDesktop *, StrutRects> restrictedAreas;
-    QHash<const VirtualDesktop *, QHash<const Output *, QRectF>> screenAreas;
+    QHash<const VirtualDesktop *, QHash<const Output *, BoxF>> screenAreas;
 
     for (const VirtualDesktop *desktop : desktops) {
         workAreas[desktop] = m_geometry;
@@ -2342,11 +2342,11 @@ void Workspace::rearrange()
         if (!window->hasStrut()) {
             continue;
         }
-        QRectF r = adjustClientArea(window, m_geometry);
+        BoxF r = adjustClientArea(window, m_geometry);
 
         // This happens sometimes when the workspace size changes and the
         // struted windows haven't repositioned yet
-        if (!r.isValid()) {
+        if (r.isEmpty()) {
             continue;
         }
         // sanity check that a strut doesn't exclude a complete screen geometry
@@ -2407,7 +2407,7 @@ void Workspace::rearrange()
 #if KWIN_BUILD_X11
         if (rootInfo()) {
             for (VirtualDesktop *desktop : desktops) {
-                const QRectF &workArea = m_workAreas[desktop];
+                const BoxF &workArea = m_workAreas[desktop];
                 NETRect r(Xcb::toXNative(workArea));
                 rootInfo()->setWorkArea(desktop->x11DesktopNumber(), r);
             }
@@ -2430,7 +2430,7 @@ void Workspace::rearrange()
  * geometry minus windows on the dock. Placement algorithms should
  * refer to this rather than Screens::geometry.
  */
-QRectF Workspace::clientArea(clientAreaOption opt, const Output *output, const VirtualDesktop *desktop) const
+BoxF Workspace::clientArea(clientAreaOption opt, const Output *output, const VirtualDesktop *desktop) const
 {
     switch (opt) {
     case MaximizeArea:
@@ -2455,12 +2455,12 @@ QRectF Workspace::clientArea(clientAreaOption opt, const Output *output, const V
     }
 }
 
-QRectF Workspace::clientArea(clientAreaOption opt, const Window *window) const
+BoxF Workspace::clientArea(clientAreaOption opt, const Window *window) const
 {
     return clientArea(opt, window, window->output());
 }
 
-QRectF Workspace::clientArea(clientAreaOption opt, const Window *window, const Output *output) const
+BoxF Workspace::clientArea(clientAreaOption opt, const Window *window, const Output *output) const
 {
     const VirtualDesktop *desktop;
     if (window->isOnCurrentDesktop()) {
@@ -2471,7 +2471,7 @@ QRectF Workspace::clientArea(clientAreaOption opt, const Window *window, const O
     return clientArea(opt, output, desktop);
 }
 
-QRectF Workspace::clientArea(clientAreaOption opt, const Window *window, const QPointF &pos) const
+BoxF Workspace::clientArea(clientAreaOption opt, const Window *window, const QPointF &pos) const
 {
     return clientArea(opt, window, outputAt(pos));
 }

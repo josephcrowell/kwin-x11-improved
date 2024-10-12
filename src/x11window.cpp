@@ -820,10 +820,10 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
         setOnActivities(activitiesList);
     }
 
-    QRectF geom = session ? session->geometry : Xcb::fromXNative(windowGeometry.rect());
+    BoxF geom = session ? session->geometry : Xcb::fromXNative(windowGeometry.rect());
     bool placementDone = false;
 
-    QRectF area;
+    BoxF area;
     bool partial_keep_in_area = isMapped || session;
     if (isMapped || session) {
         area = workspace()->clientArea(FullArea, this, geom.center());
@@ -940,7 +940,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
             // Window is too large for the screen, maximize in the
             // directions necessary
             const QSizeF ss = workspace()->clientArea(ScreenArea, this, area.center()).size();
-            const QRectF fsa = workspace()->clientArea(FullArea, this, geom.center());
+            const BoxF fsa = workspace()->clientArea(FullArea, this, geom.center());
             const QSizeF cs = clientSize();
             int pseudo_max = ((info->state() & NET::MaxVert) ? MaximizeVertical : 0) | ((info->state() & NET::MaxHoriz) ? MaximizeHorizontal : 0);
             if (width() >= area.width()) {
@@ -972,7 +972,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
                 maximize((MaximizeMode)pseudo_max);
                 // from now on, care about maxmode, since the maximization call will override mode for fix aspects
                 dontKeepInArea |= (max_mode == MaximizeFull);
-                QRectF savedGeometry; // Use placement when unmaximizing ...
+                BoxF savedGeometry; // Use placement when unmaximizing ...
                 if (!(max_mode & MaximizeVertical)) {
                     savedGeometry.setY(y()); // ...but only for horizontal direction
                     savedGeometry.setHeight(height());
@@ -1044,10 +1044,10 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
             setFullScreen(true);
             setFullscreenGeometryRestore(session->fsrestore);
         }
-        QRectF checkedGeometryRestore = geometryRestore();
+        BoxF checkedGeometryRestore = geometryRestore();
         checkOffscreenPosition(&checkedGeometryRestore, area);
         setGeometryRestore(checkedGeometryRestore);
-        QRectF checkedFullscreenGeometryRestore = fullscreenGeometryRestore();
+        BoxF checkedFullscreenGeometryRestore = fullscreenGeometryRestore();
         checkOffscreenPosition(&checkedFullscreenGeometryRestore, area);
         setFullscreenGeometryRestore(checkedFullscreenGeometryRestore);
     } else {
@@ -1209,7 +1209,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
 }
 
 // Called only from manage()
-void X11Window::embedClient(xcb_window_t w, xcb_visualid_t visualid, xcb_colormap_t colormap, const QRect &nativeGeometry, uint8_t depth)
+void X11Window::embedClient(xcb_window_t w, xcb_visualid_t visualid, xcb_colormap_t colormap, const Box &nativeGeometry, uint8_t depth)
 {
     Q_ASSERT(m_client == XCB_WINDOW_NONE);
     Q_ASSERT(frameId() == XCB_WINDOW_NONE);
@@ -1327,7 +1327,7 @@ void X11Window::updateDecoration(bool check_workspace_pos, bool force)
     if (!force && ((!isDecorated() && noBorder()) || (isDecorated() && !noBorder()))) {
         return;
     }
-    QRectF oldgeom = moveResizeGeometry();
+    BoxF oldgeom = moveResizeGeometry();
     blockGeometryUpdates(true);
     if (force) {
         destroyDecoration();
@@ -1369,7 +1369,7 @@ void X11Window::createDecoration()
             if (isDeleted()) {
                 return;
             }
-            const QRectF oldGeometry = moveResizeGeometry();
+            const BoxF oldGeometry = moveResizeGeometry();
             if (!isShade()) {
                 checkWorkspacePosition(oldGeometry);
             }
@@ -1382,7 +1382,7 @@ void X11Window::createDecoration()
     }
     setDecoration(decoration);
 
-    moveResize(QRectF(calculateGravitation(false), clientSizeToFrameSize(clientSize())));
+    moveResize(BoxF(calculateGravitation(false), clientSizeToFrameSize(clientSize())));
     maybeCreateX11DecorationRenderer();
 }
 
@@ -1392,7 +1392,7 @@ void X11Window::destroyDecoration()
         QPointF grav = calculateGravitation(true);
         setDecoration(nullptr);
         maybeDestroyX11DecorationRenderer();
-        moveResize(QRectF(grav, clientSizeToFrameSize(clientSize())));
+        moveResize(BoxF(grav, clientSizeToFrameSize(clientSize())));
     }
     m_decoInputExtent.reset();
 }
@@ -1705,11 +1705,11 @@ void X11Window::doMinimize()
     workspace()->updateMinimizedOfTransients(this);
 }
 
-QRectF X11Window::iconGeometry() const
+BoxF X11Window::iconGeometry() const
 {
     NETRect r = info->iconGeometry();
-    QRectF geom = Xcb::fromXNative(QRect(r.pos.x, r.pos.y, r.size.width, r.size.height));
-    if (geom.isValid()) {
+    BoxF geom = Xcb::fromXNative(QRect(r.pos.x, r.pos.y, r.size.width, r.size.height));
+    if (!geom.isEmpty()) {
         return geom;
     } else {
         // Check all mainwindows of this window (recursively)
@@ -1720,7 +1720,7 @@ QRectF X11Window::iconGeometry() const
                 continue;
             }
             geom = mainwin->iconGeometry();
-            if (geom.isValid()) {
+            if (!geom.isEmpty()) {
                 return geom;
             }
         }
@@ -2899,7 +2899,7 @@ QSizeF X11Window::clientSizeToFrameSize(const QSizeF &size) const
     return QSizeF(width, height);
 }
 
-QRectF X11Window::frameRectToBufferRect(const QRectF &rect) const
+BoxF X11Window::frameRectToBufferRect(const BoxF &rect) const
 {
     if (!waylandServer() && isDecorated()) {
         return rect;
@@ -3857,12 +3857,12 @@ void X11Window::getWmNormalHints()
         // update to match restrictions
         QSizeF new_size = clientSizeToFrameSize(constrainClientSize(clientSize()));
         if (new_size != size() && !isFullScreen()) {
-            QRectF origClientGeometry = m_clientGeometry;
+            BoxF origClientGeometry = m_clientGeometry;
             moveResize(resizeWithChecks(moveResizeGeometry(), new_size));
             if ((!isSpecialWindow() || isToolbar()) && !isFullScreen()) {
                 // try to keep the window in its xinerama screen if possible,
                 // if that fails at least keep it visible somewhere
-                QRectF area = workspace()->clientArea(MovementArea, this, moveResizeOutput());
+                BoxF area = workspace()->clientArea(MovementArea, this, moveResizeOutput());
                 if (area.contains(origClientGeometry)) {
                     moveResize(keepInArea(moveResizeGeometry(), area));
                 }
@@ -4094,13 +4094,13 @@ void X11Window::configureRequest(int value_mask, qreal rx, qreal ry, qreal rw, q
         requestedFrameSize = rules()->checkSize(requestedFrameSize);
         new_pos = rules()->checkPosition(new_pos);
 
-        Output *newOutput = workspace()->outputAt(QRectF(new_pos, requestedFrameSize).center());
+        Output *newOutput = workspace()->outputAt(BoxF(new_pos, requestedFrameSize).center());
         if (newOutput != rules()->checkOutput(newOutput)) {
             return; // not allowed by rule
         }
 
-        QRectF geometry = QRectF(new_pos, requestedFrameSize);
-        const QRectF area = workspace()->clientArea(WorkArea, this, geometry.center());
+        BoxF geometry = BoxF(new_pos, requestedFrameSize);
+        const BoxF area = workspace()->clientArea(WorkArea, this, geometry.center());
         if (!from_tool && (!isSpecialWindow() || isToolbar()) && !isFullScreen() && area.contains(clientGeometry())) {
             geometry = keepInArea(geometry, area);
         }
@@ -4129,11 +4129,11 @@ void X11Window::configureRequest(int value_mask, qreal rx, qreal ry, qreal rw, q
         const QSizeF requestedFrameSize = rules()->checkSize(clientSizeToFrameSize(requestedClientSize));
 
         if (requestedFrameSize != size()) { // don't restore if some app sets its own size again
-            QRectF geometry = resizeWithChecks(moveResizeGeometry(), requestedFrameSize, xcb_gravity_t(gravity));
+            BoxF geometry = resizeWithChecks(moveResizeGeometry(), requestedFrameSize, xcb_gravity_t(gravity));
             if (!from_tool && (!isSpecialWindow() || isToolbar()) && !isFullScreen()) {
                 // try to keep the window in its xinerama screen if possible,
                 // if that fails at least keep it visible somewhere
-                QRectF area = workspace()->clientArea(MovementArea, this, geometry.center());
+                BoxF area = workspace()->clientArea(MovementArea, this, geometry.center());
                 if (area.contains(clientGeometry())) {
                     geometry = keepInArea(geometry, area);
                 }
@@ -4150,7 +4150,7 @@ void X11Window::configureRequest(int value_mask, qreal rx, qreal ry, qreal rw, q
     // Handling of the real ConfigureRequest event forces sending it, as there it's necessary.
 }
 
-QRectF X11Window::resizeWithChecks(const QRectF &geometry, qreal w, qreal h, xcb_gravity_t gravity)
+BoxF X11Window::resizeWithChecks(const BoxF &geometry, qreal w, qreal h, xcb_gravity_t gravity)
 {
     Q_ASSERT(!shade_geometry_change);
     if (isShade()) {
@@ -4160,7 +4160,7 @@ QRectF X11Window::resizeWithChecks(const QRectF &geometry, qreal w, qreal h, xcb
     }
     qreal newx = geometry.x();
     qreal newy = geometry.y();
-    QRectF area = workspace()->clientArea(WorkArea, this, geometry.center());
+    BoxF area = workspace()->clientArea(WorkArea, this, geometry.center());
     // don't allow growing larger than workarea
     if (w > area.width()) {
         w = area.width();
@@ -4210,7 +4210,7 @@ QRectF X11Window::resizeWithChecks(const QRectF &geometry, qreal w, qreal h, xcb
         newy = newy + geometry.height() - h;
         break;
     }
-    return QRectF{newx, newy, w, h};
+    return BoxF{newx, newy, w, h};
 }
 
 // _NET_MOVERESIZE_WINDOW
@@ -4339,7 +4339,7 @@ void X11Window::blockGeometryUpdates(bool block)
 /**
  * Reimplemented to inform the client about the new window position.
  */
-void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
+void X11Window::moveResizeInternal(const BoxF &rect, MoveResizeMode mode)
 {
     // Ok, the shading geometry stuff. Generally, code doesn't care about shaded geometry,
     // simply because there are too many places dealing with geometry. Those places
@@ -4357,8 +4357,8 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
         return;
     }
 
-    QRectF frameGeometry = Xcb::fromXNative(Xcb::toXNative(rect));
-    QRectF clientGeometry = m_clientGeometry;
+    BoxF frameGeometry = Xcb::fromXNative(Xcb::toXNative(rect));
+    BoxF clientGeometry = m_clientGeometry;
     if (shade_geometry_change) {
         ; // nothing
     } else if (isShade()) {
@@ -4371,7 +4371,7 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
     } else {
         clientGeometry = frameRectToClientRect(frameGeometry);
     }
-    const QRectF bufferGeometry = frameRectToBufferRect(frameGeometry);
+    const BoxF bufferGeometry = frameRectToBufferRect(frameGeometry);
     const qreal bufferScale = kwinApp()->xwaylandScale();
 
     if (m_bufferGeometry == bufferGeometry && m_clientGeometry == clientGeometry && m_frameGeometry == frameGeometry && m_bufferScale == bufferScale) {
@@ -4380,9 +4380,9 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
 
     Q_EMIT frameGeometryAboutToChange();
 
-    const QRectF oldBufferGeometry = m_bufferGeometry;
-    const QRectF oldFrameGeometry = m_frameGeometry;
-    const QRectF oldClientGeometry = m_clientGeometry;
+    const BoxF oldBufferGeometry = m_bufferGeometry;
+    const BoxF oldFrameGeometry = m_frameGeometry;
+    const BoxF oldClientGeometry = m_clientGeometry;
     const Output *oldOutput = m_output;
 
     m_frameGeometry = frameGeometry;
@@ -4392,9 +4392,9 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
     m_output = workspace()->outputAt(frameGeometry.center());
 
     if (!areGeometryUpdatesBlocked()) {
-        const QRect nativeFrameGeometry = Xcb::toXNative(m_bufferGeometry);
-        const QRect nativeWrapperGeometry = Xcb::toXNative(m_clientGeometry.translated(-m_bufferGeometry.topLeft()));
-        const QRect nativeClientGeometry = QRect(0, 0, nativeWrapperGeometry.width(), nativeWrapperGeometry.height());
+        const Box nativeFrameGeometry = Xcb::toXNative(m_bufferGeometry);
+        const Box nativeWrapperGeometry = Xcb::toXNative(m_clientGeometry.translated(-m_bufferGeometry.topLeft()));
+        const Box nativeClientGeometry = Box(0, 0, nativeWrapperGeometry.width(), nativeWrapperGeometry.height());
         configure(nativeFrameGeometry, nativeWrapperGeometry, nativeClientGeometry);
     }
 
@@ -4420,7 +4420,7 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
     Q_EMIT shapeChanged();
 }
 
-void X11Window::configure(const QRect &nativeFrame, const QRect &nativeWrapper, const QRect &nativeClient)
+void X11Window::configure(const Box &nativeFrame, const Box &nativeWrapper, const Box &nativeClient)
 {
     if (m_frame.size() != nativeFrame.size() || m_wrapper.geometry() != nativeWrapper) {
         if (m_frame.geometry() != nativeFrame) {
@@ -4462,7 +4462,7 @@ void X11Window::configure(const QRect &nativeFrame, const QRect &nativeWrapper, 
 }
 
 static bool changeMaximizeRecursion = false;
-void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
+void X11Window::maximize(MaximizeMode mode, const BoxF &restore)
 {
     if (isUnmanaged()) {
         qCWarning(KWIN_CORE) << "Cannot change maximized state of unmanaged window" << this;
@@ -4480,7 +4480,7 @@ void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
         return;
     }
 
-    QRectF clientArea;
+    BoxF clientArea;
     if (isElectricBorderMaximizing()) {
         clientArea = workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeAnchor());
     } else {
@@ -4514,11 +4514,11 @@ void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
         sz = size();
     }
 
-    if (!restore.isNull()) {
+    if (!restore.isEmpty()) {
         setGeometryRestore(restore);
     } else {
         if (quickTileMode() == QuickTileMode(QuickTileFlag::None)) {
-            QRectF savedGeometry = geometryRestore();
+            BoxF savedGeometry = geometryRestore();
             if (!(old_mode & MaximizeVertical)) {
                 savedGeometry.setTop(y());
                 savedGeometry.setHeight(sz.height());
@@ -4577,11 +4577,11 @@ void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
                 resize(QSizeF(constraintedSize.width(), clientArea.height()));
                 workspace()->placement()->placeSmart(this, clientArea);
             } else {
-                moveResize(QRectF(QPointF(geometryRestore().x(), clientArea.top()),
-                                  QSize(geometryRestore().width(), clientArea.height())));
+                moveResize(BoxF(QPointF(geometryRestore().x(), clientArea.top()),
+                                QSize(geometryRestore().width(), clientArea.height())));
             }
         } else {
-            moveResize(QRectF(x(), clientArea.top(), width(), clientArea.height()));
+            moveResize(BoxF(x(), clientArea.top(), width(), clientArea.height()));
         }
         info->setState(NET::MaxVert, NET::Max);
         break;
@@ -4595,18 +4595,18 @@ void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
                 resize(QSizeF(clientArea.width(), constraintedSize.height()));
                 workspace()->placement()->placeSmart(this, clientArea);
             } else {
-                moveResize(QRectF(QPoint(clientArea.left(), geometryRestore().y()),
-                                  QSize(clientArea.width(), geometryRestore().height())));
+                moveResize(BoxF(QPoint(clientArea.left(), geometryRestore().y()),
+                                QSize(clientArea.width(), geometryRestore().height())));
             }
         } else {
-            moveResize(QRectF(clientArea.left(), y(), clientArea.width(), height()));
+            moveResize(BoxF(clientArea.left(), y(), clientArea.width(), height()));
         }
         info->setState(NET::MaxHoriz, NET::Max);
         break;
     }
 
     case MaximizeRestore: {
-        QRectF restore = moveResizeGeometry();
+        BoxF restore = moveResizeGeometry();
         // when only partially maximized, geom_restore may not have the other dimension remembered
         if (old_mode & MaximizeVertical) {
             restore.setTop(geometryRestore().top());
@@ -4616,7 +4616,7 @@ void X11Window::maximize(MaximizeMode mode, const QRectF &restore)
             restore.setLeft(geometryRestore().left());
             restore.setRight(geometryRestore().right());
         }
-        if (!restore.isValid()) {
+        if (restore.isEmpty()) {
             QSize s = QSize(clientArea.width() * 2 / 3, clientArea.height() * 2 / 3);
             if (geometryRestore().width() > 0) {
                 s.setWidth(geometryRestore().width());
@@ -4715,8 +4715,8 @@ void X11Window::setFullScreen(bool set)
             moveResize(workspace()->clientArea(FullScreenArea, this, moveResizeOutput()));
         }
     } else {
-        Q_ASSERT(!fullscreenGeometryRestore().isNull());
-        moveResize(QRectF(fullscreenGeometryRestore().topLeft(), constrainFrameSize(fullscreenGeometryRestore().size())));
+        Q_ASSERT(!fullscreenGeometryRestore().isEmpty());
+        moveResize(BoxF(fullscreenGeometryRestore().topLeft(), constrainFrameSize(fullscreenGeometryRestore().size())));
     }
 
     updateWindowRules(Rules::Fullscreen | Rules::Position | Rules::Size);
@@ -4747,9 +4747,9 @@ void X11Window::updateFullscreenMonitors(NETFullscreenMonitors topology)
  * Calculates the bounding rectangle defined by the 4 monitor indices indicating the
  * top, bottom, left, and right edges of the window when the fullscreen state is enabled.
  */
-QRect X11Window::fullscreenMonitorsArea(NETFullscreenMonitors requestedTopology) const
+Box X11Window::fullscreenMonitorsArea(NETFullscreenMonitors requestedTopology) const
 {
-    QRect total;
+    Box total;
 
     if (auto output = workspace()->xineramaIndexToOutput(requestedTopology.top)) {
         total = total.united(output->geometry());
@@ -4774,7 +4774,7 @@ bool X11Window::doStartInteractiveMoveResize()
         // This reportedly improves smoothness of the moveresize operation,
         // something with Enter/LeaveNotify events, looks like XFree performance problem or something *shrug*
         // (https://lists.kde.org/?t=107302193400001&r=1&w=2)
-        QRectF r = workspace()->clientArea(FullArea, this, moveResizeOutput());
+        BoxF r = workspace()->clientArea(FullArea, this, moveResizeOutput());
         m_moveResizeGrabWindow.create(Xcb::toXNative(r), XCB_WINDOW_CLASS_INPUT_ONLY, 0, nullptr, kwinApp()->x11RootWindow());
         m_moveResizeGrabWindow.map();
         m_moveResizeGrabWindow.raise();
@@ -4815,15 +4815,15 @@ bool X11Window::isWaitingForInteractiveResizeSync() const
     return m_syncRequest.isPending && m_syncRequest.interactiveResize;
 }
 
-void X11Window::doInteractiveResizeSync(const QRectF &rect)
+void X11Window::doInteractiveResizeSync(const BoxF &rect)
 {
-    const QRectF moveResizeFrameGeometry = Xcb::fromXNative(Xcb::toXNative(rect));
-    const QRectF moveResizeClientGeometry = frameRectToClientRect(moveResizeFrameGeometry);
-    const QRectF moveResizeBufferGeometry = frameRectToBufferRect(moveResizeFrameGeometry);
+    const BoxF moveResizeFrameGeometry = Xcb::fromXNative(Xcb::toXNative(rect));
+    const BoxF moveResizeClientGeometry = frameRectToClientRect(moveResizeFrameGeometry);
+    const BoxF moveResizeBufferGeometry = frameRectToBufferRect(moveResizeFrameGeometry);
 
     const QRect nativeFrameGeometry = Xcb::toXNative(moveResizeBufferGeometry);
     const QRect nativeWrapperGeometry = Xcb::toXNative(moveResizeClientGeometry.translated(-moveResizeBufferGeometry.topLeft()));
-    const QRect nativeClientGeometry = Xcb::toXNative(QRectF(QPointF(0, 0), moveResizeClientGeometry.size()));
+    const QRect nativeClientGeometry = Xcb::toXNative(BoxF(QPointF(0, 0), moveResizeClientGeometry.size()));
 
     if (m_frame.geometry() == nativeFrameGeometry && m_wrapper.geometry() == nativeWrapperGeometry && m_client.geometry() == nativeClientGeometry) {
         return;

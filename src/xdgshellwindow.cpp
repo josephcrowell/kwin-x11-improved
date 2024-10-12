@@ -170,7 +170,7 @@ void XdgSurfaceWindow::handleRoleCommit()
 {
 }
 
-void XdgSurfaceWindow::maybeUpdateMoveResizeGeometry(const QRectF &rect)
+void XdgSurfaceWindow::maybeUpdateMoveResizeGeometry(const BoxF &rect)
 {
     // We are about to send a configure event, ignore the committed window geometry.
     if (m_configureTimer->isActive()) {
@@ -191,7 +191,7 @@ void XdgSurfaceWindow::maybeUpdateMoveResizeGeometry(const QRectF &rect)
 
 void XdgSurfaceWindow::handleNextWindowGeometry()
 {
-    const QRectF boundingGeometry = surface()->boundingRect();
+    const BoxF boundingGeometry = surface()->boundingRect();
 
     // The effective window geometry is defined as the intersection of the window geometry
     // and the rectangle that bounds the main surface and all of its sub-surfaces. If the
@@ -200,7 +200,7 @@ void XdgSurfaceWindow::handleNextWindowGeometry()
     // window geometry.
 
     m_windowGeometry = m_shellSurface->windowGeometry();
-    if (m_windowGeometry.isValid()) {
+    if (!m_windowGeometry.isEmpty()) {
         m_windowGeometry &= boundingGeometry;
     } else {
         m_windowGeometry = boundingGeometry;
@@ -210,7 +210,7 @@ void XdgSurfaceWindow::handleNextWindowGeometry()
         qCWarning(KWIN_CORE) << "Committed empty window geometry, dealing with a buggy client!";
     }
 
-    QRectF frameGeometry(pos(), clientSizeToFrameSize(m_windowGeometry.size()));
+    BoxF frameGeometry(pos(), clientSizeToFrameSize(m_windowGeometry.size()));
     if (const XdgSurfaceConfigure *configureEvent = lastAcknowledgedConfigure()) {
         if (configureEvent->flags & XdgSurfaceConfigure::ConfigurePosition) {
             frameGeometry = gravitateGeometry(frameGeometry, configureEvent->bounds, configureEvent->gravity);
@@ -249,7 +249,7 @@ void XdgSurfaceWindow::resetHaveNextWindowGeometry()
     m_haveNextWindowGeometry = false;
 }
 
-void XdgSurfaceWindow::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
+void XdgSurfaceWindow::moveResizeInternal(const BoxF &rect, MoveResizeMode mode)
 {
     Q_EMIT frameGeometryAboutToChange();
 
@@ -267,15 +267,15 @@ void XdgSurfaceWindow::moveResizeInternal(const QRectF &rect, MoveResizeMode mod
             configureEvent->flags.setFlag(XdgSurfaceConfigure::ConfigurePosition, false);
         }
         m_configureFlags.setFlag(XdgSurfaceConfigure::ConfigurePosition, false);
-        updateGeometry(QRectF(rect.topLeft(), size()));
+        updateGeometry(BoxF(rect.topLeft(), size()));
     }
 }
 
-QRectF XdgSurfaceWindow::frameRectToBufferRect(const QRectF &rect) const
+BoxF XdgSurfaceWindow::frameRectToBufferRect(const BoxF &rect) const
 {
     const qreal left = rect.left() + borderLeft() - m_windowGeometry.left();
     const qreal top = rect.top() + borderTop() - m_windowGeometry.top();
-    return QRectF(QPoint(left, top), surface()->size());
+    return BoxF(QPoint(left, top), surface()->size());
 }
 
 void XdgSurfaceWindow::handleRoleDestroyed()
@@ -752,7 +752,7 @@ void XdgToplevelWindow::doMinimize()
     workspace()->updateMinimizedOfTransients(this);
 }
 
-void XdgToplevelWindow::doInteractiveResizeSync(const QRectF &rect)
+void XdgToplevelWindow::doInteractiveResizeSync(const BoxF &rect)
 {
     moveResize(rect);
 }
@@ -1304,7 +1304,7 @@ void XdgToplevelWindow::initialize()
         needsPlacement = false;
     }
     if (needsPlacement) {
-        const QRectF area = workspace()->clientArea(PlacementArea, this, workspace()->activeOutput());
+        const BoxF area = workspace()->clientArea(PlacementArea, this, workspace()->activeOutput());
         workspace()->placement()->place(this, area);
     }
 
@@ -1545,13 +1545,13 @@ void XdgToplevelWindow::setFullScreen(bool set)
         moveResize(workspace()->clientArea(FullScreenArea, this, output));
     } else {
         m_fullScreenRequestedOutput.clear();
-        if (fullscreenGeometryRestore().isValid()) {
-            moveResize(QRectF(fullscreenGeometryRestore().topLeft(),
-                              constrainFrameSize(fullscreenGeometryRestore().size())));
+        if (!fullscreenGeometryRestore().isEmpty()) {
+            moveResize(BoxF(fullscreenGeometryRestore().topLeft(),
+                            constrainFrameSize(fullscreenGeometryRestore().size())));
         } else {
             // this can happen when the window was first shown already fullscreen,
             // so let the client set the size by itself
-            moveResize(QRectF(workspace()->clientArea(PlacementArea, this).topLeft(), QSize(0, 0)));
+            moveResize(BoxF(workspace()->clientArea(PlacementArea, this).topLeft(), QSize(0, 0)));
         }
     }
 
@@ -1559,7 +1559,7 @@ void XdgToplevelWindow::setFullScreen(bool set)
 }
 
 static bool changeMaximizeRecursion = false;
-void XdgToplevelWindow::maximize(MaximizeMode mode, const QRectF &restore)
+void XdgToplevelWindow::maximize(MaximizeMode mode, const BoxF &restore)
 {
     if (changeMaximizeRecursion) {
         return;
@@ -1569,10 +1569,10 @@ void XdgToplevelWindow::maximize(MaximizeMode mode, const QRectF &restore)
         return;
     }
 
-    const QRectF clientArea = isElectricBorderMaximizing() ? workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeAnchor()) : workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
+    const BoxF clientArea = isElectricBorderMaximizing() ? workspace()->clientArea(MaximizeArea, this, interactiveMoveResizeAnchor()) : workspace()->clientArea(MaximizeArea, this, moveResizeOutput());
 
     const MaximizeMode oldMode = m_requestedMaximizeMode;
-    const QRectF oldGeometry = moveResizeGeometry();
+    const BoxF oldGeometry = moveResizeGeometry();
 
     mode = rules()->checkMaximize(mode);
     if (m_requestedMaximizeMode == mode) {
@@ -1602,11 +1602,11 @@ void XdgToplevelWindow::maximize(MaximizeMode mode, const QRectF &restore)
         setNoBorder(m_requestedMaximizeMode == MaximizeFull);
     }
 
-    if (!restore.isNull()) {
+    if (!restore.isEmpty()) {
         setGeometryRestore(restore);
     } else {
         if (requestedQuickTileMode() == QuickTileMode(QuickTileFlag::None)) {
-            QRectF savedGeometry = geometryRestore();
+            BoxF savedGeometry = geometryRestore();
             if (!(oldMode & MaximizeVertical)) {
                 savedGeometry.setTop(oldGeometry.top());
                 savedGeometry.setBottom(oldGeometry.bottom());
@@ -1619,14 +1619,14 @@ void XdgToplevelWindow::maximize(MaximizeMode mode, const QRectF &restore)
         }
     }
 
-    QRectF geometry = oldGeometry;
+    BoxF geometry = oldGeometry;
 
     if (m_requestedMaximizeMode & MaximizeHorizontal) {
         // Stretch the window vertically to fit the size of the maximize area.
         geometry.setX(clientArea.x());
         geometry.setWidth(clientArea.width());
     } else if (oldMode & MaximizeHorizontal) {
-        if (geometryRestore().isValid()) {
+        if (!geometryRestore().isEmpty()) {
             // The window is no longer maximized horizontally and the saved geometry is valid.
             geometry.setX(geometryRestore().x());
             geometry.setWidth(geometryRestore().width());
@@ -1644,7 +1644,7 @@ void XdgToplevelWindow::maximize(MaximizeMode mode, const QRectF &restore)
         geometry.setY(clientArea.y());
         geometry.setHeight(clientArea.height());
     } else if (oldMode & MaximizeVertical) {
-        if (geometryRestore().isValid()) {
+        if (!geometryRestore().isEmpty()) {
             // The window is no longer maximized vertically and the saved geometry is valid.
             geometry.setY(geometryRestore().y());
             geometry.setHeight(geometryRestore().height());
@@ -1704,11 +1704,11 @@ void XdgPopupWindow::handleRepositionRequested(quint32 token)
 void XdgPopupWindow::updateRelativePlacement()
 {
     const QPointF parentPosition = transientFor()->framePosToClientPos(transientFor()->pos());
-    const QRectF bounds = workspace()->clientArea(transientFor()->isFullScreen() ? FullScreenArea : PlacementArea, transientFor()).translated(-parentPosition);
+    const BoxF bounds = workspace()->clientArea(transientFor()->isFullScreen() ? FullScreenArea : PlacementArea, transientFor()).translated(-parentPosition);
     const XdgPositioner positioner = m_shellSurface->positioner();
 
     if (m_plasmaShellSurface && m_plasmaShellSurface->isPositionSet()) {
-        m_relativePlacement = QRectF(m_plasmaShellSurface->position(), positioner.size()).translated(-parentPosition);
+        m_relativePlacement = BoxF(m_plasmaShellSurface->position(), positioner.size()).translated(-parentPosition);
     } else {
         m_relativePlacement = positioner.placement(bounds);
     }
@@ -1719,7 +1719,7 @@ void XdgPopupWindow::relayout()
     if (m_shellSurface->positioner().isReactive()) {
         updateRelativePlacement();
     }
-    workspace()->placement()->place(this, QRectF());
+    workspace()->placement()->place(this, BoxF());
     scheduleConfigure();
 }
 
@@ -1768,7 +1768,7 @@ bool XdgPopupWindow::hasTransientPlacementHint() const
     return true;
 }
 
-QRectF XdgPopupWindow::transientPlacement() const
+BoxF XdgPopupWindow::transientPlacement() const
 {
     const QPointF parentPosition = transientFor()->framePosToClientPos(transientFor()->pos());
     return m_relativePlacement.translated(parentPosition);
@@ -1804,7 +1804,7 @@ XdgSurfaceConfigure *XdgPopupWindow::sendRoleConfigure() const
     surface()->setPreferredBufferTransform(preferredBufferTransform());
     surface()->setPreferredColorDescription(preferredColorDescription());
 
-    const quint32 serial = m_shellSurface->sendConfigure(m_relativePlacement.toRect());
+    const quint32 serial = m_shellSurface->sendConfigure(m_relativePlacement.rounded());
 
     XdgSurfaceConfigure *configureEvent = new XdgSurfaceConfigure();
     configureEvent->bounds = moveResizeGeometry();
@@ -1832,7 +1832,7 @@ void XdgPopupWindow::initialize()
     connect(parent, &Window::frameGeometryChanged, this, &XdgPopupWindow::relayout);
     connect(parent, &Window::closed, this, &XdgPopupWindow::destroyWindow);
 
-    workspace()->placement()->place(this, QRectF());
+    workspace()->placement()->place(this, BoxF());
     scheduleConfigure();
 }
 

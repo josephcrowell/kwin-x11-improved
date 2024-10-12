@@ -591,11 +591,11 @@ bool Placement::placeOnMainWindow(Window *c, const QRect &area, PlacementPolicy 
         return place(c, area, PlacementCentered);
     }
 
-    QRectF geom(QPointF(0, 0), size);
+    BoxF geom(QPointF(0, 0), size);
     geom.moveCenter(place_on->frameGeometry().center().toPoint());
 
     // get area again, because the mainwindow may be on different xinerama screen
-    const QRect placementArea = workspace()->clientArea(PlacementArea, c, geom.center()).toRect();
+    const Box placementArea = workspace()->clientArea(PlacementArea, c, geom.center()).rounded();
     c->move(c->keepInArea(geom, placementArea).topLeft()); // make sure it's kept inside workarea
 
     return true;
@@ -675,7 +675,7 @@ void Placement::cascadeDesktop()
         if (!window->isClient() || (!window->isOnCurrentDesktop()) || (window->isMinimized()) || (window->isOnAllDesktops()) || (!window->isMovable())) {
             continue;
         }
-        const QRect placementArea = workspace()->clientArea(PlacementArea, window).toRect();
+        const Box placementArea = workspace()->clientArea(PlacementArea, window).rounded();
         placeCascaded(window, placementArea);
     }
 }
@@ -691,7 +691,7 @@ void Placement::unclutterDesktop()
         if ((!window->isOnCurrentDesktop()) || (window->isMinimized()) || (window->isOnAllDesktops()) || (!window->isMovable())) {
             continue;
         }
-        const QRect placementArea = workspace()->clientArea(PlacementArea, window).toRect();
+        const BoxF placementArea = workspace()->clientArea(PlacementArea, window).rounded();
         placeSmart(window, placementArea);
     }
 }

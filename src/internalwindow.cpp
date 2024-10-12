@@ -240,16 +240,16 @@ bool InternalWindow::isOutline() const
     return false;
 }
 
-QRectF InternalWindow::resizeWithChecks(const QRectF &geometry, const QSizeF &size)
+BoxF InternalWindow::resizeWithChecks(const BoxF &geometry, const QSizeF &size)
 {
     if (!m_handle) {
         return geometry;
     }
-    const QRectF area = workspace()->clientArea(WorkArea, this, geometry.center());
-    return QRectF(moveResizeGeometry().topLeft(), size.boundedTo(area.size()));
+    const BoxF area = workspace()->clientArea(WorkArea, this, geometry.center());
+    return BoxF(moveResizeGeometry().topLeft(), size.boundedTo(area.size()));
 }
 
-void InternalWindow::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
+void InternalWindow::moveResizeInternal(const BoxF &rect, MoveResizeMode mode)
 {
     const QSizeF requestedClientSize = frameSizeToClientSize(rect.size());
     if (clientSize() == requestedClientSize) {
@@ -276,10 +276,10 @@ void InternalWindow::setNoBorder(bool set)
     updateDecoration(true);
 }
 
-void InternalWindow::createDecoration(const QRectF &oldGeometry)
+void InternalWindow::createDecoration(const BoxF &oldGeometry)
 {
     setDecoration(std::shared_ptr<KDecoration2::Decoration>(Workspace::self()->decorationBridge()->createDecoration(this)));
-    moveResize(QRectF(oldGeometry.topLeft(), clientSizeToFrameSize(clientSize())));
+    moveResize(BoxF(oldGeometry.topLeft(), clientSizeToFrameSize(clientSize())));
 }
 
 void InternalWindow::destroyDecoration()
@@ -295,7 +295,7 @@ void InternalWindow::updateDecoration(bool check_workspace_pos, bool force)
         return;
     }
 
-    const QRectF oldFrameGeometry = frameGeometry();
+    const BoxF oldFrameGeometry = frameGeometry();
     if (force) {
         destroyDecoration();
     }
@@ -362,7 +362,7 @@ GraphicsBufferOrigin InternalWindow::graphicsBufferOrigin() const
 void InternalWindow::present(const InternalWindowFrame &frame)
 {
     const QSize bufferSize = frame.buffer->size() / bufferScale();
-    QRectF geometry(pos(), clientSizeToFrameSize(bufferSize));
+    BoxF geometry(pos(), clientSizeToFrameSize(bufferSize));
     if (isInteractiveResize()) {
         geometry = gravitateGeometry(geometry, moveResizeGeometry(), interactiveMoveResizeGravity());
     }
@@ -398,7 +398,7 @@ bool InternalWindow::belongsToSameApplication(const Window *other, SameApplicati
     return otherInternal->handle()->isAncestorOf(handle()) || handle()->isAncestorOf(otherInternal->handle());
 }
 
-void InternalWindow::doInteractiveResizeSync(const QRectF &rect)
+void InternalWindow::doInteractiveResizeSync(const BoxF &rect)
 {
     moveResize(rect);
 }
@@ -412,18 +412,18 @@ void InternalWindow::updateCaption()
     }
 }
 
-void InternalWindow::requestGeometry(const QRectF &rect)
+void InternalWindow::requestGeometry(const BoxF &rect)
 {
     if (m_handle) {
-        m_handle->setGeometry(frameRectToClientRect(rect).toRect());
+        m_handle->setGeometry(frameRectToClientRect(rect).rounded());
     }
 }
 
-void InternalWindow::commitGeometry(const QRectF &rect)
+void InternalWindow::commitGeometry(const BoxF &rect)
 {
     // The client geometry and the buffer geometry are the same.
-    const QRectF oldClientGeometry = m_clientGeometry;
-    const QRectF oldFrameGeometry = m_frameGeometry;
+    const BoxF oldClientGeometry = m_clientGeometry;
+    const BoxF oldFrameGeometry = m_frameGeometry;
     const Output *oldOutput = m_output;
 
     Q_EMIT frameGeometryAboutToChange();
@@ -473,7 +473,7 @@ void InternalWindow::markAsMapped()
 
 void InternalWindow::syncGeometryToInternalWindow()
 {
-    if (m_handle->geometry() == frameRectToClientRect(frameGeometry())) {
+    if (frameRectToClientRect(frameGeometry()) == m_handle->geometry()) {
         return;
     }
 
@@ -485,7 +485,7 @@ void InternalWindow::syncGeometryToInternalWindow()
 void InternalWindow::updateInternalWindowGeometry()
 {
     if (!isInteractiveMoveResize()) {
-        const QRectF rect = clientRectToFrameRect(m_handle->geometry());
+        const BoxF rect = clientRectToFrameRect(m_handle->geometry());
         setMoveResizeGeometry(rect);
         commitGeometry(rect);
     }

@@ -71,7 +71,7 @@ public:
         return true;
     }
     WindowType windowType() const override;
-    QRectF frameRectToBufferRect(const QRectF &rect) const override;
+    BoxF frameRectToBufferRect(const BoxF &rect) const override;
 
     Mode mode() const
     {
@@ -82,7 +82,7 @@ public:
     void hide();
 
 protected:
-    void moveResizeInternal(const QRectF &rect, MoveResizeMode mode) override;
+    void moveResizeInternal(const BoxF &rect, MoveResizeMode mode) override;
     void doSetPreferredBufferScale() override;
     void doSetPreferredBufferTransform() override;
     void doSetPreferredColorDescription() override;
@@ -95,7 +95,7 @@ private:
     void handleMapped();
     void maybeShow();
 
-    QRectF m_windowGeometry;
+    BoxF m_windowGeometry;
     Mode m_mode = Mode::None;
     bool m_allowed = false;
     bool m_virtualKeyboardShouldBeShown = false;

@@ -129,7 +129,7 @@ void XWaylandInputTest::testPointerEnterLeaveSsd()
     QSignalSpy leftSpy(&eventReader, &X11EventReaderHelper::left);
 
     xcb_window_t windowId = xcb_generate_id(c.get());
-    const QRect windowGeometry = QRect(0, 0, 100, 200);
+    const Box windowGeometry = Box(0, 0, 100, 200);
     const uint32_t values[] = {
         XCB_EVENT_MASK_ENTER_WINDOW | XCB_EVENT_MASK_LEAVE_WINDOW};
     xcb_create_window(c.get(), XCB_COPY_FROM_PARENT, windowId, rootWindow(),
@@ -241,8 +241,8 @@ void XWaylandInputTest::testPointerEventLeaveCsd()
     QVERIFY(window);
     QVERIFY(!window->isDecorated());
     QVERIFY(window->isClientSideDecorated());
-    QCOMPARE(window->bufferGeometry(), QRectF(0, 0, 120, 225));
-    QCOMPARE(window->frameGeometry(), QRectF(10, 5, 100, 200));
+    QCOMPARE(window->bufferGeometry(), BoxF(0, 0, 120, 225));
+    QCOMPARE(window->frameGeometry(), BoxF(10, 5, 100, 200));
 
     QMetaObject::invokeMethod(window, "setReadyForPainting");
     QVERIFY(window->readyForPainting());

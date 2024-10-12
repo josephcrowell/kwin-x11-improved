@@ -153,7 +153,7 @@ void TestButtonRebind::testMouse()
     QSignalSpy enteredSpy(pointer.get(), &KWayland::Client::Pointer::entered);
     QSignalSpy buttonChangedSpy(pointer.get(), &KWayland::Client::Pointer::buttonStateChanged);
 
-    const QRectF startGeometry = window->frameGeometry();
+    const BoxF startGeometry = window->frameGeometry();
     input()->pointer()->warp(startGeometry.center());
 
     QVERIFY(enteredSpy.wait());
@@ -209,7 +209,7 @@ void TestButtonRebind::testMouseKeyboardMod()
     QSignalSpy pointerEnteredSpy(pointer.get(), &KWayland::Client::Pointer::entered);
     QSignalSpy pointerButtonChangedSpy(pointer.get(), &KWayland::Client::Pointer::buttonStateChanged);
 
-    const QRectF startGeometry = window->frameGeometry();
+    const BoxF startGeometry = window->frameGeometry();
 
     input()->pointer()->warp(startGeometry.center());
     QVERIFY(pointerEnteredSpy.wait());
@@ -251,7 +251,7 @@ void TestButtonRebind::testDisabled()
     QSignalSpy enteredSpy(pointer.get(), &KWayland::Client::Pointer::entered);
     QSignalSpy buttonChangedSpy(pointer.get(), &KWayland::Client::Pointer::buttonStateChanged);
 
-    const QRectF startGeometry = window->frameGeometry();
+    const BoxF startGeometry = window->frameGeometry();
     input()->pointer()->warp(startGeometry.center());
 
     QVERIFY(enteredSpy.wait());
@@ -315,7 +315,7 @@ void TestButtonRebind::testBindingTabletTool()
     QSignalSpy keyChangedSpy(keyboard.get(), &KWayland::Client::Keyboard::keyChanged);
     QVERIFY(enteredSpy.wait());
 
-    const QRectF startGeometry = window->frameGeometry();
+    const BoxF startGeometry = window->frameGeometry();
     Test::tabletToolEvent(InputRedirection::Proximity, startGeometry.center(), 1.0, 0, 0, 0, false, false, timestamp++);
 
     Test::tabletToolButtonPressed(BTN_STYLUS, timestamp++);
@@ -344,7 +344,7 @@ void TestButtonRebind::testMouseTabletCursorSync()
     QSignalSpy enteredSpy(pointer.get(), &KWayland::Client::Pointer::entered);
     QSignalSpy buttonChangedSpy(pointer.get(), &KWayland::Client::Pointer::buttonStateChanged);
 
-    const QRectF startGeometry = window->frameGeometry();
+    const BoxF startGeometry = window->frameGeometry();
 
     // Move the mouse cursor to (25, 25)
     input()->pointer()->warp(startGeometry.topLeft() + QPointF{25.f, 25.5f});

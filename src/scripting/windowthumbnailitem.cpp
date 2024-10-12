@@ -385,7 +385,7 @@ void WindowThumbnailItem::updateImplicitSize()
 {
     QSize frameSize;
     if (m_client) {
-        frameSize = m_client->frameGeometry().toAlignedRect().size();
+        frameSize = m_client->frameGeometry().roundedOut().size();
     }
     setImplicitSize(frameSize.width(), frameSize.height());
 }

@@ -24,11 +24,11 @@ public:
     bool isClient() const override;
     bool isLockScreen() const override;
     bool isLocalhost() const override;
-    QRectF resizeWithChecks(const QRectF &geometry, const QSizeF &size) override;
+    BoxF resizeWithChecks(const BoxF &geometry, const QSizeF &size) override;
     void killWindow() override;
     QString windowRole() const override;
 
-    virtual QRectF frameRectToBufferRect(const QRectF &rect) const;
+    virtual BoxF frameRectToBufferRect(const BoxF &rect) const;
 
     void setCaption(const QString &caption);
 
@@ -41,7 +41,7 @@ protected:
     std::unique_ptr<WindowItem> createItem(Item *parentItem) override;
 
     void cleanGrouping();
-    void updateGeometry(const QRectF &rect);
+    void updateGeometry(const BoxF &rect);
     void markAsMapped();
 
 private:
