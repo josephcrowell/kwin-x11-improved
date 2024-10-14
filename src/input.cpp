@@ -242,6 +242,11 @@ bool InputEventFilter::tabletPadRingEvent(TabletPadRingEvent *event)
     return false;
 }
 
+bool InputEventFilter::tabletPadDialEvent(double delta, uint number, const TabletPadId &tabletPadId, std::chrono::microseconds time)
+{
+    return false;
+}
+
 bool InputEventFilter::passToInputMethod(KeyboardKeyEvent *event)
 {
     if (!kwinApp()->inputMethod()) {
@@ -3221,6 +3226,8 @@ void InputRedirection::addInputDevice(InputDevice *device)
             m_tablet, &TabletInputRedirection::tabletPadRingEvent);
     connect(device, &InputDevice::tabletPadStripEvent,
             m_tablet, &TabletInputRedirection::tabletPadStripEvent);
+    connect(device, &InputDevice::tabletPadDialEvent,
+            m_tablet, &TabletInputRedirection::tabletPadDialEvent);
 
     device->setLeds(m_leds);
 
