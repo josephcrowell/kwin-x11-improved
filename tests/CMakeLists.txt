@@ -76,3 +76,10 @@ target_link_libraries(xdgforeign-test Qt::Gui Plasma::KWaylandClient)
 
 add_executable(xdg-test xdgtest.cpp)
 target_link_libraries(xdg-test Qt::Gui Plasma::KWaylandClient)
+
+add_executable(lockscreenoverlaytest lockscreenoverlaytest.cpp)
+target_link_libraries(lockscreenoverlaytest Qt::Widgets Qt::WaylandClient Qt::WaylandClientPrivate Wayland::Client KF6::WindowSystem)
+qt6_generate_wayland_protocol_client_sources(lockscreenoverlaytest FILES
+    ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-lockscreen-overlay-v1.xml
+    PRIVATE_CODE
+)
