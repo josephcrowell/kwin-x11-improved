@@ -342,8 +342,8 @@ FocusScope {
     property int maxHeight: currentGeometry.height - minY - Kirigami.Units.gridUnit * 2
 
     property int desktops: Math.max(bar.desktopCount, 2)
-    property int columns: Math.ceil(desktops / rows)
-    property int rows: KWinComponents.Workspace.desktopGridHeight
+    property int columns: effect.autoArrangeGrid ? Math.ceil(Math.sqrt(desktops)) : Math.ceil(desktops / rows)
+    property int rows: effect.autoArrangeGrid ? Math.ceil(desktops / columns) : KWinComponents.Workspace.desktopGridHeight
 
     // The desktop might shuffle around as soon as it's
     // created since the rows/columns are updated after

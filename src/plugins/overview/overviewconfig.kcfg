@@ -19,6 +19,12 @@
         <entry name="OrganizedGrid" type="bool">
             <default>true</default>
         </entry>
+        <entry name="AutoArrangeGrid" type="bool">
+            <default>true</default>
+        </entry>
+        <entry name="ArrangeGridByVD" type="bool">
+            <default>false</default>
+        </entry>
 
         <entry name="BorderActivate" type="IntList">
             <default>ElectricTopLeft</default>

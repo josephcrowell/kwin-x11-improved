@@ -178,6 +178,7 @@ void OverviewEffect::reconfigure(ReconfigureFlags)
 {
     OverviewConfig::self()->read();
     setAnimationDuration(animationTime(300ms));
+    setAutoArrangeGrid(OverviewConfig::autoArrangeGrid());
     setFilterWindows(OverviewConfig::filterWindows());
 
     for (const ElectricBorder &border : std::as_const(m_borderActivate)) {
@@ -216,6 +217,19 @@ void OverviewEffect::setAnimationDuration(int duration)
     if (m_animationDuration != duration) {
         m_animationDuration = duration;
         Q_EMIT animationDurationChanged();
+    }
+}
+
+bool OverviewEffect::autoArrangeGrid() const
+{
+    return m_autoArrangeGrid;
+}
+
+void OverviewEffect::setAutoArrangeGrid(bool autoArrangeGrid)
+{
+    if (m_autoArrangeGrid != autoArrangeGrid) {
+        m_autoArrangeGrid = autoArrangeGrid;
+        Q_EMIT autoArrangeGridChanged();
     }
 }
 
