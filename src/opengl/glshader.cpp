@@ -221,10 +221,10 @@ void GLShader::resolveLocations()
     m_matrix4Locations[Mat4Uniform::LMSToDestination] = uniformLocation("lmsToDestination");
 
     m_vec2Locations[Vec2Uniform::Offset] = uniformLocation("offset");
-    m_vec2Locations[Vec2Uniform::SourceTransferFunctionParams] = uniformLocation("sourceTransferFunctionParams");
-    m_vec2Locations[Vec2Uniform::DestinationTransferFunctionParams] = uniformLocation("destinationTransferFunctionParams");
 
     m_vec3Locations[Vec3Uniform::PrimaryBrightness] = uniformLocation("primaryBrightness");
+    m_vec3Locations[Vec3Uniform::SourceTransferFunctionParams] = uniformLocation("sourceTransferFunctionParams");
+    m_vec3Locations[Vec3Uniform::DestinationTransferFunctionParams] = uniformLocation("destinationTransferFunctionParams");
 
     m_vec4Locations[Vec4Uniform::ModulationConstant] = uniformLocation("modulation");
 
@@ -478,10 +478,10 @@ void GLShader::setColorspaceUniforms(const ColorDescription &src, const ColorDes
 {
     setUniform(Mat4Uniform::ColorimetryTransformation, src.toOther(dst, intent));
     setUniform(IntUniform::SourceNamedTransferFunction, src.transferFunction().type);
-    setUniform(Vec2Uniform::SourceTransferFunctionParams, QVector2D(src.transferFunction().minLuminance, src.transferFunction().maxLuminance - src.transferFunction().minLuminance));
+    setUniform(Vec3Uniform::SourceTransferFunctionParams, QVector3D(src.transferFunction().minLuminance, src.transferFunction().maxLuminance, src.transferFunction().maxLuminance - src.transferFunction().minLuminance));
     setUniform(FloatUniform::SourceReferenceLuminance, src.referenceLuminance());
     setUniform(IntUniform::DestinationNamedTransferFunction, dst.transferFunction().type);
-    setUniform(Vec2Uniform::DestinationTransferFunctionParams, QVector2D(dst.transferFunction().minLuminance, dst.transferFunction().maxLuminance - dst.transferFunction().minLuminance));
+    setUniform(Vec3Uniform::DestinationTransferFunctionParams, QVector3D(dst.transferFunction().minLuminance, dst.transferFunction().maxLuminance, dst.transferFunction().maxLuminance - dst.transferFunction().minLuminance));
     setUniform(FloatUniform::DestinationReferenceLuminance, dst.referenceLuminance());
     setUniform(FloatUniform::MaxDestinationLuminance, dst.maxHdrLuminance().value_or(10'000));
     if (!s_disableTonemapping && intent == RenderingIntent::Perceptual) {

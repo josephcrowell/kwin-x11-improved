@@ -42,6 +42,7 @@ void XXColorManagerV4::xx_color_manager_v4_bind_resource(Resource *resource)
     send_supported_tf_named(resource->handle, transfer_function::transfer_function_srgb);
     send_supported_tf_named(resource->handle, transfer_function::transfer_function_st2084_pq);
     send_supported_tf_named(resource->handle, transfer_function::transfer_function_linear);
+    send_supported_tf_named(resource->handle, transfer_function::transfer_function_bt709);
 
     send_supported_intent(resource->handle, render_intent::render_intent_perceptual);
     send_supported_intent(resource->handle, render_intent::render_intent_relative);
@@ -254,6 +255,9 @@ void XXColorParametricCreatorV4::xx_image_description_creator_params_v4_set_tf_n
     case XX_COLOR_MANAGER_V4_TRANSFER_FUNCTION_LINEAR:
         m_transferFunctionType = TransferFunction::linear;
         return;
+    case XX_COLOR_MANAGER_V4_TRANSFER_FUNCTION_BT709:
+        m_transferFunctionType = TransferFunction::BT1886;
+        return;
     default:
         // TODO add more transfer functions
         wl_resource_post_error(resource->handle, error::error_invalid_tf, "unsupported named transfer function");
@@ -420,6 +424,8 @@ static uint32_t kwinTFtoProtoTF(TransferFunction tf)
         return xx_color_manager_v4_transfer_function::XX_COLOR_MANAGER_V4_TRANSFER_FUNCTION_ST2084_PQ;
     case TransferFunction::gamma22:
         return xx_color_manager_v4_transfer_function::XX_COLOR_MANAGER_V4_TRANSFER_FUNCTION_GAMMA22;
+    case TransferFunction::BT1886:
+        return xx_color_manager_v4_transfer_function::XX_COLOR_MANAGER_V4_TRANSFER_FUNCTION_BT709;
     }
     Q_UNREACHABLE();
 }

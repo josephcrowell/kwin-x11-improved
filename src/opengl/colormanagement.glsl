@@ -1,23 +1,31 @@
+
+// should be bumped on API changes
+// as this is used in effects too!
+#define COLOR_MANAGEMENT_HEADER_VERSION 2
+
 const int sRGB_EOTF = 0;
 const int linear_EOTF = 1;
 const int PQ_EOTF = 2;
 const int gamma22_EOTF = 3;
+const int bt1886_EOTF = 4;
 
 uniform mat4 colorimetryTransform;
 
 uniform int sourceNamedTransferFunction;
 /**
  * x: min luminance
- * y: max luminance - min luminance
+ * y: max luminance
+ * z: max luminance - min luminance
  */
-uniform vec2 sourceTransferFunctionParams;
+uniform vec3 sourceTransferFunctionParams;
 
 uniform int destinationNamedTransferFunction;
 /**
  * x: min luminance
- * y: max luminance - min luminance
+ * y: max luminance
+ * z: max luminance - min luminance
  */
-uniform vec2 destinationTransferFunctionParams;
+uniform vec3 destinationTransferFunctionParams;
 
 // in nits
 uniform float sourceReferenceLuminance;
@@ -72,6 +80,7 @@ float singlePqToLinear(float pq) {
     float den = c2 - c3 * powed;
     return pow(num / den, m1_inv);
 }
+
 vec3 srgbToLinear(vec3 color) {
     bvec3 isLow = lessThanEqual(color, vec3(0.04045));
     vec3 loPart = color / 12.92;
@@ -82,7 +91,6 @@ vec3 srgbToLinear(vec3 color) {
     return mix(hiPart, loPart, vec3(isLow.r ? 1.0 : 0.0, isLow.g ? 1.0 : 0.0, isLow.b ? 1.0 : 0.0));
 #endif
 }
-
 vec3 linearToSrgb(vec3 color) {
     bvec3 isLow = lessThanEqual(color, vec3(0.0031308));
     vec3 loPart = color * 12.92;
@@ -139,50 +147,69 @@ vec3 doTonemapping(vec3 color) {
     return (lmsToDestination * vec4(pqToLinear(fromICtCp * ICtCp), 1.0)).rgb * 10000.0;
 }
 
-vec4 encodingToNits(vec4 color, int sourceTransferFunction, float luminanceOffset, float luminanceScale) {
+vec4 encodingToNits(vec4 color, int sourceTransferFunction, float minLuminance, float maxLuminance, float luminanceScale) {
     if (sourceTransferFunction == sRGB_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = srgbToLinear(color.rgb) * luminanceScale + vec3(luminanceOffset);
+        color.rgb = srgbToLinear(color.rgb) * luminanceScale + vec3(minLuminance);
         color.rgb *= color.a;
     } else if (sourceTransferFunction == linear_EOTF) {
-        color.rgb = color.rgb * luminanceScale + vec3(luminanceOffset);
+        color.rgb = color.rgb * luminanceScale + vec3(minLuminance);
     } else if (sourceTransferFunction == PQ_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = pqToLinear(color.rgb) * luminanceScale + vec3(luminanceOffset);
+        color.rgb = pqToLinear(color.rgb) * luminanceScale + vec3(minLuminance);
         color.rgb *= color.a;
     } else if (sourceTransferFunction == gamma22_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = pow(max(color.rgb, vec3(0.0)), vec3(2.2)) * luminanceScale + vec3(luminanceOffset);
+        color.rgb = pow(max(color.rgb, vec3(0.0)), vec3(2.2)) * luminanceScale + vec3(minLuminance);
+        color.rgb *= color.a;
+    } else if (sourceTransferFunction == bt1886_EOTF) {
+        const float gamma = 2.4;
+        float minLumPow = pow(minLuminance, 1.0 / gamma);
+        float tmp = pow(maxLuminance, 1.0 / gamma) - minLumPow;
+        float alpha = pow(tmp, gamma);
+        float beta = minLumPow / tmp;
+        color.rgb /= max(color.a, 0.001);
+        color.rgb = alpha * pow(max(color.rgb + vec3(beta), vec3(0.0)), vec3(gamma));
         color.rgb *= color.a;
     }
     return color;
 }
 
 vec4 sourceEncodingToNitsInDestinationColorspace(vec4 color) {
-    color = encodingToNits(color, sourceNamedTransferFunction, sourceTransferFunctionParams.x, sourceTransferFunctionParams.y);
+    color = encodingToNits(color, sourceNamedTransferFunction, sourceTransferFunctionParams.x, sourceTransferFunctionParams.y, sourceTransferFunctionParams.z);
     color.rgb = (colorimetryTransform * vec4(color.rgb, 1.0)).rgb;
     return vec4(doTonemapping(color.rgb), color.a);
 }
 
-vec4 nitsToEncoding(vec4 color, int destinationTransferFunction, float luminanceOffset, float luminanceScale) {
+vec4 nitsToEncoding(vec4 color, int destinationTransferFunction, float minLuminance, float maxLuminance, float luminanceScale) {
     if (destinationTransferFunction == sRGB_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = linearToSrgb((color.rgb - vec3(luminanceOffset)) / luminanceScale);
+        color.rgb = linearToSrgb((color.rgb - vec3(minLuminance)) / luminanceScale);
         color.rgb *= color.a;
     } else if (destinationTransferFunction == linear_EOTF) {
-        color.rgb = (color.rgb - vec3(luminanceOffset)) / luminanceScale;
+        color.rgb = (color.rgb - vec3(minLuminance)) / luminanceScale;
     } else if (destinationTransferFunction == PQ_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = linearToPq((color.rgb - vec3(luminanceOffset)) / luminanceScale);
+        color.rgb = linearToPq((color.rgb - vec3(minLuminance)) / luminanceScale);
         color.rgb *= color.a;
     } else if (destinationTransferFunction == gamma22_EOTF) {
         color.rgb /= max(color.a, 0.001);
-        color.rgb = pow(max((color.rgb - vec3(luminanceOffset)) / luminanceScale, vec3(0.0)), vec3(1.0 / 2.2));
+        color.rgb = pow(max((color.rgb - vec3(minLuminance)) / luminanceScale, vec3(0.0)), vec3(1.0 / 2.2));
+        color.rgb *= color.a;
+    }else if (destinationTransferFunction == bt1886_EOTF) {
+        const float gamma = 2.4;
+        float minLumPow = pow(minLuminance, 1.0 / gamma);
+        float tmp = pow(maxLuminance, 1.0 / gamma) - minLumPow;
+        float alpha = pow(tmp, gamma);
+        float beta = minLumPow / tmp;
+
+        color.rgb /= max(color.a, 0.001);
+        color.rgb = pow(color.rgb / alpha, vec3(1.0 / gamma)) - vec3(beta);
         color.rgb *= color.a;
     }
     return color;
 }
 
 vec4 nitsToDestinationEncoding(vec4 color) {
-    return nitsToEncoding(color, destinationNamedTransferFunction, destinationTransferFunctionParams.x, destinationTransferFunctionParams.y);
+    return nitsToEncoding(color, destinationNamedTransferFunction, destinationTransferFunctionParams.x, destinationTransferFunctionParams.y, destinationTransferFunctionParams.z);
 }

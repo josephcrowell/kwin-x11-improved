@@ -92,13 +92,13 @@ public:
 
     enum class Vec2Uniform {
         Offset,
-        SourceTransferFunctionParams,
-        DestinationTransferFunctionParams,
         Vec2UniformCount
     };
 
     enum class Vec3Uniform {
-        PrimaryBrightness = 0
+        PrimaryBrightness = 0,
+        SourceTransferFunctionParams,
+        DestinationTransferFunctionParams,
     };
 
     enum class Vec4Uniform {

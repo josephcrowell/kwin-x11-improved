@@ -155,6 +155,7 @@ public:
         linear = 1,
         PerceptualQuantizer = 2,
         gamma22 = 3,
+        BT1886 = 4,
     };
     explicit TransferFunction(Type tf);
     explicit TransferFunction(Type tf, double minLuminance, double maxLuminance);

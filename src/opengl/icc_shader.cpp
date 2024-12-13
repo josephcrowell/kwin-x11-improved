@@ -174,7 +174,7 @@ void IccShader::setUniforms(const std::shared_ptr<IccProfile> &profile, const Co
     nightColor(2, 2) = channelFactors.z();
     m_shader->setUniform(m_locations.toXYZD50, m_toXYZD50 * nightColor);
     m_shader->setUniform(GLShader::IntUniform::SourceNamedTransferFunction, inputColor.transferFunction().type);
-    m_shader->setUniform(GLShader::Vec2Uniform::SourceTransferFunctionParams, QVector2D(inputColor.transferFunction().minLuminance, inputColor.transferFunction().maxLuminance - inputColor.transferFunction().minLuminance));
+    m_shader->setUniform(GLShader::Vec3Uniform::SourceTransferFunctionParams, QVector3D(inputColor.transferFunction().minLuminance, inputColor.transferFunction().maxLuminance, inputColor.transferFunction().maxLuminance - inputColor.transferFunction().minLuminance));
     m_shader->setUniform(GLShader::FloatUniform::SourceReferenceLuminance, inputColor.referenceLuminance());
     m_shader->setUniform(GLShader::FloatUniform::DestinationReferenceLuminance, inputColor.referenceLuminance());
     m_shader->setUniform(GLShader::FloatUniform::MaxDestinationLuminance, inputColor.referenceLuminance());
