@@ -557,6 +557,7 @@ install(FILES
     core/colorpipelinestage.h
     core/colorspace.h
     core/colortransformation.h
+    core/cornerradius.h
     core/drmdevice.h
     core/gbmgraphicsbufferallocator.h
     core/graphicsbuffer.h
