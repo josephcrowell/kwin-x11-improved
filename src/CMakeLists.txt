@@ -161,6 +161,7 @@ target_sources(kwin PRIVATE
     resources.qrc
     rulebooksettings.cpp
     rules.cpp
+    scene/borderradius.cpp
     scene/cursordelegate_opengl.cpp
     scene/cursordelegate_qpainter.cpp
     scene/cursoritem.cpp
@@ -603,6 +604,7 @@ install(FILES
 )
 
 install(FILES
+    scene/borderradius.h
     scene/cursordelegate_opengl.h
     scene/cursordelegate_qpainter.h
     scene/cursoritem.h
