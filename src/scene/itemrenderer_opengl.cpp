@@ -196,17 +196,40 @@ void ItemRendererOpenGL::createRenderNode(Item *item, RenderContext *context)
             if (!geometry.isEmpty()) {
                 OpenGLSurfaceTexture *surfaceTexture = static_cast<OpenGLSurfaceTexture *>(pixmap->texture());
                 if (surfaceTexture->isValid()) {
-                    context->renderNodes.append(RenderNode{
-                        .type = RenderNode::Type::Texture,
-                        .texture = surfaceTexture->texture(),
-                        .geometry = geometry,
-                        .transformMatrix = context->transformStack.top(),
-                        .opacity = context->opacityStack.top(),
-                        .hasAlpha = pixmap->hasAlphaChannel(),
-                        .colorDescription = item->colorDescription(),
-                        .renderingIntent = item->renderingIntent(),
-                        .bufferReleasePoint = surfaceItem->bufferReleasePoint(),
-                    });
+                    const CornerRadius cornerRadius = surfaceItem->cornerRadius();
+                    if (cornerRadius.isIdentity()) {
+                        context->renderNodes.append(RenderNode{
+                            .type = RenderNode::Type::Texture,
+                            .texture = surfaceTexture->texture(),
+                            .geometry = geometry,
+                            .transformMatrix = context->transformStack.top(),
+                            .opacity = context->opacityStack.top(),
+                            .hasAlpha = pixmap->hasAlphaChannel(),
+                            .colorDescription = item->colorDescription(),
+                            .renderingIntent = item->renderingIntent(),
+                            .bufferReleasePoint = surfaceItem->bufferReleasePoint(),
+                        });
+                    } else {
+                        const QRectF nativeRect = snapToPixelGridF(scaledRect(surfaceItem->rect(), context->renderTargetScale));
+                        context->renderNodes.append(RenderNode{
+                            .type = RenderNode::Type::RoundedTexture,
+                            .texture = surfaceTexture->texture(),
+                            .geometry = geometry,
+                            .transformMatrix = context->transformStack.top(),
+                            .opacity = context->opacityStack.top(),
+                            .hasAlpha = true,
+                            .colorDescription = item->colorDescription(),
+                            .renderingIntent = item->renderingIntent(),
+                            .bufferReleasePoint = surfaceItem->bufferReleasePoint(),
+                            .box = QVector4D(nativeRect.x() + nativeRect.width() * 0.5,
+                                             nativeRect.y() + nativeRect.height() * 0.5,
+                                             nativeRect.width() * 0.5,
+                                             nativeRect.height() * 0.5),
+                            .cornerRadius = cornerRadius.scaled(context->renderTargetScale)
+                                                .rounded()
+                                                .toVector(),
+                        });
+                    }
                 }
             }
         }
@@ -324,7 +347,8 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
         renderNode.firstVertex = v;
         renderNode.vertexCount = renderNode.geometry.count();
 
-        if (renderNode.type == RenderNode::Type::Texture) {
+        if (renderNode.type == RenderNode::Type::Texture
+            || renderNode.type == RenderNode::Type::RoundedTexture) {
             GLTexture *texture = nullptr;
             if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
                 texture = std::get<GLTexture *>(renderNode.texture);
@@ -369,6 +393,9 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
         case RenderNode::Type::Texture:
             traits |= ShaderTrait::MapTexture;
             break;
+        case RenderNode::Type::RoundedTexture:
+            traits |= ShaderTrait::MapRoundedTexture;
+            break;
         }
         if (renderNode.opacity != 1.0) {
             traits |= ShaderTrait::Modulate;
@@ -390,6 +417,11 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
             }
 
             if (traits & ShaderTrait::MapTexture) {
+                shader->setUniform(GLShader::IntUniform::Sampler, 0);
+                shader->setUniform(GLShader::IntUniform::Sampler1, 1);
+            }
+
+            if (traits & ShaderTrait::MapRoundedTexture) {
                 shader->setUniform(GLShader::IntUniform::Sampler, 0);
                 shader->setUniform(GLShader::IntUniform::Sampler1, 1);
             }
@@ -421,6 +453,23 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
                 }
             }
             break;
+        case RenderNode::Type::RoundedTexture:
+            if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
+                const auto texture = std::get<GLTexture *>(renderNode.texture);
+                glActiveTexture(GL_TEXTURE0);
+                shader->setUniform("converter", 0);
+                texture->bind();
+            } else {
+                const auto contents = std::get<OpenGLSurfaceContents>(renderNode.texture);
+                shader->setUniform("converter", contents.planes.count() > 1);
+                for (int plane = 0; plane < contents.planes.count(); ++plane) {
+                    glActiveTexture(GL_TEXTURE0 + plane);
+                    contents.planes[plane]->bind();
+                }
+            }
+            shader->setUniform(GLShader::Vec4Uniform::Box, renderNode.box);
+            shader->setUniform(GLShader::Vec4Uniform::CornerRadius, renderNode.cornerRadius);
+            break;
         }
 
         vbo->draw(scissorRegion, GL_TRIANGLES, renderNode.firstVertex,
@@ -430,6 +479,19 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
         case RenderNode::Type::Color:
             break;
         case RenderNode::Type::Texture:
+            if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
+                auto texture = std::get<GLTexture *>(renderNode.texture);
+                glActiveTexture(GL_TEXTURE0);
+                texture->unbind();
+            } else {
+                const auto contents = std::get<OpenGLSurfaceContents>(renderNode.texture);
+                for (int plane = 0; plane < contents.planes.count(); ++plane) {
+                    glActiveTexture(GL_TEXTURE0 + plane);
+                    contents.planes[plane]->unbind();
+                }
+            }
+            break;
+        case RenderNode::Type::RoundedTexture:
             if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
                 auto texture = std::get<GLTexture *>(renderNode.texture);
                 glActiveTexture(GL_TEXTURE0);

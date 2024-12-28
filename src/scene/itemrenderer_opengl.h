@@ -25,6 +25,7 @@ public:
         enum class Type {
             Color,
             Texture,
+            RoundedTexture,
         };
 
         Type type;
@@ -39,6 +40,8 @@ public:
         ColorDescription colorDescription;
         RenderingIntent renderingIntent;
         std::shared_ptr<SyncReleasePoint> bufferReleasePoint;
+        QVector4D box;
+        QVector4D cornerRadius;
     };
 
     struct RenderContext

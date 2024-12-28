@@ -172,9 +172,9 @@ QRegion SurfaceItemX11::opaque() const
         shapeRegion += shapePart.toRect();
     }
     if (!m_window->hasAlpha()) {
-        return shapeRegion;
+        return m_cornerRadius.clip(shapeRegion, rect());
     } else {
-        return m_window->opaqueRegion() & shapeRegion;
+        return m_cornerRadius.clip(m_window->opaqueRegion() & shapeRegion, rect());
     }
     return QRegion();
 }

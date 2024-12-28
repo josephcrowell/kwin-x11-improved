@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "core/cornerradius.h"
 #include "core/graphicsbuffer.h"
 #include "core/output.h"
 #include "scene/item.h"
@@ -59,6 +60,9 @@ public:
     virtual ContentType contentType() const;
     virtual void setScanoutHint(DrmDevice *device, const QHash<uint32_t, QList<uint64_t>> &drmFormats);
 
+    CornerRadius cornerRadius() const;
+    void setCornerRadius(const CornerRadius &radius);
+
     virtual void freeze();
 
     std::chrono::nanoseconds frameTimeEstimation() const;
@@ -79,6 +83,7 @@ protected:
     QRectF m_bufferSourceBox;
     QSize m_bufferSize;
     QSizeF m_destinationSize;
+    CornerRadius m_cornerRadius;
     std::unique_ptr<SurfacePixmap> m_pixmap;
     std::unique_ptr<SurfacePixmap> m_previousPixmap;
     int m_referencePixmapCounter = 0;

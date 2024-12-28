@@ -941,6 +941,19 @@ void Window::toggleShade()
     setShade(shadeMode() == ShadeNone ? ShadeNormal : ShadeNone);
 }
 
+CornerRadius Window::cornerRadius() const
+{
+    return m_cornerRadius;
+}
+
+void Window::setCornerRadius(const CornerRadius &radius)
+{
+    if (m_cornerRadius != radius) {
+        m_cornerRadius = radius;
+        Q_EMIT cornerRadiusChanged();
+    }
+}
+
 Qt::Edge Window::titlebarPosition() const
 {
     // TODO: still needed, remove?
@@ -2693,6 +2706,11 @@ void Window::setDecoration(std::shared_ptr<KDecoration3::Decoration> decoration)
                 updateDecorationInputShape();
             }
         });
+        connect(decoration.get(), &KDecoration3::Decoration::cornerRadiusChanged, this, [this]() {
+            if (!isDeleted()) {
+                updateDecorationCornerRadius();
+            }
+        });
         connect(decoratedWindow()->decoratedWindow(), &KDecoration3::DecoratedWindow::sizeChanged, this, [this]() {
             if (!isDeleted()) {
                 updateDecorationInputShape();
@@ -2701,6 +2719,7 @@ void Window::setDecoration(std::shared_ptr<KDecoration3::Decoration> decoration)
     }
     m_decoration.decoration = decoration;
     updateDecorationInputShape();
+    updateDecorationCornerRadius();
     Q_EMIT decorationChanged();
 }
 
@@ -2718,6 +2737,16 @@ void Window::updateDecorationInputShape()
     const QRectF outerRect = innerRect + borders + resizeBorders;
 
     m_decoration.inputRegion = QRegion(outerRect.toAlignedRect()) - innerRect.toAlignedRect();
+}
+
+void Window::updateDecorationCornerRadius()
+{
+    if (!isDecorated()) {
+        setCornerRadius(CornerRadius(0));
+    } else {
+        const auto cornerRadius = decoration()->cornerRadius();
+        setCornerRadius(CornerRadius(cornerRadius.topLeft(), cornerRadius.topRight(), cornerRadius.bottomRight(), cornerRadius.bottomLeft()));
+    }
 }
 
 bool Window::decorationHasAlpha() const

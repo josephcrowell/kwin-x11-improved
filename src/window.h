@@ -9,6 +9,7 @@
 */
 #pragma once
 
+#include "core/cornerradius.h"
 #include "core/output.h"
 #include "cursor.h"
 #include "effect/globals.h"
@@ -1187,6 +1188,9 @@ public:
     bool performMousePressCommand(Options::MouseCommand, const QPointF &globalPos);
     bool performMouseReleaseCommand(Options::MouseCommand, const QPointF &globalPos);
 
+    CornerRadius cornerRadius() const;
+    void setCornerRadius(const CornerRadius &radius);
+
     // decoration related
     Qt::Edge titlebarPosition() const;
     bool titlebarPositionUnderMouse() const;
@@ -1484,6 +1488,7 @@ Q_SIGNALS:
     void offscreenRenderingChanged();
     void targetScaleChanged();
     void nextTargetScaleChanged();
+    void cornerRadiusChanged();
 
 protected:
     Window();
@@ -1741,6 +1746,7 @@ protected:
     void startDecorationDoubleClickTimer();
     void invalidateDecorationDoubleClickTimer();
     void updateDecorationInputShape();
+    void updateDecorationCornerRadius();
 
     void setDesktopFileName(const QString &name);
     QString iconFromDesktopFile() const;
@@ -1778,6 +1784,7 @@ protected:
     QRectF m_frameGeometry;
     QRectF m_clientGeometry;
     QRectF m_bufferGeometry;
+    CornerRadius m_cornerRadius;
     bool ready_for_painting;
     bool m_hidden = false;
     bool m_hiddenByShowDesktop = false;

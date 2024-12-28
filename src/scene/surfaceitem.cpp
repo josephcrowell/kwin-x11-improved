@@ -275,6 +275,19 @@ void SurfaceItem::setScanoutHint(DrmDevice *device, const QHash<uint32_t, QList<
 {
 }
 
+CornerRadius SurfaceItem::cornerRadius() const
+{
+    return m_cornerRadius;
+}
+
+void SurfaceItem::setCornerRadius(const CornerRadius &radius)
+{
+    if (m_cornerRadius != radius) {
+        m_cornerRadius = radius;
+        scheduleRepaint(rect());
+    }
+}
+
 void SurfaceItem::freeze()
 {
 }

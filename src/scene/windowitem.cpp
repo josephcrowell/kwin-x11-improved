@@ -216,14 +216,17 @@ void WindowItem::updateSurfaceItem(std::unique_ptr<SurfaceItem> &&surfaceItem)
         connect(m_window, &Window::shadeChanged, this, &WindowItem::updateSurfaceVisibility);
         connect(m_window, &Window::bufferGeometryChanged, this, &WindowItem::updateSurfacePosition);
         connect(m_window, &Window::frameGeometryChanged, this, &WindowItem::updateSurfacePosition);
+        connect(m_window, &Window::cornerRadiusChanged, this, &WindowItem::updateSurfaceCornerRadius);
         addSurfaceItemDamageConnects(m_surfaceItem.get());
 
         updateSurfacePosition();
         updateSurfaceVisibility();
+        updateSurfaceCornerRadius();
     } else {
         disconnect(m_window, &Window::shadeChanged, this, &WindowItem::updateSurfaceVisibility);
         disconnect(m_window, &Window::bufferGeometryChanged, this, &WindowItem::updateSurfacePosition);
         disconnect(m_window, &Window::frameGeometryChanged, this, &WindowItem::updateSurfacePosition);
+        disconnect(m_window, &Window::cornerRadiusChanged, this, &WindowItem::updateSurfaceCornerRadius);
     }
 }
 
@@ -238,6 +241,11 @@ void WindowItem::updateSurfacePosition()
 void WindowItem::updateSurfaceVisibility()
 {
     m_surfaceItem->setVisible(!m_window->isShade());
+}
+
+void WindowItem::updateSurfaceCornerRadius()
+{
+    m_surfaceItem->setCornerRadius(m_window->cornerRadius());
 }
 
 void WindowItem::updateShadowItem()

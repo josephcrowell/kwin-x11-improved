@@ -65,9 +65,12 @@ QByteArray ShaderManager::generateVertexSource(ShaderTraits traits) const
     }
 
     stream << attribute << " vec4 position;\n";
-    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapExternalTexture)) {
+    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapRoundedTexture | ShaderTrait::MapExternalTexture)) {
         stream << attribute << " vec4 texcoord;\n\n";
         stream << varying << " vec2 texcoord0;\n\n";
+        if (traits & ShaderTrait::MapRoundedTexture) {
+            stream << varying << " vec2 position0;\n\n";
+        }
     } else {
         stream << "\n";
     }
@@ -75,8 +78,11 @@ QByteArray ShaderManager::generateVertexSource(ShaderTraits traits) const
     stream << "uniform mat4 modelViewProjectionMatrix;\n\n";
 
     stream << "void main()\n{\n";
-    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapExternalTexture)) {
+    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapRoundedTexture | ShaderTrait::MapExternalTexture)) {
         stream << "    texcoord0 = texcoord.st;\n";
+        if (traits & ShaderTrait::MapRoundedTexture) {
+            stream << "    position0 = position.xy;\n";
+        }
     }
 
     stream << "    gl_Position = modelViewProjectionMatrix * position;\n";
@@ -121,11 +127,18 @@ QByteArray ShaderManager::generateFragmentSource(ShaderTraits traits) const
         output = glsl_es_300 ? QByteArrayLiteral("fragColor") : QByteArrayLiteral("gl_FragColor");
     }
 
-    if (traits & ShaderTrait::MapTexture) {
+    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapRoundedTexture)) {
         stream << "uniform sampler2D sampler;\n";
         stream << "uniform sampler2D sampler1;\n";
         stream << "uniform int converter;\n";
+        if (traits & ShaderTrait::MapRoundedTexture) {
+            stream << "uniform vec4 box;\n";
+            stream << "uniform vec4 cornerRadius;\n";
+        }
         stream << varying << " vec2 texcoord0;\n";
+        if (traits & ShaderTrait::MapRoundedTexture) {
+            stream << varying << " vec2 position0;\n";
+        }
     } else if (traits & ShaderTrait::MapExternalTexture) {
         stream << "#extension GL_OES_EGL_image_external : require\n\n";
         stream << "uniform samplerExternalOES sampler;\n";
@@ -147,7 +160,7 @@ QByteArray ShaderManager::generateFragmentSource(ShaderTraits traits) const
         stream << "\nout vec4 " << output << ";\n";
     }
 
-    if (traits & ShaderTrait::MapTexture) {
+    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapRoundedTexture)) {
         // limited range BT601 in -> full range BT709 out
         stream << "vec4 transformY_UV(sampler2D tex0, sampler2D tex1, vec2 texcoord0) {\n";
         stream << "    float y = 1.16438356 * (" << textureLookup << "(tex0, texcoord0).x - 0.0625);\n";
@@ -161,20 +174,36 @@ QByteArray ShaderManager::generateFragmentSource(ShaderTraits traits) const
         stream << "\n";
     }
 
+    if (traits & ShaderTrait::MapRoundedTexture) {
+        stream << "float roundedBox(vec2 position, vec2 center, vec2 extents, vec4 radius) {\n";
+        stream << "    vec2 p = position - center;\n";
+        stream << "    float r = p.x > 0\n";
+        stream << "        ? (p.y < 0 ? radius.y : radius.w)\n";
+        stream << "        : (p.y < 0 ? radius.x : radius.z);\n";
+        stream << "    vec2 q = abs(p) - extents + vec2(r);\n";
+        stream << "    return length(max(q, 0.0)) - r;\n";
+        stream << "}\n";
+        stream << "\n";
+    }
+
     stream << "\nvoid main(void)\n{\n";
     stream << "    vec4 result;\n";
-    if (traits & ShaderTrait::MapTexture) {
+    if (traits & (ShaderTrait::MapTexture | ShaderTrait::MapRoundedTexture)) {
         stream << "    if (converter == 0) {\n";
         stream << "        result = " << textureLookup << "(sampler, texcoord0);\n";
         stream << "    } else {\n";
         stream << "        result = transformY_UV(sampler, sampler1, texcoord0);\n";
         stream << "    }\n";
+        if (traits & ShaderTrait::MapRoundedTexture) {
+            stream << "    result.a *= 1.0 - smoothstep(0.0, 0.25, roundedBox(position0, box.xy, box.zw, cornerRadius));\n";
+        }
     } else if (traits & ShaderTrait::MapExternalTexture) {
         // external textures require texture2D for sampling
         stream << "    result = texture2D(sampler, texcoord0);\n";
     } else if (traits & ShaderTrait::UniformColor) {
         stream << "    result = geometryColor;\n";
     }
+
     if (traits & ShaderTrait::TransformColorspace) {
         stream << "    result = sourceEncodingToNitsInDestinationColorspace(result);\n";
     }
