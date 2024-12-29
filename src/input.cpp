@@ -2440,6 +2440,15 @@ public:
         if (!pad) {
             return false;
         }
+
+        auto group = pad->group(event->group);
+        if (event->isModeSwitch) {
+            group->setCurrentMode(event->mode);
+            const auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(event->time).count();
+            group->sendModeSwitch(milliseconds);
+            // TODO send button to app?
+        }
+
         pad->sendButton(event->time, event->button, event->pressed);
         return true;
     }
@@ -2450,7 +2459,7 @@ public:
         if (!pad) {
             return false;
         }
-        auto ring = pad->ring(event->number);
+        auto ring = pad->group(event->group)->ring(event->number);
 
         if (event->isFinger && event->position == -1) {
             ring->sendStop();
@@ -2471,7 +2480,7 @@ public:
         if (!pad) {
             return false;
         }
-        auto strip = pad->strip(event->number);
+        auto strip = pad->group(event->group)->strip(event->number);
 
         strip->sendPosition(event->position);
         if (event->isFinger) {
