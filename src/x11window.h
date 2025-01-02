@@ -49,7 +49,6 @@ enum class Predicate {
     WindowMatch,
     WrapperIdMatch,
     FrameIdMatch,
-    InputIdMatch,
 };
 
 /**
@@ -85,10 +84,6 @@ public:
     xcb_window_t frameId() const;
     xcb_window_t window() const;
     xcb_window_t wrapperId() const;
-    xcb_window_t inputId() const
-    {
-        return m_decoInputExtent;
-    }
 
     int desktopId() const;
     QByteArray sessionId() const;
@@ -220,8 +215,6 @@ public:
 
     using Window::keyPressEvent;
     void keyPressEvent(uint key_code, xcb_timestamp_t time); // FRAME ??
-    void updateMouseGrab() override;
-    xcb_window_t moveResizeGrabWindow() const;
 
     QPointF gravityAdjustment(xcb_gravity_t gravity) const;
     const QPointF calculateGravitation(bool invert) const;
@@ -317,14 +310,8 @@ private:
     void configureRequestEvent(xcb_configure_request_event_t *e);
     void propertyNotifyEvent(xcb_property_notify_event_t *e);
     void clientMessageEvent(xcb_client_message_event_t *e);
-    void enterNotifyEvent(xcb_enter_notify_event_t *e);
-    void leaveNotifyEvent(xcb_leave_notify_event_t *e);
     void focusInEvent(xcb_focus_in_event_t *e);
     void focusOutEvent(xcb_focus_out_event_t *e);
-
-    bool buttonPressEvent(xcb_window_t w, int button, int state, int x, int y, int x_root, int y_root, xcb_timestamp_t time = XCB_CURRENT_TIME);
-    bool buttonReleaseEvent(xcb_window_t w, int button, int state, int x, int y, int x_root, int y_root);
-    bool motionNotifyEvent(xcb_window_t w, int state, int x, int y, int x_root, int y_root);
 
 protected:
     bool belongsToSameApplication(const Window *other, SameApplicationChecks checks) const override;
@@ -385,8 +372,6 @@ private:
     int checkShadeGeometry(int w, int h);
     void getSyncCounter();
     void sendSyncRequest();
-    void establishCommandWindowGrab(uint8_t button);
-    void establishCommandAllGrab(uint8_t button);
 
     void pingWindow();
     void killProcess(bool ask, xcb_timestamp_t timestamp = XCB_TIME_CURRENT_TIME);
@@ -441,8 +426,6 @@ private:
     xcb_window_t m_wmClientLeader = XCB_WINDOW_NONE;
     int m_activityUpdatesBlocked;
     bool m_blockedActivityUpdatesRequireTransients;
-    Xcb::Window m_moveResizeGrabWindow;
-    bool move_resize_has_keyboard_grab;
     bool m_managed;
 
     Xcb::GeometryHints m_geometryHints;
@@ -506,9 +489,6 @@ private:
     bool activitiesDefined; // whether the x property was actually set
 
     bool sessionActivityOverride;
-
-    Xcb::Window m_decoInputExtent;
-    QPoint input_offset; // in device pixels, valid only on X11
 
     QTimer *m_focusOutTimer;
     QTimer m_releaseTimer;
@@ -626,11 +606,6 @@ inline QRectF X11Window::resizeWithChecks(const QRectF &geometry, const QSizeF &
 inline bool X11Window::hasUserTimeSupport() const
 {
     return info->userTime() != -1U;
-}
-
-inline xcb_window_t X11Window::moveResizeGrabWindow() const
-{
-    return m_moveResizeGrabWindow;
 }
 
 inline bool X11Window::hiddenPreview() const
