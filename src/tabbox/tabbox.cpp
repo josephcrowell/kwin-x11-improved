@@ -343,16 +343,16 @@ void TabBox::handlerReady()
 }
 
 template<typename Slot>
-void TabBox::key(const KLazyLocalizedString &actionName, Slot slot, const QKeySequence &shortcut)
+void TabBox::key(const KLazyLocalizedString &actionName, Slot slot, const QList<QKeySequence> &shortcuts)
 {
     QAction *a = new QAction(this);
     a->setProperty("componentName", QStringLiteral("kwin"));
     a->setObjectName(QString::fromUtf8(actionName.untranslatedText()));
     a->setText(actionName.toString());
-    KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << shortcut);
+    KGlobalAccel::self()->setGlobalShortcut(a, shortcuts);
     connect(a, &QAction::triggered, this, slot);
     auto cuts = KGlobalAccel::self()->shortcut(a);
-    globalShortcutChanged(a, cuts.isEmpty() ? QKeySequence() : cuts.first());
+    globalShortcutChanged(a, cuts);
 }
 
 static constexpr const auto s_windows = kli18n("Walk Through Windows");
@@ -366,19 +366,21 @@ static constexpr const auto s_appAltRev = kli18n("Walk Through Windows of Curren
 
 void TabBox::initShortcuts()
 {
-    key(s_windows, &TabBox::slotWalkThroughWindows, Qt::AltModifier | Qt::Key_Tab);
-    key(s_windowsRev, &TabBox::slotWalkBackThroughWindows, Qt::AltModifier | Qt::ShiftModifier | Qt::Key_Tab);
-    key(s_app, &TabBox::slotWalkThroughCurrentAppWindows, Qt::AltModifier | Qt::Key_QuoteLeft);
-    key(s_appRev, &TabBox::slotWalkBackThroughCurrentAppWindows, Qt::AltModifier | Qt::Key_AsciiTilde);
+    key(s_windows, &TabBox::slotWalkThroughWindows, {Qt::AltModifier | Qt::Key_Tab});
+    key(s_windowsRev, &TabBox::slotWalkBackThroughWindows, {Qt::AltModifier | Qt::ShiftModifier | Qt::Key_Tab});
+    key(s_app, &TabBox::slotWalkThroughCurrentAppWindows, {Qt::AltModifier | Qt::Key_QuoteLeft});
+    key(s_appRev, &TabBox::slotWalkBackThroughCurrentAppWindows, {Qt::AltModifier | Qt::Key_AsciiTilde});
     key(s_windowsAlt, &TabBox::slotWalkThroughWindowsAlternative);
     key(s_windowsAltRev, &TabBox::slotWalkBackThroughWindowsAlternative);
     key(s_appAlt, &TabBox::slotWalkThroughCurrentAppWindowsAlternative);
     key(s_appAltRev, &TabBox::slotWalkBackThroughCurrentAppWindowsAlternative);
 
-    connect(KGlobalAccel::self(), &KGlobalAccel::globalShortcutChanged, this, &TabBox::globalShortcutChanged);
+    connect(KGlobalAccel::self(), &KGlobalAccel::globalShortcutChanged, this, [this](QAction *action) {
+        globalShortcutChanged(action, KGlobalAccel::self()->shortcut(action));
+    });
 }
 
-void TabBox::globalShortcutChanged(QAction *action, const QKeySequence &seq)
+void TabBox::globalShortcutChanged(QAction *action, const QList<QKeySequence> &seq)
 {
     if (qstrcmp(qPrintable(action->objectName()), s_windows.untranslatedText()) == 0) {
         m_cutWalkThroughWindows = seq;
@@ -733,59 +735,68 @@ static bool areKeySymXsDepressed(const uint keySyms[], int nKeySyms)
     return depressed;
 }
 
-static bool areModKeysDepressedX11(const QKeySequence &seq)
+static bool areModKeysDepressedX11(const QList<QKeySequence> &shortcuts)
 {
-    uint rgKeySyms[10];
-    int nKeySyms = 0;
-    Qt::KeyboardModifiers mod = seq[seq.count() - 1].keyboardModifiers();
+    for (const QKeySequence &seq : shortcuts) {
+        uint rgKeySyms[10];
+        int nKeySyms = 0;
+        Qt::KeyboardModifiers mod = seq[seq.count() - 1].keyboardModifiers();
 
-    if (mod & Qt::ShiftModifier) {
-        rgKeySyms[nKeySyms++] = XK_Shift_L;
-        rgKeySyms[nKeySyms++] = XK_Shift_R;
-    }
-    if (mod & Qt::ControlModifier) {
-        rgKeySyms[nKeySyms++] = XK_Control_L;
-        rgKeySyms[nKeySyms++] = XK_Control_R;
-    }
-    if (mod & Qt::AltModifier) {
-        rgKeySyms[nKeySyms++] = XK_Alt_L;
-        rgKeySyms[nKeySyms++] = XK_Alt_R;
-    }
-    if (mod & Qt::MetaModifier) {
-        // It would take some code to determine whether the Win key
-        // is associated with Super or Meta, so check for both.
-        // See bug #140023 for details.
-        rgKeySyms[nKeySyms++] = XK_Super_L;
-        rgKeySyms[nKeySyms++] = XK_Super_R;
-        rgKeySyms[nKeySyms++] = XK_Meta_L;
-        rgKeySyms[nKeySyms++] = XK_Meta_R;
+        if (mod & Qt::ShiftModifier) {
+            rgKeySyms[nKeySyms++] = XK_Shift_L;
+            rgKeySyms[nKeySyms++] = XK_Shift_R;
+        }
+        if (mod & Qt::ControlModifier) {
+            rgKeySyms[nKeySyms++] = XK_Control_L;
+            rgKeySyms[nKeySyms++] = XK_Control_R;
+        }
+        if (mod & Qt::AltModifier) {
+            rgKeySyms[nKeySyms++] = XK_Alt_L;
+            rgKeySyms[nKeySyms++] = XK_Alt_R;
+        }
+        if (mod & Qt::MetaModifier) {
+            // It would take some code to determine whether the Win key
+            // is associated with Super or Meta, so check for both.
+            // See bug #140023 for details.
+            rgKeySyms[nKeySyms++] = XK_Super_L;
+            rgKeySyms[nKeySyms++] = XK_Super_R;
+            rgKeySyms[nKeySyms++] = XK_Meta_L;
+            rgKeySyms[nKeySyms++] = XK_Meta_R;
+        }
+
+        if (areKeySymXsDepressed(rgKeySyms, nKeySyms)) {
+            return true;
+        }
     }
 
-    return areKeySymXsDepressed(rgKeySyms, nKeySyms);
+    return false;
 }
 #endif
 
-static bool areModKeysDepressedWayland(const QKeySequence &seq)
+static bool areModKeysDepressedWayland(const QList<QKeySequence> &shortcuts)
 {
-    const Qt::KeyboardModifiers mod = seq[seq.count() - 1].keyboardModifiers();
-    const Qt::KeyboardModifiers mods = input()->modifiersRelevantForGlobalShortcuts();
+    for (const QKeySequence &seq : shortcuts) {
+        const Qt::KeyboardModifiers mod = seq[seq.count() - 1].keyboardModifiers();
+        const Qt::KeyboardModifiers mods = input()->modifiersRelevantForGlobalShortcuts();
 
-    if ((mod & Qt::ShiftModifier) && mods.testFlag(Qt::ShiftModifier)) {
-        return true;
+        if ((mod & Qt::ShiftModifier) && mods.testFlag(Qt::ShiftModifier)) {
+            return true;
+        }
+        if ((mod & Qt::ControlModifier) && mods.testFlag(Qt::ControlModifier)) {
+            return true;
+        }
+        if ((mod & Qt::AltModifier) && mods.testFlag(Qt::AltModifier)) {
+            return true;
+        }
+        if ((mod & Qt::MetaModifier) && mods.testFlag(Qt::MetaModifier)) {
+            return true;
+        }
     }
-    if ((mod & Qt::ControlModifier) && mods.testFlag(Qt::ControlModifier)) {
-        return true;
-    }
-    if ((mod & Qt::AltModifier) && mods.testFlag(Qt::AltModifier)) {
-        return true;
-    }
-    if ((mod & Qt::MetaModifier) && mods.testFlag(Qt::MetaModifier)) {
-        return true;
-    }
+
     return false;
 }
 
-static bool areModKeysDepressed(const QKeySequence &seq)
+static bool areModKeysDepressed(const QList<QKeySequence> &seq)
 {
     if (seq.isEmpty()) {
         return false;
@@ -801,7 +812,7 @@ static bool areModKeysDepressed(const QKeySequence &seq)
 #endif
 }
 
-void TabBox::navigatingThroughWindows(bool forward, const QKeySequence &shortcut, TabBoxMode mode)
+void TabBox::navigatingThroughWindows(bool forward, const QList<QKeySequence> &shortcut, TabBoxMode mode)
 {
     if (!m_ready || isGrabbed()) {
         return;
@@ -1001,12 +1012,14 @@ void TabBox::KDEOneStepThroughWindows(bool forward, TabBoxMode mode)
 // Tests whether a key event matches the shortcut for a given mode, either
 // forward or backward, returning the direction, or Steady for no match
 // Handles pitfalls with the Shift modifier
-TabBox::Direction TabBox::matchShortcuts(const KeyboardKeyEvent &keyEvent, const QKeySequence &forward, const QKeySequence &backward) const
+TabBox::Direction TabBox::matchShortcuts(const KeyboardKeyEvent &keyEvent, const QList<QKeySequence> &forward, const QList<QKeySequence> &backward) const
 {
-    auto contains = [](const QKeySequence &shortcut, const QKeyCombination key) -> bool {
-        for (int i = 0; i < shortcut.count(); ++i) {
-            if (shortcut[i] == key) {
-                return true;
+    auto contains = [](const QList<QKeySequence> &shortcuts, const QKeyCombination key) -> bool {
+        for (const QKeySequence &shortcut : shortcuts) {
+            for (int i = 0; i < shortcut.count(); ++i) {
+                if (shortcut[i] == key) {
+                    return true;
+                }
             }
         }
         return false;
@@ -1054,7 +1067,7 @@ void TabBox::keyPress(const KeyboardKeyEvent &keyEvent)
 
     Direction direction(Steady);
 
-    const std::array<std::pair<QKeySequence, QKeySequence>, TABBOX_MODE_COUNT> shortcuts = {{
+    const std::array<std::pair<QList<QKeySequence>, QList<QKeySequence>>, TABBOX_MODE_COUNT> shortcuts = {{
         {m_cutWalkThroughWindows, m_cutWalkThroughWindowsReverse},
         {m_cutWalkThroughWindowsAlternative, m_cutWalkThroughWindowsAlternativeReverse},
         {m_cutWalkThroughCurrentAppWindows, m_cutWalkThroughCurrentAppWindowsReverse},
