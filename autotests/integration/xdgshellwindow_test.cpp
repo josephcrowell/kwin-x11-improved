@@ -37,6 +37,7 @@
 #include <QDBusConnection>
 
 // system
+#include <linux/input-event-codes.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -110,6 +111,7 @@ private Q_SLOTS:
     void testCloseModalPreSetup();
     void testCloseInactiveModal();
     void testClosePopupOnParentUnmapped();
+    void testPopupDismissedOnFocusChange();
     void testMinimumSize();
     void testNoMinimumSize();
     void testMaximumSize();
@@ -2384,6 +2386,47 @@ void TestXdgShellWindow::testClosePopupOnParentUnmapped()
     parentToplevel.reset();
     parentSurface.reset();
     QVERIFY(childClosedSpy.wait());
+}
+
+void TestXdgShellWindow::testPopupDismissedOnFocusChange()
+{
+    // This test verifies that a popup window will be dismissed when the focus changes.
+
+    std::unique_ptr<KWayland::Client::Surface> parentSurface = Test::createSurface();
+    std::unique_ptr<Test::XdgToplevel> parentToplevel = Test::createXdgToplevelSurface(parentSurface.get());
+    std::unique_ptr<KWayland::Client::Pointer> pointer(Test::waylandSeat()->createPointer());
+    Window *parent = Test::renderAndWaitForShown(parentSurface.get(), QSize(200, 200), Qt::cyan);
+    QVERIFY(parent);
+
+    QSignalSpy buttonSpy(pointer.get(), &KWayland::Client::Pointer::buttonStateChanged);
+    input()->pointer()->warp(parent->frameGeometry().center());
+    // simulate press
+    quint32 timestamp = 1;
+    Test::pointerButtonPressed(BTN_LEFT, timestamp++);
+    QVERIFY(buttonSpy.wait());
+
+    std::unique_ptr<Test::XdgPositioner> positioner = Test::createXdgPositioner();
+    positioner->set_size(10, 10);
+    positioner->set_anchor_rect(10, 10, 10, 10);
+
+    std::unique_ptr<KWayland::Client::Surface> childSurface = Test::createSurface();
+    std::unique_ptr<Test::XdgPopup> popup = Test::createXdgPopupSurface(childSurface.get(), parentToplevel->xdgSurface(), positioner.get());
+    popup->grab(*Test::waylandSeat(), buttonSpy.first().first().value<quint32>());
+    QPointer<Window> child = Test::renderAndWaitForShown(childSurface.get(), QSize(10, 10), Qt::cyan);
+    QVERIFY(child);
+
+    QSignalSpy popupDismissedSpy(popup.get(), &Test::XdgPopup::doneReceived);
+
+    // create another toplevel that gets focus
+    std::unique_ptr<KWayland::Client::Surface> otherSurface = Test::createSurface();
+    std::unique_ptr<Test::XdgToplevel> otherToplevel = Test::createXdgToplevelSurface(otherSurface.get());
+    Window *other = Test::renderAndWaitForShown(otherSurface.get(), QSize(200, 200), Qt::cyan);
+    QVERIFY(other);
+
+    workspace()->setActiveWindow(other);
+
+    QVERIFY(popupDismissedSpy.wait());
+    QVERIFY(!child); // and the server-side window closed immediately too
 }
 
 void TestXdgShellWindow::testMinimumSize()
