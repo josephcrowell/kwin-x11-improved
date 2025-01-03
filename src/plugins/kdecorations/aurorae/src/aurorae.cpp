@@ -101,7 +101,14 @@ void Helper::unref()
 }
 
 static const QString s_defaultTheme = QStringLiteral("kwin4_decoration_qml_plastik");
-static const QString s_qmlPackageFolder = KWIN_DATADIR + QStringLiteral("/decorations/");
+
+static QStringList searchPaths()
+{
+    return QStringList{
+        KWIN_DATADIR + QStringLiteral("/decorations/"),
+        QStringLiteral("kwin/decorations/"),
+    };
+}
 
 QQmlComponent *Helper::component(const QString &themeName)
 {
@@ -146,35 +153,39 @@ QQmlComponent *Helper::loadComponent(const QString &themeName)
     qCDebug(AURORAE) << "Trying to load QML Decoration " << themeName;
     const QString internalname = themeName.toLower();
 
-    const auto offers = KPackage::PackageLoader::self()->findPackages(QStringLiteral("KWin/Decoration"), s_qmlPackageFolder,
-                                                                      [internalname](const KPluginMetaData &data) {
-                                                                          return data.pluginId().compare(internalname, Qt::CaseInsensitive) == 0;
-                                                                      });
-    if (offers.isEmpty()) {
-        qCCritical(AURORAE) << "Couldn't find QML Decoration " << themeName;
-        // TODO: what to do in error case?
-        return nullptr;
+    for (const QString &prefix : searchPaths()) {
+        const auto offers = KPackage::PackageLoader::self()->findPackages(QStringLiteral("KWin/Decoration"), prefix,
+                                                                          [internalname](const KPluginMetaData &data) {
+            return data.pluginId().compare(internalname, Qt::CaseInsensitive) == 0;
+        });
+        if (offers.isEmpty()) {
+            continue;
+        }
+        const KPluginMetaData service = offers.first();
+        const QString pluginName = service.pluginId();
+        const QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, prefix + pluginName + QLatin1String("/contents/ui/main.qml"));
+        if (file.isNull()) {
+            qCDebug(AURORAE) << "Could not find script file for " << pluginName;
+            // TODO: what to do in error case?
+            return nullptr;
+        }
+        // setup the QML engine
+        /* use logic from KDeclarative::setupBindings():
+        "addImportPath adds the path at the beginning, so to honour user's
+        paths we need to traverse the list in reverse order" */
+        QStringListIterator paths(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("module/imports"), QStandardPaths::LocateDirectory));
+        paths.toBack();
+        while (paths.hasPrevious()) {
+            m_engine->addImportPath(paths.previous());
+        }
+        QQmlComponent *component = new QQmlComponent(m_engine.get(), m_engine.get());
+        component->loadUrl(QUrl::fromLocalFile(file));
+        return component;
     }
-    const KPluginMetaData service = offers.first();
-    const QString pluginName = service.pluginId();
-    const QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, s_qmlPackageFolder + pluginName + QLatin1String("/contents/ui/main.qml"));
-    if (file.isNull()) {
-        qCDebug(AURORAE) << "Could not find script file for " << pluginName;
-        // TODO: what to do in error case?
-        return nullptr;
-    }
-    // setup the QML engine
-    /* use logic from KDeclarative::setupBindings():
-    "addImportPath adds the path at the beginning, so to honour user's
-     paths we need to traverse the list in reverse order" */
-    QStringListIterator paths(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("module/imports"), QStandardPaths::LocateDirectory));
-    paths.toBack();
-    while (paths.hasPrevious()) {
-        m_engine->addImportPath(paths.previous());
-    }
-    QQmlComponent *component = new QQmlComponent(m_engine.get(), m_engine.get());
-    component->loadUrl(QUrl::fromLocalFile(file));
-    return component;
+
+    qCCritical(AURORAE) << "Couldn't find QML Decoration " << themeName;
+    // TODO: what to do in error case?
+    return nullptr;
 }
 
 QQmlContext *Helper::rootContext()
@@ -609,16 +620,18 @@ void ThemeProvider::init()
 
 void ThemeProvider::findAllQmlThemes()
 {
-    const auto offers = KPackage::PackageLoader::self()->findPackages(QStringLiteral("KWin/Decoration"), s_qmlPackageFolder);
-    for (const auto &offer : offers) {
-        KDecoration3::DecorationThemeMetaData data;
-        data.setPluginId(m_data.pluginId());
-        data.setThemeName(offer.pluginId());
-        data.setVisibleName(offer.name());
-        if (hasConfiguration(offer.pluginId())) {
-            data.setConfigurationName("kcm_auroraedecoration");
+    for (const QString &prefix : searchPaths()) {
+        const auto offers = KPackage::PackageLoader::self()->findPackages(QStringLiteral("KWin/Decoration"), prefix);
+        for (const auto &offer : offers) {
+            KDecoration3::DecorationThemeMetaData data;
+            data.setPluginId(m_data.pluginId());
+            data.setThemeName(offer.pluginId());
+            data.setVisibleName(offer.name());
+            if (hasConfiguration(offer.pluginId())) {
+                data.setConfigurationName("kcm_auroraedecoration");
+            }
+            m_themes.append(data);
         }
-        m_themes.append(data);
     }
 }
 
@@ -666,11 +679,18 @@ bool ThemeProvider::hasConfiguration(const QString &theme)
     if (theme.startsWith(QLatin1String("__aurorae__svg__"))) {
         return true;
     }
-    const QString ui = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                              KWIN_DATADIR + QStringLiteral("/decorations/%1/contents/ui/config.ui").arg(theme));
-    const QString xml = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                               KWIN_DATADIR + QStringLiteral("/decorations/%1/contents/config/main.xml").arg(theme));
-    return !(ui.isEmpty() || xml.isEmpty());
+
+    for (const QString &prefix : searchPaths()) {
+        const QString ui = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                                  prefix + QStringLiteral("decorations/%1/contents/ui/config.ui").arg(theme));
+        const QString xml = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
+                                                   prefix + QStringLiteral("decorations/%1/contents/config/main.xml").arg(theme));
+        if (!(ui.isEmpty() || xml.isEmpty())) {
+            return true;
+        }
+    }
+
+    return false;
 }
 }
 
