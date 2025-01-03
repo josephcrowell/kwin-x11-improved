@@ -73,7 +73,7 @@ install(
         qml/MenuButton.qml
         qml/aurorae.qml
     DESTINATION
-        ${KDE_INSTALL_DATADIR}/kwin/aurorae)
+        ${KDE_INSTALL_DATADIR}/${KWIN_DATADIR}/aurorae)
 set(QMLFILES
     qml/AppMenuButton.qml
     qml/ButtonGroup.qml

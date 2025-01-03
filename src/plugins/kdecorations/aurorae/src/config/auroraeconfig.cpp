@@ -5,6 +5,9 @@
 */
 
 #include "auroraeconfig.h"
+
+#include "config-kwin.h"
+
 #include "auroraeshared.h"
 #include <KDecoration3/DecorationButton>
 #include <KLocalizedString>
@@ -74,7 +77,7 @@ void ConfigurationModule::initSvg()
 void ConfigurationModule::initQml()
 {
     const QString packageRoot = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                                       QLatin1String("kwin/decorations/") + m_theme,
+                                                       KWIN_DATADIR + QLatin1String("/decorations/") + m_theme,
                                                        QStandardPaths::LocateDirectory);
     if (packageRoot.isEmpty()) {
         return;

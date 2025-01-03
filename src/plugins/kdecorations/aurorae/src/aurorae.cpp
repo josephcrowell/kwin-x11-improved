@@ -101,7 +101,7 @@ void Helper::unref()
 }
 
 static const QString s_defaultTheme = QStringLiteral("kwin4_decoration_qml_plastik");
-static const QString s_qmlPackageFolder = QStringLiteral("kwin/decorations/");
+static const QString s_qmlPackageFolder = KWIN_DATADIR + QStringLiteral("/decorations/");
 
 QQmlComponent *Helper::component(const QString &themeName)
 {
@@ -117,7 +117,7 @@ QQmlComponent *Helper::component(const QString &themeName)
                 m_engine->addImportPath(paths.previous());
             }
             m_svgComponent = std::make_unique<QQmlComponent>(m_engine.get());
-            m_svgComponent->loadUrl(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kwin/aurorae/aurorae.qml"))));
+            m_svgComponent->loadUrl(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, KWIN_DATADIR + QStringLiteral("/aurorae/aurorae.qml"))));
         }
         // verify that the theme exists
         if (!QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("aurorae/themes/%1/%1rc").arg(themeName.mid(16))).isEmpty()) {
@@ -667,9 +667,9 @@ bool ThemeProvider::hasConfiguration(const QString &theme)
         return true;
     }
     const QString ui = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                              QStringLiteral("kwin/decorations/%1/contents/ui/config.ui").arg(theme));
+                                              KWIN_DATADIR + QStringLiteral("/decorations/%1/contents/ui/config.ui").arg(theme));
     const QString xml = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                               QStringLiteral("kwin/decorations/%1/contents/config/main.xml").arg(theme));
+                                               KWIN_DATADIR + QStringLiteral("/decorations/%1/contents/config/main.xml").arg(theme));
     return !(ui.isEmpty() || xml.isEmpty());
 }
 }
