@@ -6,14 +6,16 @@
 
 #include "fakeinputbackend.h"
 #include "fakeinputdevice.h"
+#include "keyboard_input.h"
 #include "wayland/display.h"
+#include "xkb.h"
 
 #include "wayland/qwayland-server-fake-input.h"
 
 namespace KWin
 {
 
-static const quint32 s_version = 5;
+static const quint32 s_version = 6;
 
 class FakeInputBackendPrivate : public QtWaylandServer::org_kde_kwin_fake_input
 {
@@ -41,6 +43,7 @@ protected:
     void org_kde_kwin_fake_input_touch_frame(Resource *resource) override;
     void org_kde_kwin_fake_input_pointer_motion_absolute(Resource *resource, wl_fixed_t x, wl_fixed_t y) override;
     void org_kde_kwin_fake_input_keyboard_key(Resource *resource, uint32_t button, uint32_t state) override;
+    void org_kde_kwin_fake_input_keyboard_keysym(Resource *resource, uint32_t keysym, uint32_t state) override;
     void org_kde_kwin_fake_input_destroy(Resource *resource) override;
 };
 
@@ -264,6 +267,15 @@ void FakeInputBackendPrivate::org_kde_kwin_fake_input_keyboard_key(Resource *res
     }
 
     Q_EMIT device->keyChanged(key, nativeState, currentTime(), device);
+}
+
+void FakeInputBackendPrivate::org_kde_kwin_fake_input_keyboard_keysym(Resource *resource, uint32_t keysym, uint32_t state)
+{
+    const auto code = KWin::input()->keyboard()->xkb()->keycodeFromKeysym(keysym);
+
+    if (code) {
+        org_kde_kwin_fake_input_keyboard_key(resource, code->first, state);
+    }
 }
 
 FakeInputBackend::FakeInputBackend(Display *display)
