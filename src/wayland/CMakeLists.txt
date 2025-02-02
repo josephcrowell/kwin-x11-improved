@@ -149,8 +149,8 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
 )
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PRIVATE_CODE
-    PROTOCOL ${WaylandProtocols_DATADIR}/unstable/linux-dmabuf/linux-dmabuf-unstable-v1.xml
-    BASENAME linux-dmabuf-unstable-v1
+    PROTOCOL ${WaylandProtocols_DATADIR}/stable/linux-dmabuf/linux-dmabuf-v1.xml
+    BASENAME linux-dmabuf-v1
 )
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PRIVATE_CODE

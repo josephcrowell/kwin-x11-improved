@@ -33,7 +33,7 @@
 #include "color_manager.h"
 
 // Generated in src/wayland.
-#include "wayland-linux-dmabuf-unstable-v1-client-protocol.h"
+#include "wayland-linux-dmabuf-v1-client-protocol.h"
 #include "wayland-pointer-constraints-unstable-v1-client-protocol.h"
 #include "wayland-pointer-gestures-unstable-v1-server-protocol.h"
 #include "wayland-presentation-time-client-protocol.h"

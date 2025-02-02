@@ -175,17 +175,17 @@ void AbstractEglBackend::initWayland()
 
         m_tranches.append({
             .device = m_display->renderDevNode().value_or(scanoutDevice->deviceId()),
-            .flags = {},
+            .flags = LinuxDmaBufV1Feedback::TrancheFlag::Sampling,
             .formatTable = filterFormats(10, false),
         });
         m_tranches.append({
             .device = m_display->renderDevNode().value_or(scanoutDevice->deviceId()),
-            .flags = {},
+            .flags = LinuxDmaBufV1Feedback::TrancheFlag::Sampling,
             .formatTable = filterFormats(8, false),
         });
         m_tranches.append({
             .device = m_display->renderDevNode().value_or(scanoutDevice->deviceId()),
-            .flags = {},
+            .flags = LinuxDmaBufV1Feedback::TrancheFlag::Sampling,
             .formatTable = includeShaderConversions(filterFormats({}, true)),
         });
 

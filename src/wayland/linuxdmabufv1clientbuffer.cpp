@@ -23,7 +23,7 @@
 
 namespace KWin
 {
-static const int s_version = 5;
+static const int s_version = 6;
 
 LinuxDmaBufV1ClientBufferIntegrationPrivate::LinuxDmaBufV1ClientBufferIntegrationPrivate(LinuxDmaBufV1ClientBufferIntegration *q, Display *display)
     : QtWaylandServer::zwp_linux_dmabuf_v1(*display, s_version)
@@ -447,9 +447,11 @@ LinuxDmaBufV1FeedbackPrivate::LinuxDmaBufV1FeedbackPrivate(LinuxDmaBufV1ClientBu
 void LinuxDmaBufV1FeedbackPrivate::send(Resource *resource)
 {
     send_format_table(resource->handle, m_bufferintegration->table->file.fd(), m_bufferintegration->table->file.size());
-    QByteArray bytes;
-    bytes.append(reinterpret_cast<const char *>(&m_bufferintegration->mainDevice), sizeof(dev_t));
-    send_main_device(resource->handle, bytes);
+    if (resource->version() < ZWP_LINUX_DMABUF_FEEDBACK_V1_TRANCHE_FLAGS_SAMPLING_SINCE_VERSION) {
+        QByteArray bytes;
+        bytes.append(reinterpret_cast<const char *>(&m_bufferintegration->mainDevice), sizeof(dev_t));
+        send_main_device(resource->handle, bytes);
+    }
     const auto &sendTranche = [this, resource](const LinuxDmaBufV1Feedback::Tranche &tranche) {
         QByteArray targetDevice;
         targetDevice.append(reinterpret_cast<const char *>(&tranche.device), sizeof(dev_t));
