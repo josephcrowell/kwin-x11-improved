@@ -18,6 +18,7 @@
 #include <QRecursiveMutex>
 #include <QSize>
 #include <QStringList>
+#include <QTimer>
 #include <deque>
 
 class QSocketNotifier;
@@ -77,6 +78,7 @@ private:
     void applyScreenToDevice(Device *device);
     void doSetup();
     TabletTool *getOrCreateTool(libinput_tablet_tool *tool);
+    void reconsiderThrottle();
 
     std::unique_ptr<QSocketNotifier> m_notifier;
     QRecursiveMutex m_mutex;
@@ -87,6 +89,9 @@ private:
     std::unique_ptr<ConnectionAdaptor> m_connectionAdaptor;
     std::unique_ptr<Context> m_input;
     std::unique_ptr<Udev> m_udev;
+    bool m_throttleEvents = true;
+    std::chrono::system_clock::time_point m_last = {};
+    QTimer *m_throttleScheduler = nullptr;
 };
 
 }
