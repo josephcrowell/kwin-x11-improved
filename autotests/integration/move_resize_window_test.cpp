@@ -1144,7 +1144,7 @@ void MoveResizeWindowTest::testRestrictedResizeUp()
     };
     add(QRect(320, 0, 640, 100), Test::LayerSurfaceV1::anchor_top);
     add(QRect(320, 924, 640, 100), Test::LayerSurfaceV1::anchor_bottom);
-    add(QRect(0, 100, 100, 1024), Test::LayerSurfaceV1::anchor_left);
+    add(QRect(0, 0, 100, 1024), Test::LayerSurfaceV1::anchor_left);
     add(QRect(1180, 0, 100, 1024), Test::LayerSurfaceV1::anchor_right);
 
     auto [window, surface, shellSurface] = showWindow();
@@ -1208,7 +1208,7 @@ void MoveResizeWindowTest::testRestrictedResizeRight()
     };
     add(QRect(320, 0, 640, 100), Test::LayerSurfaceV1::anchor_top);
     add(QRect(320, 924, 640, 100), Test::LayerSurfaceV1::anchor_bottom);
-    add(QRect(0, 100, 100, 1024), Test::LayerSurfaceV1::anchor_left);
+    add(QRect(0, 0, 100, 1024), Test::LayerSurfaceV1::anchor_left);
     add(QRect(1180, 0, 100, 1024), Test::LayerSurfaceV1::anchor_right);
 
     auto [window, surface, shellSurface] = showWindow();

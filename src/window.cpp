@@ -1539,22 +1539,22 @@ static QRegion interactiveMoveResizeVisibleSubrectRegion(const QRectF &geometry,
 }
 
 /**
- * Find closest point to move top left corner of window such that a titlebar subrect of size at least @p minWidth by @p minHeight is visible.
+ * Find closest point to move top left corner of window such that a titlebar subrect of size at least @p minVisibleWidth by @p minVisibleHeight is visible.
  *
  * See doc/moveresizerestriction for more details on algorithm.
  */
-static std::optional<QPointF> confineInteractiveMove(const QRectF &geometry, int minWidth, int minHeight)
+static std::optional<QPointF> confineInteractiveMove(const QRectF &geometry, int minVisibleWidth, int minVisibleHeight)
 {
     std::optional<QPointF> candidate;
     qreal bestScore;
 
-    minWidth = std::min(std::floor(geometry.width()), qreal(minWidth));
+    minVisibleWidth = std::min(std::floor(geometry.width()), qreal(minVisibleWidth));
 
-    const QRegion visibleSubrectRegion = interactiveMoveResizeVisibleSubrectRegion(geometry, Gravity::None, minWidth, minHeight);
+    const QRegion visibleSubrectRegion = interactiveMoveResizeVisibleSubrectRegion(geometry, Gravity::None, minVisibleWidth, minVisibleHeight);
     const QPointF anchor = geometry.topLeft();
     for (QRect rect : visibleSubrectRegion) {
         // convert visibleSubrect top left to window top left
-        rect.setLeft(rect.left() - geometry.width() + minWidth);
+        rect.setLeft(rect.left() - geometry.width() + minVisibleWidth);
         const QPointF closest(std::clamp<qreal>(anchor.x(), rect.x(), rect.x() + rect.width()),
                               std::clamp<qreal>(anchor.y(), rect.y(), rect.y() + rect.height()));
         const qreal score = QLineF(anchor, closest).length();
@@ -1569,7 +1569,7 @@ static std::optional<QPointF> confineInteractiveMove(const QRectF &geometry, int
 }
 
 /**
- * Find closest point to move anchor corner of window such that a titlebar subrect of size at least @p minWidth by @p minHeight is visible.
+ * Find closest point to move anchor corner of window such that a titlebar subrect of size at least @p minVisibleWidth by @p minVisibleHeight is visible.
  *
  * When @p gravity is None, TopLeft, Left, BottomLeft, or Top, anchor is *top left corner*
  * When @p gravity is Right, TopRight, or BottomRight, anchor is *top right corner*
@@ -1577,26 +1577,22 @@ static std::optional<QPointF> confineInteractiveMove(const QRectF &geometry, int
  *
  * See doc/moveresizerestriction for more details on algorithm.
  */
-static std::optional<QPointF> confineInteractiveResize(const QRectF &geometry, Gravity gravity, int minWidth, int minHeight)
+static std::optional<QPointF> confineInteractiveResize(const QRectF &geometry, Gravity gravity, int minVisibleWidth, int minVisibleHeight)
 {
-    std::optional<QPointF> candidate;
-    qreal bestScore;
-    const auto availableArea = workspace()->clientArea(FullArea, workspace()->activeOutput(), VirtualDesktopManager::self()->currentDesktop());
-
     if (gravity == Gravity::Bottom) {
-        candidate = geometry.bottomLeft();
-        if (geometry.height() < minHeight) {
-            candidate->setY(geometry.top() + minHeight);
+        QPointF candidate = geometry.bottomLeft();
+        if (geometry.height() < minVisibleHeight) {
+            candidate.setY(geometry.top() + minVisibleHeight);
         }
         return candidate;
     }
 
     if (gravity == Gravity::Top) {
         // only in this case is the width of the window fixed during resize
-        minWidth = std::min(std::floor(geometry.width()), qreal(minWidth));
+        minVisibleWidth = std::min(std::floor(geometry.width()), qreal(minVisibleWidth));
     }
 
-    const QRegion visibleSubrectRegion = interactiveMoveResizeVisibleSubrectRegion(geometry, gravity, minWidth, minHeight);
+    const QRegion visibleSubrectRegion = interactiveMoveResizeVisibleSubrectRegion(geometry, gravity, minVisibleWidth, minVisibleHeight);
     QPointF anchor;
     switch (gravity) {
     case Gravity::Top:
@@ -1643,12 +1639,16 @@ static std::optional<QPointF> confineInteractiveResize(const QRectF &geometry, G
         return QLineF(source, dest).length();
     };
 
+    std::optional<QPointF> candidate;
+    qreal bestScore;
+    const auto availableArea = workspace()->clientArea(FullArea, workspace()->activeOutput(), VirtualDesktopManager::self()->currentDesktop());
+
     switch (gravity) {
-    case (Gravity::Top):
-        // resizing from the top is handled like moving the window to avoid zero width rectangles when window width is equal to minWidth
+    case Gravity::Top:
+        // resizing from the top is handled like moving the window to avoid zero width rectangles when window width is equal to minVisibleWidth
         for (QRect rect : visibleSubrectRegion) {
             // convert top-left of visible titlebar subrect to top-left of the window
-            rect.setLeft(rect.left() - geometry.width() + minWidth);
+            rect.setLeft(rect.left() - geometry.width() + minVisibleWidth);
 
             const QPointF closest = clampPoint(rect, anchor);
             const qreal score = calcDistance(anchor, closest);
