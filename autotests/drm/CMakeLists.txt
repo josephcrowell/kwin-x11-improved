@@ -42,6 +42,9 @@ target_link_libraries(LibDrmTest
     Libdrm::Libdrm
     kwin
 )
+if (KWIN_BUILD_NOTIFICATIONS)
+    target_link_libraries(LibDrmTest KF6::Notifications)
+endif()
 target_include_directories(LibDrmTest
     PUBLIC
         ../../src

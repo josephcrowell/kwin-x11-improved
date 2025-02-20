@@ -37,6 +37,10 @@
 #include <unistd.h>
 #include <xf86drm.h>
 #include <xf86drmMode.h>
+#if KWIN_BUILD_NOTIFICATIONS
+#include <KLocalizedString>
+#include <KNotification>
+#endif
 
 #ifndef DRM_CLIENT_CAP_CURSOR_PLANE_HOTSPOT
 #define DRM_CLIENT_CAP_CURSOR_PLANE_HOTSPOT 6
@@ -325,6 +329,9 @@ bool DrmGpu::updateOutputs()
         if (stillExists) {
             if (conn->linkStatus.isValid() && conn->linkStatus.enumValue() == DrmConnector::LinkStatus::Bad) {
                 qCWarning(KWIN_DRM, "Link status bad detected on connector %s", qPrintable(conn->connectorName()));
+#if KWIN_BUILD_NOTIFICATIONS
+                KNotification::event(QStringLiteral("link-status-bad"), i18n("Bad connection to connector %s detected", qPrintable(conn->connectorName())));
+#endif
             }
             it++;
         } else {
