@@ -56,6 +56,15 @@
 
 #include "scriptadaptor.h"
 
+
+#include <kdbusaddons_export.h>
+namespace KJSDBusInterface
+{
+KDBUSADDONS_EXPORT void registerMetaObject(QJSEngine &engine, QJSValue object, const QString &name);
+} // namespace KJSDBusInterface
+using namespace Qt::StringLiterals;
+
+
 static QRect scriptValueToRect(const QJSValue &value)
 {
     return QRect(value.property(QStringLiteral("x")).toInt(),
@@ -220,6 +229,8 @@ void KWin::Script::slotScriptLoadedFromFile()
     // Expose enums.
     m_engine->globalObject().setProperty(QStringLiteral("KWin"), m_engine->newQMetaObject(&QtScriptWorkspaceWrapper::staticMetaObject));
 
+    KJSDBusInterface::registerMetaObject(*m_engine, m_engine->globalObject(), u"DBusInterface"_s);
+
     // Make the options object visible to QJSEngine.
     QJSValue optionsObject = m_engine->newQObject(options);
     QJSEngine::setObjectOwnership(options, QJSEngine::CppOwnership);
@@ -235,7 +246,6 @@ void KWin::Script::slotScriptLoadedFromFile()
 
     static const QStringList globalProperties{
         QStringLiteral("readConfig"),
-        QStringLiteral("callDBus"),
 
         QStringLiteral("registerShortcut"),
         QStringLiteral("registerScreenEdge"),
@@ -269,6 +279,27 @@ void KWin::Script::slotScriptLoadedFromFile()
         }
         function assertEquals(expected, actual, message) {
             console.assert(expected === actual, message || 'Assertion failed');
+        }
+        function callDBus(service, path, interface, method, ...args) {
+            const dbusInterface = new DBusInterface("session", service, path, interface)
+
+            let callback = null
+            lastArg = args[args.length - 1]
+            if (typeof lastArg === 'function') {
+                callback = lastArg
+                args.pop()
+            }
+
+            new Promise((resolve, reject) => {
+                dbusInterface.asyncCall(method, "_implied_", args, resolve, reject)
+            }).then((result, ...resolveArgs) => {
+                if (callback) {
+                    callback([result, resolveArgs])
+                }
+            }).catch((error) => {
+                console.error("Error!", error)
+                // original callDBus returned without callback on error!
+            })
         }
     )"));
     Q_ASSERT(!result.isError());

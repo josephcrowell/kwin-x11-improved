@@ -251,6 +251,7 @@ target_link_libraries(kwin
         KF6::I18nQml
         KF6::Package
         KF6::Service
+        KF6::DBusAddons
 
         KDecoration3::KDecoration
         KDecoration3::KDecoration3Private
