@@ -97,7 +97,7 @@
         "Name[zh_CN]": "屏幕边缘",
         "Name[zh_TW]": "螢幕邊緣"
     },
-    "X-DocPath": "kcontrol/kwinscreenedges/index.html",
+    "X-DocPath": "kcontrol/kwinscreenedges-x11/index.html",
     "X-KDE-Keywords": "kwin,window,manager,effect,corner,edge,border,action,switch,desktop,kwin screen edges,desktop edges,screen edges,maximize windows,tile windows,side of screen,screen behavior,switch desktop,virtual desktop,screen corners,borders,screen borders,desktop borders,desktop corners,corners,sticky corners,sticky edges,edge barriers,corner barriers",
     "X-KDE-Keywords[ar]": "كوين،نافذة،مدير،تأثير،زاوية،حافة،حدود،إجراء،تبديل،سطح المكتب،حواف شاشة كوين،حواف سطح المكتب،حواف الشاشة،تكبير النوافذ،تجانب النوافذ،جانب الشاشة،سلوك الشاشة،تبديل سطح المكتب،سطح المكتب الافتراضي،شاشة زوايا,حدود,حدود الشاشة,حدود سطح المكتب,زوايا سطح المكتب,زوايا,زوايا لاصقة,حواف لاصقة,حواجز الحافة,حواجز الزاوية",
     "X-KDE-Keywords[bg]": "kwin,прозорец,мениджър,ефект,ъгъл,ръб,граница,действие,превключвател,работен плот,ръбове на екрана на kwin,ръбове на работния плот,ръбове на екрана,увеличаване на прозорците,прозорци с плочки,страна на екрана,поведение на екрана,превключване на работния плот,виртуален работен плот,екран ъгли,граници,граници на екрана,граници на работния плот,ъгли на работния плот,ъгли,лепкави ъгли,лепкави ръбове,бариери по ръбовете,бариери по ъглите",

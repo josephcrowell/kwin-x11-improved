@@ -102,7 +102,7 @@
         "Name[zh_CN]": "窗口规则",
         "Name[zh_TW]": "視窗規則"
     },
-    "X-DocPath": "kcontrol/windowspecific/index.html",
+    "X-DocPath": "kcontrol/windowspecific-x11/index.html",
     "X-KDE-Keywords": "size,position,state,window behavior,windows,specific,workarounds,remember,rules,window rules,apps,applications",
     "X-KDE-Keywords[ar]": "الحجم,الموضع,الحالة,سلوك النافذة,النوافذ,محدد,الحلول البديلة,التذكر,القواعد,قواعد النافذة,التطبيقات,التطبيقات",
     "X-KDE-Keywords[bg]": "размер,позиция,състояние,поведение на прозореца,прозорци,специфични,заобикалящи решения,запомнете,правила,правила за прозорец,приложения,приложения",
