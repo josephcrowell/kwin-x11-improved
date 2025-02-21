@@ -27,6 +27,7 @@ target_include_directories(kwin INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INC
 set_target_properties(kwin PROPERTIES
    VERSION ${PROJECT_VERSION}
    SOVERSION 6
+   OUTPUT_NAME "kwin-x11"
 )
 
 target_compile_definitions(kwin PRIVATE
