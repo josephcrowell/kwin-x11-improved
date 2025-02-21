@@ -1,6 +1,6 @@
 ecm_setup_version(${PROJECT_VERSION}
                   VARIABLE_PREFIX KWIN
-                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KWinConfigVersion.cmake"
+                  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KWinX11ConfigVersion.cmake"
                   SOVERSION 6
 )
 
@@ -398,10 +398,10 @@ if (KWIN_BUILD_X11 AND KWIN_BUILD_X11_BACKEND)
     install(TARGETS kwin_x11 ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 endif()
 
-install(TARGETS kwin EXPORT KWinTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS kwin EXPORT KWinX11Targets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 add_custom_target(
-    KWinDBusInterfaces
+    KWinX11DBusInterfaces
     ALL
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kwin.VirtualKeyboard.xml
             ${CMAKE_CURRENT_BINARY_DIR}/org.kde.KWin.TabletModeManager.xml
@@ -424,7 +424,7 @@ install(
         ${KDE_INSTALL_DBUSINTERFACEDIR}
 )
 
-install(EXPORT KWinTargets DESTINATION "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWin" FILE KWinTargets.cmake NAMESPACE KWin:: )
+install(EXPORT KWinX11Targets DESTINATION "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWinX11" FILE KWinX11Targets.cmake NAMESPACE KWinX11:: )
 
 if (KWIN_BUILD_X11)
     install(FILES atoms.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11 COMPONENT Devel)
@@ -628,17 +628,17 @@ install(FILES
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/scene COMPONENT Devel
 )
 
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWin")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWinX11")
 
-install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KWinConfig.cmake"
-               "${CMAKE_CURRENT_BINARY_DIR}/KWinConfigVersion.cmake"
+install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KWinX11Config.cmake"
+               "${CMAKE_CURRENT_BINARY_DIR}/KWinX11ConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel )
 
 configure_package_config_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/KWinConfig.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/KWinConfig.cmake"
+  "${CMAKE_CURRENT_SOURCE_DIR}/KWinX11Config.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/KWinX11Config.cmake"
   INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
 )
 
-install(EXPORT KWinTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KWinTargets.cmake NAMESPACE KWin:: )
+install(EXPORT KWinX11Targets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KWinX11Targets.cmake NAMESPACE KWinX11:: )
