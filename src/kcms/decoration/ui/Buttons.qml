@@ -10,7 +10,7 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kcmutils as KCM
 import org.kde.kirigami as Kirigami
-import org.kde.kwin.private.kdecoration as KDecoration
+import org.kde.kwin_x11.private.kdecoration as KDecoration
 
 // Fake Window
 Rectangle {
