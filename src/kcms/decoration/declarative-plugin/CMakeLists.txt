@@ -1,4 +1,4 @@
-ecm_add_qml_module(kdecorationprivatedeclarative URI org.kde.kwin.private.kdecoration DEPENDENCIES QtCore QtQuick GENERATE_PLUGIN_SOURCE)
+ecm_add_qml_module(kdecorationprivatedeclarative URI org.kde.kwin_x11.private.kdecoration DEPENDENCIES QtCore QtQuick GENERATE_PLUGIN_SOURCE)
 
 target_sources(kdecorationprivatedeclarative PRIVATE
     previewbutton.cpp
