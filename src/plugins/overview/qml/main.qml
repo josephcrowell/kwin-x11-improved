@@ -391,7 +391,7 @@ FocusScope {
                 text: i18ndc("kwin", "@action:button", "Configure Virtual Desktops…")
                 icon.name: "preferences-virtual-desktops"
                 onClicked: {
-                    KCM.KCMLauncher.openSystemSettings("kcm_kwin_virtualdesktops")
+                    KCM.KCMLauncher.openSystemSettings("kcm_kwin_virtualdesktops_x11")
                     effect.deactivate();
                 }
             }
