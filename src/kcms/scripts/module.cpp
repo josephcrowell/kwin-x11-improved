@@ -147,7 +147,7 @@ void Module::save()
     setNeedsSave(false);
 }
 
-K_PLUGIN_FACTORY_WITH_JSON(KcmKWinScriptsFactory, "kcm_kwin_scripts.json",
+K_PLUGIN_FACTORY_WITH_JSON(KcmKWinScriptsFactory, "kcm_kwin_scripts_x11.json",
                            registerPlugin<Module>();
                            registerPlugin<KWinScriptsData>();)
 
