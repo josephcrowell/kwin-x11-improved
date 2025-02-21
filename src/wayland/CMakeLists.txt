@@ -498,4 +498,4 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/wayland-linux-drm-syncobj-v1-server-protocol.h
     ${CMAKE_CURRENT_BINARY_DIR}/wayland-presentation-time-server-protocol.h
 
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/wayland COMPONENT Devel)
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/wayland COMPONENT Devel)

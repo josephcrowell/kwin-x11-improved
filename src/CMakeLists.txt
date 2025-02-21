@@ -23,7 +23,7 @@ if (KWIN_BUILD_KCMS)
 endif()
 
 add_library(kwin SHARED)
-target_include_directories(kwin INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/kwin>")
+target_include_directories(kwin INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/kwin-x11>")
 set_target_properties(kwin PROPERTIES
    VERSION ${PROJECT_VERSION}
    SOVERSION 6
@@ -427,7 +427,7 @@ install(
 install(EXPORT KWinTargets DESTINATION "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWin" FILE KWinTargets.cmake NAMESPACE KWin:: )
 
 if (KWIN_BUILD_X11)
-    install(FILES atoms.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin COMPONENT Devel)
+    install(FILES atoms.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11 COMPONENT Devel)
 endif()
 
 install(FILES
@@ -502,7 +502,7 @@ install(FILES
     xdgshellintegration.h
     xdgshellwindow.h
     xkb.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin COMPONENT Devel)
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11 COMPONENT Devel)
 
 install(FILES
     core/colorlut3d.h
@@ -537,7 +537,7 @@ install(FILES
     core/session_logind.h
     core/session_noop.h
     core/shmgraphicsbufferallocator.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/core COMPONENT Devel)
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/core COMPONENT Devel)
 
 install(FILES
     utils/c_ptr.h
@@ -561,7 +561,7 @@ install(FILES
     utils/version.h
     utils/vsyncmonitor.h
     utils/xcbutils.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/utils COMPONENT Devel)
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/utils COMPONENT Devel)
 
 install(FILES
     effect/animationeffect.h
@@ -575,7 +575,7 @@ install(FILES
     effect/quickeffect.h
     effect/timeline.h
     effect/xcb.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/effect COMPONENT Devel)
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/effect COMPONENT Devel)
 
 install(FILES
     opengl/abstract_opengl_context_attribute_builder.h
@@ -598,7 +598,7 @@ install(FILES
     opengl/glutils.h
     opengl/glvertexbuffer.h
     opengl/openglcontext.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/opengl COMPONENT Devel
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/opengl COMPONENT Devel
 )
 
 install(FILES
@@ -625,7 +625,7 @@ install(FILES
     scene/workspacescene.h
     scene/workspacescene_opengl.h
     scene/workspacescene_qpainter.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/scene COMPONENT Devel
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin-x11/scene COMPONENT Devel
 )
 
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWin")
