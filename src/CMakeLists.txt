@@ -407,7 +407,6 @@ add_custom_target(
             ${CMAKE_CURRENT_BINARY_DIR}/org.kde.KWin.TabletModeManager.xml
 )
 
-install(FILES kwin.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 if (KWIN_BUILD_NOTIFICATIONS)
     install(FILES kwin-x11.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
 endif()
