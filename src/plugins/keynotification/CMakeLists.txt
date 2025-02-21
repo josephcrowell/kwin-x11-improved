@@ -4,7 +4,7 @@
 kcoreaddons_add_plugin(KeyNotificationPlugin INSTALL_NAMESPACE "${KWIN_PLUGINDIR}/plugins")
 
 target_compile_definitions(KeyNotificationPlugin PRIVATE
-    -DTRANSLATION_DOMAIN=\"kwin\"
+    -DTRANSLATION_DOMAIN=\"kwin_x11\"
 )
 
 target_sources(KeyNotificationPlugin PRIVATE
