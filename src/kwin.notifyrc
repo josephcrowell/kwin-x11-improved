@@ -1,5 +1,5 @@
 [Global]
-IconName=kwin
+IconName=kwin-x11
 Comment=KWin Window Manager
 Comment[ar]=مدير النوافذ كوين
 Comment[az]=KWin pəncərə Meneceri

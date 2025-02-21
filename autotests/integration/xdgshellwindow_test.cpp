@@ -702,7 +702,7 @@ void TestXdgShellWindow::testDesktopFileName()
     QVERIFY(desktopFileNameChangedSpy.wait());
     QCOMPARE(iconChangedSpy.count(), 1);
     QCOMPARE(window->desktopFileName(), dfPath);
-    QCOMPARE(window->icon().name(), QStringLiteral("kwin"));
+    QCOMPARE(window->icon().name(), QStringLiteral("kwin-x11"));
 }
 
 void TestXdgShellWindow::testCaptionSimplified()
