@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(PROJECT_VERSION "6.3.80") # Handled by release scripts
-project(KWin VERSION ${PROJECT_VERSION})
+project(KWin-X11 VERSION ${PROJECT_VERSION})
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 23)
