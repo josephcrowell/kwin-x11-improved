@@ -255,7 +255,7 @@ void X11WindowedOutput::init(const QSize &pixelSize, qreal scale)
 
     m_winInfo->setWindowType(NET::Normal);
     m_winInfo->setPid(QCoreApplication::applicationPid());
-    QIcon windowIcon = QIcon::fromTheme(QStringLiteral("kwin"));
+    QIcon windowIcon = QIcon::fromTheme(QStringLiteral("kwin-x11"));
     auto addIcon = [&windowIcon, this](const QSize &size) {
         if (windowIcon.actualSize(size) != size) {
             return;
