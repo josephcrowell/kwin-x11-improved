@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2023 Niccolò Venerandi <niccolo.venerandi@kde.org>
+# SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+
+Version=6
+
+# Reset ActiveMouseScreen config option.
+Id=kwin-6.0-reset-active-mouse-screen-x11
+Script=kwin-6.0-reset-active-mouse-screen-x11
+
+# Delete old desktop switching shortcuts.
+Id=kwin-6.0-delete-desktop-switching-shortcuts-x11
+Script=kwin-6.0-delete-desktop-switching-shortcuts-x11
+
+# Delete old tabbox defaults
+Id=kwin-6.0-remove-breeze-tabbox-default-x11
+Script=kwin-6.0-remove-breeze-tabbox-default-x11
+
+# Delete old gridview and expose defaults
+Id=kwin-6.1-remove-gridview-expose-shortcuts-x11
+Script=kwin-6.1-remove-gridview-expose-shortcuts-x11
