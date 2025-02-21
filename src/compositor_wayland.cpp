@@ -320,7 +320,10 @@ void WaylandCompositor::composite(RenderLoop *renderLoop)
     if (m_backend->checkGraphicsReset()) {
         qCDebug(KWIN_CORE) << "Graphics reset occurred";
 #if KWIN_BUILD_NOTIFICATIONS
-        KNotification::event(QStringLiteral("graphicsreset"), i18n("Desktop effects were restarted due to a graphics reset"));
+        auto notification = new KNotification(QStringLiteral("graphicsreset"));
+        notification->setComponentName(QStringLiteral("kwin-x11"));
+        notification->setText(i18n("Desktop effects were restarted due to a graphics reset"));
+        notification->sendEvent();
 #endif
         reinitialize();
         return;
