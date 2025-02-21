@@ -475,6 +475,7 @@ bool SessionManager::closeWaylandWindows()
     connect(&m_closeTimer, &QTimer::timeout, m_closingWindowsGuard.get(), [this, dbusMessage] {
 #if KWIN_BUILD_NOTIFICATIONS
         m_cancelNotification = new KNotification("cancellogout", KNotification::DefaultEvent | KNotification::Persistent);
+        m_cancelNotification->setComponentName(QStringLiteral("kwin-x11"));
         updateWaylandCancelNotification();
         auto cancel = m_cancelNotification->addAction(i18nc("@action:button", "Cancel Logout"));
         auto quit = m_cancelNotification->addAction(i18nc("@action::button", "Log Out Anyway"));
