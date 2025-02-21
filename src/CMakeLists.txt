@@ -399,54 +399,6 @@ endif()
 
 install(TARGETS kwin EXPORT KWinTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
-add_executable(kwin_wayland main_wayland.cpp)
-
-if(TARGET PkgConfig::libsystemd)
-    ecm_qt_declare_logging_category(kwin_wayland
-        HEADER watchdoglogging.h
-        IDENTIFIER KWIN_WATCHDOG
-        CATEGORY_NAME kwin_watchdog
-        DEFAULT_SEVERITY Info
-    )
-
-    target_sources(kwin_wayland PRIVATE watchdog.cpp)
-    target_link_libraries(kwin_wayland PkgConfig::libsystemd)
-endif()
-
-target_link_libraries(kwin_wayland
-    kwin
-    KF6::Crash
-    KF6::I18n
-)
-if (KWIN_BUILD_X11)
-    target_link_libraries(kwin_wayland KWinXwaylandServerModule)
-endif()
-target_compile_definitions(kwin_wayland PRIVATE
-    -DTRANSLATION_DOMAIN=\"kwin\"
-)
-kcoreaddons_target_static_plugins(kwin_wayland NAMESPACE "${KWIN_PLUGINDIR}/effects/plugins")
-
-install(TARGETS kwin_wayland ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
-if (HAVE_LIBCAP)
-    install(
-    CODE "execute_process(
-            COMMAND
-                ${SETCAP_EXECUTABLE}
-                CAP_SYS_NICE=+ep
-                \$ENV{DESTDIR}${CMAKE_INSTALL_FULL_BINDIR}/kwin_wayland)"
-    )
-endif()
-
-target_link_libraries(kwin_wayland
-    KWinQpaPlugin
-    KF6WindowSystemKWinPlugin
-    KF6IdleTimeKWinPlugin
-)
-
-if (TARGET KF6GlobalAccelKWinPlugin)
-    target_link_libraries(kwin_wayland KF6GlobalAccelKWinPlugin)
-endif()
-
 add_custom_target(
     KWinDBusInterfaces
     ALL
