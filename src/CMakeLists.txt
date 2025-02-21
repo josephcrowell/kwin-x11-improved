@@ -410,18 +410,18 @@ add_custom_target(
 if (KWIN_BUILD_NOTIFICATIONS)
     install(FILES kwin-x11.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
 endif()
-install(
-    FILES
-        org.kde.KWin.VirtualDesktopManager.xml
-        org.kde.KWin.xml
-        org.kde.kwin.Compositing.xml
-        org.kde.kwin.Effects.xml
-        org.kde.KWin.Plugins.xml
-        ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kwin.VirtualKeyboard.xml
-        ${CMAKE_CURRENT_BINARY_DIR}/org.kde.KWin.TabletModeManager.xml
-    DESTINATION
-        ${KDE_INSTALL_DBUSINTERFACEDIR}
-)
+
+function(export_dbus_interface file path)
+    install(FILES ${path} DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR} RENAME "kwin_x11_${file}")
+endfunction()
+
+export_dbus_interface(org.kde.KWin.VirtualDesktopManager.xml org.kde.KWin.VirtualDesktopManager.xml)
+export_dbus_interface(org.kde.KWin.xml org.kde.KWin.xml)
+export_dbus_interface(org.kde.kwin.Compositing.xml org.kde.kwin.Compositing.xml)
+export_dbus_interface(org.kde.kwin.Effects.xml org.kde.kwin.Effects.xml)
+export_dbus_interface(org.kde.KWin.Plugins.xml org.kde.KWin.Plugins.xml)
+export_dbus_interface(org.kde.kwin.VirtualKeyboard.xml ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kwin.VirtualKeyboard.xml)
+export_dbus_interface(org.kde.KWin.TabletModeManager.xml ${CMAKE_CURRENT_BINARY_DIR}/org.kde.KWin.TabletModeManager.xml)
 
 install(EXPORT KWinX11Targets DESTINATION "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWinX11" FILE KWinX11Targets.cmake NAMESPACE KWinX11:: )
 
