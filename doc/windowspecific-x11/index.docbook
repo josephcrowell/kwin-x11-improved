@@ -3,7 +3,7 @@
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
-<book id="windowspecific" lang="&language;">
+<book id="windowspecific-x11" lang="&language;">
 <bookinfo>
 <title>Window Rules</title>
 <authorgroup>

@@ -97,7 +97,7 @@
         "Name[zh_CN]": "任务切换器",
         "Name[zh_TW]": "工作切換器"
     },
-    "X-DocPath": "kcontrol/kwintabbox/index.html",
+    "X-DocPath": "kcontrol/kwintabbox-x11/index.html",
     "X-KDE-Keywords": "window,windows,switcher,window switcher,switching,window switching,alttab,alt-tab,alt+tab,alt tab,apps changer,application changer,app,task,switch,task switcher",
     "X-KDE-Keywords[ar]": "نافذة,نوافذ,مبدل,مبدل نوافذ,تاب,ألت تاب,مغير التطبيقات,مهمة,مهام",
     "X-KDE-Keywords[bg]": "прозорец,прозорци,превключвател,превключвател на прозорци,превключване,превключване на прозорци,alttab,alt-tab,alt+tab,alt раздел,смяна на приложения,смяна на приложения,приложение,задача,превключвател,превключвател на задачи",
