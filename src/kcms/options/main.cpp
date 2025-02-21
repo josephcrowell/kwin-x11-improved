@@ -22,7 +22,7 @@
 #include "mouse.h"
 #include "windows.h"
 
-K_PLUGIN_CLASS_WITH_JSON(KWinOptions, "kcm_kwinoptions.json")
+K_PLUGIN_CLASS_WITH_JSON(KWinOptions, "kcm_kwinoptions_x11.json")
 
 class KFocusConfigStandalone : public KFocusConfig
 {
