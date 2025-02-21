@@ -24,4 +24,4 @@ target_link_libraries(kcm_kwin_effects_x11 PRIVATE
     kcmkwincommon
 )
 
-install(FILES kwineffect.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
+install(FILES kwineffect.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR} RENAME kwineffect-x11.knsrc)
