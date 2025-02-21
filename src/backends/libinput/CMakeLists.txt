@@ -12,6 +12,8 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/org.kde.kwin.InputDevice.xml
     DESTINATION
         ${KDE_INSTALL_DBUSINTERFACEDIR}
+    RENAME
+        kwin_x11_org.kde.kwin.InputDevice.xml
 )
 
 target_sources(kwin PRIVATE
