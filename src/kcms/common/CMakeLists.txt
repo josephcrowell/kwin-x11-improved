@@ -1,5 +1,5 @@
 # KI18N Translation Domain for this library
-add_definitions(-DTRANSLATION_DOMAIN=\"kcmkwincommon\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcmkwincommon_x11\")
 
 set(kcmkwincommon_SRC
     effectsmodel.cpp
