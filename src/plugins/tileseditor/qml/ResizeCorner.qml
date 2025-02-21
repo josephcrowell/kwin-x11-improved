@@ -8,7 +8,7 @@ import QtQuick
 import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
 import org.kde.kwin as KWinComponents
-import org.kde.kwin.private.effects
+import org.kde.kwin_x11.private.effects
 import org.kde.kirigami as Kirigami
 
 Rectangle {
