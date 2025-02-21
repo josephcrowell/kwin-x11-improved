@@ -26,7 +26,7 @@
 #include "kwindecorationsettings.h"
 #include "utils.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KCMKWinDecorationFactory, "kcm_kwindecoration.json", registerPlugin<KCMKWinDecoration>(); registerPlugin<KWinDecorationData>();)
+K_PLUGIN_FACTORY_WITH_JSON(KCMKWinDecorationFactory, "kcm_kwindecoration_x11.json", registerPlugin<KCMKWinDecoration>(); registerPlugin<KWinDecorationData>();)
 
 Q_DECLARE_METATYPE(KDecoration3::BorderSize)
 
