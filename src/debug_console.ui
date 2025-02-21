@@ -14,7 +14,7 @@
    <string>Debug Console</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="kwin"/>
+   <iconset theme="kwin-x11"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
