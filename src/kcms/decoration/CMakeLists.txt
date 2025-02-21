@@ -39,6 +39,9 @@ set(kwin-applywindowdecoration_SRCS
 
 kconfig_add_kcfg_files(kwin-applywindowdecoration_SRCS kwindecorationsettings.kcfgc GENERATE_MOC)
 add_executable(kwin-applywindowdecoration ${kwin-applywindowdecoration_SRCS})
+set_target_properties(kwin-applywindowdecoration PROPERTIES
+    OUTPUT_NAME "kwin-applywindowdecoration-x11"
+)
 
 target_link_libraries(kwin-applywindowdecoration
     KDecoration3::KDecoration
@@ -49,5 +52,5 @@ target_link_libraries(kwin-applywindowdecoration
 
 configure_file(window-decorations.knsrc.cmake ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR} RENAME window-decorations-x11.knsrc)
 install(TARGETS kwin-applywindowdecoration DESTINATION ${KDE_INSTALL_LIBEXECDIR})
