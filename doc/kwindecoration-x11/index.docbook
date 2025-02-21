@@ -5,7 +5,7 @@
 <!ENTITY % English "INCLUDE" > <!-- change language only here -->
 ]>
 
-<article id="kwindecoration" lang="&language;">
+<article id="kwindecoration-x11" lang="&language;">
 <articleinfo>
 <authorgroup>
 <author>&Rik.Hemsley; &Rik.Hemsley.mail;</author>
@@ -75,7 +75,7 @@ On this tab you can change the border size and the visibility
 of the window titlebar for particular windows.</para>
 
 <para>Different options for particular windows you find in the &systemsettings;
-module <ulink url="help:/kcontrol/windowspecific">Window Rules</ulink>.
+module <ulink url="help:/kcontrol/windowspecific-x11">Window Rules</ulink>.
 </para>
 
 <tip>
