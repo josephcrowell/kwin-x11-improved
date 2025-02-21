@@ -950,7 +950,7 @@ void RuleBook::edit(Window *c, bool whole_app)
         args << QStringLiteral("whole-app");
     }
     QProcess *p = new QProcess(this);
-    p->setArguments({"kcm_kwinrules", "--args", args.join(QLatin1Char(' '))});
+    p->setArguments({"kcm_kwinrules_x11", "--args", args.join(QLatin1Char(' '))});
     p->setProcessEnvironment(kwinApp()->processStartupEnvironment());
     p->setProgram(QStandardPaths::findExecutable("kcmshell6"));
     p->setProcessChannelMode(QProcess::MergedChannels);
