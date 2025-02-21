@@ -1,5 +1,5 @@
 # KI18N Translation Domain for this library
-add_definitions(-DTRANSLATION_DOMAIN=\"kcm_kwinrules\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_kwinrules_x11\")
 add_definitions(-DKCMRULES)
 
 set(kwinrules_SRCS
@@ -43,5 +43,5 @@ if (KWIN_BUILD_ACTIVITIES)
 endif()
 target_link_libraries(KWinRulesObjects ${kcm_libs} ${kwin_kcm_rules_XCB_LIBS})
 
-kcmutils_add_qml_kcm(kcm_kwinrules SOURCES kcmrules.cpp)
-target_link_libraries(kcm_kwinrules PRIVATE KWinRulesObjects)
+kcmutils_add_qml_kcm(kcm_kwinrules_x11 SOURCES kcmrules.cpp)
+target_link_libraries(kcm_kwinrules_x11 PRIVATE KWinRulesObjects)
