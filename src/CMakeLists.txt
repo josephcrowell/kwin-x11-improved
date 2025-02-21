@@ -31,7 +31,7 @@ set_target_properties(kwin PROPERTIES
 )
 
 target_compile_definitions(kwin PRIVATE
-    -DTRANSLATION_DOMAIN=\"kwin\"
+    -DTRANSLATION_DOMAIN=\"kwin_x11\"
 )
 
 target_sources(kwin PRIVATE
@@ -392,7 +392,7 @@ if (KWIN_BUILD_X11 AND KWIN_BUILD_X11_BACKEND)
         KF6::GlobalAccel
     )
     target_compile_definitions(kwin_x11 PRIVATE
-        -DTRANSLATION_DOMAIN=\"kwin\"
+        -DTRANSLATION_DOMAIN=\"kwin_x11\"
     )
     kcoreaddons_target_static_plugins(kwin_x11 NAMESPACE "${KWIN_PLUGINDIR}/effects/plugins")
     install(TARGETS kwin_x11 ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
