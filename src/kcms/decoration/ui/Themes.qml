@@ -8,7 +8,7 @@ import QtQuick
 
 import org.kde.kcmutils as KCM
 import org.kde.kirigami 2.20 as Kirigami
-import org.kde.kwin.private.kdecoration as KDecoration
+import org.kde.kwin_x11.private.kdecoration as KDecoration
 
 KCM.GridView {
     function updateDecoration(item, marginTopLeft, marginBottomRight) {
