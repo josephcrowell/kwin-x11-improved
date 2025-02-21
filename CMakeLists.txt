@@ -534,12 +534,12 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWinDBusInterface")
-configure_package_config_file(KWinDBusInterfaceConfig.cmake.in
-    "${CMAKE_CURRENT_BINARY_DIR}/KWinDBusInterfaceConfig.cmake"
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KWinX11DBusInterface")
+configure_package_config_file(KWinX11DBusInterfaceConfig.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/KWinX11DBusInterfaceConfig.cmake"
     PATH_VARS KDE_INSTALL_DBUSINTERFACEDIR
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/KWinDBusInterfaceConfig.cmake
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/KWinX11DBusInterfaceConfig.cmake
     DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
 if (KWIN_BUILD_X11_BACKEND)
