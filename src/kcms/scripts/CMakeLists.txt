@@ -18,4 +18,4 @@ target_link_libraries(kcm_kwin_scripts_x11 PRIVATE
     KF6::KCMUtilsQuick
 )
 
-install(FILES kwinscripts.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
+install(FILES kwinscripts.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR} RENAME kwinscripts-x11.knsrc)
