@@ -154,11 +154,11 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("kwin"));
     QApplication app(argc, argv);
     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("tools-report-bug")));
-    QCoreApplication::setApplicationName(QStringLiteral("kwin_killer_helper"));
+    QCoreApplication::setApplicationName(QStringLiteral("kwin_killer_helper_x11"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QApplication::setApplicationDisplayName(i18n("Window Manager"));
     QCoreApplication::setApplicationVersion(QStringLiteral("1.0"));
-    QApplication::setDesktopFileName(QStringLiteral("org.kde.kwin.killer"));
+    QApplication::setDesktopFileName(QStringLiteral("org.kde.kwin_x11.killer"));
 
     QCommandLineOption pidOption(QStringLiteral("pid"),
                                  i18n("PID of the application to terminate"), i18n("pid"));
