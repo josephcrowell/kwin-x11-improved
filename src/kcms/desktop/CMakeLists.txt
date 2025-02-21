@@ -25,5 +25,3 @@ target_link_libraries(kcm_kwin_virtualdesktops_x11 PRIVATE
 
     kcmkwincommon
 )
-
-install(FILES virtualdesktopssettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
