@@ -409,7 +409,7 @@ add_custom_target(
 
 install(FILES kwin.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 if (KWIN_BUILD_NOTIFICATIONS)
-    install(FILES kwin.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
+    install(FILES kwin-x11.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
 endif()
 install(
     FILES
