@@ -20,7 +20,7 @@
 #include <QDBusMessage>
 
 K_PLUGIN_FACTORY_WITH_JSON(VirtualDesktopsFactory,
-                           "kcm_kwin_virtualdesktops.json",
+                           "kcm_kwin_virtualdesktops_x11.json",
                            registerPlugin<KWin::VirtualDesktops>();
                            registerPlugin<KWin::VirtualDesktopsData>();)
 
