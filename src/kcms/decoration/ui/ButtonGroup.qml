@@ -6,7 +6,7 @@
 import QtQuick
 
 import org.kde.kirigami 2.20 as Kirigami
-import org.kde.kwin.private.kdecoration as KDecoration
+import org.kde.kwin_x11.private.kdecoration as KDecoration
 
 ListView {
     id: view
