@@ -9,7 +9,6 @@ add_subdirectory(screenedges)
 add_subdirectory(scripts)
 add_subdirectory(desktop)
 add_subdirectory(effects)
-add_subdirectory(virtualkeyboard)
 
 if (KWIN_BUILD_TABBOX)
     add_subdirectory(tabbox)
