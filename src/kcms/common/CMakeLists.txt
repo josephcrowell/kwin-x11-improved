@@ -24,6 +24,7 @@ target_link_libraries(kcmkwincommon
 set_target_properties(kcmkwincommon PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION 6
+    OUTPUT_NAME "kcmkwincommon-x11"
 )
 
 install(TARGETS kcmkwincommon ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
