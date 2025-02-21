@@ -50,7 +50,7 @@ KCM.AbstractKCM {
             onTriggered: kcm.push("ConfigureTitlebar.qml")
         },
         NewStuff.Action {
-            configFile: "window-decorations.knsrc"
+            configFile: "window-decorations-x11.knsrc"
             text: i18nc("@action:button as in, \"Get New Window Decorations\"", "Get New…")
 
             onEntryEvent: (entry, event) => {

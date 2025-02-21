@@ -24,7 +24,7 @@ ScrollViewKCM {
     actions: NewStuff.Action {
         text: i18nc("@action:button get new KWin effects", "Get New…")
         visible: KAuthorized.authorize(KAuthorized.GHNS)
-        configFile: "kwineffect.knsrc"
+        configFile: "kwineffect-x11.knsrc"
         onEntryEvent: (entry, event) => {
             if (event === NewStuff.Engine.StatusChangedEvent) {
                 kcm.onGHNSEntriesChanged()

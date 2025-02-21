@@ -1,5 +1,5 @@
 # KI18N Translation Domain for this library
-add_definitions(-DTRANSLATION_DOMAIN=\"kcm_kwindecoration\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_kwindecoration_x11\")
 
 add_subdirectory(declarative-plugin)
 
@@ -20,9 +20,9 @@ kcmutils_generate_module_data(
 
 kconfig_add_kcfg_files(kcmkwindecoration_SRCS kwindecorationsettings.kcfgc GENERATE_MOC)
 
-kcmutils_add_qml_kcm(kcm_kwindecoration SOURCES ${kcmkwindecoration_SRCS})
+kcmutils_add_qml_kcm(kcm_kwindecoration_x11 SOURCES ${kcmkwindecoration_SRCS})
 
-target_link_libraries(kcm_kwindecoration PRIVATE
+target_link_libraries(kcm_kwindecoration_x11 PRIVATE
     KDecoration3::KDecoration
     KF6::I18n
     KF6::KCMUtils
@@ -39,6 +39,9 @@ set(kwin-applywindowdecoration_SRCS
 
 kconfig_add_kcfg_files(kwin-applywindowdecoration_SRCS kwindecorationsettings.kcfgc GENERATE_MOC)
 add_executable(kwin-applywindowdecoration ${kwin-applywindowdecoration_SRCS})
+set_target_properties(kwin-applywindowdecoration PROPERTIES
+    OUTPUT_NAME "kwin-applywindowdecoration-x11"
+)
 
 target_link_libraries(kwin-applywindowdecoration
     KDecoration3::KDecoration
@@ -49,6 +52,5 @@ target_link_libraries(kwin-applywindowdecoration
 
 configure_file(window-decorations.knsrc.cmake ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc)
 
-install(FILES kwindecorationsettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/window-decorations.knsrc DESTINATION ${KDE_INSTALL_KNSRCDIR} RENAME window-decorations-x11.knsrc)
 install(TARGETS kwin-applywindowdecoration DESTINATION ${KDE_INSTALL_LIBEXECDIR})

@@ -48,7 +48,7 @@
 
 #include <QTabBar>
 
-K_PLUGIN_FACTORY_WITH_JSON(KWinTabBoxConfigFactory, "kcm_kwintabbox.json", registerPlugin<KWin::KWinTabBoxConfig>(); registerPlugin<KWin::TabBox::KWinTabboxData>();)
+K_PLUGIN_FACTORY_WITH_JSON(KWinTabBoxConfigFactory, "kcm_kwintabbox_x11.json", registerPlugin<KWin::KWinTabBoxConfig>(); registerPlugin<KWin::TabBox::KWinTabboxData>();)
 
 namespace KWin
 {
@@ -75,7 +75,7 @@ KWinTabBoxConfig::KWinTabBoxConfig(QObject *parent, const KPluginMetaData &data)
     tabWidget->addTab(m_primaryTabBoxUi, i18n("Main"));
     tabWidget->addTab(m_alternativeTabBoxUi, i18n("Alternative"));
 
-    KNSWidgets::Button *ghnsButton = new KNSWidgets::Button(i18n("Get New Task Switcher Styles…"), QStringLiteral("kwinswitcher.knsrc"), widget());
+    KNSWidgets::Button *ghnsButton = new KNSWidgets::Button(i18n("Get New Task Switcher Styles…"), QStringLiteral("kwinswitcher-x11.knsrc"), widget());
     connect(ghnsButton, &KNSWidgets::Button::dialogFinished, this, [this](auto changedEntries) {
         if (!changedEntries.isEmpty()) {
             initLayoutLists();

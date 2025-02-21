@@ -66,4 +66,4 @@ ContentWarning=Executables
 Categories=Plasma 6 Window Decorations
 TargetDir=aurorae/themes
 Uncompress=archive
-AdoptionCommand=@KDE_INSTALL_FULL_LIBEXECDIR@/kwin-applywindowdecoration %f
+AdoptionCommand=@KDE_INSTALL_FULL_LIBEXECDIR@/kwin-applywindowdecoration-x11 %f

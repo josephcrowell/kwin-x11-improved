@@ -26,7 +26,7 @@ KCMUtils.ScrollViewKCM {
         NewStuff.Action {
             text: i18nc("@action:button get new KWin scripts", "Get New…")
             visible: KAuthorized.authorize(KAuthorized.GHNS)
-            configFile: "kwinscripts.knsrc"
+            configFile: "kwinscripts-x11.knsrc"
             onEntryEvent: (entry, event) => {
                 if (event === NewStuff.Engine.StatusChangedEvent) {
                     kcm.onGHNSEntriesChanged()
