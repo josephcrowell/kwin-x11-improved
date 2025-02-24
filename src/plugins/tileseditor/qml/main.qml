@@ -148,7 +148,7 @@ FocusScope {
         }
         contentItem: RowLayout {
             PlasmaComponents.Label {
-                text: i18nd("kwin","Padding:")
+                text: i18nd("kwin_x11","Padding:")
             }
             PlasmaComponents.SpinBox {
                 from: 0
@@ -158,7 +158,7 @@ FocusScope {
             }
             PlasmaComponents.Button {
                 icon.name: "document-open"
-                text: i18nd("kwin","Load Layout…")
+                text: i18nd("kwin_x11","Load Layout…")
                 onClicked: loadLayoutDialog.open()
                 // This mouse area is for fitts law
                 MouseArea {
@@ -268,7 +268,7 @@ FocusScope {
             }
             PlasmaComponents.Button {
                 Layout.alignment: Qt.AlignRight
-                text: i18nd("kwin","Close")
+                text: i18nd("kwin_x11","Close")
                 onClicked: loadLayoutDialog.close()
             }
         }
