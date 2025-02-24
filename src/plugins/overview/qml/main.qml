@@ -375,20 +375,20 @@ FocusScope {
             spacing: Kirigami.Units.largeSpacing
 
             Kirigami.PlaceholderMessage {
-                text: i18ndc("kwin", "@info:placeholder", "No other Virtual Desktops to show")
+                text: i18ndc("kwin_x11", "@info:placeholder", "No other Virtual Desktops to show")
                 icon.name: "virtual-desktops-symbolic"
             }
 
             PC3.Button {
                 Layout.alignment: Qt.AlignHCenter
-                text: i18ndc("kwin", "@action:button", "Add Virtual Desktop")
+                text: i18ndc("kwin_x11", "@action:button", "Add Virtual Desktop")
                 icon.name: "list-add-symbolic"
                 onClicked: desktopModel.create(desktopModel.rowCount())
             }
 
             PC3.Button {
                 Layout.alignment: Qt.AlignHCenter
-                text: i18ndc("kwin", "@action:button", "Configure Virtual Desktops…")
+                text: i18ndc("kwin_x11", "@action:button", "Configure Virtual Desktops…")
                 icon.name: "preferences-virtual-desktops"
                 onClicked: {
                     KCM.KCMLauncher.openSystemSettings("kcm_kwin_virtualdesktops_x11")
@@ -739,7 +739,7 @@ FocusScope {
                 visible: allDesktopHeaps.currentHeap.count === 0 && effect.filterWindows
                 anchors.top: parent.top
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: i18ndc("kwin", "@info:placeholder", "No matching windows")
+                text: i18ndc("kwin_x11", "@info:placeholder", "No matching windows")
             }
 
             Milou.ResultsView {
