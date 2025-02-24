@@ -153,7 +153,7 @@
     },
     "X-KDE-ConfigModule": "kcm_kwin4_genericscripted",
     "X-KDE-Ordering": 60,
-    "X-KWin-Config-TranslationDomain": "kwin",
+    "X-KWin-Config-TranslationDomain": "kwin_x11",
     "X-KWin-Exclusive-Category": "toplevel-open-close-animation",
     "X-Plasma-API": "javascript"
 }
