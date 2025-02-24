@@ -226,7 +226,7 @@ ExpoCell {
             anchors.fill: thumbSource
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: i18nd("kwin", "Drag Down To Close")
+            text: i18nd("kwin_x11", "Drag Down To Close")
             visible: !thumb.activeHidden && touchDragHandler.active
             background: Rectangle {
                 anchors.centerIn: parent
@@ -370,7 +370,7 @@ ExpoCell {
             active: thumb.closeButtonVisible && (hoverHandler.hovered || Kirigami.Settings.tabletMode || Kirigami.Settings.hasTransientTouchInput) && thumb.window.closeable && !thumb.activeDragHandler.active && !returnAnimation.running
 
             sourceComponent: PC3.Button {
-                text: i18ndc("kwin", "@info:tooltip as in: 'close this window'", "Close window")
+                text: i18ndc("kwin_x11", "@info:tooltip as in: 'close this window'", "Close window")
                 icon.name: "window-close"
                 display: PC3.AbstractButton.IconOnly
 
