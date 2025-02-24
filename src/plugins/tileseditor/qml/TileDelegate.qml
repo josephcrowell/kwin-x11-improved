@@ -164,14 +164,14 @@ Item {
                 id: splitButton
                 Layout.fillWidth: true
                 icon.name: "view-split-left-right"
-                text: i18nd("kwin","Split Left/Right")
+                text: i18nd("kwin_x11","Split Left/Right")
                 display: parent.compact ? PlasmaComponents.Button.IconOnly : PlasmaComponents.Button.TextBesideIcon
                 onClicked: tile.split(KWinComponents.Tile.Horizontal)
             }
             PlasmaComponents.Button {
                 Layout.fillWidth: true
                 icon.name: "view-split-top-bottom"
-                text: i18nd("kwin","Split Top/Bottom")
+                text: i18nd("kwin_x11","Split Top/Bottom")
                 display: parent.compact ? PlasmaComponents.Button.IconOnly : PlasmaComponents.Button.TextBesideIcon
                 onClicked: tile.split(KWinComponents.Tile.Vertical)
             }
@@ -179,7 +179,7 @@ Item {
                 Layout.fillWidth: true
                 visible: tile.layoutDirection !== KWinComponents.Tile.Floating
                 icon.name: "window-duplicate"
-                text: i18nd("kwin","Add Floating Tile")
+                text: i18nd("kwin_x11","Add Floating Tile")
                 display: parent.compact ? PlasmaComponents.Button.IconOnly : PlasmaComponents.Button.TextBesideIcon
                 onClicked: tile.split(KWinComponents.Tile.Floating)
             }
@@ -188,7 +188,7 @@ Item {
                 visible: tile.canBeRemoved
                 Layout.fillWidth: true
                 icon.name: "edit-delete"
-                text: i18nd("kwin","Delete")
+                text: i18nd("kwin_x11","Delete")
                 display: parent.compact ? PlasmaComponents.Button.IconOnly : PlasmaComponents.Button.TextBesideIcon
                 onClicked: {
                     tile.remove();
@@ -208,7 +208,7 @@ Item {
         }
         visible: tile.layoutDirection === KWinComponents.Tile.Floating && tile.isLayout
         icon.name: "window-duplicate"
-        text: i18nd("kwin","Add Floating Tile")
+        text: i18nd("kwin_x11","Add Floating Tile")
         onClicked: tile.split(KWinComponents.Tile.Floating)
     }
 }
