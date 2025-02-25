@@ -20,7 +20,6 @@
 
 #include "core/output.h"
 #include "keyboard_input.h"
-#include "main_wayland.h"
 #include "utils/common.h"
 #include "utils/xcbutils.h"
 #include "wayland_server.h"
