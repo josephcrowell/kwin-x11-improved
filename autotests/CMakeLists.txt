@@ -4,11 +4,6 @@ add_subdirectory(effect)
 add_subdirectory(integration)
 add_subdirectory(libinput)
 add_subdirectory(wayland)
-# drm autotests are broken on FreeBSD for yet unknown reasons
-# As the test isn't doing anything platform specific, only run it on Linux
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    add_subdirectory(drm)
-endif()
 
 ########################################################
 # Test WindowPaintData

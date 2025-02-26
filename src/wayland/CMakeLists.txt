@@ -199,11 +199,6 @@ ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
 )
 ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
     PRIVATE_CODE
-    PROTOCOL ${WaylandProtocols_DATADIR}/staging/drm-lease/drm-lease-v1.xml
-    BASENAME drm-lease-v1
-)
-ecm_add_qtwayland_server_protocol_kde(WaylandProtocols_xml
-    PRIVATE_CODE
     PROTOCOL ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-lockscreen-overlay-v1.xml
     BASENAME kde-lockscreen-overlay-v1
 )
@@ -337,7 +332,6 @@ target_sources(kwin PRIVATE
     display.cpp
     dpms.cpp
     drmclientbuffer.cpp
-    drmlease_v1.cpp
     externalbrightness_v1.cpp
     filtered_display.cpp
     fixes.cpp
@@ -424,7 +418,6 @@ install(FILES
     datasource.h
     display.h
     dpms.h
-    drmlease_v1.h
     externalbrightness_v1.h
     fractionalscale_v1.h
     frog_colormanagement_v1.h

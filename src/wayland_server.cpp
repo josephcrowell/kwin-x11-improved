@@ -10,7 +10,6 @@
 
 #include "config-kwin.h"
 
-#include "backends/drm/drm_backend.h"
 #include "core/drmdevice.h"
 #include "core/output.h"
 #include "core/outputbackend.h"
@@ -36,7 +35,6 @@
 #include "wayland/display.h"
 #include "wayland/dpms.h"
 #include "wayland/drmclientbuffer.h"
-#include "wayland/drmlease_v1.h"
 #include "wayland/externalbrightness_v1.h"
 #include "wayland/filtered_display.h"
 #include "wayland/fixes.h"
@@ -602,10 +600,6 @@ void WaylandServer::initWorkspace()
 
     if (kwinApp()->supportsLockScreen()) {
         initScreenLocker();
-    }
-
-    if (auto backend = qobject_cast<DrmBackend *>(kwinApp()->outputBackend())) {
-        m_leaseManager = new DrmLeaseManagerV1(backend, m_display, m_display);
     }
 
     m_outputOrder = new OutputOrderV1Interface(m_display, m_display);

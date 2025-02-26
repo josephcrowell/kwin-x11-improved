@@ -47,7 +47,6 @@ class KeyboardShortcutsInhibitManagerV1Interface;
 class XdgDecorationManagerV1Interface;
 class XWaylandKeyboardGrabManagerV1Interface;
 class ContentTypeManagerV1Interface;
-class DrmLeaseManagerV1;
 class TearingControlManagerV1Interface;
 class XwaylandShellV1Interface;
 class OutputOrderV1Interface;
@@ -288,7 +287,6 @@ private:
     QList<Window *> m_windows;
     QHash<Output *, OutputInterface *> m_waylandOutputs;
     QHash<Output *, OutputDeviceV2Interface *> m_waylandOutputDevices;
-    DrmLeaseManagerV1 *m_leaseManager = nullptr;
     OutputOrderV1Interface *m_outputOrder = nullptr;
     ColorManagerV1 *m_colorManager = nullptr;
     XdgDialogWmV1Interface *m_xdgDialogWm = nullptr;
