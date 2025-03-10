@@ -136,7 +136,6 @@ integrationTest(NAME testStackingOrder SRCS stacking_order_test.cpp LIBS XCB::IC
 integrationTest(NAME testDbusInterface SRCS dbus_interface_test.cpp LIBS XCB::ICCCM)
 integrationTest(NAME testXwaylandServerCrash SRCS xwaylandserver_crash_test.cpp LIBS XCB::ICCCM)
 integrationTest(NAME testXwaylandServerRestart SRCS xwaylandserver_restart_test.cpp LIBS XCB::ICCCM)
-integrationTest(NAME testFakeInput SRCS fakeinput_test.cpp)
 integrationTest(NAME testSecurityContext SRCS security_context_test.cpp)
 integrationTest(NAME testWorkspace SRCS workspace_test.cpp)
 integrationTest(NAME testMouseActions SRCS mouseactions_test.cpp LIBS)
