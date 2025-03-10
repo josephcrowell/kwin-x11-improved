@@ -49,7 +49,6 @@ Q_SIGNALS:
     void tabletModeChanged(bool tabletMode);
 
 private:
-    void hasTabletModeInputChanged(bool set);
     void refreshSettings();
 
     KConfigWatcher::Ptr m_settingsWatcher;
