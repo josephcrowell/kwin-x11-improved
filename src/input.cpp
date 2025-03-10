@@ -10,7 +10,6 @@
 */
 #include "input.h"
 
-#include "backends/fakeinput/fakeinputbackend.h"
 #include "core/inputbackend.h"
 #include "core/inputdevice.h"
 #include "core/session.h"
@@ -3285,9 +3284,6 @@ void InputRedirection::setupInputBackends()
     std::unique_ptr<InputBackend> inputBackend = kwinApp()->outputBackend()->createInputBackend();
     if (inputBackend) {
         addInputBackend(std::move(inputBackend));
-    }
-    if (waylandServer()) {
-        addInputBackend(std::make_unique<FakeInputBackend>(waylandServer()->display()));
     }
 }
 
