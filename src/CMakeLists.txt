@@ -265,6 +265,7 @@ target_link_libraries(kwin
         lcms2::lcms2
         PkgConfig::libdisplayinfo
         Libdrm::Libdrm
+        gbm::gbm
 )
 
 if (TARGET K::KGlobalAccelD)
