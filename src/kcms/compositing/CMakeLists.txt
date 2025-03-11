@@ -1,6 +1,6 @@
 #########################################################################
 # KI18N Translation Domain for this library
-add_definitions(-DTRANSLATION_DOMAIN=\"kcmkwincompositing\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcmkwincompositing_x11\")
 
 ################# configure checks and create the configured files #################
 
