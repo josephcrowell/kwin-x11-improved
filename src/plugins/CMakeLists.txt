@@ -115,10 +115,6 @@ add_subdirectory(windowview)
 add_subdirectory(wobblywindows)
 add_subdirectory(zoom)
 
-if (KWIN_BUILD_NOTIFICATIONS)
-    add_subdirectory(keynotification)
-endif()
-
 if (PipeWire_FOUND)
     add_subdirectory(screencast)
 endif()
