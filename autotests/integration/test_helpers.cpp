@@ -20,7 +20,6 @@
 #include "wayland/display.h"
 #include "wayland_server.h"
 #include "workspace.h"
-#include <wayland-zkde-screencast-unstable-v1-client-protocol.h>
 
 #include <KWayland/Client/appmenu.h>
 #include <KWayland/Client/compositor.h>
@@ -479,13 +478,6 @@ std::unique_ptr<Connection> Connection::setup(AdditionalWaylandInterfaces flags)
                 return;
             }
         }
-        if (flags & AdditionalWaylandInterface::ScreencastingV1) {
-            if (interface == zkde_screencast_unstable_v1_interface.name) {
-                c->screencastingV1 = new ScreencastingV1();
-                c->screencastingV1->init(*c->registry, name, version);
-                return;
-            }
-        }
         if (flags & AdditionalWaylandInterface::ScreenEdgeV1) {
             if (interface == kde_screen_edge_manager_v1_interface.name) {
                 c->screenEdgeManagerV1 = new ScreenEdgeManagerV1();
@@ -637,8 +629,6 @@ Connection::~Connection()
     outputManagementV2 = nullptr;
     delete fractionalScaleManagerV1;
     fractionalScaleManagerV1 = nullptr;
-    delete screencastingV1;
-    screencastingV1 = nullptr;
     delete screenEdgeManagerV1;
     screenEdgeManagerV1 = nullptr;
     delete cursorShapeManagerV1;
@@ -744,11 +734,6 @@ KWayland::Client::Output *waylandOutput(const QString &name)
         }
     }
     return nullptr;
-}
-
-ScreencastingV1 *screencasting()
-{
-    return s_waylandConnection->screencastingV1;
 }
 
 QList<KWin::Test::WaylandOutputDeviceV2 *> waylandOutputDevicesV2()

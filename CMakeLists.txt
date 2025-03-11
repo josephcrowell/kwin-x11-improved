@@ -85,10 +85,6 @@ if (NOT Qt6Test_FOUND)
     set(BUILD_TESTING OFF CACHE BOOL "Build the testing tree.")
 endif()
 
-if (BUILD_TESTING)
-    find_package(KPipeWire)
-endif()
-
 # required frameworks by Core
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Auth
@@ -404,9 +400,6 @@ endif()
 
 pkg_check_modules(libdisplayinfo REQUIRED IMPORTED_TARGET libdisplay-info>=0.2.0)
 add_feature_info(libdisplayinfo libdisplayinfo_FOUND "EDID and DisplayID library: https://gitlab.freedesktop.org/emersion/libdisplay-info")
-
-pkg_check_modules(PipeWire IMPORTED_TARGET libpipewire-0.3>=1.0.9)
-add_feature_info(PipeWire PipeWire_FOUND "Required for Wayland screencasting")
 
 if (KWIN_BUILD_NOTIFICATIONS)
     find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS Notifications)
