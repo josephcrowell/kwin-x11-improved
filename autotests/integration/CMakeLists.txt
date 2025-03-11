@@ -29,7 +29,6 @@ qt6_generate_wayland_protocol_client_sources(KWinIntegrationTestFramework
         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-output-device-v2.xml
         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-output-management-v2.xml
         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/kde-screen-edge-v1.xml
-        ${PLASMA_WAYLAND_PROTOCOLS_DIR}/zkde-screencast-unstable-v1.xml
         ${PLASMA_WAYLAND_PROTOCOLS_DIR}/fake-input.xml
 )
 target_sources(KWinIntegrationTestFramework PRIVATE
@@ -155,9 +154,6 @@ integrationTest(NAME testVirtualKeyboardDBus SRCS test_virtualkeyboard_dbus.cpp 
 if (KWIN_BUILD_GLOBALSHORTCUTS)
 integrationTest(NAME testGlobalShortcuts SRCS globalshortcuts_test.cpp LIBS XCB::ICCCM KF6::GlobalAccel KF6::I18n XKB::XKB)
 integrationTest(NAME testKWinBindings SRCS kwinbindings_test.cpp LIBS KF6::I18n)
-endif()
-if (TARGET K::KPipeWire)
-    integrationTest(NAME testScreencasting SRCS screencasting_test.cpp LIBS K::KPipeWire)
 endif()
 
 if (KWIN_BUILD_ACTIVITIES)
