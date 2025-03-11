@@ -2,7 +2,6 @@ add_definitions(-DKWIN_UNIT_TEST)
 remove_definitions(-DQT_USE_QSTRINGBUILDER)
 add_subdirectory(effect)
 add_subdirectory(integration)
-add_subdirectory(wayland)
 
 ########################################################
 # Test WindowPaintData
