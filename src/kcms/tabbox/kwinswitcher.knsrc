@@ -39,6 +39,7 @@ Name[x-test]=xxTask Switcher Stylesxx
 Name[zh_CN]=任务切换器样式
 Name[zh_TW]=工作切換器風格
 
+AliasFor=kwinswitcher
 ProvidersUrl=https://autoconfig.kde.org/ocs/providers.xml
 ContentWarning=Executables
 Categories=Kwin Switching Layouts Plasma 6
