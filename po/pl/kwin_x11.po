@@ -1,5 +1,5 @@
 # translation of kwin.po to
-# Version: $Revision: 1704807 $
+# Version: $Revision: 1704877 $
 # translation of kwin.po to Polish
 # translation of kwin.po to
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-11 11:58+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -37,48 +37,6 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "mrudolf@kdewebdev.org, norbert@kde.com.pl, lukasz.wojnilowicz@gmail.com"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Naciśnij prawy przycisk Ctrl, aby zwolnić wskaźnik"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Naciśnij prawy przycisk Ctrl, aby przechwycić wskaźnik"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "Kompozytor KDE Wayland %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Wyjście wyłączone"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Wyjście przyciemnione"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Naciśnij prawy przycisk Ctrl, aby zwolnić wprowadzanie"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Naciśnij prawy przycisk Ctrl, aby przechwycić wprowadzanie"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "Kompozytor KDE Wayland"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1700,76 +1658,6 @@ msgstr "Włącz/wyłącz efekt odwrócenia"
 msgid "Invert Screen Colors"
 msgstr "Odwróć kolory ekranu"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Zapalono klawisz Caps Lock"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Zgaszono klawisz Caps Lock"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Zapalono klawisz Num Lock"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Zgaszono klawisz Num Lock"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Zapalono klawisz Scroll Lock"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Zgaszono klawisz Scroll Lock"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Naciśnięto klawisz Shift."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Zwolniono klawisz Shift."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Naciśnięto klawisz Ctrl."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Zwolniono klawisz Ctrl."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Naciśnięto klawisz Alt."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Zwolniono klawisz Alt."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Naciśnięto klawisz Meta."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Zwolniono klawisz Meta."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2437,46 +2325,6 @@ msgstr "W pionie:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Wysuwaj pulpit w tle"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Klawisz Shift został trwale naciśnięty i jest teraz dodawany do każdego "
-"naciśnięcia klawisza."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Klawisz Ctrl został trwale naciśnięty i jest teraz dodawany do każdego "
-"naciśnięcia klawisza."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Klawisz Alt został trwale naciśnięty i jest teraz dodawany do każdego "
-"naciśnięcia klawisza."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Klawisz Meta został trwale naciśnięty i jest teraz dodawany do każdego "
-"naciśnięcia klawisza."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Klawisz AltGr został trwale naciśnięty i jest teraz dodawany do każdego "
-"naciśnięcia klawisza."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4274,6 +4122,109 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland napotkał usterkę"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Naciśnij prawy przycisk Ctrl, aby zwolnić wskaźnik"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Naciśnij prawy przycisk Ctrl, aby przechwycić wskaźnik"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "Kompozytor KDE Wayland %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Wyjście wyłączone"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Wyjście przyciemnione"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Naciśnij prawy przycisk Ctrl, aby zwolnić wprowadzanie"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Naciśnij prawy przycisk Ctrl, aby przechwycić wprowadzanie"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "Kompozytor KDE Wayland"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Zapalono klawisz Caps Lock"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Zgaszono klawisz Caps Lock"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Zapalono klawisz Num Lock"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Zgaszono klawisz Num Lock"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Zapalono klawisz Scroll Lock"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Zgaszono klawisz Scroll Lock"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Naciśnięto klawisz Shift."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Zwolniono klawisz Shift."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Naciśnięto klawisz Ctrl."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Zwolniono klawisz Ctrl."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Naciśnięto klawisz Alt."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Zwolniono klawisz Alt."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Naciśnięto klawisz Meta."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Zwolniono klawisz Meta."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Klawisz Shift został trwale naciśnięty i jest teraz dodawany do każdego "
+#~ "naciśnięcia klawisza."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Klawisz Ctrl został trwale naciśnięty i jest teraz dodawany do każdego "
+#~ "naciśnięcia klawisza."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Klawisz Alt został trwale naciśnięty i jest teraz dodawany do każdego "
+#~ "naciśnięcia klawisza."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Klawisz Meta został trwale naciśnięty i jest teraz dodawany do każdego "
+#~ "naciśnięcia klawisza."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Klawisz AltGr został trwale naciśnięty i jest teraz dodawany do każdego "
+#~ "naciśnięcia klawisza."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Uruchom serwer Xwayland bez uprawnień administratora."

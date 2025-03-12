@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-10-05 22:06+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -29,48 +29,6 @@ msgstr "Ričardas Čepas,Donatas Glodenis, Moo"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "rch@richard.eu.org,dgvirtual@akl.lt, <>"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Paspauskite dešinįjį valdymo klavišą norėdami paleisti rodyklę"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Paspauskite dešinįjį valdymo klavišą norėdami pagriebti rodyklę"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland kompozitorius %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "– Išvedimas išjungtas"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "– Išvedimas pritemdytas"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Paspauskite dešinįjį valdymo klavišą norėdami paleisti įvestį"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Paspauskite dešinįjį valdymo klavišą norėdami pagriebti įvestį"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland kompozitorius"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1690,76 +1648,6 @@ msgstr "Perjungti invertavimo efektą langui"
 msgid "Invert Screen Colors"
 msgstr "Invertuoti ekrano spalvas"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Aktyvintas didžiųjų raidžių klavišas"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Dabar didžiųjų raidžių klavišas yra pasyvus"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Aktyvintas skaitmenų klaviatūros klavišas"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Dabar skaitmenų klaviatūros klavišas yra pasyvus"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Aktyvintas slinkties klavišas"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Dabar slinkties klavišas yra pasyvus"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Dabar Lyg2 klavišas yra aktyvus."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Dabar Lyg2 klavišas yra pasyvus."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Dabar Vald klavišas yra aktyvus."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Dabar Vald klavišas yra pasyvus."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Dabar Alt klavišas yra aktyvus."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Dabar Alt klavišas yra pasyvus."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Dabar Meta klavišas yra aktyvus."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Dabar Meta klavišas yra pasyvus."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2430,46 +2318,6 @@ msgstr "Vertikalus:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Slinkti darbalaukio foną"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Lyg2 klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems klavišų "
-"paspaudimams."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Vald klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems klavišų "
-"paspaudimams."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Alt klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems klavišų "
-"paspaudimams."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Meta klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems klavišų "
-"paspaudimams."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"AltGr klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
-"klavišų paspaudimams."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4278,6 +4126,109 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland užstrigo"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Paspauskite dešinįjį valdymo klavišą norėdami paleisti rodyklę"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Paspauskite dešinįjį valdymo klavišą norėdami pagriebti rodyklę"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland kompozitorius %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "– Išvedimas išjungtas"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "– Išvedimas pritemdytas"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Paspauskite dešinįjį valdymo klavišą norėdami paleisti įvestį"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Paspauskite dešinįjį valdymo klavišą norėdami pagriebti įvestį"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland kompozitorius"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Aktyvintas didžiųjų raidžių klavišas"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Dabar didžiųjų raidžių klavišas yra pasyvus"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Aktyvintas skaitmenų klaviatūros klavišas"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Dabar skaitmenų klaviatūros klavišas yra pasyvus"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Aktyvintas slinkties klavišas"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Dabar slinkties klavišas yra pasyvus"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Dabar Lyg2 klavišas yra aktyvus."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Dabar Lyg2 klavišas yra pasyvus."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Dabar Vald klavišas yra aktyvus."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Dabar Vald klavišas yra pasyvus."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Dabar Alt klavišas yra aktyvus."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Dabar Alt klavišas yra pasyvus."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Dabar Meta klavišas yra aktyvus."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Dabar Meta klavišas yra pasyvus."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Lyg2 klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
+#~ "klavišų paspaudimams."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Vald klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
+#~ "klavišų paspaudimams."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Alt klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
+#~ "klavišų paspaudimams."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Meta klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
+#~ "klavišų paspaudimams."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "AltGr klavišas užrakintas ir dabar yra aktyvus bet kokiems sekantiems "
+#~ "klavišų paspaudimams."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Paleisti bešaknį Xwayland serverį."

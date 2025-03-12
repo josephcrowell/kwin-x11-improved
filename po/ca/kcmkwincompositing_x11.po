@@ -1,4 +1,4 @@
-# Translation of kcmkwincompositing.po to Catalan
+# Translation of kcmkwincompositing_x11.po to Catalan
 # Copyright (C) 2007-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
@@ -8,9 +8,9 @@
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: kwin\n"
+"Project-Id-Version: kwin-x11\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-06 00:41+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2023-01-13 13:34+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -126,27 +126,3 @@ msgstr "Sempre"
 #, kde-format
 msgid "Re-enable OpenGL detection"
 msgstr "Torna a activar la detecció de l'OpenGL"
-
-#~ msgid "Latency:"
-#~ msgstr "Latència:"
-
-#~ msgid "Force lowest latency (may cause dropped frames)"
-#~ msgstr "Força una latència més baixa (pot provocar la pèrdua de fotogrames)"
-
-#~ msgid "Prefer lower latency"
-#~ msgstr "Prefereix una latència baixa"
-
-#~ msgid "Balance of latency and smoothness"
-#~ msgstr "Equilibri entre latència i suavitat"
-
-#~ msgid "Prefer smoother animations"
-#~ msgstr "Prefereix animacions més suaus"
-
-#~ msgid "Force smoothest animations"
-#~ msgstr "Força animacions més suaus"
-
-#~ msgid ""
-#~ "Reduce latency by allowing screen tearing artifacts in fullscreen windows"
-#~ msgstr ""
-#~ "Redueix la latència permetent defectes d'esquinçament pantalla en "
-#~ "finestres a pantalla completa"

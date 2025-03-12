@@ -1,4 +1,4 @@
-# Translation of kcmkwincommon.po to Catalan
+# Translation of kcmkwincommon_x11.po to Catalan
 # Copyright (C) 2019-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
@@ -8,7 +8,7 @@
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: kwin\n"
+"Project-Id-Version: kwin-x11\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2023-04-20 10:00+0200\n"

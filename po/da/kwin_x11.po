@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-10-21 13:14+0200\n"
 "Last-Translator: rasmus rosendahl-kaa <rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -27,48 +27,6 @@ msgstr "Erik Kjær Pedersen,Rasmus Rosendahl-Kaa"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "erik@binghamton.edu,Rasmus@Rosendahl-kaa.name"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Tryk på højre kontrol for at frigøre markøren"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Tryk på højre kontrol for at gribe markøren"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland-kompositør %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Output slået fra"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Output dæmpet"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Tryk på højre kontrol for at frigøre input"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Tryk på højre kontrol for at gribe input"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland-kompositør"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1680,76 +1638,6 @@ msgstr "Slå intvertér-effekt til/fra på vindue"
 msgid "Invert Screen Colors"
 msgstr "Invertér skærmfarver"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Caps lock-tasten er blevet aktiveret"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Caps Lock er nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Num Lock-tasten er blevet aktiveret"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Num Lock er nu inaktiv,"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Scroll Lock-tasten er blevet aktiveret."
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Scroll Lock er nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Skift-tasten er nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Skift-tasten er nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Ctrl-tast er nu aktiv"
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Ctrl-tast er nu inaktiv"
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt-tasten er nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt-tasten er nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Meta-tasten er nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Meta-tasten er nu inaktiv."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2412,38 +2300,6 @@ msgstr "Lodret:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Glid skrivebordsbaggrund"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Skift-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Ctrl-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Alt-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Meta-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"AltGr-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4254,6 +4110,104 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland har brudt ned"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Tryk på højre kontrol for at frigøre markøren"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Tryk på højre kontrol for at gribe markøren"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland-kompositør %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Output slået fra"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Output dæmpet"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Tryk på højre kontrol for at frigøre input"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Tryk på højre kontrol for at gribe input"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland-kompositør"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Caps lock-tasten er blevet aktiveret"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Caps Lock er nu inaktiv."
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Num Lock-tasten er blevet aktiveret"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Num Lock er nu inaktiv,"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Scroll Lock-tasten er blevet aktiveret."
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Scroll Lock er nu inaktiv."
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Skift-tasten er nu aktiv."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Skift-tasten er nu inaktiv."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Ctrl-tast er nu aktiv"
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Ctrl-tast er nu inaktiv"
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt-tasten er nu aktiv."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt-tasten er nu inaktiv."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Meta-tasten er nu aktiv."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Meta-tasten er nu inaktiv."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Skift-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Ctrl-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Alt-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Meta-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "AltGr-tasten er blevet låst og er nu aktiv for alle følgende tastetryk."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Start en rodløs Xwayland-server."

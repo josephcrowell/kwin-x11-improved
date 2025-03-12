@@ -1,7 +1,7 @@
 # translation of kwin.po to
 # Translation of kwin.po to Slovenian
 # Copyright (C) 2001, 2003, 2004, 2005, 2007 Free Software Foundation, Inc.
-# $Id: kwin_x11.po 1704807 2025-03-11 01:20:11Z scripty $
+# $Id: kwin_x11.po 1704877 2025-03-12 01:21:33Z scripty $
 # $Source$
 #
 #
@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 09:01+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -42,48 +42,6 @@ msgid "Your emails"
 msgstr ""
 "roman.maurer@amis.net,gregor.rakar@kiss.si,jlp@holodeck1.com,andrejm@ubuntu."
 "si,matjaz.jeran@amis.net,miles@filmsi.net"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Pritisnite desno kontrolko, da spustite kazalko"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Pritisnite puščico desno da zgrabite kazalko"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland Compositor %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Output onemogočen"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Output zamegljen"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Pritisnite desno kontrolko, da spustite input"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Pritisnite puščico desno da zgrabite vhod"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland Compositor"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1698,76 +1656,6 @@ msgstr "Preklopi učinek obračanja barv na oknu"
 msgid "Invert Screen Colors"
 msgstr "Obrni barve zaslona"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Aktivirana je bila tipka Caps Lock"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Tipka Caps Lock je zdaj neaktivna"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Aktivirana je bila tipka Num Lock"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Tipka Num Lock je zdaj neaktivna"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Aktivirana je bila tipka Scroll Lock"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Tipka Scroll Lock je zdaj neaktivna"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Tipka Shift je zdaj aktivna."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Tipka Shift je zdaj neaktivna."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Tipka Control je zdaj aktivna."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Tipka Control je zdaj neaktivna."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Tipka Alt je zdaj aktivna."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Tipka Alt je zdaj neaktivna."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Tipka Meta je zdaj aktivna."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Tipka Meta je zdaj neaktivna."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2432,46 +2320,6 @@ msgstr "Navpična:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Pomakni ozadje namizja"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Tipka Shift je bila zaklenjena in je zdaj aktivna za vse naslednje pritiske "
-"tipk."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Tipka Control je bila zaklenjena in je zdaj aktivna za vse naslednje "
-"pritiske tipk."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Tipka Alt je bila zaklenjena in je zdaj aktivna za vse naslednje pritiske "
-"tipk."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Tipka Meta je bila zaklenjena in je zdaj aktivna za vse naslednje pritiske "
-"tipk."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Tipka AltGr je bila zaklenjena in je zdaj aktivna za vse naslednje pritiske "
-"tipk."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4266,6 +4114,109 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland se je sesul"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Pritisnite desno kontrolko, da spustite kazalko"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Pritisnite puščico desno da zgrabite kazalko"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland Compositor %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Output onemogočen"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Output zamegljen"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Pritisnite desno kontrolko, da spustite input"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Pritisnite puščico desno da zgrabite vhod"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland Compositor"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Aktivirana je bila tipka Caps Lock"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Tipka Caps Lock je zdaj neaktivna"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Aktivirana je bila tipka Num Lock"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Tipka Num Lock je zdaj neaktivna"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Aktivirana je bila tipka Scroll Lock"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Tipka Scroll Lock je zdaj neaktivna"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Tipka Shift je zdaj aktivna."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Tipka Shift je zdaj neaktivna."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Tipka Control je zdaj aktivna."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Tipka Control je zdaj neaktivna."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Tipka Alt je zdaj aktivna."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Tipka Alt je zdaj neaktivna."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Tipka Meta je zdaj aktivna."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Tipka Meta je zdaj neaktivna."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Tipka Shift je bila zaklenjena in je zdaj aktivna za vse naslednje "
+#~ "pritiske tipk."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Tipka Control je bila zaklenjena in je zdaj aktivna za vse naslednje "
+#~ "pritiske tipk."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Tipka Alt je bila zaklenjena in je zdaj aktivna za vse naslednje pritiske "
+#~ "tipk."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Tipka Meta je bila zaklenjena in je zdaj aktivna za vse naslednje "
+#~ "pritiske tipk."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Tipka AltGr je bila zaklenjena in je zdaj aktivna za vse naslednje "
+#~ "pritiske tipk."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Zaženi neskrbniški strežnik Xwayland."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 17:50+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -29,48 +29,6 @@ msgstr "박신조"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "오른쪽 Ctrl 키를 누르면 포인터 잡기를 해제함"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "오른쪽 Ctrl 키를 누르면 포인터를 잡음"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland 컴포지터 %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- 출력 비활성화됨"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- 출력 어두워짐"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "오른쪽 Ctrl 키를 누르면 입력 잡기를 해제함"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "오른쪽 Ctrl 키를 누르면 입력을 잡음"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland 컴포지터"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1675,76 +1633,6 @@ msgstr "창 반전 효과 전환"
 msgid "Invert Screen Colors"
 msgstr "화면 색 반전"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Caps Lock 키가 활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Caps Lock 키가 비활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Num Lock 키가 활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Num Lock 키가 비활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Scroll Lock 키가 활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Scroll Lock 키가 비활성화되었습니다"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Shift 키가 활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Shift 키가 비활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Control 키가 활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Control 키가 비활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt 키가 활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt 키가 비활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "메타 키가 활성화되었습니다."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "메타 키가 비활성화되었습니다."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2406,36 +2294,6 @@ msgstr "수직:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "바탕 화면 배경 슬라이드"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Shift 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Control 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Alt 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "메타 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "AltGr 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4230,6 +4088,99 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland가 충돌함"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "오른쪽 Ctrl 키를 누르면 포인터 잡기를 해제함"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "오른쪽 Ctrl 키를 누르면 포인터를 잡음"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland 컴포지터 %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- 출력 비활성화됨"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- 출력 어두워짐"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "오른쪽 Ctrl 키를 누르면 입력 잡기를 해제함"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "오른쪽 Ctrl 키를 누르면 입력을 잡음"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland 컴포지터"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Caps Lock 키가 활성화되었습니다"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Caps Lock 키가 비활성화되었습니다"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Num Lock 키가 활성화되었습니다"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Num Lock 키가 비활성화되었습니다"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Scroll Lock 키가 활성화되었습니다"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Scroll Lock 키가 비활성화되었습니다"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Shift 키가 활성화되었습니다."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Shift 키가 비활성화되었습니다."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Control 키가 활성화되었습니다."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Control 키가 비활성화되었습니다."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt 키가 활성화되었습니다."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt 키가 비활성화되었습니다."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "메타 키가 활성화되었습니다."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "메타 키가 비활성화되었습니다."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Shift 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr "Control 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Alt 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "메타 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "AltGr 키가 잠겨 있으며 다음 키가 눌릴 때 같이 눌립니다."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "루트 창이 없는 Xwayland 서버를 시작합니다."

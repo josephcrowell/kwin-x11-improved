@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 09:30+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -39,48 +39,6 @@ msgstr "צוות התרגום של KDE ישראל"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "לחיצה על ה־Ctrl הימני תבטל אחיזת סמן"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "לחיצה על ה־Ctrl הימני תאחוז את הסמן"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "מנהל חלונאי KDE Wayland %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- פלט מושבת"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- פלט מעומעם"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "לחיצה על ה־Ctrl הימני תבטל אחיזת קלט"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "לחיצה על ה־Ctrl הימני לאחיזת קלט"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "מנהל חלונאי KDE Wayland"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1682,76 +1640,6 @@ msgstr "החלפת מצב אפקט היפוך צבע על חלון"
 msgid "Invert Screen Colors"
 msgstr "היפוך צבעי המסך"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "מקש ה־Caps Lock הופעל"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "מקש ה־Caps Lock אינו פעיל עוד"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "מקש ה־Num Lock הופעל"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "מקש ה־Num Lock אינו פעיל עוד"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "מקש ה־Scroll Lock הופעל"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "מקש ה־Scroll Lock אינו פעיל עוד"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "מקש ה־Shift פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "מקש ה־Shift לא פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "מקש ה־Control פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "מקש ה־Control לא פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "מקש ה־Alt פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "מקש ה־Alt לא פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "מקש ה־Meta פעיל עכשיו."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "מקש ה־Meta לא פעיל עכשיו."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2416,36 +2304,6 @@ msgstr "אנכי:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "החלקת רקע שולחן העבודה"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "מקש ה־Shift ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "מקש ה־Control ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "מקש ה־Alt ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "מקש ה־Meta ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "מקש ה־AltGr ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4237,6 +4095,99 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland קרס"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "לחיצה על ה־Ctrl הימני תבטל אחיזת סמן"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "לחיצה על ה־Ctrl הימני תאחוז את הסמן"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "מנהל חלונאי KDE Wayland %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- פלט מושבת"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- פלט מעומעם"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "לחיצה על ה־Ctrl הימני תבטל אחיזת קלט"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "לחיצה על ה־Ctrl הימני לאחיזת קלט"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "מנהל חלונאי KDE Wayland"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "מקש ה־Caps Lock הופעל"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "מקש ה־Caps Lock אינו פעיל עוד"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "מקש ה־Num Lock הופעל"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "מקש ה־Num Lock אינו פעיל עוד"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "מקש ה־Scroll Lock הופעל"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "מקש ה־Scroll Lock אינו פעיל עוד"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "מקש ה־Shift פעיל עכשיו."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "מקש ה־Shift לא פעיל עכשיו."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "מקש ה־Control פעיל עכשיו."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "מקש ה־Control לא פעיל עכשיו."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "מקש ה־Alt פעיל עכשיו."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "מקש ה־Alt לא פעיל עכשיו."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "מקש ה־Meta פעיל עכשיו."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "מקש ה־Meta לא פעיל עכשיו."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "מקש ה־Shift ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr "מקש ה־Control ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "מקש ה־Alt ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "מקש ה־Meta ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "מקש ה־AltGr ננעל ועכשיו פעיל לכל לחיצות המקשים הבאות."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "הפעלת שרת Xwayless לא כמשתמש על."

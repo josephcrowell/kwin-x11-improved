@@ -1,4 +1,4 @@
-# Translation of kcmkwinscreenedges.po to Catalan
+# Translation of kcmkwinscreenedges_x11.po to Catalan
 # Copyright (C) 2009-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
@@ -8,7 +8,7 @@
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: kwin\n"
+"Project-Id-Version: kwin-x11\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2024-08-28 15:53+0200\n"

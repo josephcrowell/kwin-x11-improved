@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-02-11 10:23+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -40,49 +40,6 @@ msgstr ""
 "kim.enkovaara@iki.fi, eleknader@phnet.fi, teemu.rytilahti@kde-fi.org, "
 "ilpo@iki.fi, mikko.piippo@helsinki.fi, lliehu@kolumbus.fi, "
 "translator@legisign.org"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Peru osoittimen kaappaus painamalla oikeaa Ctrl-näppäintä"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Kaappaa osoitin painamalla oikeaa Ctrl-näppäintä"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE:n Wayland-koostin %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "– Ulostulo ei käytössä"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "– Ulostulo himmennetty"
-
-# *** TARKISTA: Mitä ”input” tässä on? Syöte ~ sisäänmeno?
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Peru syötteen kaappaus painamalla oikeaa Ctrl-näppäintä"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Kaappaa syöte painamalla oikeaa Ctrl-näppäintä"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE:n Wayland-koostin"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1699,76 +1656,6 @@ msgstr "Vaihda Käännä värit -tehosteen tilaa ikkunalle"
 msgid "Invert Screen Colors"
 msgstr "Käännä näytön värit"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Vaihtolukkonäppäin on aktivoitu"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Vaihtolukkonäppäin on passiivinen"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Numerolukkonäppäin on aktivoitu"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Numerolukkonäppäin on passiivinen"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Vierityslukkonäppäin on aktivoitu"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Vierityslukkonäppäin on passiivinen"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Vaihtonäppäin on aktiivinen."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Vaihtonäppäin on passiivinen."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Ctrl-näppäin on aktiivinen."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Ctrl-näppäin on passiivinen."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt-näppäin on aktiivinen."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt-näppäin on passiivinen."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Meta-näppäin on aktiivinen."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Meta-näppäin on passiivinen."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2431,46 +2318,6 @@ msgstr "Pysty:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Liu’uta työpöydän taustaa"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Vaihtonäppäin on lukittu ja aktiivinen kaikille seuraaville "
-"näppäinpainalluksille."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Ctrl-näppäin on lukittu ja aktiivinen kaikille seuraaville "
-"näppäinpainalluksille."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Alt-näppäin on lukittu ja aktiivinen kaikille seuraaville "
-"näppäinpainalluksille."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Meta-näppäin on lukittu ja aktiivinen kaikille seuraaville "
-"näppäinpainalluksille."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"AltGr-näppäin on lukittu ja aktiivinen kaikille seuraaville "
-"näppäinpainalluksille."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4279,6 +4126,110 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "XWayland on kaatunut"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Peru osoittimen kaappaus painamalla oikeaa Ctrl-näppäintä"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Kaappaa osoitin painamalla oikeaa Ctrl-näppäintä"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE:n Wayland-koostin %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "– Ulostulo ei käytössä"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "– Ulostulo himmennetty"
+
+# *** TARKISTA: Mitä ”input” tässä on? Syöte ~ sisäänmeno?
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Peru syötteen kaappaus painamalla oikeaa Ctrl-näppäintä"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Kaappaa syöte painamalla oikeaa Ctrl-näppäintä"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE:n Wayland-koostin"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Vaihtolukkonäppäin on aktivoitu"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Vaihtolukkonäppäin on passiivinen"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Numerolukkonäppäin on aktivoitu"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Numerolukkonäppäin on passiivinen"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Vierityslukkonäppäin on aktivoitu"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Vierityslukkonäppäin on passiivinen"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Vaihtonäppäin on aktiivinen."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Vaihtonäppäin on passiivinen."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Ctrl-näppäin on aktiivinen."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Ctrl-näppäin on passiivinen."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt-näppäin on aktiivinen."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt-näppäin on passiivinen."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Meta-näppäin on aktiivinen."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Meta-näppäin on passiivinen."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Vaihtonäppäin on lukittu ja aktiivinen kaikille seuraaville "
+#~ "näppäinpainalluksille."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Ctrl-näppäin on lukittu ja aktiivinen kaikille seuraaville "
+#~ "näppäinpainalluksille."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Alt-näppäin on lukittu ja aktiivinen kaikille seuraaville "
+#~ "näppäinpainalluksille."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Meta-näppäin on lukittu ja aktiivinen kaikille seuraaville "
+#~ "näppäinpainalluksille."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "AltGr-näppäin on lukittu ja aktiivinen kaikille seuraaville "
+#~ "näppäinpainalluksille."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr ""

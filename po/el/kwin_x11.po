@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 17:40+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -36,48 +36,6 @@ msgstr "Σπύρος Γεωργαράς, Τούσης Μανώλης"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sng@hellug.gr, manolis@koppermind.homelinux.org"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Πιέστε το δεξί control για να απελευθέρωση δείκτη"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Πατήστε το δεξί πλήκτρο control για να πιάσετε το δείκτη"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "Συνθέτης Wayland του KDE %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- έξοδος ανενεργή"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- έξοδος χαμηλωμένη"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Πιέστε το δεξί control για ακύρωση εισόδου"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Πατήστε το δεξί πλήκτρο control για να αρπάξετε την είσοδο"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "Συνθέτης Wayland του KDE"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1699,76 +1657,6 @@ msgstr "Εναλλαγή εφέ αντιστροφής στο παράθυρο"
 msgid "Invert Screen Colors"
 msgstr "Αντιστροφή χρωμάτων οθόνης"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Το πλήκτρο Caps Lock έχει ενεργοποιηθεί"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Το πλήκτρο Caps Lock είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Το πλήκτρο Num Lock έχει ενεργοποιηθεί"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Το πλήκτρο Num Lock είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Το πλήκτρο Scroll Lock έχει ενεργοποιηθεί"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Το πλήκτρο Scroll Lock είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Το πλήκτρο Shift είναι τώρα ενεργό"
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Το πλήκτρο Shift είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Το πλήκτρο Control είναι τώρα ενεργό"
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Το πλήκτρο Control είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Το πλήκτρο Alt είναι τώρα ενεργό"
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Το πλήκτρο Alt είναι τώρα ανενεργό"
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Το πλήκτρο Meta είναι τώρα ενεργό"
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Το πλήκτρο Meta είναι τώρα ανενεργό"
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2454,36 +2342,6 @@ msgstr "Κατακόρυφα:"
 #| msgid "Wo&bble when moving"
 msgid "Slide desktop background"
 msgstr "Ταλάντευση κατά την &κίνηση"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4345,6 +4203,74 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Το Xwayland κατάρρευσε"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Πιέστε το δεξί control για να απελευθέρωση δείκτη"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Πατήστε το δεξί πλήκτρο control για να πιάσετε το δείκτη"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "Συνθέτης Wayland του KDE %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- έξοδος ανενεργή"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- έξοδος χαμηλωμένη"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Πιέστε το δεξί control για ακύρωση εισόδου"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Πατήστε το δεξί πλήκτρο control για να αρπάξετε την είσοδο"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "Συνθέτης Wayland του KDE"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Το πλήκτρο Caps Lock έχει ενεργοποιηθεί"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Το πλήκτρο Caps Lock είναι τώρα ανενεργό"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Το πλήκτρο Num Lock έχει ενεργοποιηθεί"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Το πλήκτρο Num Lock είναι τώρα ανενεργό"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Το πλήκτρο Scroll Lock έχει ενεργοποιηθεί"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Το πλήκτρο Scroll Lock είναι τώρα ανενεργό"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Το πλήκτρο Shift είναι τώρα ενεργό"
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Το πλήκτρο Shift είναι τώρα ανενεργό"
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Το πλήκτρο Control είναι τώρα ενεργό"
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Το πλήκτρο Control είναι τώρα ανενεργό"
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Το πλήκτρο Alt είναι τώρα ενεργό"
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Το πλήκτρο Alt είναι τώρα ανενεργό"
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Το πλήκτρο Meta είναι τώρα ενεργό"
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Το πλήκτρο Meta είναι τώρα ανενεργό"
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Εκκίνηση ενός rootless διακομιστή Xwayland."

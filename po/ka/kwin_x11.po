@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 04:46+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -27,48 +27,6 @@ msgstr "Temuri Doghonadze"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Temuri.doghonadze@gmail.com"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "მაჩვენებლის დათრევის მოსახსნელად მარჯვენა control-ს დააწექით"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "მაჩვენებლის დასათრევად მარჯვენა Control-ს დააწექით"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland კომპოზიტორი %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- გამოტანა გამორთულია"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- გამოტანა დამალულია"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "შეყვანის ჩაჭერის მოსახსნელად მარჯვენა Control-ს დააწექით"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "შეყვანის ჩასაჭერად მარჯვენა Control-ს დააწექით"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland კომპოზიტორი"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1680,76 +1638,6 @@ msgstr "ფანჯარაზე ინვერსიის ეფექტ�
 msgid "Invert Screen Colors"
 msgstr "ეკრანის ფერების ინვერსია"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "ღილაკი CapsLock ახლა აქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "ღილაკი CapsLock ახლა არააქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "ღილაკი NumLock ახლა აქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "ღილაკი NumLock ახლა არააქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "ღილაკი ScrollLock ახლა აქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "ღილაკი ScrollLock ახლა araაქტიურია"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "ღილაკი Shift ახლა აქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "ღილაკი Shift ახლა არააქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "ღილაკი Control ახლა აქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "ღილაკი Control ახლა არააქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "ღილაკი Alt ახლა აქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "ღილაკი Alt ახლა არააქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "ღილაკი Meta ახლა აქტიურია."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "ღილაკი Meta ახლა არააქტიურია."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2412,46 +2300,6 @@ msgstr "ვერტიკალური:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "გაუსვით ეკრანის ფონს"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"ღილაკი Shift დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
-"მიმდევრობისთვის."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"ღილაკი Control დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
-"მიმდევრობისთვის."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"ღილაკი Alt დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
-"მიმდევრობისთვის."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"ღილაკი Meta დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
-"მიმდევრობისთვის."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"ღილაკი AltGr დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
-"მიმდევრობისთვის."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4250,6 +4098,109 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland ავარიულად დასრულდა"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "მაჩვენებლის დათრევის მოსახსნელად მარჯვენა control-ს დააწექით"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "მაჩვენებლის დასათრევად მარჯვენა Control-ს დააწექით"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland კომპოზიტორი %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- გამოტანა გამორთულია"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- გამოტანა დამალულია"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "შეყვანის ჩაჭერის მოსახსნელად მარჯვენა Control-ს დააწექით"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "შეყვანის ჩასაჭერად მარჯვენა Control-ს დააწექით"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland კომპოზიტორი"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "ღილაკი CapsLock ახლა აქტიურია"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "ღილაკი CapsLock ახლა არააქტიურია"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "ღილაკი NumLock ახლა აქტიურია"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "ღილაკი NumLock ახლა არააქტიურია"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "ღილაკი ScrollLock ახლა აქტიურია"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "ღილაკი ScrollLock ახლა araაქტიურია"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "ღილაკი Shift ახლა აქტიურია."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "ღილაკი Shift ახლა არააქტიურია."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "ღილაკი Control ახლა აქტიურია."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "ღილაკი Control ახლა არააქტიურია."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "ღილაკი Alt ახლა აქტიურია."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "ღილაკი Alt ახლა არააქტიურია."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "ღილაკი Meta ახლა აქტიურია."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "ღილაკი Meta ახლა არააქტიურია."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "ღილაკი Shift დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
+#~ "მიმდევრობისთვის."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "ღილაკი Control დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
+#~ "მიმდევრობისთვის."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "ღილაკი Alt დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
+#~ "მიმდევრობისთვის."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "ღილაკი Meta დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
+#~ "მიმდევრობისთვის."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "ღილაკი AltGr დაბლოკილია და ახლა აქტიურია ყველა შემდეგი ღილაკების "
+#~ "მიმდევრობისთვის."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Xwayland სერვერის საწყისი საქაღალდის გარეშე გაშვება."

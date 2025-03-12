@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-31 11:31+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -28,50 +28,6 @@ msgstr "Радостин Раднев, Минчо Кондарев"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "radnev@yahoo.com, mkondarev@yahoo.de"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Натиснете десния бутон за управление, за да освободите показалеца"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Натиснете десния клавиш за управление, за да прихванете показалеца"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland Compositor %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Изходът е изключен"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Изходът е затъмнен"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr ""
-"Натиснете десния бутон за управление, за да освободите входните устройства"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr ""
-"Натиснете десния клавиш за управление, за да прихванете входните устройства"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland Compositor"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1688,76 +1644,6 @@ msgstr "Превключване на ефект обръщане на цвет�
 msgid "Invert Screen Colors"
 msgstr "Обръщане на цветовете на екрана"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Клавишът Caps Lock е активиран"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Клавишът Caps Lock сега е неактивен"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Клавишът Num Lock е активиран"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Клавишът Num Lock сега е неактивен"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Клавишът Scroll Lock е активиран"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Клавишът Scroll Lock сега е неактивен"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Клавишът Shift е активен."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Клавишът Shift е неактивен."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Клавишът Ctrl е активен."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Клавишът Ctrl е неактивен."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Клавишът Alt е активен."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Клавишът Alt е неактивен."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Клавишът Meta е активен."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Клавишът Meta е неактивен."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2422,36 +2308,6 @@ msgstr "Вертикално:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Сменяне на фона на работния плот"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Клавишът Shift е натиснат и е активен за всички последващи клавиши."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Клавишът Ctrl е натиснат и е активен за всички последващи клавиши."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Клавишът Alt е натиснат и е активен за всички последващи клавиши."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Клавишът Meta е натиснат и е активен за всички последващи клавиши."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Клавишът AltGr е заключен и е активен за всички последващи клавиши."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4256,6 +4112,102 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland се срина"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Натиснете десния бутон за управление, за да освободите показалеца"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Натиснете десния клавиш за управление, за да прихванете показалеца"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland Compositor %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Изходът е изключен"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Изходът е затъмнен"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr ""
+#~ "Натиснете десния бутон за управление, за да освободите входните устройства"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr ""
+#~ "Натиснете десния клавиш за управление, за да прихванете входните "
+#~ "устройства"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland Compositor"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Клавишът Caps Lock е активиран"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Клавишът Caps Lock сега е неактивен"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Клавишът Num Lock е активиран"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Клавишът Num Lock сега е неактивен"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Клавишът Scroll Lock е активиран"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Клавишът Scroll Lock сега е неактивен"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Клавишът Shift е активен."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Клавишът Shift е неактивен."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Клавишът Ctrl е активен."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Клавишът Ctrl е неактивен."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Клавишът Alt е активен."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Клавишът Alt е неактивен."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Клавишът Meta е активен."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Клавишът Meta е неактивен."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Клавишът Shift е натиснат и е активен за всички последващи клавиши."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr "Клавишът Ctrl е натиснат и е активен за всички последващи клавиши."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Клавишът Alt е натиснат и е активен за всички последващи клавиши."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Клавишът Meta е натиснат и е активен за всички последващи клавиши."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Клавишът AltGr е заключен и е активен за всички последващи клавиши."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Стартиране на неизискващ root сървър Xwayland."

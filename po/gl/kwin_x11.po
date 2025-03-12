@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-19 13:39+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -41,48 +41,6 @@ msgstr "Marce Villarino"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xabigf@gmx.net, mvillarino@users.sourceforge.net, adrian@chaves.gal"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Prema o control dereito para soltar o punteiro"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Prema a tecla de control dereita para agarrar o punteiro"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "Compositor de Wayland de KDE %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Desactivouse a saída"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Escureceuse a saída"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Prema o control dereito para soltar a entrada"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Prema a tecla de control dereita para agarrar a entrada"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "Compositor de Wayland de KDE"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1699,76 +1657,6 @@ msgstr "Conmutar o efecto de inversión na xanela"
 msgid "Invert Screen Colors"
 msgstr "Inverter as cores da pantalla"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "A tecla Bloq Maiús activouse."
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "A tecla Bloq Maiús está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Activouse a tecla Bloq Num."
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "A tecla Bloq Num está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "A tecla Bloq Despr activouse."
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "A tecla Bloq Despr está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "A tecla Maiúsculas está activa."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "A tecla Maiúsculas está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "A tecla Ctrl está activa."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "A tecla Ctrl está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "A tecla Alt está activa."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "A tecla Alt está inactiva."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "A tecla Meta está activa."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "A tecla Meta está inactiva."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2432,42 +2320,6 @@ msgstr "Vertical:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Deslizar o fondo de escritorio."
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"A tecla Maiúsculas está bloqueada e activa para todas as seguintes "
-"pulsacións das teclas."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"A tecla Ctrl bloqueouse e está activa para todas as seguintes pulsacións."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"A tecla Alt bloqueouse e está activa para todas as seguintes pulsacións."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"A tecla Meta bloqueouse e está activa para todas as seguintes pulsacións."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"A tecla AltGr bloqueouse e está activa para todas as seguintes pulsacións."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4268,6 +4120,105 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland quebrou."
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Prema o control dereito para soltar o punteiro"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Prema a tecla de control dereita para agarrar o punteiro"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "Compositor de Wayland de KDE %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Desactivouse a saída"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Escureceuse a saída"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Prema o control dereito para soltar a entrada"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Prema a tecla de control dereita para agarrar a entrada"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "Compositor de Wayland de KDE"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "A tecla Bloq Maiús activouse."
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "A tecla Bloq Maiús está inactiva."
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Activouse a tecla Bloq Num."
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "A tecla Bloq Num está inactiva."
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "A tecla Bloq Despr activouse."
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "A tecla Bloq Despr está inactiva."
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "A tecla Maiúsculas está activa."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "A tecla Maiúsculas está inactiva."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "A tecla Ctrl está activa."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "A tecla Ctrl está inactiva."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "A tecla Alt está activa."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "A tecla Alt está inactiva."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "A tecla Meta está activa."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "A tecla Meta está inactiva."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "A tecla Maiúsculas está bloqueada e activa para todas as seguintes "
+#~ "pulsacións das teclas."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "A tecla Ctrl bloqueouse e está activa para todas as seguintes pulsacións."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "A tecla Alt bloqueouse e está activa para todas as seguintes pulsacións."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "A tecla Meta bloqueouse e está activa para todas as seguintes pulsacións."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "A tecla AltGr bloqueouse e está activa para todas as seguintes pulsacións."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Iniciar un servidor Xwayland como usuario normal."

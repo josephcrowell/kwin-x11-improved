@@ -1,4 +1,4 @@
-# Translation of kcm_kwin_virtualdesktops.po to Catalan
+# Translation of kcm_kwin_virtualdesktops_x11.po to Catalan
 # Copyright (C) 2007-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
@@ -8,7 +8,7 @@
 # Alfredo Vicente <alviboi@gmail.com>, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: kwin\n"
+"Project-Id-Version: kwin-x11\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2024-04-27 10:57+0200\n"
@@ -128,19 +128,3 @@ msgstr "%1 ms"
 #, kde-format
 msgid "Show desktop layout indicators"
 msgstr "Mostra els indicadors de la disposició dels escriptoris"
-
-#~ msgid "1 Row"
-#~ msgid_plural "%1 Rows"
-#~ msgstr[0] "1 fila"
-#~ msgstr[1] "%1 files"
-
-#~ msgctxt "@action:button"
-#~ msgid "Add"
-#~ msgstr "Afegeix"
-
-#~ msgid ""
-#~ "This module lets you configure the navigation, number and layout of "
-#~ "virtual desktops."
-#~ msgstr ""
-#~ "Aquest mòdul permet configurar la navegació, el nombre i la disposició "
-#~ "dels escriptoris virtuals."

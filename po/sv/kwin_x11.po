@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-11 12:17+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -31,48 +31,6 @@ msgstr "Anders Widell,Per Lindström,Mattias Newzella"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "awl@hem.passagen.se,pelinstr@algonet.se,newzella@linux.nu"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "Tryck på höger kontrolltangent för att släppa pekaren"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "Tryck på höger kontrolltangent för att greppa pekaren"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland-sammansättning %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- Utmatning inaktiverad"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- Utmatning dämpad"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "Tryck på höger kontrolltangent för att släppa inmatning"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "Tryck på höger kontrolltangent för att greppa inmatning"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland-sammansättning"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1682,76 +1640,6 @@ msgstr "Sätt på eller stäng av inverteringseffekt för fönster"
 msgid "Invert Screen Colors"
 msgstr "Invertera skärmfärger"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Caps Lock-tangenten har aktiverats"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Caps Lock-tangenten är nu inaktiv"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Num Lock-tangenten har aktiverats"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Num Lock-tangenten är nu inaktiv"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Scroll Lock-tangenten har aktiverats"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Scroll Lock-tangenten är nu inaktiv"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Skift-tangenten är nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Skift-tangenten är nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Ctrl-tangenten är nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Ctrl-tangenten är nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt-tangenten är nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt-tangenten är nu inaktiv."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Meta-tangenten är nu aktiv."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Meta-tangenten är nu inaktiv."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2414,46 +2302,6 @@ msgstr "Vertikal:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "Skjut skrivbordsbakgrund"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Skift-tangenten har låsts och är nu aktiv för alla följande "
-"tangentnedtryckningar."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Ctrl-tangenten har låsts och är nu aktiv för alla följande "
-"tangentnedtryckningar."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Alt-tangenten har låsts och är nu aktiv för alla följande "
-"tangentnedtryckningar."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Meta-tangenten har låsts och är nu aktiv för alla följande "
-"tangentnedtryckningar."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr ""
-"Alt Gr-tangenten har låsts och är nu aktiv för alla följande "
-"tangentnedtryckningar."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4251,6 +4099,109 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland har kraschat"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "Tryck på höger kontrolltangent för att släppa pekaren"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "Tryck på höger kontrolltangent för att greppa pekaren"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland-sammansättning %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- Utmatning inaktiverad"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- Utmatning dämpad"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "Tryck på höger kontrolltangent för att släppa inmatning"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "Tryck på höger kontrolltangent för att greppa inmatning"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland-sammansättning"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Caps Lock-tangenten har aktiverats"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Caps Lock-tangenten är nu inaktiv"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Num Lock-tangenten har aktiverats"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Num Lock-tangenten är nu inaktiv"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Scroll Lock-tangenten har aktiverats"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Scroll Lock-tangenten är nu inaktiv"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Skift-tangenten är nu aktiv."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Skift-tangenten är nu inaktiv."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Ctrl-tangenten är nu aktiv."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Ctrl-tangenten är nu inaktiv."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt-tangenten är nu aktiv."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt-tangenten är nu inaktiv."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Meta-tangenten är nu aktiv."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Meta-tangenten är nu inaktiv."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Skift-tangenten har låsts och är nu aktiv för alla följande "
+#~ "tangentnedtryckningar."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Ctrl-tangenten har låsts och är nu aktiv för alla följande "
+#~ "tangentnedtryckningar."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Alt-tangenten har låsts och är nu aktiv för alla följande "
+#~ "tangentnedtryckningar."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Meta-tangenten har låsts och är nu aktiv för alla följande "
+#~ "tangentnedtryckningar."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Alt Gr-tangenten har låsts och är nu aktiv för alla följande "
+#~ "tangentnedtryckningar."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Starta en Xwayland-server utan rot."

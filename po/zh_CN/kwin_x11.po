@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -26,48 +26,6 @@ msgstr "KDE 中国, csslayer, Guo Yunhe, Tyson Tan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-china@kde.org, csslayer@kde.org, i@guoyunhe.me, tds00@qq.com"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "按右 Ctrl 键释放指针"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "按右 Ctrl 键抓取指针"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "KDE Wayland 显示特效混合器 %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- 输出已禁用"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "- 输出已变暗"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "按右 Ctrl 键释放输入"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "按右 Ctrl 键抓取输入"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "KDE Wayland 显示特效混合器"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1669,76 +1627,6 @@ msgstr "开启/关闭窗口反相显示"
 msgid "Invert Screen Colors"
 msgstr "屏幕反色"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Caps Lock 键已激活"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Caps Lock 键已取消激活"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Num Lock 键已激活"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Num Lock 键已取消激活"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Scroll Lock 键已激活"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Scroll Lock 键已取消激活"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Shift 键已激活。"
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Shift 键已取消激活。"
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Ctrl 键已激活。"
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Ctrl 键已取消激活。"
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt 键已激活。"
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt 键已取消激活。"
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Meta 键已激活。"
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Meta 键已取消激活。"
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2400,36 +2288,6 @@ msgstr "垂直："
 #, kde-format
 msgid "Slide desktop background"
 msgstr "幻灯片桌面背景"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Shift 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Ctrl 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Alt 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Meta 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "AltGr 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4221,6 +4079,99 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland 已崩溃"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "按右 Ctrl 键释放指针"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "按右 Ctrl 键抓取指针"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "KDE Wayland 显示特效混合器 %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- 输出已禁用"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "- 输出已变暗"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "按右 Ctrl 键释放输入"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "按右 Ctrl 键抓取输入"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "KDE Wayland 显示特效混合器"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Caps Lock 键已激活"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Caps Lock 键已取消激活"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Num Lock 键已激活"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Num Lock 键已取消激活"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Scroll Lock 键已激活"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Scroll Lock 键已取消激活"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Shift 键已激活。"
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Shift 键已取消激活。"
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Ctrl 键已激活。"
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Ctrl 键已取消激活。"
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt 键已激活。"
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt 键已取消激活。"
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Meta 键已激活。"
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Meta 键已取消激活。"
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Shift 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr "Ctrl 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Alt 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Meta 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "AltGr 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "启动无 root 权限的 Xwayland 服务器。"

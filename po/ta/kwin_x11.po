@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-12 00:43+0000\n"
 "PO-Revision-Date: 2025-01-26 19:08+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -30,48 +30,6 @@ msgstr "tamilpc team,tamilpc team,tamilpc team"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tamilpc@ambalam.com,rajan_agnel@yahoo.co.in,shafi6_loyola@yahoo.co.in"
-
-#: backends/wayland/wayland_output.cpp:432
-#, kde-format
-msgid "Press right control to ungrab pointer"
-msgstr "சுட்டிக்குறியை விடுவிக்க வலது Ctrl விசையை அழுத்தவும்"
-
-#: backends/wayland/wayland_output.cpp:434
-#, kde-format
-msgid "Press right control key to grab pointer"
-msgstr "சுட்டிக்குறியை கைபற்ற வலது Ctrl விசையை அழுத்தவும்"
-
-#: backends/wayland/wayland_output.cpp:438
-#, kde-format
-msgctxt ""
-"Title of nested KWin Wayland with Wayland socket identifier as argument"
-msgid "KDE Wayland Compositor %1"
-msgstr "கே.டீ.யீ. Wayland சாளரநிரல் %1"
-
-#: backends/wayland/wayland_output.cpp:441
-#, kde-format
-msgid "- Output disabled"
-msgstr "- வெளியீடு முடக்கப்பட்டுள்ளது"
-
-#: backends/wayland/wayland_output.cpp:443
-#, kde-format
-msgid "- Output dimmed"
-msgstr "வெளியீடு மங்கலாக்கப்பட்டுள்ளது"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control to ungrab input"
-msgstr "உள்ளீட்டை விடுவிக்க வலது Ctrl விசையை அழுத்தவும்"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:498
-#, kde-format
-msgid "Press right control key to grab input"
-msgstr "உள்ளீட்டை கைபற்ற வலது Ctrl விசையை அழுத்தவும்"
-
-#: backends/x11/windowed/x11_windowed_backend.cpp:499
-#, kde-format
-msgid "KDE Wayland Compositor"
-msgstr "கே.டீ.யீ. Wayland சாளரநிரல்"
 
 #: compositor_wayland.cpp:325 compositor_x11.cpp:459
 #, kde-format
@@ -1691,76 +1649,6 @@ msgstr "சாளரத்திற்கான நிறப்புரட்�
 msgid "Invert Screen Colors"
 msgstr "திரையிலுள்ள நிறங்களை புரட்டு"
 
-#: plugins/keynotification/keynotification.cpp:44
-#, kde-format
-msgid "The Caps Lock key has been activated"
-msgstr "Caps Lock விசை இப்போது செயலிலுள்ளது"
-
-#: plugins/keynotification/keynotification.cpp:48
-#, kde-format
-msgid "The Caps Lock key is now inactive"
-msgstr "Caps Lock விசை இப்போது செயலிலில்லை"
-
-#: plugins/keynotification/keynotification.cpp:52
-#, kde-format
-msgid "The Num Lock key has been activated"
-msgstr "Num Lock விசை இப்போது செயலிலுள்ளது"
-
-#: plugins/keynotification/keynotification.cpp:56
-#, kde-format
-msgid "The Num Lock key is now inactive"
-msgstr "Num Lock விசை இப்போது செயலிலில்லை"
-
-#: plugins/keynotification/keynotification.cpp:60
-#, kde-format
-msgid "The Scroll Lock key has been activated"
-msgstr "Scroll Lock விசை இப்போது செயலிலுள்ளது"
-
-#: plugins/keynotification/keynotification.cpp:64
-#, kde-format
-msgid "The Scroll Lock key is now inactive"
-msgstr "Scroll Lock விசை இப்போது செயலிலில்லை"
-
-#: plugins/keynotification/keynotification.cpp:77
-#, kde-format
-msgid "The Shift key is now active."
-msgstr "Shift விசை செயலில் உள்ளது."
-
-#: plugins/keynotification/keynotification.cpp:81
-#, kde-format
-msgid "The Shift key is now inactive."
-msgstr "Shift விசை செயலிலில்லை."
-
-#: plugins/keynotification/keynotification.cpp:85
-#, kde-format
-msgid "The Control key is now active."
-msgstr "Control விசை செயலில் உள்ளது."
-
-#: plugins/keynotification/keynotification.cpp:89
-#, kde-format
-msgid "The Control key is now inactive."
-msgstr "Control விசை செயலிலில்லை."
-
-#: plugins/keynotification/keynotification.cpp:93
-#, kde-format
-msgid "The Alt key is now active."
-msgstr "Alt விசை செயலில் உள்ளது."
-
-#: plugins/keynotification/keynotification.cpp:97
-#, kde-format
-msgid "The Alt key is now inactive."
-msgstr "Alt விசை செயலிலில்லை."
-
-#: plugins/keynotification/keynotification.cpp:101
-#, kde-format
-msgid "The Meta key is now active."
-msgstr "Meta விசை செயலில் உள்ளது."
-
-#: plugins/keynotification/keynotification.cpp:105
-#, kde-format
-msgid "The Meta key is now inactive."
-msgstr "Meta விசை செயலிலில்லை."
-
 #: plugins/krunner-integration/windowsrunnerinterface.cpp:41
 #, kde-format
 msgctxt "Note this is a KRunner keyword"
@@ -2423,36 +2311,6 @@ msgstr "நெடுக்காக:"
 #, kde-format
 msgid "Slide desktop background"
 msgstr "பின்புலப்படத்தை நழுவச்செய்"
-
-#: plugins/stickykeys/stickykeys.cpp:24
-msgid ""
-"The Shift key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Shift விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
-
-#: plugins/stickykeys/stickykeys.cpp:25
-msgid ""
-"The Control key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Control விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
-
-#: plugins/stickykeys/stickykeys.cpp:26
-msgid ""
-"The Alt key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Alt விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
-
-#: plugins/stickykeys/stickykeys.cpp:27
-msgid ""
-"The Meta key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "Meta விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
-
-#: plugins/stickykeys/stickykeys.cpp:28
-msgid ""
-"The AltGr key has been locked and is now active for all of the following "
-"keypresses."
-msgstr "AltGr விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
 
 #: plugins/thumbnailaside/thumbnailaside.cpp:31
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
@@ -4255,6 +4113,102 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland முறிவடைந்துள்ளது"
+
+#~ msgid "Press right control to ungrab pointer"
+#~ msgstr "சுட்டிக்குறியை விடுவிக்க வலது Ctrl விசையை அழுத்தவும்"
+
+#~ msgid "Press right control key to grab pointer"
+#~ msgstr "சுட்டிக்குறியை கைபற்ற வலது Ctrl விசையை அழுத்தவும்"
+
+#~ msgctxt ""
+#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
+#~ msgid "KDE Wayland Compositor %1"
+#~ msgstr "கே.டீ.யீ. Wayland சாளரநிரல் %1"
+
+#~ msgid "- Output disabled"
+#~ msgstr "- வெளியீடு முடக்கப்பட்டுள்ளது"
+
+#~ msgid "- Output dimmed"
+#~ msgstr "வெளியீடு மங்கலாக்கப்பட்டுள்ளது"
+
+#~ msgid "Press right control to ungrab input"
+#~ msgstr "உள்ளீட்டை விடுவிக்க வலது Ctrl விசையை அழுத்தவும்"
+
+#~ msgid "Press right control key to grab input"
+#~ msgstr "உள்ளீட்டை கைபற்ற வலது Ctrl விசையை அழுத்தவும்"
+
+#~ msgid "KDE Wayland Compositor"
+#~ msgstr "கே.டீ.யீ. Wayland சாளரநிரல்"
+
+#~ msgid "The Caps Lock key has been activated"
+#~ msgstr "Caps Lock விசை இப்போது செயலிலுள்ளது"
+
+#~ msgid "The Caps Lock key is now inactive"
+#~ msgstr "Caps Lock விசை இப்போது செயலிலில்லை"
+
+#~ msgid "The Num Lock key has been activated"
+#~ msgstr "Num Lock விசை இப்போது செயலிலுள்ளது"
+
+#~ msgid "The Num Lock key is now inactive"
+#~ msgstr "Num Lock விசை இப்போது செயலிலில்லை"
+
+#~ msgid "The Scroll Lock key has been activated"
+#~ msgstr "Scroll Lock விசை இப்போது செயலிலுள்ளது"
+
+#~ msgid "The Scroll Lock key is now inactive"
+#~ msgstr "Scroll Lock விசை இப்போது செயலிலில்லை"
+
+#~ msgid "The Shift key is now active."
+#~ msgstr "Shift விசை செயலில் உள்ளது."
+
+#~ msgid "The Shift key is now inactive."
+#~ msgstr "Shift விசை செயலிலில்லை."
+
+#~ msgid "The Control key is now active."
+#~ msgstr "Control விசை செயலில் உள்ளது."
+
+#~ msgid "The Control key is now inactive."
+#~ msgstr "Control விசை செயலிலில்லை."
+
+#~ msgid "The Alt key is now active."
+#~ msgstr "Alt விசை செயலில் உள்ளது."
+
+#~ msgid "The Alt key is now inactive."
+#~ msgstr "Alt விசை செயலிலில்லை."
+
+#~ msgid "The Meta key is now active."
+#~ msgstr "Meta விசை செயலில் உள்ளது."
+
+#~ msgid "The Meta key is now inactive."
+#~ msgstr "Meta விசை செயலிலில்லை."
+
+#~ msgid ""
+#~ "The Shift key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "Shift விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
+
+#~ msgid ""
+#~ "The Control key has been locked and is now active for all of the "
+#~ "following keypresses."
+#~ msgstr ""
+#~ "Control விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
+
+#~ msgid ""
+#~ "The Alt key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Alt விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
+
+#~ msgid ""
+#~ "The Meta key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr "Meta விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
+
+#~ msgid ""
+#~ "The AltGr key has been locked and is now active for all of the following "
+#~ "keypresses."
+#~ msgstr ""
+#~ "AltGr விசை பூட்டப்பட்டுள்ளது; பின்வரும் அனைத்து விசையழுத்தல்களுக்கும் செயல்படும்."
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "ரூட்டாக இயங்காத (rootless) Xwayland சேவையகத்தை துவக்கும்."
