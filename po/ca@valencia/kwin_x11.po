@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin-x11\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-02-24 12:43+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1613,32 +1613,6 @@ msgstr "Distància:"
 msgid "Window Close Animation"
 msgstr "Animació de tancament de les finestres"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Mai"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 segon"
-msgstr[1] "%1 segons"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Oculta el cursor per inactivitat:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Oculta el cursor en teclejar"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2195,47 +2169,6 @@ msgstr "Escala en obrir la finestra:"
 msgid "Window close scale:"
 msgstr "Escala en tancar la finestra:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "No s'ha pogut iniciar el bucle principal de PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "No s'ha pogut crear el context de PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "No s'ha pogut connectar amb el context de PipeWire"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "No s'ha pogut trobar la finestra amb ID %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "No s'ha pogut trobar l'eixida"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Regió no vàlida"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Es requerix la composició OpenGL per als vídeos de captura de pantalla"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "No s'ha pogut crear el flux de PipeWire"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2254,12 +2187,6 @@ msgid ""
 msgstr ""
 "Creeu una captura de pantalla amb el clic esquerre o la tecla de retorn.\n"
 "La tecla d'escapada o clic dret per a cancel·lar."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Composició"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2399,11 +2326,6 @@ msgstr "Afig un mosaic flotant"
 #, kde-format
 msgid "Delete"
 msgstr "Suprimix"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Ratolí tàctil"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4120,6 +4042,53 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "XWayland ha fallat"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Mai"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 segon"
+#~ msgstr[1] "%1 segons"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Oculta el cursor per inactivitat:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Oculta el cursor en teclejar"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "No s'ha pogut iniciar el bucle principal de PipeWire"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "No s'ha pogut crear el context de PipeWire"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "No s'ha pogut connectar amb el context de PipeWire"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "No s'ha pogut trobar la finestra amb ID %1"
+
+#~ msgid "Could not find output"
+#~ msgstr "No s'ha pogut trobar l'eixida"
+
+#~ msgid "Invalid region"
+#~ msgstr "Regió no vàlida"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr ""
+#~ "Es requerix la composició OpenGL per als vídeos de captura de pantalla"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "No s'ha pogut crear el flux de PipeWire"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Composició"
+
+#~ msgid "Touchpad"
+#~ msgstr "Ratolí tàctil"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Premeu la tecla de control dret per a deixar anar el punter"

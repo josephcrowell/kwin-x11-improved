@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-03-02 14:47+0530\n"
 "Last-Translator: Shreekant Kalwar <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1590,32 +1590,6 @@ msgstr "दूरी:"
 msgid "Window Close Animation"
 msgstr "विण्डो बन्द एनिमेशन"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "कदापि न"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 द्वितीयम्"
-msgstr[1] "%1 सेकण्ड्"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "निष्क्रियतायां कर्सरं गोपयन्तु :"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "टङ्कने कर्सरं गोपयन्तु"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2170,47 +2144,6 @@ msgstr "खिडकी खुला स्केल :"
 msgid "Window close scale:"
 msgstr "खिडकी बन्द स्केल :"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "मुख्यं PipeWire पाशं आरभ्यतुं असफलम्"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "PipeWire सन्दर्भं निर्मातुं असफलम्"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "PipeWire सन्दर्भं संयोजयितुं असफलम्"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "%1 विण्डो id न ज्ञातम्"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "उत्पादनं न प्राप्नोत्"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "अमान्यः प्रदेशः"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "स्क्रीनकास्टिंग् कृते OpenGL कम्पोजिटिङ्ग् आवश्यकम् अस्ति"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "PipeWire धारा निर्मातुं असफलम्"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2228,12 +2161,6 @@ msgid ""
 msgstr ""
 "लेफ्ट क्लिक् अथवा एन्टेर् इत्यनेन स्क्रीन शॉट् रचयन्तु।\n"
 "पलायनं कुर्वन्तु अथवा रद्दं कर्तुं राइट् क्लिक् कुर्वन्तु।"
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "रचनाकरणम्"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2373,11 +2300,6 @@ msgstr "Floating Tile योजयन्तु"
 #, kde-format
 msgid "Delete"
 msgstr "लुप्"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "टचपैड"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4085,6 +4007,52 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland दुर्घटना अभवत्"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "कदापि न"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 द्वितीयम्"
+#~ msgstr[1] "%1 सेकण्ड्"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "निष्क्रियतायां कर्सरं गोपयन्तु :"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "टङ्कने कर्सरं गोपयन्तु"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "मुख्यं PipeWire पाशं आरभ्यतुं असफलम्"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "PipeWire सन्दर्भं निर्मातुं असफलम्"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "PipeWire सन्दर्भं संयोजयितुं असफलम्"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "%1 विण्डो id न ज्ञातम्"
+
+#~ msgid "Could not find output"
+#~ msgstr "उत्पादनं न प्राप्नोत्"
+
+#~ msgid "Invalid region"
+#~ msgstr "अमान्यः प्रदेशः"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "स्क्रीनकास्टिंग् कृते OpenGL कम्पोजिटिङ्ग् आवश्यकम् अस्ति"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "PipeWire धारा निर्मातुं असफलम्"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "रचनाकरणम्"
+
+#~ msgid "Touchpad"
+#~ msgstr "टचपैड"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "सूचकं अनग्राब् कर्तुं right control नुदन्तु"

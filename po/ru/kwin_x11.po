@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2024-09-20 11:48+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1636,34 +1636,6 @@ msgstr "Перемещение:"
 msgid "Window Close Animation"
 msgstr "Анимация закрытия окна"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Никогда"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 секунда"
-msgstr[1] "%1 секунды"
-msgstr[2] "%1 секунд"
-msgstr[3] "%1 секунда"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Скрывать курсор при отсутствии активности:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Скрывать курсор при наборе"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2224,47 +2196,6 @@ msgstr "Начальный масштаб при открытии окна:"
 msgid "Window close scale:"
 msgstr "Конечный масштаб при закрытии окна:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "Не удалось запустить основной цикл PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "Не удалось создать контекст PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "Не удалось подключиться к контексту PipeWire"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Не удалось найти окно с идентификатором %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Не удалось найти поток вывода"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Недопустимая область"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Для трансляции экрана требуются графические эффекты OpenGL"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "Не удалось создать поток PipeWire"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2284,12 +2215,6 @@ msgstr ""
 "Щёлкните левой кнопкой мыши или нажмите Enter, чтобы\n"
 "сделать снимок экрана. Для отмены нажмите Esc или правую\n"
 "кнопку мыши."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Графические эффекты"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2429,11 +2354,6 @@ msgstr "Добавить плавающий блок"
 #, kde-format
 msgid "Delete"
 msgstr "Удалить"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Сенсорная панель"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4163,6 +4083,54 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Произошло аварийное завершение Xwayland"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Никогда"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 секунда"
+#~ msgstr[1] "%1 секунды"
+#~ msgstr[2] "%1 секунд"
+#~ msgstr[3] "%1 секунда"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Скрывать курсор при отсутствии активности:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Скрывать курсор при наборе"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "Не удалось запустить основной цикл PipeWire"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "Не удалось создать контекст PipeWire"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "Не удалось подключиться к контексту PipeWire"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Не удалось найти окно с идентификатором %1"
+
+#~ msgid "Could not find output"
+#~ msgstr "Не удалось найти поток вывода"
+
+#~ msgid "Invalid region"
+#~ msgstr "Недопустимая область"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "Для трансляции экрана требуются графические эффекты OpenGL"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "Не удалось создать поток PipeWire"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Графические эффекты"
+
+#~ msgid "Touchpad"
+#~ msgstr "Сенсорная панель"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Чтобы освободить указатель нажмите правую клавишу Ctrl"

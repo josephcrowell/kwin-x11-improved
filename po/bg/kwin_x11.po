@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-01-31 11:31+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1603,32 +1603,6 @@ msgstr "Разстояние:"
 msgid "Window Close Animation"
 msgstr "Анимация за затваряне на прозорец"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Никога"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 секунда"
-msgstr[1] "%1 секунди"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Скриване показалеца на мишката при неактивност:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Скриване показалеца на мишката при писане"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2185,47 +2159,6 @@ msgstr "Мащаб на отворен прозорец:"
 msgid "Window close scale:"
 msgstr "Мащаб на затваряне на прозорец:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "Неуспешно стартиране на основния цикъл PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "Неуспешно създаване на PipeWire контекст"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "Неуспешно свързване на PipeWire контекст"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Неуспешно намиране на  идентификатор на прозорец %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Не може да намери изход"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Невалиден регион"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Изисква се OpenGL композитор за предаването на екрана"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "Неуспешно създаване на PipeWire поток"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2243,12 +2176,6 @@ msgid ""
 msgstr ""
 "Създаване на снимка на екрана с левия бутон на мишката или въведете.\n"
 "Натиснете клавиш Escape  или десния бутон на мишката, за да отмените."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Композиране"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2388,11 +2315,6 @@ msgstr "Добавяне на плаващи плочки"
 #, kde-format
 msgid "Delete"
 msgstr "Изтриване"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Тъчпад"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4112,6 +4034,52 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland се срина"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Никога"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 секунда"
+#~ msgstr[1] "%1 секунди"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Скриване показалеца на мишката при неактивност:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Скриване показалеца на мишката при писане"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "Неуспешно стартиране на основния цикъл PipeWire"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "Неуспешно създаване на PipeWire контекст"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "Неуспешно свързване на PipeWire контекст"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Неуспешно намиране на  идентификатор на прозорец %1"
+
+#~ msgid "Could not find output"
+#~ msgstr "Не може да намери изход"
+
+#~ msgid "Invalid region"
+#~ msgstr "Невалиден регион"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "Изисква се OpenGL композитор за предаването на екрана"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "Неуспешно създаване на PipeWire поток"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Композиране"
+
+#~ msgid "Touchpad"
+#~ msgstr "Тъчпад"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Натиснете десния бутон за управление, за да освободите показалеца"

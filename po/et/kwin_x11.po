@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2022-11-14 01:16+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -1629,33 +1629,6 @@ msgstr "Vahemaa:"
 msgid "Window Close Animation"
 msgstr "Akna asukoht"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr ""
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, fuzzy, kde-format
-#| msgid " milliseconds"
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] " msek"
-msgstr[1] " msek"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr ""
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2261,48 +2234,6 @@ msgstr "Akna roll"
 msgid "Window close scale:"
 msgstr "Akna roll"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr ""
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr ""
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr ""
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr ""
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr ""
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr ""
-
-#: plugins/screencast/screencaststream.cpp:375
-#, fuzzy, kde-format
-#| msgid "No OpenGL compositor running"
-msgid "OpenGL compositing is required for screencasting"
-msgstr "OpenGL komposiitor ei tööta"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr ""
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, fuzzy, kde-format
 #| msgid ""
@@ -2326,13 +2257,6 @@ msgid ""
 msgstr ""
 "Vali jõuga suletav aken vasakklõpsu või Enteriga.\n"
 "Loobumiseks tee paremklõps või vajuta Escape."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, fuzzy, kde-format
-#| msgid "Block Compositing"
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Komposiidi blokkimine"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, fuzzy, kde-format
@@ -2488,11 +2412,6 @@ msgstr "Hõljuv"
 #, kde-format
 msgid "Delete"
 msgstr ""
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Puutepadi"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4276,6 +4195,27 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr ""
+
+#, fuzzy
+#~| msgid " milliseconds"
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] " msek"
+#~ msgstr[1] " msek"
+
+#, fuzzy
+#~| msgid "No OpenGL compositor running"
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "OpenGL komposiitor ei tööta"
+
+#, fuzzy
+#~| msgid "Block Compositing"
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Komposiidi blokkimine"
+
+#~ msgid "Touchpad"
+#~ msgstr "Puutepadi"
 
 #~ msgid "Start a rootless Xwayland server."
 #~ msgstr "Juuraknata Xwaylandi serveri käivitamine."

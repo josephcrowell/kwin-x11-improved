@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kwin/kwin.pot\n"
-"X-Crowdin-File-ID: 43661\n"
+"X-Crowdin-File: /kf6-trunk/messages/kwin-x11/kwin_x11.pot\n"
+"X-Crowdin-File-ID: 57292\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1587,31 +1587,6 @@ msgstr "距离："
 msgid "Window Close Animation"
 msgstr "窗口关闭动效"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "不隐藏"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 秒"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "无活动时隐藏光标："
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "键盘输入时隐藏光标"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2165,47 +2140,6 @@ msgstr "窗口打开缩放："
 msgid "Window close scale:"
 msgstr "窗口关闭缩放："
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "无法启动 PipeWire 主循环"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "创建 PipeWire 环境失败"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "连接 PipeWire 环境失败"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "无法找到窗口 ID %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "无法找到输出"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "无效区域"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "OpenGL 显示特效合成是屏幕录像所必须的"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "创建 PipeWire 流失败"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2223,12 +2157,6 @@ msgid ""
 msgstr ""
 "点击左键或按回车键截图。\n"
 "点击右键或按 Esc 键取消。"
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "显示特效合成"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2368,11 +2296,6 @@ msgstr "添加浮动磁贴"
 #, kde-format
 msgid "Delete"
 msgstr "删除"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "触摸板"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4080,176 +4003,47 @@ msgstr ""
 msgid "Xwayland has crashed"
 msgstr "Xwayland 已崩溃"
 
-#~ msgid "Press right control to ungrab pointer"
-#~ msgstr "按右 Ctrl 键释放指针"
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "不隐藏"
 
-#~ msgid "Press right control key to grab pointer"
-#~ msgstr "按右 Ctrl 键抓取指针"
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 秒"
 
-#~ msgctxt ""
-#~ "Title of nested KWin Wayland with Wayland socket identifier as argument"
-#~ msgid "KDE Wayland Compositor %1"
-#~ msgstr "KDE Wayland 显示特效混合器 %1"
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "无活动时隐藏光标："
 
-#~ msgid "- Output disabled"
-#~ msgstr "- 输出已禁用"
+#~ msgid "Hide cursor on typing"
+#~ msgstr "键盘输入时隐藏光标"
 
-#~ msgid "- Output dimmed"
-#~ msgstr "- 输出已变暗"
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "无法启动 PipeWire 主循环"
 
-#~ msgid "Press right control to ungrab input"
-#~ msgstr "按右 Ctrl 键释放输入"
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "创建 PipeWire 环境失败"
 
-#~ msgid "Press right control key to grab input"
-#~ msgstr "按右 Ctrl 键抓取输入"
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "连接 PipeWire 环境失败"
 
-#~ msgid "KDE Wayland Compositor"
-#~ msgstr "KDE Wayland 显示特效混合器"
+#~ msgid "Could not find window id %1"
+#~ msgstr "无法找到窗口 ID %1"
 
-#~ msgid "The Caps Lock key has been activated"
-#~ msgstr "Caps Lock 键已激活"
+#~ msgid "Could not find output"
+#~ msgstr "无法找到输出"
 
-#~ msgid "The Caps Lock key is now inactive"
-#~ msgstr "Caps Lock 键已取消激活"
+#~ msgid "Invalid region"
+#~ msgstr "无效区域"
 
-#~ msgid "The Num Lock key has been activated"
-#~ msgstr "Num Lock 键已激活"
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "OpenGL 显示特效合成是屏幕录像所必须的"
 
-#~ msgid "The Num Lock key is now inactive"
-#~ msgstr "Num Lock 键已取消激活"
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "创建 PipeWire 流失败"
 
-#~ msgid "The Scroll Lock key has been activated"
-#~ msgstr "Scroll Lock 键已激活"
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "显示特效合成"
 
-#~ msgid "The Scroll Lock key is now inactive"
-#~ msgstr "Scroll Lock 键已取消激活"
-
-#~ msgid "The Shift key is now active."
-#~ msgstr "Shift 键已激活。"
-
-#~ msgid "The Shift key is now inactive."
-#~ msgstr "Shift 键已取消激活。"
-
-#~ msgid "The Control key is now active."
-#~ msgstr "Ctrl 键已激活。"
-
-#~ msgid "The Control key is now inactive."
-#~ msgstr "Ctrl 键已取消激活。"
-
-#~ msgid "The Alt key is now active."
-#~ msgstr "Alt 键已激活。"
-
-#~ msgid "The Alt key is now inactive."
-#~ msgstr "Alt 键已取消激活。"
-
-#~ msgid "The Meta key is now active."
-#~ msgstr "Meta 键已激活。"
-
-#~ msgid "The Meta key is now inactive."
-#~ msgstr "Meta 键已取消激活。"
-
-#~ msgid ""
-#~ "The Shift key has been locked and is now active for all of the following "
-#~ "keypresses."
-#~ msgstr "Shift 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#~ msgid ""
-#~ "The Control key has been locked and is now active for all of the "
-#~ "following keypresses."
-#~ msgstr "Ctrl 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#~ msgid ""
-#~ "The Alt key has been locked and is now active for all of the following "
-#~ "keypresses."
-#~ msgstr "Alt 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#~ msgid ""
-#~ "The Meta key has been locked and is now active for all of the following "
-#~ "keypresses."
-#~ msgstr "Meta 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#~ msgid ""
-#~ "The AltGr key has been locked and is now active for all of the following "
-#~ "keypresses."
-#~ msgstr "AltGr 键已锁定，它将在后续按下所有按键时始终保持激活状态。"
-
-#~ msgid "Start a rootless Xwayland server."
-#~ msgstr "启动无 root 权限的 Xwayland 服务器。"
-
-#~ msgid ""
-#~ "Name of the Wayland socket to listen on. If not set \"wayland-0\" is used."
-#~ msgstr "要监听的 Wayland 套接字名称。如果未设置，则使用“wayland-0”。"
-
-#~ msgid "The X11 Display to use in windowed mode on platform X11."
-#~ msgstr "X11 平台上窗口模式要使用的 X11 显示器。"
-
-#~ msgid "The Wayland Display to use in windowed mode on platform Wayland."
-#~ msgstr "Wayland 平台上窗口模式要使用的 Wayland 显示器。"
-
-#~ msgid "Render to a virtual framebuffer."
-#~ msgstr "渲染到虚拟帧缓冲区。"
-
-#~ msgid "The width for windowed mode. Default width is 1024."
-#~ msgstr "窗口模式的宽度。默认宽度为 1024。"
-
-#~ msgid "The height for windowed mode. Default height is 768."
-#~ msgstr "窗口模式的高度。默认高度为 768。"
-
-#~ msgid "The scale for windowed mode. Default value is 1."
-#~ msgstr "窗口模式下的缩放倍数。默认值是 1。"
-
-#~ msgid ""
-#~ "The number of windows to open as outputs in windowed mode. Default value "
-#~ "is 1"
-#~ msgstr "在窗口模式中作为输出打开的窗口数量。默认值为 1。"
-
-#~ msgid ""
-#~ "Wayland socket to use for incoming connections. This can be combined with "
-#~ "--socket to name the socket"
-#~ msgstr ""
-#~ "用于传入连接的 Wayland 套接字。此套接字可以与 --socket 合并命名该套接字"
-
-#~ msgid ""
-#~ "XWayland socket to use for Xwayland's incoming connections. This can be "
-#~ "set multiple times"
-#~ msgstr "用于 Xwayland 传入连接的 XWayland 套接字。此套接字可被多次设置"
-
-#~ msgid "Name of the xwayland display that has been pre-set up"
-#~ msgstr "预设置的 xwayland 显示器名称"
-
-#~ msgid "Name of the xauthority file "
-#~ msgstr "xauthority 文件名称 "
-
-#~ msgid "Exits this instance so it can be restarted by kwin_wayland_wrapper."
-#~ msgstr "退出这个实例以便让 kwin_wayland_wrapper 将其重新启动。"
-
-#~ msgid "Render through drm node."
-#~ msgstr "通过 drm 节点渲染。"
-
-#~ msgid ""
-#~ "Extract locale information from locale1 rather than the user's "
-#~ "configuration"
-#~ msgstr "从 locale1 提取本地化信息，而不从用户配置中提取。"
-
-#~ msgid "Input method that KWin starts."
-#~ msgstr "KWin 启动的输入法。"
-
-#~ msgid "Starts the session in locked mode."
-#~ msgstr "在锁定模式下启动会话。"
-
-#~ msgid "Starts the session without lock screen support."
-#~ msgstr "在没有锁屏支持的状态下启动会话。"
-
-#~ msgid "Starts the session without global shortcuts support."
-#~ msgstr "在没有全局快捷键支持的情况状态下启动会话。"
-
-#~ msgid ""
-#~ "Exit after the session application, which is started by KWin, closed."
-#~ msgstr "在会话应用程序 (由 KWin 启动) 关闭后退出。"
-
-#~ msgid "Applications to start once Wayland and Xwayland server are started"
-#~ msgstr "Wayland 和 Xwayland 服务器启动后立即启动的应用程序"
-
-#~ msgctxt "@action shortcut"
-#~ msgid "Disable Active Input Capture"
-#~ msgstr "禁用活动输入捕获"
+#~ msgid "Touchpad"
+#~ msgstr "触摸板"

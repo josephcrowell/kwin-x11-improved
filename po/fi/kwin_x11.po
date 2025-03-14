@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-02-11 10:23+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1615,32 +1615,6 @@ msgstr "Etäisyys:"
 msgid "Window Close Animation"
 msgstr "Ikkunan sulkemisanimointi"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Ei koskaan"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunti"
-msgstr[1] "%1 sekuntia"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Piilota osoitin, kun passiivisena:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Piilota osoitin näppäiltäessä"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2195,47 +2169,6 @@ msgstr "Ikkunan avauksen mittakaava:"
 msgid "Window close scale:"
 msgstr "Ikkunan sulkemisen mittakaava:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "PipeWire-pääsilmukan käynnistäminen epäonnistui"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "PipeWire-kontekstin luominen epäonnistui"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "PipeWire-kontekstiin yhdistäminen epäonnistui"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Ikkunaa, jonka tunniste = %1, ei löytynyt"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Ulostuloa ei löytynyt"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Virheellinen alue"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Näyttölähetys vaatii OpenGL-koostamista"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "PipeWire-virran luominen epäonnistui"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2253,12 +2186,6 @@ msgid ""
 msgstr ""
 "Ota ruutukaappaus napsauttamalla hiirellä tai Enter-näppäimellä.\n"
 "Peru hiiren oikealla painikkeella tai Esc-näppäimellä."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Koostaminen"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2398,12 +2325,6 @@ msgstr "Lisää kelluva paneeli"
 #, kde-format
 msgid "Delete"
 msgstr "Poista"
-
-# ?!?!
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Kosketuslevy"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4126,6 +4047,53 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "XWayland on kaatunut"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Ei koskaan"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 sekunti"
+#~ msgstr[1] "%1 sekuntia"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Piilota osoitin, kun passiivisena:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Piilota osoitin näppäiltäessä"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "PipeWire-pääsilmukan käynnistäminen epäonnistui"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "PipeWire-kontekstin luominen epäonnistui"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "PipeWire-kontekstiin yhdistäminen epäonnistui"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Ikkunaa, jonka tunniste = %1, ei löytynyt"
+
+#~ msgid "Could not find output"
+#~ msgstr "Ulostuloa ei löytynyt"
+
+#~ msgid "Invalid region"
+#~ msgstr "Virheellinen alue"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "Näyttölähetys vaatii OpenGL-koostamista"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "PipeWire-virran luominen epäonnistui"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Koostaminen"
+
+# ?!?!
+#~ msgid "Touchpad"
+#~ msgstr "Kosketuslevy"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Peru osoittimen kaappaus painamalla oikeaa Ctrl-näppäintä"

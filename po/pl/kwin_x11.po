@@ -1,5 +1,5 @@
 # translation of kwin.po to
-# Version: $Revision: 1704877 $
+# Version: $Revision: 1705100 $
 # translation of kwin.po to Polish
 # translation of kwin.po to
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-01-11 11:58+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1616,33 +1616,6 @@ msgstr "Odległość:"
 msgid "Window Close Animation"
 msgstr "Animacja zamknięcia okna"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Nigdy"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 sekunda"
-msgstr[1] "%1 sekundy"
-msgstr[2] "%1 sekund"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Ukryj wskaźnik myszy przy jego bezruchu:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Ukryj wskaźnik myszy podczas pisania"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2200,47 +2173,6 @@ msgstr "Skala na otwarciu okna:"
 msgid "Window close scale:"
 msgstr "Skala przed zamknięciem okna:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "Nie udało się uruchomić głównej pętli PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "Nie udało się utworzyć kontekstu PipeWire"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "Nie udało się połączyć z kontekstem PipeWire"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Nie można znaleźć id %1 okna"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Nie można znaleźć wyjścia"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Nieprawidłowy obszar"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Do nagrywania ekranu wymagane jest komponowanie OpenGL"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "Nie udało się utworzyć strumienia PipeWire"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2260,12 +2192,6 @@ msgstr ""
 "Utwórz zrzut ekranu przy użyciu kliknięcia lewym przyciskiem myszy lub "
 "enter.\n"
 "Klawisz Escape lub kliknięcie prawym przyciskiem myszy zaniecha."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Komponowanie"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2405,11 +2331,6 @@ msgstr "Dodaj pływający tytuł"
 #, kde-format
 msgid "Delete"
 msgstr "Usuń"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Gładzik"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4122,6 +4043,53 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland napotkał usterkę"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Nigdy"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 sekunda"
+#~ msgstr[1] "%1 sekundy"
+#~ msgstr[2] "%1 sekund"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Ukryj wskaźnik myszy przy jego bezruchu:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Ukryj wskaźnik myszy podczas pisania"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "Nie udało się uruchomić głównej pętli PipeWire"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "Nie udało się utworzyć kontekstu PipeWire"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "Nie udało się połączyć z kontekstem PipeWire"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Nie można znaleźć id %1 okna"
+
+#~ msgid "Could not find output"
+#~ msgstr "Nie można znaleźć wyjścia"
+
+#~ msgid "Invalid region"
+#~ msgstr "Nieprawidłowy obszar"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "Do nagrywania ekranu wymagane jest komponowanie OpenGL"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "Nie udało się utworzyć strumienia PipeWire"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Komponowanie"
+
+#~ msgid "Touchpad"
+#~ msgstr "Gładzik"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Naciśnij prawy przycisk Ctrl, aby zwolnić wskaźnik"

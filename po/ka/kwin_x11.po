@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2024-12-25 04:46+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1597,32 +1597,6 @@ msgstr "მანძილი:"
 msgid "Window Close Animation"
 msgstr "ფანჯრს დახურვის ანიმაცია"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "არასოდეს"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 წამი"
-msgstr[1] "%1 წამი"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "კურსორის დამალვა უქმეობისას:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "კურსორის დამალვა კრეფისას"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2177,47 +2151,6 @@ msgstr "ფანჯრის გახსნის მასშტაბი:"
 msgid "Window close scale:"
 msgstr "ფანჯრის დახურვის მასშტაბი:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "PipeWire-ის მთავარი მარყუჟის დაწყების შეცდომა"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "PipeWire-ის კონტექსტის შექმნის შეცდოა"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "PipeWire-ის კონტექსტთან მიერთების შეცდომა"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "ფანჯარა ID-ით %1 ვერ ვიპოვე"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "შეყვანა ვერ ვიპოვე"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "არასწორი რეგიონი"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "ეკრანის გადაცემისთვის აუცილებელია OpenGL-ის კომპოზიტორი"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "PipeWire-ის ნაკადის შექმნის შეცდოა"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2235,12 +2168,6 @@ msgid ""
 msgstr ""
 "ეკრანის ანაბეჭდის მარცხენა წკაპით ან Enter-ით გადაღება.\n"
 "გასაუქმებლად Esc ან მარჯვენა წკაპი."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "კომპოზიცია"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2380,11 +2307,6 @@ msgstr "მოლივლივე ფილის დამატება"
 #, kde-format
 msgid "Delete"
 msgstr "წაშლა"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "თაჩპედი"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4098,6 +4020,52 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland ავარიულად დასრულდა"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "არასოდეს"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 წამი"
+#~ msgstr[1] "%1 წამი"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "კურსორის დამალვა უქმეობისას:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "კურსორის დამალვა კრეფისას"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "PipeWire-ის მთავარი მარყუჟის დაწყების შეცდომა"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "PipeWire-ის კონტექსტის შექმნის შეცდოა"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "PipeWire-ის კონტექსტთან მიერთების შეცდომა"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "ფანჯარა ID-ით %1 ვერ ვიპოვე"
+
+#~ msgid "Could not find output"
+#~ msgstr "შეყვანა ვერ ვიპოვე"
+
+#~ msgid "Invalid region"
+#~ msgstr "არასწორი რეგიონი"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "ეკრანის გადაცემისთვის აუცილებელია OpenGL-ის კომპოზიტორი"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "PipeWire-ის ნაკადის შექმნის შეცდოა"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "კომპოზიცია"
+
+#~ msgid "Touchpad"
+#~ msgstr "თაჩპედი"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "მაჩვენებლის დათრევის მოსახსნელად მარჯვენა control-ს დააწექით"

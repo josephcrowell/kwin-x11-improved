@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2024-12-25 17:41+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1613,32 +1613,6 @@ msgstr "Distanza:"
 msgid "Window Close Animation"
 msgstr "Animazione di chiusura della finestra"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Mai"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 secondo"
-msgstr[1] "%1 secondi"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Nascondi il puntatore in caso di inattività:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Nascondi il puntatore durante la digitazione"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2197,47 +2171,6 @@ msgstr "Scala di apertura della finestra:"
 msgid "Window close scale:"
 msgstr "Scala di chiusura della finestra:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "Avvio del ciclo principale di PipeWire non riuscito"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "Creazione del contesto PipeWire non riuscita"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "Impossibile connettere il contesto PipeWire"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Impossibile trovare l'ID della finestra %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Impossibile trovare l'uscita"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Regione non valida"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "Per la trasmissione dello schermo è necessaria la composizione OpenGL"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "Impossibile creare il flusso PipeWire"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2256,12 +2189,6 @@ msgid ""
 msgstr ""
 "Crea una schermata  con il clic del tasto sinistro o premendo Invio.\n"
 "Esc o il clic del tasto destro per annullare."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Composizione"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2401,11 +2328,6 @@ msgstr "Aggiungi riquadro mobile"
 #, kde-format
 msgid "Delete"
 msgstr "Elimina"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Touchpad"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4132,6 +4054,53 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland è stato terminato in modo inatteso"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Mai"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 secondo"
+#~ msgstr[1] "%1 secondi"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Nascondi il puntatore in caso di inattività:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Nascondi il puntatore durante la digitazione"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "Avvio del ciclo principale di PipeWire non riuscito"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "Creazione del contesto PipeWire non riuscita"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "Impossibile connettere il contesto PipeWire"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Impossibile trovare l'ID della finestra %1"
+
+#~ msgid "Could not find output"
+#~ msgstr "Impossibile trovare l'uscita"
+
+#~ msgid "Invalid region"
+#~ msgstr "Regione non valida"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr ""
+#~ "Per la trasmissione dello schermo è necessaria la composizione OpenGL"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "Impossibile creare il flusso PipeWire"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Composizione"
+
+#~ msgid "Touchpad"
+#~ msgstr "Touchpad"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Premi il tasto control destro per rilasciare il puntatore"

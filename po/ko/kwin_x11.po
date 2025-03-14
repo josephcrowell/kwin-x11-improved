@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 17:50+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1593,31 +1593,6 @@ msgstr "거리:"
 msgid "Window Close Animation"
 msgstr "창 닫기 애니메이션"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "하지 않음"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1초"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "활동 중단 시 커서 숨기기:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "입력할 때 커서 숨기기"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2171,47 +2146,6 @@ msgstr "창 열 때 크기 조정:"
 msgid "Window close scale:"
 msgstr "창 닫을 때 크기 조정:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "주 PipeWire 루프를 시작할 수 없음"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "PipeWire 콘텍스트를 만들 수 없음"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "PipeWire 콘텍스트에 연결할 수 없음"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "ID가 %1인 창을 찾을 수 없음"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "출력을 찾을 수 없음"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "잘못된 영역"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "스크린캐스팅에는 OpenGL 컴포지팅이 필요함"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "PipeWire 스트림을 만들 수 없음"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2229,12 +2163,6 @@ msgid ""
 msgstr ""
 "왼쪽 단추를 누르거나 Enter 키를 누르면 스크린샷을 찍습니다.\n"
 "Esc 키나 오른쪽 단추를 누르면 취소합니다."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "컴포지팅"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2374,11 +2302,6 @@ msgstr "떠다니는 타일 추가"
 #, kde-format
 msgid "Delete"
 msgstr "삭제"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "터치패드"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4088,6 +4011,51 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland가 충돌함"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "하지 않음"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1초"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "활동 중단 시 커서 숨기기:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "입력할 때 커서 숨기기"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "주 PipeWire 루프를 시작할 수 없음"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "PipeWire 콘텍스트를 만들 수 없음"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "PipeWire 콘텍스트에 연결할 수 없음"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "ID가 %1인 창을 찾을 수 없음"
+
+#~ msgid "Could not find output"
+#~ msgstr "출력을 찾을 수 없음"
+
+#~ msgid "Invalid region"
+#~ msgstr "잘못된 영역"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "스크린캐스팅에는 OpenGL 컴포지팅이 필요함"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "PipeWire 스트림을 만들 수 없음"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "컴포지팅"
+
+#~ msgid "Touchpad"
+#~ msgstr "터치패드"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "오른쪽 Ctrl 키를 누르면 포인터 잡기를 해제함"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-12 00:43+0000\n"
+"POT-Creation-Date: 2025-03-14 00:44+0000\n"
 "PO-Revision-Date: 2025-01-12 08:09+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1598,32 +1598,6 @@ msgstr "Distanco:"
 msgid "Window Close Animation"
 msgstr "Fenestroferma Animacio"
 
-#: plugins/hidecursor/hidecursor_config.cpp:56
-#, kde-format
-msgctxt "@item:inmenu never hide cursor on inactivity"
-msgid "Never"
-msgstr "Neniam"
-
-#: plugins/hidecursor/hidecursor_config.cpp:58
-#: plugins/hidecursor/hidecursor_config.cpp:62
-#, kde-format
-msgid "%1 second"
-msgid_plural "%1 seconds"
-msgstr[0] "%1 sekundo"
-msgstr[1] "%1 sekundoj"
-
-#. i18n: ectx: property (text), widget (QLabel, label_InactivityDuration)
-#: plugins/hidecursor/hidecursor_config.ui:17
-#, kde-format
-msgid "Hide cursor on inactivity:"
-msgstr "Kaŝi kursoron je neaktiveco:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HideOnTyping)
-#: plugins/hidecursor/hidecursor_config.ui:24
-#, kde-format
-msgid "Hide cursor on typing"
-msgstr "Kaŝi kursoron je tajpado"
-
 #: plugins/invert/invert.cpp:43 plugins/invert/invert_config.cpp:38
 #, kde-format
 msgid "Toggle Invert Effect"
@@ -2178,47 +2152,6 @@ msgstr "Fenestromalferma skalo:"
 msgid "Window close scale:"
 msgstr "Ferma skalo de fenestro:"
 
-#: plugins/screencast/pipewirecore.cpp:63
-#: plugins/screencast/pipewirecore.cpp:92
-#, kde-format
-msgid "Failed to start main PipeWire loop"
-msgstr "Malsukcesis komenci ĉefan PipeWire-buklon"
-
-#: plugins/screencast/pipewirecore.cpp:79
-#, kde-format
-msgid "Failed to create PipeWire context"
-msgstr "Malsukcesis krei PipeWire-kuntekston"
-
-#: plugins/screencast/pipewirecore.cpp:86
-#, kde-format
-msgid "Failed to connect PipeWire context"
-msgstr "Malsukcesis konekti PipeWire-kuntekston"
-
-#: plugins/screencast/screencastmanager.cpp:45
-#, kde-format
-msgid "Could not find window id %1"
-msgstr "Ne eblis trovi fenestroid %1"
-
-#: plugins/screencast/screencastmanager.cpp:82
-#, kde-format
-msgid "Could not find output"
-msgstr "Ne eblis trovi eligon"
-
-#: plugins/screencast/screencastmanager.cpp:101
-#, kde-format
-msgid "Invalid region"
-msgstr "Nevalida regiono"
-
-#: plugins/screencast/screencaststream.cpp:375
-#, kde-format
-msgid "OpenGL compositing is required for screencasting"
-msgstr "OpenGL-komponado estas postulata por ekranregistri"
-
-#: plugins/screencast/screencaststream.cpp:383
-#, kde-format
-msgid "Failed to create PipeWire stream"
-msgstr "Malsukcesis krei PipeWire-rivereton"
-
 #: plugins/screenshot/screenshotdbusinterface2.cpp:525
 #, kde-format
 msgid ""
@@ -2236,12 +2169,6 @@ msgid ""
 msgstr ""
 "Kreu ekrankopion per maldekstra klako aŭ enigu.\n"
 "Escape aŭ dekstre alklaku por nuligi."
-
-#: plugins/showcompositing/qml/main.qml:12
-#, kde-format
-msgctxt "@label"
-msgid "Compositing"
-msgstr "Kompostado"
 
 #: plugins/showfps/qml/main-fallback.qml:26 plugins/showfps/qml/main.qml:192
 #, kde-format
@@ -2381,11 +2308,6 @@ msgstr "Aldoni Flosantan Kahelon"
 #, kde-format
 msgid "Delete"
 msgstr "Forigi"
-
-#: plugins/touchpadshortcuts/touchpadshortcuts.cpp:30
-#, kde-format
-msgid "Touchpad"
-msgstr "Tuŝplato"
 
 #: plugins/trackmouse/trackmouse.cpp:71
 #: plugins/trackmouse/trackmouse_config.cpp:49
@@ -4097,6 +4019,52 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland paneis"
+
+#~ msgctxt "@item:inmenu never hide cursor on inactivity"
+#~ msgid "Never"
+#~ msgstr "Neniam"
+
+#~ msgid "%1 second"
+#~ msgid_plural "%1 seconds"
+#~ msgstr[0] "%1 sekundo"
+#~ msgstr[1] "%1 sekundoj"
+
+#~ msgid "Hide cursor on inactivity:"
+#~ msgstr "Kaŝi kursoron je neaktiveco:"
+
+#~ msgid "Hide cursor on typing"
+#~ msgstr "Kaŝi kursoron je tajpado"
+
+#~ msgid "Failed to start main PipeWire loop"
+#~ msgstr "Malsukcesis komenci ĉefan PipeWire-buklon"
+
+#~ msgid "Failed to create PipeWire context"
+#~ msgstr "Malsukcesis krei PipeWire-kuntekston"
+
+#~ msgid "Failed to connect PipeWire context"
+#~ msgstr "Malsukcesis konekti PipeWire-kuntekston"
+
+#~ msgid "Could not find window id %1"
+#~ msgstr "Ne eblis trovi fenestroid %1"
+
+#~ msgid "Could not find output"
+#~ msgstr "Ne eblis trovi eligon"
+
+#~ msgid "Invalid region"
+#~ msgstr "Nevalida regiono"
+
+#~ msgid "OpenGL compositing is required for screencasting"
+#~ msgstr "OpenGL-komponado estas postulata por ekranregistri"
+
+#~ msgid "Failed to create PipeWire stream"
+#~ msgstr "Malsukcesis krei PipeWire-rivereton"
+
+#~ msgctxt "@label"
+#~ msgid "Compositing"
+#~ msgstr "Kompostado"
+
+#~ msgid "Touchpad"
+#~ msgstr "Tuŝplato"
 
 #~ msgid "Press right control to ungrab pointer"
 #~ msgstr "Premu dekstran Ctrl-klavon por malkapti montrilon"
