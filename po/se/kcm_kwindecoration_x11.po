@@ -1,4 +1,4 @@
-# Translation of kcm_kwindecoration to Northern Sami
+# Translation of kcm_kwindecoration_x11 to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2003, 2004, 2005, 2007.
 msgid ""

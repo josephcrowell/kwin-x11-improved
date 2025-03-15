@@ -1,4 +1,4 @@
-# Translation of kcm_kwin_virtualdesktops to Norwegian Bokmål
+# Translation of kcm_kwin_virtualdesktops_x11 to Norwegian Bokmål
 #
 # Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2007, 2009, 2010, 2013, 2014.
 msgid ""

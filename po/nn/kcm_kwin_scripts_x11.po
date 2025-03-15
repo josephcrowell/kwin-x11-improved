@@ -1,4 +1,4 @@
-# Translation of kcm_kwin_scripts to Norwegian Nynorsk
+# Translation of kcm_kwin_scripts_x11 to Norwegian Nynorsk
 #
 msgid ""
 msgstr ""

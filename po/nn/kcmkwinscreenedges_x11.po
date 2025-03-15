@@ -1,4 +1,4 @@
-# Translation of kcmkwinscreenedges to Norwegian Nynorsk
+# Translation of kcmkwinscreenedges_x11 to Norwegian Nynorsk
 #
 # Eirik U. Birkeland <eirbir@gmail.com>, 2009, 2010.
 msgid ""

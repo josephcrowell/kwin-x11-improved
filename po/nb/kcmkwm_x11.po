@@ -1,4 +1,4 @@
-# Translation of kcmkwm to Norwegian Bokmål
+# Translation of kcmkwm_x11 to Norwegian Bokmål
 #
 # Hans Petter Bieker <bieker@kde.org>, 1998, 1999, 2000.
 # Knut Yrvin <knut.yrvin@gmail.com>, 2002, 2005.

@@ -1,4 +1,4 @@
-# Translation of kcm_kwinrules to Norwegian Nynorsk
+# Translation of kcm_kwinrules_x11 to Norwegian Nynorsk
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2004, 2005.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2005, 2009.

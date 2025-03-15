@@ -1,4 +1,4 @@
-# Translation of kwin to Norwegian Bokmål
+# Translation of kwin_x11 to Norwegian Bokmål
 #
 # Hans Petter Bieker <bieker@kde.org>, 2000.
 # Knut Erik Hollund <khollund@responze.net>, 2003.
@@ -3985,46 +3985,3 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr ""
-
-#, fuzzy
-#~ msgid "%1 second"
-#~ msgid_plural "%1 seconds"
-#~ msgstr[0] " millisekunder"
-#~ msgstr[1] " millisekunder"
-
-#, fuzzy
-#~ msgctxt "@label"
-#~ msgid "Compositing"
-#~ msgstr "Opphev sammensetting"
-
-#~ msgid "Start a rootless Xwayland server."
-#~ msgstr "Start en rotløs Xwayland-tjener"
-
-#~ msgid ""
-#~ "Name of the Wayland socket to listen on. If not set \"wayland-0\" is used."
-#~ msgstr ""
-#~ "Navn på Wayland-sokkelen det lyttes på. «wayland-0» brukes hvis ingenting "
-#~ "er satt."
-
-#~ msgid "The X11 Display to use in windowed mode on platform X11."
-#~ msgstr "X11-displayet som ska brukes i vindusmodus på plattformen X11."
-
-#~ msgid "The Wayland Display to use in windowed mode on platform Wayland."
-#~ msgstr ""
-#~ "Wayland-displayet som ska brukes i vindusmodus på plattformen Wayland."
-
-#~ msgid "The width for windowed mode. Default width is 1024."
-#~ msgstr "Bredden for vindusmodus. Standardverdi er 1024."
-
-#~ msgid "The height for windowed mode. Default height is 768."
-#~ msgstr "Høyden for vindusmodus. Standardverdi er 768."
-
-#~ msgid "Render through drm node."
-#~ msgstr "Tegn opp gjennom drm-modus."
-
-#~ msgid "Input method that KWin starts."
-#~ msgstr "Inndata-metode som KWin starter."
-
-#~ msgid "Applications to start once Wayland and Xwayland server are started"
-#~ msgstr ""
-#~ "Programmer som skal startes når Wayland og XWayland-tjener er startet"

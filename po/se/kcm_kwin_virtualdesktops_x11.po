@@ -1,4 +1,4 @@
-# Translation of kcm_kwin_virtualdesktops to Northern Sami
+# Translation of kcm_kwin_virtualdesktops_x11 to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2007.
 msgid ""
