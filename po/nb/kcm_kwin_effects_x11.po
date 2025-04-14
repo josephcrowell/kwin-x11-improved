@@ -1,6 +1,5 @@
 # Translation of kcm_kwin_effects_x11 to Norwegian Bokmål
 #
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kwin-x11\n"
