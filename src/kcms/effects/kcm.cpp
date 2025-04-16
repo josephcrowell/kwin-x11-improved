@@ -12,9 +12,6 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-#include <QQuickWindow>
-#include <QWindow>
-
 K_PLUGIN_FACTORY_WITH_JSON(DesktopEffectsKCMFactory,
                            "kcm_kwin_effects_x11.json",
                            registerPlugin<KWin::DesktopEffectsKCM>();
@@ -33,6 +30,10 @@ DesktopEffectsKCM::DesktopEffectsKCM(QObject *parent, const KPluginMetaData &met
 
     connect(m_model, &EffectsModel::dataChanged, this, &DesktopEffectsKCM::updateNeedsSave);
     connect(m_model, &EffectsModel::loaded, this, &DesktopEffectsKCM::updateNeedsSave);
+
+    // These are handled in kcm_animations
+    m_model->setExcludeExclusiveGroups({"toplevel-open-close-animation", "maximize", "minimize", "fullscreen", "show-desktop", "desktop-animations"});
+    m_model->setExcludeEffects({"fadingpopups", "slidingpopups", "login", "logout"});
 }
 
 DesktopEffectsKCM::~DesktopEffectsKCM()
@@ -67,16 +68,10 @@ void DesktopEffectsKCM::onGHNSEntriesChanged()
     m_model->load(EffectsModel::LoadOptions::KeepDirty);
 }
 
-void DesktopEffectsKCM::configure(const QString &pluginId, QQuickItem *context)
+void DesktopEffectsKCM::configure(const QString &pluginId, QQuickItem *context) const
 {
     const QModelIndex index = m_model->findByPluginId(pluginId);
-
-    QWindow *transientParent = nullptr;
-    if (context && context->window()) {
-        transientParent = context->window();
-    }
-
-    m_model->requestConfigure(index, transientParent);
+    m_model->requestConfigure(index, context);
 }
 
 void DesktopEffectsKCM::updateNeedsSave()
