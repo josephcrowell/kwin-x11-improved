@@ -54,7 +54,6 @@
     },
     "X-KDE-ConfigModule": "kwin_slide_config",
     "org.kde.kwin.effect": {
-        "exclusiveGroup": "desktop-animations",
-        "video": "https://files.kde.org/plasma/kwin/effect-videos/slide.ogv"
+        "exclusiveGroup": "desktop-animations"
     }
 }
