@@ -5,8 +5,5 @@
         "EnabledByDefault": true,
         "License": "GPL",
         "Name": "Sliding popups"
-    },
-    "org.kde.kwin.effect": {
-        "video": "https://files.kde.org/plasma/kwin/effect-videos/sliding_popups.mp4"
     }
 }
