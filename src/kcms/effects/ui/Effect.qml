@@ -71,6 +71,7 @@ QQC2.ItemDelegate {
         ColumnLayout {
             Layout.topMargin: Kirigami.Units.smallSpacing
             Layout.bottomMargin: Kirigami.Units.smallSpacing
+            Layout.rightMargin: configureButton.visible ? undefined : parent.spacing + configureButton.implicitWidth
             spacing: 0
 
             Kirigami.Heading {
@@ -99,37 +100,10 @@ QQC2.ItemDelegate {
                 visible: listItem.ListView.isCurrentItem
                 wrapMode: Text.Wrap
             }
-
-            Loader {
-                id: videoItem
-
-                active: false
-                source: "Video.qml"
-                visible: false
-
-                function showHide() {
-                    if (!videoItem.active) {
-                        videoItem.active = true;
-                        videoItem.visible = true;
-                    } else {
-                        videoItem.active = false;
-                        videoItem.visible = false;
-                    }
-                }
-            }
-        }
-
-        QQC2.ToolButton {
-            visible: model.VideoRole.toString() !== ""
-            icon.name: "videoclip-amarok"
-            text: i18nc("@info:tooltip", "Show/Hide Video")
-            display: QQC2.AbstractButton.IconOnly
-            QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: hovered
-            onClicked: videoItem.showHide()
         }
 
         QQC2.ToolButton  {
+            id: configureButton
             visible: model.ConfigurableRole
             enabled: model.StatusRole != Qt.Unchecked
             icon.name: "configure"
