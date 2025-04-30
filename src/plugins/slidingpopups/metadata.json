@@ -3,6 +3,7 @@
         "Category": "Appearance",
         "Description": "Slide Plasma popups in and out",
         "Description[ar]": "حرك النوافذ المنبثقة للبلازما للداخل والخارج",
+        "Description[bg]": "Плъзгане на изскачащите прозорци на Plasma",
         "Description[ca@valencia]": "Llisca les finestres emergents de Plasma d'entrada i eixida",
         "Description[ca]": "Llisca les finestres emergents del Plasma d'entrada i sortida",
         "Description[es]": "Deslizar las ventanas emergentes de Plasma al mostrarlas y ocultarlas",
@@ -13,6 +14,7 @@
         "Description[tr]": "Plasma açılır pencerelerini içeri ve dışarı kaydır",
         "Description[uk]": "Виковзування за заковзування контекстних вікон Плазми",
         "Description[x-test]": "xxSlide Plasma popups in and outxx",
+        "Description[zh_TW]": "讓 Plasma 彈出視窗滑進滑出",
         "EnabledByDefault": true,
         "License": "GPL",
         "Name": "Sliding popups",
@@ -26,6 +28,7 @@
         "Name[sl]": "Drsna pojavna okna",
         "Name[tr]": "Kayan açılır pencereler",
         "Name[uk]": "Ковзні контекстні вікна",
-        "Name[x-test]": "xxSliding popupsxx"
+        "Name[x-test]": "xxSliding popupsxx",
+        "Name[zh_TW]": "滑動的彈出視窗"
     }
 }
