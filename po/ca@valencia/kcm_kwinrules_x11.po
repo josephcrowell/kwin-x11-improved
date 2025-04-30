@@ -413,7 +413,7 @@ msgid ""
 "Controls whether or not the window appears in the <shortcut>Alt+Tab</"
 "shortcut> window list."
 msgstr ""
-"Controla si la finestra apareix o no a la llista de finestres <shortcut>Alt"
+"Controla si la finestra apareix o no en la llista de finestres <shortcut>Alt"
 "+Tab</shortcut>."
 
 #: rulesmodel.cpp:596
