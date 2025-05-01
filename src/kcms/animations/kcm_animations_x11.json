@@ -3,6 +3,7 @@
         "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_animations",
         "Description": "Configure animation speed and style",
         "Description[ar]": "اضبط سرعة التحريك و النمط",
+        "Description[bg]": "Конфигуриране на скоростта и стила на анимацията",
         "Description[ca@valencia]": "Configura la velocitat i estil de les animacions",
         "Description[ca]": "Configura la velocitat i estil de les animacions",
         "Description[es]": "Configurar la velocidad y el estilo de las animaciones",
