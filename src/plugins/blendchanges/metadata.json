@@ -47,7 +47,7 @@
         "Description[uk]": "Анімація змін у стилі системи",
         "Description[vi]": "Tạo hiệu ứng động cho các thay đổi kiểu cách hệ thống",
         "Description[x-test]": "xxAnimates system style changesxx",
-        "Description[zh_CN]": "动画过渡系统风格更改",
+        "Description[zh_CN]": "系统样式更改时呈现过渡动效",
         "Description[zh_TW]": "為系統風格變化使用動畫效果",
         "EnabledByDefault": true,
         "License": "GPL",

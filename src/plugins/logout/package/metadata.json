@@ -69,6 +69,7 @@
         "Description[tr]": "Oturumu kapatırken masaüstünden solarak çık",
         "Description[uk]": "Затемнення до вікна виходу з системи",
         "Description[x-test]": "xxFade to the logout screenxx",
+        "Description[zh_CN]": "注销时平滑地过渡到注销屏幕",
         "Description[zh_TW]": "淡入至登出畫面",
         "EnabledByDefault": true,
         "Icon": "preferences-system-windows-effect-logout",
@@ -119,7 +120,7 @@
         "Name[uk]": "Вихід",
         "Name[vi]": "Đăng xuất",
         "Name[x-test]": "xxLogoutxx",
-        "Name[zh_CN]": "注销过渡动画",
+        "Name[zh_CN]": "注销过渡动效",
         "Name[zh_TW]": "登出"
     },
     "X-KDE-Ordering": 40,
