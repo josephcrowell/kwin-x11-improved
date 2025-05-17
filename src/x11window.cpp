@@ -661,7 +661,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
     getSyncCounter();
     setCaption(readName());
 
-    if (Compositor::compositing()) {
+    if (Compositor::compositing() && !isAppletPopup()) {
         // Sending ConfigureNotify is done when setting mapping state below, getting the
         // first sync response means window is ready for compositing.
         //
