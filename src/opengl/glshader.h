@@ -103,6 +103,8 @@ public:
 
     enum class Vec4Uniform {
         ModulationConstant,
+        Box,
+        CornerRadius,
         Vec4UniformCount
     };
 
