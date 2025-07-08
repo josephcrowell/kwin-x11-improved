@@ -162,7 +162,7 @@ void ItemRendererOpenGL::createRenderNode(Item *item, RenderContext *context)
             if (textureProvider->shadowTexture()) {
                 RenderNode &renderNode = context->renderNodes.emplace_back(RenderNode{
                     .traits = ShaderTrait::MapTexture,
-                    .texture = textureProvider->shadowTexture(),
+                    .textures = {textureProvider->shadowTexture()},
                     .geometry = geometry,
                     .transformMatrix = context->transformStack.top(),
                     .opacity = context->opacityStack.top(),
@@ -180,7 +180,7 @@ void ItemRendererOpenGL::createRenderNode(Item *item, RenderContext *context)
             if (renderer->texture()) {
                 RenderNode &renderNode = context->renderNodes.emplace_back(RenderNode{
                     .traits = ShaderTrait::MapTexture,
-                    .texture = renderer->texture(),
+                    .textures = {renderer->texture()},
                     .geometry = geometry,
                     .transformMatrix = context->transformStack.top(),
                     .opacity = context->opacityStack.top(),
@@ -200,7 +200,7 @@ void ItemRendererOpenGL::createRenderNode(Item *item, RenderContext *context)
                 if (surfaceTexture->isValid()) {
                     RenderNode &renderNode = context->renderNodes.emplace_back(RenderNode{
                         .traits = ShaderTrait::MapTexture,
-                        .texture = surfaceTexture->texture(),
+                        .textures = surfaceTexture->texture().toVarLengthArray(),
                         .geometry = geometry,
                         .transformMatrix = context->transformStack.top(),
                         .opacity = context->opacityStack.top(),
@@ -232,7 +232,7 @@ void ItemRendererOpenGL::createRenderNode(Item *item, RenderContext *context)
             if (imageItem->texture()) {
                 RenderNode &renderNode = context->renderNodes.emplace_back(RenderNode{
                     .traits = ShaderTrait::MapTexture,
-                    .texture = imageItem->texture(),
+                    .textures = {imageItem->texture()},
                     .geometry = geometry,
                     .transformMatrix = context->transformStack.top(),
                     .opacity = context->opacityStack.top(),
@@ -422,18 +422,10 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
         }
 
         if (renderNode.traits & ShaderTrait::MapTexture) {
-            if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
-                const auto texture = std::get<GLTexture *>(renderNode.texture);
-                glActiveTexture(GL_TEXTURE0);
-                shader->setUniform("converter", 0);
-                texture->bind();
-            } else {
-                const auto contents = std::get<OpenGLSurfaceContents>(renderNode.texture);
-                shader->setUniform("converter", contents.planes.count() > 1);
-                for (int plane = 0; plane < contents.planes.count(); ++plane) {
-                    glActiveTexture(GL_TEXTURE0 + plane);
-                    contents.planes[plane]->bind();
-                }
+            shader->setUniform("converter", renderNode.textures.count() > 1);
+            for (int i = 0; i < renderNode.textures.count(); ++i) {
+                glActiveTexture(GL_TEXTURE0 + i);
+                renderNode.textures[i]->bind();
             }
         }
 
@@ -441,18 +433,12 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
                   renderNode.vertexCount, renderContext.hardwareClipping);
 
         if (renderNode.traits & ShaderTrait::MapTexture) {
-            if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
-                auto texture = std::get<GLTexture *>(renderNode.texture);
-                glActiveTexture(GL_TEXTURE0);
-                texture->unbind();
-            } else if (std::holds_alternative<OpenGLSurfaceContents>(renderNode.texture)) {
-                const auto contents = std::get<OpenGLSurfaceContents>(renderNode.texture);
-                for (int plane = 0; plane < contents.planes.count(); ++plane) {
-                    glActiveTexture(GL_TEXTURE0 + plane);
-                    contents.planes[plane]->unbind();
-                }
+            for (int i = 0; i < renderNode.textures.count(); ++i) {
+                glActiveTexture(GL_TEXTURE0 + i);
+                renderNode.textures[i]->unbind();
             }
         }
+
         if (renderNode.bufferReleasePoint) {
             m_releasePoints.insert(renderNode.bufferReleasePoint);
         }
@@ -503,12 +489,8 @@ void ItemRendererOpenGL::visualizeFractional(const RenderViewport &viewport, con
         setBlendEnabled(true);
 
         QVector2D size;
-        if (std::holds_alternative<GLTexture *>(renderNode.texture)) {
-            auto texture = std::get<GLTexture *>(renderNode.texture);
-            size = QVector2D(texture->width(), texture->height());
-        } else {
-            auto texture = std::get<OpenGLSurfaceContents>(renderNode.texture).planes.constFirst().get();
-            size = QVector2D(texture->width(), texture->height());
+        if (!renderNode.textures.isEmpty()) {
+            size = QVector2D(renderNode.textures[0]->width(), renderNode.textures[0]->height());
         }
 
         m_debug.fractionalShader->setUniform("geometrySize", size);
