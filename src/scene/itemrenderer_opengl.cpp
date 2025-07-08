@@ -380,9 +380,6 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
     GLShader *shader = nullptr;
     for (int i = 0; i < renderContext.renderNodes.count(); i++) {
         const RenderNode &renderNode = renderContext.renderNodes[i];
-        if (renderNode.vertexCount == 0) {
-            continue;
-        }
 
         ShaderTraits traits = baseShaderTraits;
         switch (renderNode.type) {
@@ -520,9 +517,6 @@ void ItemRendererOpenGL::visualizeFractional(const RenderViewport &viewport, con
 
     for (int i = 0; i < renderContext.renderNodes.count(); i++) {
         const RenderNode &renderNode = renderContext.renderNodes[i];
-        if (renderNode.vertexCount == 0) {
-            continue;
-        }
 
         setBlendEnabled(true);
 
