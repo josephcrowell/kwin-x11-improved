@@ -321,7 +321,7 @@ void X11StandaloneBackend::doUpdateOutputs()
 
                 for (auto xcbOutput : std::span(info.outputs(), info->num_outputs)) {
                     Xcb::RandR::OutputInfo outputInfo(xcbOutput, resources->config_timestamp);
-                    if (outputInfo->crtc != crtc) {
+                    if (outputInfo->crtc != crtc || outputInfo->connection != XCB_RANDR_CONNECTION_CONNECTED) {
                         continue;
                     }
 
