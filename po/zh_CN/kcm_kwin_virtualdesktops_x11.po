@@ -120,4 +120,4 @@ msgstr "%1 毫秒"
 #: ui/main.qml:321
 #, kde-format
 msgid "Show desktop layout indicators"
-msgstr "显示桌面布局指示图"
+msgstr "显示桌面布局指示符"

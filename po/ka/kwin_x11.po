@@ -46,7 +46,7 @@ msgid ""
 "meanwhile upgraded to a stable driver,<br>you can reset this protection but "
 "<b>be aware that this might result in an immediate crash!</b></p>"
 msgstr ""
-"<b>OpenGL-ის კომპოზიტირება (ნაგულისხმები) KWin-სთვის წარსულში ავარიულად "
+"<b>OpenGL-ის კომპოზიტირება (ნაგულისხმევი) KWin-სთვის წარსულში ავარიულად "
 "დასრულდა.</b><b>დიდი შანსია, ეს დრაივერის შეცდომის ბრალი იყოს.<p>თუ ფიქრობთ, "
 "რომ დრაივერი უკვე განაახლეთ, ეს დაცვა <b>შეგიძლიათ გამორთოთ, მაგრამ "
 "გაითვალისწინეთ, რომ ის შეიძლება ავარიულად დასრულდეს!</b></p>"
@@ -1522,7 +1522,7 @@ msgstr "ხანგრძლივობა:"
 #: plugins/scale/package/contents/ui/config.ui:30
 #, kde-format
 msgid "Default"
-msgstr "ნაგულისხმები"
+msgstr "ნაგულისხმევი"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_Duration)
 #. i18n: ectx: property (suffix), widget (QSpinBox, kcfg_AnimationDuration)
@@ -1756,7 +1756,7 @@ msgstr "ანიმაციის ხანგრძლივობა:"
 #, kde-format
 msgctxt "Duration of rotation"
 msgid "Default"
-msgstr "ნაგულისხმები"
+msgstr "ნაგულისხმევი"
 
 #: plugins/mouseclick/mouseclick.cpp:39
 #: plugins/mouseclick/mouseclick_config.cpp:43
@@ -4110,19 +4110,19 @@ msgstr "Xwayland ავარიულად დასრულდა"
 #~ msgstr "ვირტუალურ Framebuffer-ში რენდერი."
 
 #~ msgid "The width for windowed mode. Default width is 1024."
-#~ msgstr "ფანჯრის რეჟიმის სიგანე. ნაგულისხმები მნიშვნელობაა 1024."
+#~ msgstr "ფანჯრის რეჟიმის სიგანე. ნაგულისხმევი მნიშვნელობაა 1024."
 
 #~ msgid "The height for windowed mode. Default height is 768."
-#~ msgstr "ფანჯრის რეჟიმის სიმაღლე. ნაგულისხმები მნიშვნელობაა 768."
+#~ msgstr "ფანჯრის რეჟიმის სიმაღლე. ნაგულისხმევი მნიშვნელობაა 768."
 
 #~ msgid "The scale for windowed mode. Default value is 1."
-#~ msgstr "ფანჯრის რეჟიმის გადიდება. ნაგულისხმები მნიშვნელობაა 1."
+#~ msgstr "ფანჯრის რეჟიმის გადიდება. ნაგულისხმევი მნიშვნელობაა 1."
 
 #~ msgid ""
 #~ "The number of windows to open as outputs in windowed mode. Default value "
 #~ "is 1"
 #~ msgstr ""
-#~ "ფანჯრულ რეჟიმში გამოტანილი ფანჯრების რაოდენობა. ნაგულისხმები მნიშვნელობაა "
+#~ "ფანჯრულ რეჟიმში გამოტანილი ფანჯრების რაოდენობა. ნაგულისხმევი მნიშვნელობაა "
 #~ "1"
 
 #~ msgid ""
