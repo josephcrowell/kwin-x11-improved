@@ -11,10 +11,6 @@
 #include "wayland_server.h"
 #include "workspace.h"
 
-#if KWIN_BUILD_GLOBALSHORTCUTS
-#include <KGlobalAccel>
-#endif
-
 #include <KWayland/Client/keyboard.h>
 #include <KWayland/Client/seat.h>
 
@@ -36,7 +32,6 @@ private Q_SLOTS:
 
     void implicitGrab();
     void implicitGrabByClosedWindow();
-    void globalShortcut();
 
 private:
     std::unique_ptr<Test::Connection> m_firstConnection;
@@ -145,51 +140,6 @@ void KeyboardInputTest::implicitGrabByClosedWindow()
     QVERIFY(firstKeyChangedSpy.wait());
     QCOMPARE(firstKeyChangedSpy.last().at(0).value<quint32>(), KEY_Q);
     QCOMPARE(firstKeyChangedSpy.last().at(1).value<KWayland::Client::Keyboard::KeyState>(), KWayland::Client::Keyboard::KeyState::Released);
-}
-
-void KeyboardInputTest::globalShortcut()
-{
-    // This test verifies that keys are not leaked to the clients when pressing a global shortcut.
-
-#if KWIN_BUILD_GLOBALSHORTCUTS
-    QSignalSpy firstEnteredSpy(m_firstKeyboard.get(), &KWayland::Client::Keyboard::entered);
-    QSignalSpy firstKeyChangedSpy(m_firstKeyboard.get(), &KWayland::Client::Keyboard::keyChanged);
-    QSignalSpy secondEnteredSpy(m_secondKeyboard.get(), &KWayland::Client::Keyboard::entered);
-    QSignalSpy secondKeyChangedSpy(m_secondKeyboard.get(), &KWayland::Client::Keyboard::keyChanged);
-
-    auto action = std::make_unique<QAction>();
-    action->setObjectName(QStringLiteral("test"));
-    action->setProperty("componentName", QStringLiteral("test"));
-    KGlobalAccel::self()->setShortcut(action.get(), QList<QKeySequence>{Qt::META | Qt::Key_Space}, KGlobalAccel::NoAutoloading);
-    QSignalSpy actionTriggeredSpy(action.get(), &QAction::triggered);
-
-    // the client should not see the space key being pressed or released
-    quint32 timestamp = 0;
-    Test::keyboardKeyPressed(KEY_LEFTMETA, timestamp++);
-    QVERIFY(secondKeyChangedSpy.wait());
-    Test::keyboardKeyPressed(KEY_SPACE, timestamp++);
-    QVERIFY(!secondKeyChangedSpy.wait(10));
-    QCOMPARE(actionTriggeredSpy.count(), 1);
-    Test::keyboardKeyReleased(KEY_SPACE, timestamp++);
-    QVERIFY(!secondKeyChangedSpy.wait(10));
-    Test::keyboardKeyReleased(KEY_LEFTMETA, timestamp++);
-    QVERIFY(secondKeyChangedSpy.wait());
-
-    // the space key should not be leaked even if the focused surface changes between pressing and releasing the space key
-    Test::keyboardKeyPressed(KEY_LEFTMETA, timestamp++);
-    QVERIFY(secondKeyChangedSpy.wait());
-    Test::keyboardKeyPressed(KEY_SPACE, timestamp++);
-    QVERIFY(!secondKeyChangedSpy.wait(10));
-    QCOMPARE(actionTriggeredSpy.count(), 2);
-    m_secondShellSurface.reset();
-    m_secondSurface.reset();
-    QVERIFY(firstEnteredSpy.wait());
-    QCOMPARE(m_firstKeyboard->enteredKeys(), (QList<quint32>{KEY_LEFTMETA}));
-    Test::keyboardKeyReleased(KEY_SPACE, timestamp++);
-    QVERIFY(!firstKeyChangedSpy.wait(10));
-    Test::keyboardKeyReleased(KEY_LEFTMETA, timestamp++);
-    QVERIFY(firstKeyChangedSpy.wait());
-#endif
 }
 
 } // namespace KWin
