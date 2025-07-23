@@ -43,6 +43,7 @@ target_link_libraries(KWinIntegrationTestFramework
         Plasma::KWaylandClient
         Wayland::Client
         Libdrm::Libdrm
+        KF6::GlobalAccel
         kwin
 
     PRIVATE
@@ -146,7 +147,6 @@ qt_add_dbus_interfaces(DBUS_SRCS ${CMAKE_BINARY_DIR}/src/org.kde.kwin.VirtualKey
 integrationTest(NAME testVirtualKeyboardDBus SRCS test_virtualkeyboard_dbus.cpp ${DBUS_SRCS})
 
 if (KWIN_BUILD_GLOBALSHORTCUTS)
-integrationTest(NAME testGlobalShortcuts SRCS globalshortcuts_test.cpp LIBS XCB::ICCCM KF6::GlobalAccel KF6::I18n XKB::XKB)
 integrationTest(NAME testKWinBindings SRCS kwinbindings_test.cpp LIBS KF6::I18n)
 endif()
 
