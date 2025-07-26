@@ -15,11 +15,13 @@
 #include <kwin_export.h>
 
 #include <QObject>
+#include <QString>
 
 #include <memory>
 
 #include <X11/Xlib-xcb.h>
 #include <fixx11h.h>
+
 
 namespace KWin
 {
@@ -90,6 +92,8 @@ private:
     void doUpdateOutputs();
     void updateRefreshRate();
     void updateCursor();
+    
+    QString m_lastOutputConfigString;
 
 #if HAVE_X11_XINPUT
     std::unique_ptr<XInputIntegration> m_xinputIntegration;
