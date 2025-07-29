@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-16 00:44+0000\n"
+"POT-Creation-Date: 2025-07-29 00:43+0000\n"
 "PO-Revision-Date: 2025-01-12 08:09+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1594,17 +1594,17 @@ msgstr "Distanco:"
 msgid "Window Close Animation"
 msgstr "Fenestroferma Animacio"
 
-#: plugins/invert/invert.cpp:43
+#: plugins/invert/invert.cpp:44
 #, kde-format
 msgid "Toggle Invert Effect"
 msgstr "Baskuligi Inversig-Efekton"
 
-#: plugins/invert/invert.cpp:50
+#: plugins/invert/invert.cpp:52
 #, kde-format
 msgid "Toggle Invert Effect on Window"
 msgstr "Baskuligi Inversig-Efekton sur Fenestro"
 
-#: plugins/invert/invert.cpp:57
+#: plugins/invert/invert.cpp:59
 #, kde-format
 msgid "Invert Screen Colors"
 msgstr "Inverti Ekranajn Kolorojn"
@@ -2059,7 +2059,7 @@ msgctxt "@action Overview is the name of a Kwin effect"
 msgid "Toggle Overview"
 msgstr "Baskuligi Overview"
 
-#: plugins/overview/overvieweffect.cpp:151
+#: plugins/overview/overvieweffect.cpp:152
 #, kde-format
 msgctxt "@action Grid view is the name of a Kwin effect"
 msgid "Toggle Grid View"
@@ -3392,352 +3392,353 @@ msgctxt "keyboard shortcut '%1' is used by action '%2' in application '%3'"
 msgid "<b>%1</b> is used by %2 in %3"
 msgstr "<b>%1</b> estas uzata de %2 en %3"
 
-#: useractions.cpp:911
-#, kde-format
-msgid "Window Operations Menu"
-msgstr "Fenestro-agmenuo"
+#: useractions.cpp:912
+#, fuzzy, kde-format
+#| msgid "Window role"
+msgid "Window Menu"
+msgstr "Fenestra rolo"
 
-#: useractions.cpp:913
+#: useractions.cpp:914
 #, kde-format
 msgid "Close Window"
 msgstr "Fermi fenestron"
 
-#: useractions.cpp:915
+#: useractions.cpp:916
 #, kde-format
 msgid "Maximize Window"
 msgstr "Maksimumigi fenestron"
 
-#: useractions.cpp:917
+#: useractions.cpp:918
 #, kde-format
 msgid "Maximize Window Vertically"
 msgstr "Maksimumigi fenestron vertikale"
 
-#: useractions.cpp:919
+#: useractions.cpp:920
 #, kde-format
 msgid "Maximize Window Horizontally"
 msgstr "Maksimumigi fenestron horizontale"
 
-#: useractions.cpp:921
+#: useractions.cpp:922
 #, kde-format
 msgid "Minimize Window"
 msgstr "Minimumigi fenestron"
 
-#: useractions.cpp:923
+#: useractions.cpp:924
 #, kde-format
 msgid "Shade Window"
 msgstr "Volvi fenestron"
 
-#: useractions.cpp:925
+#: useractions.cpp:926
 #, kde-format
 msgid "Move Window"
 msgstr "Movi fenestron"
 
-#: useractions.cpp:927
+#: useractions.cpp:928
 #, kde-format
 msgid "Resize Window"
 msgstr "Regrandigi fenestron"
 
-#: useractions.cpp:929
+#: useractions.cpp:930
 #, kde-format
 msgid "Raise Window"
 msgstr "Malfonigi fenestron"
 
-#: useractions.cpp:931
+#: useractions.cpp:932
 #, kde-format
 msgid "Lower Window"
 msgstr "Fonigi fenestron"
 
-#: useractions.cpp:933
+#: useractions.cpp:934
 #, kde-format
 msgid "Toggle Window Raise/Lower"
 msgstr "Baskuli inter malfonigo/fonigo de la fenestro"
 
-#: useractions.cpp:935
+#: useractions.cpp:936
 #, kde-format
 msgid "Make Window Fullscreen"
 msgstr "Tutekranigi fenestron"
 
-#: useractions.cpp:937
+#: useractions.cpp:938
 #, kde-format
 msgid "Toggle Window Titlebar and Frame"
 msgstr "Baskuligi Fenestran Titolbreton kaj Kadron"
 
-#: useractions.cpp:939
+#: useractions.cpp:940
 #, kde-format
 msgid "Keep Window Above Others"
 msgstr "Fiksi fenestron super la aliaj"
 
-#: useractions.cpp:941
+#: useractions.cpp:942
 #, kde-format
 msgid "Keep Window Below Others"
 msgstr "Fiksi fenestron sub la aliaj"
 
-#: useractions.cpp:943
+#: useractions.cpp:944
 #, kde-format
 msgid "Activate Window Demanding Attention"
 msgstr "Aktivigi fenestron kiu petas atenton"
 
-#: useractions.cpp:945
+#: useractions.cpp:946
 #, kde-format
 msgid "Setup Window Shortcut"
 msgstr "Agordi fenestran fulmoklavon"
 
-#: useractions.cpp:947
+#: useractions.cpp:948
 #, kde-format
 msgid "Move Window to the Center"
 msgstr "Movi Fenestron al la Centro"
 
-#: useractions.cpp:949
+#: useractions.cpp:950
 #, kde-format
 msgid "Move Window Right"
 msgstr "Movi Fenestron Dekstren"
 
-#: useractions.cpp:951
+#: useractions.cpp:952
 #, kde-format
 msgid "Move Window Left"
 msgstr "Movi Fenestron Maldekstren"
 
-#: useractions.cpp:953
+#: useractions.cpp:954
 #, kde-format
 msgid "Move Window Up"
 msgstr "Movi Fenestron Supren"
 
-#: useractions.cpp:955
+#: useractions.cpp:956
 #, kde-format
 msgid "Move Window Down"
 msgstr "Movi Fenestron Malsupren"
 
-#: useractions.cpp:957
+#: useractions.cpp:958
 #, kde-format
 msgid "Expand Window Horizontally"
 msgstr "Pligrandigi Fenestron Horizontale"
 
-#: useractions.cpp:959
+#: useractions.cpp:960
 #, kde-format
 msgid "Expand Window Vertically"
 msgstr "Vastigi Fenestron Vertike"
 
-#: useractions.cpp:961
+#: useractions.cpp:962
 #, kde-format
 msgid "Shrink Window Horizontally"
 msgstr "Ŝrumpi Fenestron Horizontale"
 
-#: useractions.cpp:963
+#: useractions.cpp:964
 #, kde-format
 msgid "Shrink Window Vertically"
 msgstr "Ŝrumpi Fenestron Vertikale"
 
-#: useractions.cpp:965
+#: useractions.cpp:966
 #, kde-format
 msgid "Quick Tile Window to the Left"
 msgstr "Rapida Kahela Fenestro maldekstren"
 
-#: useractions.cpp:967
+#: useractions.cpp:968
 #, kde-format
 msgid "Quick Tile Window to the Right"
 msgstr "Rapida Kahela Fenestro dekstre"
 
-#: useractions.cpp:969
+#: useractions.cpp:970
 #, kde-format
 msgid "Quick Tile Window to the Top"
 msgstr "Rapida Kahela Fenestro al la Supro"
 
-#: useractions.cpp:971
+#: useractions.cpp:972
 #, kde-format
 msgid "Quick Tile Window to the Bottom"
 msgstr "Rapida Kahela Fenestro al la Malsupro"
 
-#: useractions.cpp:973
+#: useractions.cpp:974
 #, kde-format
 msgid "Quick Tile Window to the Top Left"
 msgstr "Rapida Kahela Fenestro al la Supre Maldekstre"
 
-#: useractions.cpp:975
+#: useractions.cpp:976
 #, kde-format
 msgid "Quick Tile Window to the Bottom Left"
 msgstr "Rapida Kahela Fenestro al la Malsupra Maldekstre"
 
-#: useractions.cpp:977
+#: useractions.cpp:978
 #, kde-format
 msgid "Quick Tile Window to the Top Right"
 msgstr "Rapida Kahela Fenestro supre Dekstre"
 
-#: useractions.cpp:979
+#: useractions.cpp:980
 #, kde-format
 msgid "Quick Tile Window to the Bottom Right"
 msgstr "Rapida Kahela Fenestro malsupre Dekstre"
 
-#: useractions.cpp:981
+#: useractions.cpp:982
 #, kde-format
 msgid "Switch to Window Above"
 msgstr "Ŝanĝi al Fenestro Supre"
 
-#: useractions.cpp:983
+#: useractions.cpp:984
 #, kde-format
 msgid "Switch to Window Below"
 msgstr "Ŝanĝi al la Malsupra Fenestro"
 
-#: useractions.cpp:985
+#: useractions.cpp:986
 #, kde-format
 msgid "Switch to Window to the Right"
 msgstr "Ŝanĝi al Fenestro dekstre"
 
-#: useractions.cpp:987
+#: useractions.cpp:988
 #, kde-format
 msgid "Switch to Window to the Left"
 msgstr "Ŝanĝi al Fenestro maldekstre"
 
-#: useractions.cpp:989
+#: useractions.cpp:990
 #, kde-format
 msgid "Increase Opacity of Active Window by 5%"
 msgstr "Pliigi Opakecon de Aktiva Fenestro je 5%"
 
-#: useractions.cpp:991
+#: useractions.cpp:992
 #, kde-format
 msgid "Decrease Opacity of Active Window by 5%"
 msgstr "Malpliigu Opakecon de Aktiva Fenestro je 5%"
 
-#: useractions.cpp:994
+#: useractions.cpp:995
 #, kde-format
 msgid "Keep Window on All Desktops"
 msgstr "Fiksi fenestron en ĉiuj labortabloj"
 
-#: useractions.cpp:997
+#: useractions.cpp:998
 #, kde-format
 msgid "Custom Quick Tile Window to the Left"
 msgstr "Propra Rapid-Kahela Fenestro je la Maldekstro"
 
-#: useractions.cpp:999
+#: useractions.cpp:1000
 #, kde-format
 msgid "Custom Quick Tile Window to the Right"
 msgstr "Propra Rapid-Kahela Fenestro ja le Dekstro"
 
-#: useractions.cpp:1001
+#: useractions.cpp:1002
 #, kde-format
 msgid "Custom Quick Tile Window to the Top"
 msgstr "Propra Rapid-Kahela Fenestro je la Supro"
 
-#: useractions.cpp:1003
+#: useractions.cpp:1004
 #, kde-format
 msgid "Custom Quick Tile Window to the Bottom"
 msgstr "Propra Rapid-Kahela Fenestro je la Malsupro"
 
-#: useractions.cpp:1014
+#: useractions.cpp:1015
 #, kde-format
 msgid "Window to Desktop %1"
 msgstr "Fenestro al labortablo %1"
 
-#: useractions.cpp:1016
+#: useractions.cpp:1017
 #, kde-format
 msgid "Window to Next Desktop"
 msgstr "Fenestro al sekva labortablo"
 
-#: useractions.cpp:1017
+#: useractions.cpp:1018
 #, kde-format
 msgid "Window to Previous Desktop"
 msgstr "Fenestro al antaŭa labortablo"
 
-#: useractions.cpp:1018
+#: useractions.cpp:1019
 #, kde-format
 msgid "Window One Desktop to the Right"
 msgstr "Fenestro al labortablo dekstrapuda"
 
-#: useractions.cpp:1020
+#: useractions.cpp:1021
 #, kde-format
 msgid "Window One Desktop to the Left"
 msgstr "Fenestro al labortablo maldekstrapuda"
 
-#: useractions.cpp:1022
+#: useractions.cpp:1023
 #, kde-format
 msgid "Window One Desktop Up"
 msgstr "Fenestro al supra labortablo"
 
-#: useractions.cpp:1024
+#: useractions.cpp:1025
 #, kde-format
 msgid "Window One Desktop Down"
 msgstr "Fenestro al suba labortablo"
 
-#: useractions.cpp:1028
+#: useractions.cpp:1029
 #, kde-format
 msgid "Move Window to Screen %1"
 msgstr "Movi fenestron al ekrano %1"
 
-#: useractions.cpp:1035
+#: useractions.cpp:1036
 #, kde-format
 msgid "Move Window to Next Screen"
 msgstr "Movi fenestron al sekva ekrano"
 
-#: useractions.cpp:1037
+#: useractions.cpp:1038
 #, kde-format
 msgid "Move Window to Previous Screen"
 msgstr "Movi fenestron al antaŭa ekrano"
 
-#: useractions.cpp:1039
+#: useractions.cpp:1040
 #, kde-format
 msgid "Move Window One Screen to the Right"
 msgstr "Movi fenestron unu ekranon dekstren"
 
-#: useractions.cpp:1041
+#: useractions.cpp:1042
 #, kde-format
 msgid "Move Window One Screen to the Left"
 msgstr "Movi fenestron unu ekranon maldekstren"
 
-#: useractions.cpp:1043
+#: useractions.cpp:1044
 #, kde-format
 msgid "Move Window One Screen Up"
 msgstr "Movi fenestron unu ekranon Supren"
 
-#: useractions.cpp:1045
+#: useractions.cpp:1046
 #, kde-format
 msgid "Move Window One Screen Down"
 msgstr "Movi fenestron unu ekranon Malsupren"
 
-#: useractions.cpp:1049
+#: useractions.cpp:1050
 #, kde-format
 msgid "Switch to Screen %1"
 msgstr "Ŝanĝi al Ekrano %1"
 
-#: useractions.cpp:1056
+#: useractions.cpp:1057
 #, kde-format
 msgid "Switch to Next Screen"
 msgstr "Iri al sekva ekrano"
 
-#: useractions.cpp:1057
+#: useractions.cpp:1058
 #, kde-format
 msgid "Switch to Previous Screen"
 msgstr "Ŝalti al Antaŭa Ekrano"
 
-#: useractions.cpp:1058
+#: useractions.cpp:1059
 #, kde-format
 msgid "Switch to Screen to the Right"
 msgstr "Ŝanĝi al Ekrano dekstre"
 
-#: useractions.cpp:1060
+#: useractions.cpp:1061
 #, kde-format
 msgid "Switch to Screen to the Left"
 msgstr "Ŝanĝi al Ekrano maldekstren"
 
-#: useractions.cpp:1062
+#: useractions.cpp:1063
 #, kde-format
 msgid "Switch to Screen Above"
 msgstr "Ŝanĝi al Ekrano Supre"
 
-#: useractions.cpp:1064
+#: useractions.cpp:1065
 #, kde-format
 msgid "Switch to Screen Below"
 msgstr "Ŝanĝi al Ekrano Malsupre"
 
-#: useractions.cpp:1067
+#: useractions.cpp:1068
 #, kde-format
 msgid "Peek at Desktop"
 msgstr "Rigardi Labortablon"
 
-#: useractions.cpp:1070
+#: useractions.cpp:1071
 #, kde-format
 msgid "Kill Window"
 msgstr "Mortigi fenestron"
 
-#: useractions.cpp:1138
+#: useractions.cpp:1139
 #, kde-format
 msgid "Activate Window (%1)"
 msgstr "Aktivigi Fenestron (%1)"
@@ -3812,7 +3813,7 @@ msgstr "La provizita elig-sinsekvo estas nevalida"
 msgid "The driver rejected the output configuration"
 msgstr "La pelilo malakceptis la eligan agordon"
 
-#: window.cpp:3275
+#: window.cpp:3303
 #, kde-format
 msgctxt "Application is not responding, appended to window title"
 msgid "(Not Responding)"
@@ -3846,6 +3847,9 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr "Xwayland paneis"
+
+#~ msgid "Window Operations Menu"
+#~ msgstr "Fenestro-agmenuo"
 
 #~ msgid "Size"
 #~ msgstr "Grandeco"

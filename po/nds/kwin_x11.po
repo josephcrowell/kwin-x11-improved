@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-16 00:44+0000\n"
+"POT-Creation-Date: 2025-07-29 00:43+0000\n"
 "PO-Revision-Date: 2014-08-21 16:21+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1637,17 +1637,17 @@ msgstr ""
 msgid "Window Close Animation"
 msgstr "Finsterakschonen-Menü"
 
-#: plugins/invert/invert.cpp:43
+#: plugins/invert/invert.cpp:44
 #, kde-format
 msgid "Toggle Invert Effect"
 msgstr "Ümdreihen an-/utmaken"
 
-#: plugins/invert/invert.cpp:50
+#: plugins/invert/invert.cpp:52
 #, kde-format
 msgid "Toggle Invert Effect on Window"
 msgstr "Ümdreihen för Finster an- oder utmaken"
 
-#: plugins/invert/invert.cpp:57
+#: plugins/invert/invert.cpp:59
 #, kde-format
 msgid "Invert Screen Colors"
 msgstr "Schirmklören ümdreihen"
@@ -2135,7 +2135,7 @@ msgctxt "@action Overview is the name of a Kwin effect"
 msgid "Toggle Overview"
 msgstr "Ümdreihen an-/utmaken"
 
-#: plugins/overview/overvieweffect.cpp:151
+#: plugins/overview/overvieweffect.cpp:152
 #, fuzzy, kde-format
 #| msgid "Toggle Invert Effect"
 msgctxt "@action Grid view is the name of a Kwin effect"
@@ -3557,378 +3557,379 @@ msgctxt "keyboard shortcut '%1' is used by action '%2' in application '%3'"
 msgid "<b>%1</b> is used by %2 in %3"
 msgstr "<b>%1</b> warrt al vun %2 in %3 bruukt."
 
-#: useractions.cpp:911
-#, kde-format
-msgid "Window Operations Menu"
-msgstr "Finsterakschonen-Menü"
+#: useractions.cpp:912
+#, fuzzy, kde-format
+#| msgid "Windows"
+msgid "Window Menu"
+msgstr "Finstern"
 
-#: useractions.cpp:913
+#: useractions.cpp:914
 #, kde-format
 msgid "Close Window"
 msgstr "Finster tomaken"
 
-#: useractions.cpp:915
+#: useractions.cpp:916
 #, kde-format
 msgid "Maximize Window"
 msgstr "Finster maximeren"
 
-#: useractions.cpp:917
+#: useractions.cpp:918
 #, kde-format
 msgid "Maximize Window Vertically"
 msgstr "Finster pielrecht maximeren"
 
-#: useractions.cpp:919
+#: useractions.cpp:920
 #, kde-format
 msgid "Maximize Window Horizontally"
 msgstr "Finster kimmrecht maximeren"
 
-#: useractions.cpp:921
+#: useractions.cpp:922
 #, kde-format
 msgid "Minimize Window"
 msgstr "Finster minimeren"
 
-#: useractions.cpp:923
+#: useractions.cpp:924
 #, kde-format
 msgid "Shade Window"
 msgstr "Finster tosamenrullen"
 
-#: useractions.cpp:925
+#: useractions.cpp:926
 #, kde-format
 msgid "Move Window"
 msgstr "Finster verschuven"
 
-#: useractions.cpp:927
+#: useractions.cpp:928
 #, kde-format
 msgid "Resize Window"
 msgstr "Finstergrött ännern"
 
-#: useractions.cpp:929
+#: useractions.cpp:930
 #, kde-format
 msgid "Raise Window"
 msgstr "Finster na vörn"
 
-#: useractions.cpp:931
+#: useractions.cpp:932
 #, kde-format
 msgid "Lower Window"
 msgstr "Finster na achtern"
 
-#: useractions.cpp:933
+#: useractions.cpp:934
 #, kde-format
 msgid "Toggle Window Raise/Lower"
 msgstr "Finster na vörn/achtern"
 
-#: useractions.cpp:935
+#: useractions.cpp:936
 #, kde-format
 msgid "Make Window Fullscreen"
 msgstr "Heelschirm-Finster"
 
-#: useractions.cpp:937
+#: useractions.cpp:938
 #, fuzzy, kde-format
 #| msgid "Hide Window Border"
 msgid "Toggle Window Titlebar and Frame"
 msgstr "Finsterrahmen versteken"
 
-#: useractions.cpp:939
+#: useractions.cpp:940
 #, kde-format
 msgid "Keep Window Above Others"
 msgstr "Finster vörn hollen"
 
-#: useractions.cpp:941
+#: useractions.cpp:942
 #, kde-format
 msgid "Keep Window Below Others"
 msgstr "Finster achtern hollen"
 
-#: useractions.cpp:943
+#: useractions.cpp:944
 #, kde-format
 msgid "Activate Window Demanding Attention"
 msgstr "Finster aktiveren, dat Acht bruukt"
 
-#: useractions.cpp:945
+#: useractions.cpp:946
 #, kde-format
 msgid "Setup Window Shortcut"
 msgstr "Tastkombinatschoon för Finster inrichten"
 
-#: useractions.cpp:947
+#: useractions.cpp:948
 #, fuzzy, kde-format
 #| msgid "Move Window to Group"
 msgid "Move Window to the Center"
 msgstr "Finster na Koppel verschuven"
 
-#: useractions.cpp:949
+#: useractions.cpp:950
 #, kde-format
 msgid "Move Window Right"
 msgstr "Finster na rechts verschuven"
 
-#: useractions.cpp:951
+#: useractions.cpp:952
 #, kde-format
 msgid "Move Window Left"
 msgstr "Finster na links verschuven"
 
-#: useractions.cpp:953
+#: useractions.cpp:954
 #, kde-format
 msgid "Move Window Up"
 msgstr "Finster na baven  verschuven"
 
-#: useractions.cpp:955
+#: useractions.cpp:956
 #, kde-format
 msgid "Move Window Down"
 msgstr "Finster na nerrn verschuven"
 
-#: useractions.cpp:957
+#: useractions.cpp:958
 #, fuzzy, kde-format
 #| msgid "Maximize Window Horizontally"
 msgid "Expand Window Horizontally"
 msgstr "Finster kimmrecht maximeren"
 
-#: useractions.cpp:959
+#: useractions.cpp:960
 #, fuzzy, kde-format
 #| msgid "Maximize Window Vertically"
 msgid "Expand Window Vertically"
 msgstr "Finster pielrecht maximeren"
 
-#: useractions.cpp:961
+#: useractions.cpp:962
 #, fuzzy, kde-format
 #| msgid "Pack Shrink Window Horizontally"
 msgid "Shrink Window Horizontally"
 msgstr "Finster vun rechts schrimpen"
 
-#: useractions.cpp:963
+#: useractions.cpp:964
 #, fuzzy, kde-format
 #| msgid "Pack Shrink Window Vertically"
 msgid "Shrink Window Vertically"
 msgstr "Finster vun nerrn schrimpen"
 
-#: useractions.cpp:965
+#: useractions.cpp:966
 #, kde-format
 msgid "Quick Tile Window to the Left"
 msgstr "Finster fix na de linke Kant schuven"
 
-#: useractions.cpp:967
+#: useractions.cpp:968
 #, kde-format
 msgid "Quick Tile Window to the Right"
 msgstr "Finster fix na de rechte Kant schuven"
 
-#: useractions.cpp:969
+#: useractions.cpp:970
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Top Left"
 msgid "Quick Tile Window to the Top"
 msgstr "Finster fix na de Kant baven links schuven"
 
-#: useractions.cpp:971
+#: useractions.cpp:972
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Bottom Left"
 msgid "Quick Tile Window to the Bottom"
 msgstr "Finster fix na de Kant nerrn links schuven"
 
-#: useractions.cpp:973
+#: useractions.cpp:974
 #, kde-format
 msgid "Quick Tile Window to the Top Left"
 msgstr "Finster fix na de Kant baven links schuven"
 
-#: useractions.cpp:975
+#: useractions.cpp:976
 #, kde-format
 msgid "Quick Tile Window to the Bottom Left"
 msgstr "Finster fix na de Kant nerrn links schuven"
 
-#: useractions.cpp:977
+#: useractions.cpp:978
 #, kde-format
 msgid "Quick Tile Window to the Top Right"
 msgstr "Finster fix na de Kant baven rechts schuven"
 
-#: useractions.cpp:979
+#: useractions.cpp:980
 #, kde-format
 msgid "Quick Tile Window to the Bottom Right"
 msgstr "Finster fix na de Kant nerrn rechts schuven"
 
-#: useractions.cpp:981
+#: useractions.cpp:982
 #, kde-format
 msgid "Switch to Window Above"
 msgstr "Na Finster baven wesseln"
 
-#: useractions.cpp:983
+#: useractions.cpp:984
 #, kde-format
 msgid "Switch to Window Below"
 msgstr "Na Finster nerrn wesseln"
 
-#: useractions.cpp:985
+#: useractions.cpp:986
 #, kde-format
 msgid "Switch to Window to the Right"
 msgstr "Na Finster rechterhand wesseln"
 
-#: useractions.cpp:987
+#: useractions.cpp:988
 #, kde-format
 msgid "Switch to Window to the Left"
 msgstr "Na Finster linkerhand wesseln"
 
-#: useractions.cpp:989
+#: useractions.cpp:990
 #, fuzzy, kde-format
 #| msgid "Increase Opacity of Active Window by 5 %"
 msgid "Increase Opacity of Active Window by 5%"
 msgstr "Deckstärk vun't aktive Finster 5% ropsetten"
 
-#: useractions.cpp:991
+#: useractions.cpp:992
 #, fuzzy, kde-format
 #| msgid "Decrease Opacity of Active Window by 5 %"
 msgid "Decrease Opacity of Active Window by 5%"
 msgstr "Deckstärk vun't aktive Finster 5% minnern"
 
-#: useractions.cpp:994
+#: useractions.cpp:995
 #, kde-format
 msgid "Keep Window on All Desktops"
 msgstr "Finster op all Schriefdischen wiesen"
 
-#: useractions.cpp:997
+#: useractions.cpp:998
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Left"
 msgid "Custom Quick Tile Window to the Left"
 msgstr "Finster fix na de linke Kant schuven"
 
-#: useractions.cpp:999
+#: useractions.cpp:1000
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Right"
 msgid "Custom Quick Tile Window to the Right"
 msgstr "Finster fix na de rechte Kant schuven"
 
-#: useractions.cpp:1001
+#: useractions.cpp:1002
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Top Left"
 msgid "Custom Quick Tile Window to the Top"
 msgstr "Finster fix na de Kant baven links schuven"
 
-#: useractions.cpp:1003
+#: useractions.cpp:1004
 #, fuzzy, kde-format
 #| msgid "Quick Tile Window to the Bottom Left"
 msgid "Custom Quick Tile Window to the Bottom"
 msgstr "Finster fix na de Kant nerrn links schuven"
 
-#: useractions.cpp:1014
+#: useractions.cpp:1015
 #, kde-format
 msgid "Window to Desktop %1"
 msgstr "Finster na Schriefdisch %1"
 
-#: useractions.cpp:1016
+#: useractions.cpp:1017
 #, kde-format
 msgid "Window to Next Desktop"
 msgstr "Finster na nakamen Schriefdisch"
 
-#: useractions.cpp:1017
+#: useractions.cpp:1018
 #, kde-format
 msgid "Window to Previous Desktop"
 msgstr "Finster na verleden Schriefdisch"
 
-#: useractions.cpp:1018
+#: useractions.cpp:1019
 #, kde-format
 msgid "Window One Desktop to the Right"
 msgstr "Finster en Schriefdisch na rechts"
 
-#: useractions.cpp:1020
+#: useractions.cpp:1021
 #, kde-format
 msgid "Window One Desktop to the Left"
 msgstr "Finster en Schriefdisch na links"
 
-#: useractions.cpp:1022
+#: useractions.cpp:1023
 #, kde-format
 msgid "Window One Desktop Up"
 msgstr "Finster en Schriefdisch na baven"
 
-#: useractions.cpp:1024
+#: useractions.cpp:1025
 #, kde-format
 msgid "Window One Desktop Down"
 msgstr "Finster en Schriefdisch na nerrn"
 
-#: useractions.cpp:1028
+#: useractions.cpp:1029
 #, fuzzy, kde-format
 #| msgid "Window to Screen %1"
 msgid "Move Window to Screen %1"
 msgstr "Finster na Schirm %1"
 
-#: useractions.cpp:1035
+#: useractions.cpp:1036
 #, fuzzy, kde-format
 #| msgid "Window to Next Screen"
 msgid "Move Window to Next Screen"
 msgstr "Finster na nakamen Schirm"
 
-#: useractions.cpp:1037
+#: useractions.cpp:1038
 #, fuzzy, kde-format
 #| msgid "Window to Previous Screen"
 msgid "Move Window to Previous Screen"
 msgstr "Finster na verleden Schirm"
 
-#: useractions.cpp:1039
+#: useractions.cpp:1040
 #, fuzzy, kde-format
 #| msgid "Window One Desktop to the Right"
 msgid "Move Window One Screen to the Right"
 msgstr "Finster en Schriefdisch na rechts"
 
-#: useractions.cpp:1041
+#: useractions.cpp:1042
 #, fuzzy, kde-format
 #| msgid "Window One Desktop to the Left"
 msgid "Move Window One Screen to the Left"
 msgstr "Finster en Schriefdisch na links"
 
-#: useractions.cpp:1043
+#: useractions.cpp:1044
 #, fuzzy, kde-format
 #| msgid "Window to Screen 2"
 msgid "Move Window One Screen Up"
 msgstr "Finster na Schirm 2"
 
-#: useractions.cpp:1045
+#: useractions.cpp:1046
 #, fuzzy, kde-format
 #| msgid "Window One Desktop Down"
 msgid "Move Window One Screen Down"
 msgstr "Finster en Schriefdisch na nerrn"
 
-#: useractions.cpp:1049
+#: useractions.cpp:1050
 #, kde-format
 msgid "Switch to Screen %1"
 msgstr "Na Schirm %1 wesseln"
 
-#: useractions.cpp:1056
+#: useractions.cpp:1057
 #, kde-format
 msgid "Switch to Next Screen"
 msgstr "Na nakamen Schirm wesseln"
 
-#: useractions.cpp:1057
+#: useractions.cpp:1058
 #, kde-format
 msgid "Switch to Previous Screen"
 msgstr "Na verleden Schirm wesseln"
 
-#: useractions.cpp:1058
+#: useractions.cpp:1059
 #, fuzzy, kde-format
 #| msgid "Switch to Window to the Right"
 msgid "Switch to Screen to the Right"
 msgstr "Na Finster rechterhand wesseln"
 
-#: useractions.cpp:1060
+#: useractions.cpp:1061
 #, fuzzy, kde-format
 #| msgid "Switch to Window to the Left"
 msgid "Switch to Screen to the Left"
 msgstr "Na Finster linkerhand wesseln"
 
-#: useractions.cpp:1062
+#: useractions.cpp:1063
 #, fuzzy, kde-format
 #| msgid "Switch to Screen 0"
 msgid "Switch to Screen Above"
 msgstr "Na Schirm 0 wesseln"
 
-#: useractions.cpp:1064
+#: useractions.cpp:1065
 #, fuzzy, kde-format
 #| msgid "Switch to Screen 0"
 msgid "Switch to Screen Below"
 msgstr "Na Schirm 0 wesseln"
 
-#: useractions.cpp:1067
+#: useractions.cpp:1068
 #, fuzzy, kde-format
 #| msgid "Move To &Desktop"
 msgid "Peek at Desktop"
 msgstr "Na Schrie&fdisch verschuven"
 
-#: useractions.cpp:1070
+#: useractions.cpp:1071
 #, kde-format
 msgid "Kill Window"
 msgstr "Finster afscheten"
 
-#: useractions.cpp:1138
+#: useractions.cpp:1139
 #, kde-format
 msgid "Activate Window (%1)"
 msgstr "Finster anmaken (%1)"
@@ -4003,7 +4004,7 @@ msgstr ""
 msgid "The driver rejected the output configuration"
 msgstr ""
 
-#: window.cpp:3275
+#: window.cpp:3303
 #, kde-format
 msgctxt "Application is not responding, appended to window title"
 msgid "(Not Responding)"
@@ -4048,6 +4049,9 @@ msgstr ""
 #, kde-format
 msgid "Xwayland has crashed"
 msgstr ""
+
+#~ msgid "Window Operations Menu"
+#~ msgstr "Finsterakschonen-Menü"
 
 #~ msgid "Size"
 #~ msgstr "Grött"
