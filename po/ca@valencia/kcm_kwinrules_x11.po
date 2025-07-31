@@ -550,7 +550,7 @@ msgstr "Accepta el focus"
 #: rulesmodel.cpp:681
 #, kde-format
 msgid "Controls whether or not the window becomes focused when clicked."
-msgstr "Controla si la finestra prendrà el focus o no quan s'hi fa clic."
+msgstr "Controla si la finestra prendrà el focus o no quan s'hi clica."
 
 #: rulesmodel.cpp:685
 #, kde-format
@@ -638,7 +638,7 @@ msgstr "Finestra normal"
 #: rulesmodel.cpp:812
 #, kde-format
 msgid "Dialog window"
-msgstr "Finestra de diàleg"
+msgstr "Diàleg"
 
 #: rulesmodel.cpp:813
 #, kde-format
@@ -854,7 +854,8 @@ msgstr "Actualment no s'han definit regles per a finestres específiques"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click <interface>Add New…</interface> to add some"
-msgstr "Feu clic en el botó <interface>Afig nova…</interface> per a afegir-ne"
+msgstr ""
+"Cliqueu damunt del botó <interface>Afig nova…</interface> per a afegir-ne"
 
 #: ui/main.qml:97
 #, kde-format
@@ -930,8 +931,9 @@ msgid ""
 "Click the <interface>Add Property...</interface> button below to add some "
 "window properties that will be affected by the rule"
 msgstr ""
-"Feu clic en el botó <interface>Afig propietat…</interface> de davall per a "
-"afegir diverses propietats de les finestres que seran afectades per la regla"
+"Cliqueu damunt del botó <interface>Afig propietat…</interface> de davall per "
+"a afegir diverses propietats de les finestres que seran afectades per la "
+"regla"
 
 #: ui/RulesEditor.qml:88
 #, kde-format
