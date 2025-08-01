@@ -901,8 +901,6 @@ void Window::setShade(ShadeMode mode)
 
     doSetShade(previousShadeMode);
     updateWindowRules(Rules::Shade);
-
-    Q_EMIT shadeChanged();
 }
 
 void Window::doSetShade(ShadeMode previousShadeMode)
