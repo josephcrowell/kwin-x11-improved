@@ -3382,7 +3382,7 @@ msgstr "<b>%1</b> 已被 %3 的 %2 使用"
 #: useractions.cpp:912
 #, kde-format
 msgid "Window Menu"
-msgstr ""
+msgstr "窗口菜单"
 
 #: useractions.cpp:914
 #, kde-format
