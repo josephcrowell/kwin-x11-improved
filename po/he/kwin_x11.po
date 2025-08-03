@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 00:43+0000\n"
-"PO-Revision-Date: 2025-07-29 08:22+0300\n"
+"PO-Revision-Date: 2025-08-02 21:39+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -351,7 +351,7 @@ msgstr "הפרש (לא מואץ)"
 #, kde-format
 msgctxt "The global mouse pointer position"
 msgid "Global Position"
-msgstr "מקום כללי"
+msgstr "מקום מקיף"
 
 #: debug_console.cpp:213
 #, kde-format
@@ -521,7 +521,7 @@ msgstr "מזהה מצביע"
 #, kde-format
 msgctxt "The global position of the touch point"
 msgid "Global position"
-msgstr "מקום כללי"
+msgstr "מקום מקיף"
 
 #: debug_console.cpp:332
 #, kde-format
@@ -3056,13 +3056,13 @@ msgstr "סוג כלל מקש קיצור"
 #: rulesettings.kcfg:410
 #, kde-format
 msgid "Ignore global shortcuts"
-msgstr "התעלמות ממקשי קיצור כלליים"
+msgstr "התעלמות ממקשי קיצור מקיפים"
 
 #. i18n: ectx: label, entry (disableglobalshortcutsrule), group ($(ruleDescriptionOrNumber))
 #: rulesettings.kcfg:414
 #, kde-format
 msgid "Ignore global shortcuts rule type"
-msgstr "סוג כלל התעלמות ממקשי קיצור כלליים"
+msgstr "התעלמות מסוג כלל מקשי קיצור מקיפים"
 
 #. i18n: ectx: label, entry (desktopfile), group ($(ruleDescriptionOrNumber))
 #: rulesettings.kcfg:419
