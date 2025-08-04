@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kwin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-29 00:43+0000\n"
-"PO-Revision-Date: 2025-07-31 18:37+0400\n"
+"PO-Revision-Date: 2025-08-03 12:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2191,7 +2191,7 @@ msgstr "تمرير خلفية سطح المكتب"
 #: plugins/thumbnailaside/thumbnailaside_config.cpp:50
 #, kde-format
 msgid "Toggle Thumbnail for Current Window"
-msgstr "بدّل بين مصغّرات النافذة الحالية وبدونها"
+msgstr "بدّل بين مصغّرات النافذة الحالية ودونها"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: plugins/thumbnailaside/thumbnailaside_config.ui:23
@@ -2415,7 +2415,7 @@ msgstr "تجاهل"
 #: plugins/videowall/package/contents/ui/config.ui:73
 #, kde-format
 msgid "None"
-msgstr "بدون"
+msgstr "لا شيء"
 
 #: plugins/windowview/kcm/windowvieweffectkcm.cpp:42
 #: plugins/windowview/windowvieweffect.cpp:48
@@ -2904,13 +2904,13 @@ msgstr "نوع القاعدة لملء الشّاشة"
 #: rulesettings.kcfg:297
 #, kde-format
 msgid "No titlebar and frame"
-msgstr "بدون شريط العنوان والإطار"
+msgstr "بلا شريط العنوان والإطار"
 
 #. i18n: ectx: label, entry (noborderrule), group ($(ruleDescriptionOrNumber))
 #: rulesettings.kcfg:301
 #, kde-format
 msgid "No titlebar rule type"
-msgstr "نوع القاعدة لبدون شريط العنوان"
+msgstr "نوع القاعدة لبلا شريط العنوان"
 
 #. i18n: ectx: label, entry (decocolor), group ($(ruleDescriptionOrNumber))
 #: rulesettings.kcfg:308
@@ -3216,7 +3216,7 @@ msgid ""
 "keyboard shortcut."
 msgstr ""
 "لقد اخترت إظهار نافذة بلا حدّ.\n"
-"بدون الحدود لن تستطيع تمكين الحدّ مجدّدًا باستخدام الفأرة: استخدم قائمة عمليّات "
+"بلا حدود لن تستطيع تمكين الحدّ مجدّدًا باستخدام الفأرة: استخدم قائمة عمليّات "
 "النّافذة بدل ذلك، لتنشيطها استخدم اختصار لوحة المفاتيح %1."
 
 #: useractions.cpp:169
@@ -3265,7 +3265,7 @@ msgstr "&ظلّل"
 #: useractions.cpp:250
 #, kde-format
 msgid "&No Titlebar and Frame"
-msgstr "بدون &شريط العنوان والإطار"
+msgstr "دون &شريط العنوان والإطار"
 
 #: useractions.cpp:258
 #, kde-format
