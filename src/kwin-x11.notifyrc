@@ -71,7 +71,7 @@ Comment[zh_TW]=KWin 視窗管理員
 
 [Event/graphicsreset]
 Name=Graphics Reset
-Name[ar]=إعادة ضبط الرسوميات
+Name[ar]=تصفّير الرسوميات
 Name[az]=Qrafikanın sıfırlanması
 Name[be]=Скід графікі
 Name[bg]=Връщане на стандартни настройки на графиката
