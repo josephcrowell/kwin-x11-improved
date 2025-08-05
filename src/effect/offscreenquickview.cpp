@@ -30,6 +30,7 @@
 #include <QQuickOpenGLUtils>
 #include <QQuickRenderTarget>
 #include <QTimer>
+#include <private/qabstractanimation_p.h>
 #include <private/qeventpoint_p.h> // for QMutableEventPoint
 
 namespace KWin
@@ -213,6 +214,8 @@ void OffscreenQuickView::update()
     if (d->m_view->size().isEmpty()) {
         return;
     }
+
+    QUnifiedTimer::instance()->updateAnimationTimers();
 
     bool usingGl = d->m_glcontext != nullptr;
     OpenGlContext *previousContext = OpenGlContext::currentContext();
