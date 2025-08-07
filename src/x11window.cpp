@@ -1761,9 +1761,9 @@ void X11Window::doSetShade(ShadeMode previousShadeMode)
         return;
     }
     // TODO: All this unmapping, resizing etc. feels too much duplicated from elsewhere
-    if (isShade()) {
-        shade_geometry_change = true;
-        QSizeF s(implicitSize());
+    shade_geometry_change = true;
+    Q_EMIT shadeChanged();
+    if (QSizeF s(implicitSize()); isShade()) {
         s.setHeight(borderTop() + borderBottom());
         m_wrapper.selectInput(wrapperEventMask() & ~XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY); // Avoid getting UnmapNotify
         m_wrapper.unmap();
@@ -1783,11 +1783,6 @@ void X11Window::doSetShade(ShadeMode previousShadeMode)
             workspace()->focusToNull();
         }
     } else {
-        shade_geometry_change = true;
-        if (decoratedWindow()) {
-            decoratedWindow()->signalShadeChange();
-        }
-        QSizeF s(implicitSize());
         shade_geometry_change = false;
         resize(s);
         setGeometryRestore(moveResizeGeometry());
