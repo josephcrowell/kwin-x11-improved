@@ -106,7 +106,7 @@ msgstr "从不"
 #: compositing.ui:170
 #, kde-format
 msgid "Only for Shown Windows"
-msgstr "只对显示的窗口"
+msgstr "仅显示的窗口"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HiddenPreviews)
 #: compositing.ui:175
