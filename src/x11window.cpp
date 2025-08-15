@@ -2941,7 +2941,7 @@ QRectF X11Window::nextFrameRectToBufferRect(const QRectF &rect) const
  */
 QSizeF X11Window::implicitSize() const
 {
-    return clientSizeToFrameSize(Xcb::fromXNative(m_client.geometry().size()));
+    return clientSizeToFrameSize(m_clientGeometry.size());
 }
 
 pid_t X11Window::pid() const
@@ -4429,12 +4429,8 @@ void X11Window::moveResizeInternal(const QRectF &rect, MoveResizeMode mode)
     if (shade_geometry_change) {
         ; // nothing
     } else if (isShade()) {
-        if (frameGeometry.height() == borderTop() + borderBottom()) {
-            qCDebug(KWIN_CORE) << "Shaded geometry passed for size:";
-        } else {
-            clientGeometry = nextFrameRectToClientRect(frameGeometry);
-            frameGeometry.setHeight(borderTop() + borderBottom());
-        }
+        frameGeometry.setHeight(borderTop() + borderBottom());
+        clientGeometry.moveTo(nextFramePosToClientPos(frameGeometry.topLeft())); // behave like `clientGeometry = nextFrameRectToClientRect(frameGeometry);` except changing size
     } else {
         clientGeometry = nextFrameRectToClientRect(frameGeometry);
     }
