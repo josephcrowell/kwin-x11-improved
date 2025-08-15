@@ -19,6 +19,7 @@ class OverviewEffect : public QuickSceneEffect
     Q_OBJECT
     Q_PROPERTY(int animationDuration READ animationDuration NOTIFY animationDurationChanged)
     Q_PROPERTY(bool ignoreMinimized READ ignoreMinimized NOTIFY ignoreMinimizedChanged)
+    Q_PROPERTY(bool autoArrangeGrid READ autoArrangeGrid NOTIFY autoArrangeGridChanged)
     Q_PROPERTY(bool filterWindows READ filterWindows NOTIFY filterWindowsChanged)
     Q_PROPERTY(bool organizedGrid READ organizedGrid NOTIFY organizedGridChanged)
     Q_PROPERTY(qreal overviewPartialActivationFactor READ overviewPartialActivationFactor NOTIFY overviewPartialActivationFactorChanged)
@@ -37,6 +38,9 @@ public:
 
     bool ignoreMinimized() const;
     bool organizedGrid() const;
+
+    bool autoArrangeGrid() const;
+    void setAutoArrangeGrid(bool AutoArrangeGrid);
 
     bool filterWindows() const;
     void setFilterWindows(bool filterWindows);
@@ -69,6 +73,7 @@ Q_SIGNALS:
     void gridGestureInProgressChanged();
     void ignoreMinimizedChanged();
     void filterWindowsChanged();
+    void autoArrangeGridChanged();
     void organizedGridChanged();
     void desktopOffsetChanged();
     void searchTextChanged();
@@ -97,6 +102,7 @@ private:
     QList<ElectricBorder> m_gridBorderActivate;
     QString m_searchText;
     QPointF m_desktopOffset;
+    bool m_autoArrangeGrid = true;
     bool m_filterWindows = true;
     int m_animationDuration = 400;
 };

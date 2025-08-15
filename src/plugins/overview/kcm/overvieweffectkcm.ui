@@ -17,7 +17,7 @@
   </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_IgnoreMinimized">
      <property name="text">
       <string>Ignore minimized windows:</string>
      </property>
@@ -31,34 +31,77 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_FilterWindows">
      <property name="text">
-      <string>Organize windows in the Grid View:</string>
+      <string>Search results include windows:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QCheckBox" name="kcfg_OrganizedGrid">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_FilterWindows">
-     <property name="text">
-      <string>Search results include filtered windows:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
     <widget class="QCheckBox" name="kcfg_FilterWindows">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_OrganizedGrid">
+     <property name="text">
+      <string>Organize windows in the Grid View:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QCheckBox" name="kcfg_OrganizedGrid">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_AutoArrangeGrid">
+     <property name="text">
+      <string>Arrange desktops in the Grid View:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <layout class="QVBoxLayout" name="layout_AutoArrangeGrid">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QRadioButton" name="kcfg_AutoArrangeGrid">
+       <property name="text">
+        <string>Auto-arrange to fit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="kcfg_ArrangeGridByVD">
+       <property name="text">
+        <string>Use Virtual Desktop Layout</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" colspan="2">
     <widget class="KShortcutsEditor" name="shortcutsEditor">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
