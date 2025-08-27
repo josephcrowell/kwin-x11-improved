@@ -11,10 +11,6 @@
 #include "wayland_server.h"
 #include "workspace.h"
 
-#if KWIN_BUILD_GLOBALSHORTCUTS
-#include <KGlobalAccel>
-#endif
-
 #include <KWayland/Client/keyboard.h>
 #include <KWayland/Client/seat.h>
 
